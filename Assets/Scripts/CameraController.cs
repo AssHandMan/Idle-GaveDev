@@ -20,7 +20,6 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         target = new Vector3(plr.transform.position.x - OffsetX, plr.transform.position.y + OffsetY, plr.transform.position.z - OffsetZ);
-
         if (plr != null)
         {
             if (plr.transform.position.x > L && plr.transform.position.x < R && plr.transform.position.z > D && plr.transform.position.z < U)

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class Customer : MonoBehaviour
 {
-    public Transform targetPos;
+    public Transform targetPos, DeletePlace;
     public GameObject OrderBar, CallBar;
     public Text OrderCount;
     public Canvas canvas;
@@ -55,7 +55,7 @@ public class Customer : MonoBehaviour
                 st.client = this;
                 st.CountObj = BuyObjCount;
             }
-            if (BuyObjCount == 0) { targetPos = GameObject.FindGameObjectWithTag("DeleteCustomer").transform; }
+            if (BuyObjCount == 0) { targetPos = DeletePlace.transform; }
         }
         else if(target == "Play")
         {
@@ -68,7 +68,7 @@ public class Customer : MonoBehaviour
                 }
             }
         }
-        if (agent.transform.position == GameObject.FindGameObjectWithTag("DeleteCustomer").transform.position) { Destroy(gameObject); }
+        if (agent.transform.position == DeletePlace.position) { Destroy(gameObject); }
     }
 
     public void ChangeBuyCount()
@@ -84,7 +84,7 @@ public class Customer : MonoBehaviour
 
     public void GoAway()
     {
-        targetPos = GameObject.FindGameObjectWithTag("DeleteCustomer").transform;
+        targetPos = DeletePlace.transform;
     }
 
     public void OnTriggerEnter(Collider other)

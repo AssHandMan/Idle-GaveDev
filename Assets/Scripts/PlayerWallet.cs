@@ -8,6 +8,7 @@ public class PlayerWallet : MonoBehaviour
 {
     public Text Mtext, Dtext, Stext;
     public int Money, Diamonds, Skins;
+    public float MoneyMultiplier;
     void Start()
     {
         TextForm(Money, Mtext);
@@ -21,21 +22,22 @@ public class PlayerWallet : MonoBehaviour
         
     }
 
-    public void ChangeCount(int count, string type)
+    public void ChangeCount(float count, string type)
     {
         if(type == "Money")
         {
-            Money += count;
+            if (count > 0) { Money += Convert.ToInt32(count * MoneyMultiplier); }
+            else { Money += Convert.ToInt32(count); }
             TextForm(Money, Mtext);
         }
         else if (type == "Diamonds")
         {
-            Diamonds += count;
+            Diamonds += Convert.ToInt32(count);
             TextForm(Diamonds, Dtext);
         }
         else
         {
-            Skins += count;
+            Skins += Convert.ToInt32(count);
             TextForm(Skins, Stext);
         }
     }
