@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class CustomerGenerator : MonoBehaviour
@@ -7,12 +8,12 @@ public class CustomerGenerator : MonoBehaviour
     public Canvas canvas;
     public GameObject[] Customers;
     
-    public GameObject Car;
+    public GameObject Car, DeliveryMan;
     public int CountOfCars;
     public CarSellStation CarSellStation;
-    public Transform CarPlace;
+    public Transform CarPlace, DeliveryPlace, DeletePlace;
 
-    private GameObject CustomerNow;
+    private GameObject CustomerNow, DeliveryManNow;
 
     void Start()
     {
@@ -20,7 +21,7 @@ public class CustomerGenerator : MonoBehaviour
         //StartCoroutine(CreateCustomer());
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (CustomerNow == null)
@@ -28,7 +29,16 @@ public class CustomerGenerator : MonoBehaviour
             GameObject client = Instantiate(Customers[Random.Range(0, Customers.Length)], transform.position, transform.rotation);
             client.transform.SetParent(canvas.transform, true);
             client.GetComponent<Customer>().canvas = canvas;
+            client.GetComponent<Customer>().DeletePlace = DeletePlace;
             CustomerNow = client;
+        }
+        if(DeliveryManNow == null)
+        {
+            DeliveryManNow = Instantiate(DeliveryMan, transform.position, transform.rotation);
+            DeliveryManNow.transform.SetParent(canvas.transform, true);
+            DeliveryManNow.GetComponent<DeliveryMan>().BuyObjCount = Random.Range(2, 5);
+            DeliveryManNow.GetComponent<DeliveryMan>().place = DeliveryPlace.transform;
+            DeliveryManNow.GetComponent<DeliveryMan>().delete = DeletePlace;
         }
     }
 
@@ -50,10 +60,10 @@ public class CustomerGenerator : MonoBehaviour
     {
         if(CustomerNow == null)
         {
-        GameObject client = Instantiate(Customers[Random.Range(0, Customers.Length)], transform.position, transform.rotation);
-        client.transform.SetParent(canvas.transform, true);
-        client.GetComponent<Customer>().canvas = canvas;
-        yield return new WaitForSeconds(5);
+            GameObject client = Instantiate(Customers[Random.Range(0, Customers.Length)], transform.position, transform.rotation);
+            client.transform.SetParent(canvas.transform, true);
+            client.GetComponent<Customer>().canvas = canvas;
+            yield return new WaitForSeconds(5);
         }
     }
 }

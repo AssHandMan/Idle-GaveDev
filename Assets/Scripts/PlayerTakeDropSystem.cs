@@ -12,7 +12,7 @@ public class PlayerTakeDropSystem : MonoBehaviour
     public string ObjType;
     private TakeStation box;
     private DropStation drop;
-    private GameObject plr, Bin;
+    private GameObject plr, Bin, Delivery;
 
     void Start()
     {
@@ -82,6 +82,18 @@ public class PlayerTakeDropSystem : MonoBehaviour
                 Count--;
                 if (Count == 0) { ObjType = ""; }
             }
+            if (Delivery != null && Count > 0 && IngredientsCollection[0].GetComponent<Object>().Type == Delivery.GetComponent<DeliveryMan>().Type)
+            {
+                if (Delivery.GetComponent<DeliveryMan>().BuyObjCount > 0)
+                {
+                    Destroy(IngredientsCollection[Count - 1]);
+                    IngredientsCollection.RemoveAt(Count - 1);
+                    LustPosY -= 0.1f;
+                    Count--;
+                    Delivery.GetComponent<DeliveryMan>().AddToOrder();
+                    if (Count == 0) { ObjType = ""; }
+                }
+            }
         }
     }
 
@@ -89,7 +101,7 @@ public class PlayerTakeDropSystem : MonoBehaviour
     {
         DropObject();
         yield return new WaitForSeconds(0.2f);
-        if (drop != null || Bin != null)
+        if (drop != null || Bin != null || Delivery != null)
         {
             StartCoroutine(DroppingObjectProc());
         }
@@ -102,9 +114,9 @@ public class PlayerTakeDropSystem : MonoBehaviour
     public void Take()
     {
         if (box != null && box.CanGive)
-            {
-                TakeObject();
-            }
+        {
+            TakeObject();
+        }
     }
 
 
@@ -123,7 +135,11 @@ public class PlayerTakeDropSystem : MonoBehaviour
         if(other.gameObject.tag == "Trashbin") 
         {
             Bin = other.gameObject;
-            Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            StartCoroutine(DroppingObjectProc());
+        }
+        if (other.GetComponent<DeliveryMan>() != null)
+        {
+            Delivery = other.gameObject;
             StartCoroutine(DroppingObjectProc());
         }
     }
@@ -145,6 +161,11 @@ public class PlayerTakeDropSystem : MonoBehaviour
         if (other.gameObject.tag == "Trashbin")
         {
             Bin = null;
+            StopAllCoroutines();
+        }
+        if (other.GetComponent<DeliveryMan>() != null)
+        {
+            Delivery = null;
             StopAllCoroutines();
         }
     }
