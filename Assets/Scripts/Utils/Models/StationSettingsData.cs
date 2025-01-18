@@ -8,7 +8,7 @@ enum ActionType
 }
 public class StationSettingsData
 {
-    public string Id { get; set; }; // потому что тут промежуток, думаю, так легче
+    public string Id { get; set; } // потому что тут промежуток, думаю, так легче
     public string Name { get; set; }
     public ActionType ActionType { get; set; }
     public float ActionCost { get; set; }
@@ -16,4 +16,4 @@ public class StationSettingsData
     
     // не понял про что последний столбец в таблице димы
 
-}
+};

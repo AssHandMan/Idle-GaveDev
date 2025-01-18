@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using OfficeOpenXml;
+// using NPPlus.OfficeOpenXml; надо как-то импортировать из nuget-пакета NPPlus вот это
 using Models.GameData;
 using Models.StationSettingsData;
+using System.Collections;
 
 public static class ExcelParser 
 {
-    public GameData ParseAll(string filePath)
+    public static GameData ParseAll(string filePath)
     {
         var gameData = new GameData();
 
