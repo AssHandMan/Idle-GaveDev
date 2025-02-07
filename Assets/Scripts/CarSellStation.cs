@@ -10,6 +10,8 @@ public class CarSellStation : MonoBehaviour
     private bool isIncreasing;
     private PlayerWallet wallet;
     public CarCustomer client;
+
+    public GameObject[] Queue;
     void Start()
     {
         isIncreasing = true;

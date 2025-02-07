@@ -1,25 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SellStation : MonoBehaviour
 {
     public StationObjectCollection station;
-    public GameObject WorkSpace;
-    public Transform CustomerPlace;
+    public GameObject WorkSpace, MainObj;
+    public Transform[] CustomerPlace;
+    public bool CanWork;
     private bool isIncreasing;
     private PlayerWallet wallet;
     public int CountObj;
     public Customer client;
+    public List<GameObject> QueueList = new List<GameObject>();
+    public GameObject[] Queue;
     void Start()
     {
         isIncreasing = true;
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
+        Queue.Append(gameObject);
     }
 
     void Update()
     {
+        CanWork = MainObj.activeSelf;
+    }
 
+    public void MakeArray()
+    {
+        Queue = QueueList.ToArray();
     }
 
     public void OnTriggerEnter(Collider other)

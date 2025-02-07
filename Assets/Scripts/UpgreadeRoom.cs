@@ -79,17 +79,22 @@ public class UpgreadeRoom : MonoBehaviour
 
     public void OpenClose()
     {
-        if(menu.activeSelf) { menu.SetActive(false); }
-        else { menu.SetActive(true); }
+        menu.SetActive(false);
     }
 
     public void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<PlayerMovement>() != null)
         {
-            OpenClose();
+            menu.SetActive(true);
         }
     }
 
-
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<PlayerMovement>() != null)
+        {
+            menu.SetActive(false);
+        }
+    }
 }

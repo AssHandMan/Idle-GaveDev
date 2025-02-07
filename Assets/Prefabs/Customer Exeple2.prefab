@@ -227,12 +227,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPos: {fileID: 0}
+  DeletePlace: {fileID: 0}
   OrderBar: {fileID: 8245957250714779290}
   CallBar: {fileID: 6513878619860867415}
   OrderCount: {fileID: 7719669399630344781}
   canvas: {fileID: 0}
   isCalling: 0
+  target: 
   BuyObjCount: 0
+  st: {fileID: 0}
 --- !u!195 &1781702068261729015
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -13,8 +13,6 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         plr = GameObject.FindGameObjectWithTag("Player");
-
-        //(plr.transform.position.x - 7.6f, plr.transform.position.y + 12.15f, plr.transform.position.z - 13.3f)
     }
 
     void Update()
@@ -27,6 +25,6 @@ public class CameraController : MonoBehaviour
                 transform.position = new Vector3(target.x, target.y, target.z);
             }
         }
-
     }
+
 }

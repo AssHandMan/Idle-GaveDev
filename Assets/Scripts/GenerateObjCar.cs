@@ -21,13 +21,13 @@ public class GenerateObjCar : MonoBehaviour
         if (isNewUdpate)
         {
             if (speed < 0) { speed *= -2; }
-            rb.velocity = new Vector3(0f, 0f, speed);
+            rb.linearVelocity = new Vector3(0f, 0f, speed);
             CanGive = false;
         }
         else
         {
-            if (CanMove) { rb.velocity = new Vector3(0f, 0f, speed); }
-            else { rb.velocity = new Vector3(0f, 0f, 0); }
+            if (CanMove) { rb.linearVelocity = new Vector3(0f, 0f, speed); }
+            else { rb.linearVelocity = new Vector3(0f, 0f, 0); }
 
             if (transform.position.z > 100) { Destroy(gameObject); }
         }

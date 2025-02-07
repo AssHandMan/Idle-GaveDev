@@ -29,7 +29,7 @@ public class DeliveryMan : MonoBehaviour
         }
         agent.SetDestination(target.position);
 
-        if(transform.position == delete.position) { Destroy(gameObject); }
+        if(transform.position.x == delete.position.x && transform.position.z == delete.position.z) { Destroy(gameObject); }
     }
 
     public void AddToOrder()

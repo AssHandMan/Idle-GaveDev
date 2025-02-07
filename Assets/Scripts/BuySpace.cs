@@ -53,7 +53,7 @@ public class BuySpace : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerMovement>() != null)
         {
-           if(plr.movementDirection == Vector3.zero && !inProgress)
+           if(plr.movementDirection == Vector3.zero && !inProgress && wallet.Money > 0)
             {
                 StartCoroutine(Paying());
                 inProgress = true;

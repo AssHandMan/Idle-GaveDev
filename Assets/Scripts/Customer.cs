@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -16,28 +17,27 @@ public class Customer : MonoBehaviour
     private Rigidbody rb;
     private NavMeshAgent agent;
     private string[] BuyType = { "Buy", "Play" };
-    private string target;
-
+    public string target;
+    public CustomersMeneger meneger;
     public int BuyObjCount;
-    private SellStation st;
+    public SellStation st;
     private ArcadeMachine machine;
+
+    public bool play, toilet;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        target = BuyType[UnityEngine.Random.Range(0, BuyType.Length)];
         if (target == "Buy")
         {
-            st = GameObject.FindGameObjectWithTag("Cashmachine").GetComponent<SellStation>();
-            targetPos = st.CustomerPlace.transform;
-            BuyObjCount = UnityEngine.Random.Range(2, 5);
+            targetPos = st.CustomerPlace[GetPosinQueue()];
             OrderCount.text = BuyObjCount.ToString();
-            StartCoroutine(MakeCalll());
-            CallTime = 300;
+            //StartCoroutine(MakeCalll());
+            CallTime = 200;
             step = CallTime;
         }
         if(target == "Play")
         {
-            machine = GameObject.FindGameObjectWithTag("ArcadeMachine").GetComponent<ArcadeMachine>();
             targetPos = machine.CustomerPos.transform;
         }
 
@@ -48,18 +48,19 @@ public class Customer : MonoBehaviour
     {
         if(OrderBar != null) { OrderBar.transform.LookAt(Camera.main.transform); }
         agent.SetDestination(targetPos.position);
+
         if (target == "Buy")
         {
-            if (transform.position == targetPos.position && !isCalling)
+            targetPos = st.CustomerPlace[GetPosinQueue()];
+            if (transform.position.x == targetPos.position.x && transform.position.z == targetPos.position.z && targetPos == st.CustomerPlace[0])
             {
                 st.client = this;
                 st.CountObj = BuyObjCount;
             }
-            if (BuyObjCount == 0) { targetPos = DeletePlace.transform; }
         }
         else if(target == "Play")
         {
-            if (agent.transform.position == targetPos.position)
+            if (transform.position.x == targetPos.position.x && transform.position.z == targetPos.position.z)
             {
                 machine.client = this;
                 if (!machine.isPlaying && machine.CanWork)
@@ -68,7 +69,7 @@ public class Customer : MonoBehaviour
                 }
             }
         }
-        if (agent.transform.position == DeletePlace.position) { Destroy(gameObject); }
+        if (transform.position.x == DeletePlace.position.x && transform.position.z == DeletePlace.position.z) { Destroy(gameObject); }
     }
 
     public void ChangeBuyCount()
@@ -79,12 +80,104 @@ public class Customer : MonoBehaviour
         {
             Destroy(OrderBar);
             Destroy(OrderCount);
+            GoAway();
         }
     }
 
     public void GoAway()
     {
-        targetPos = DeletePlace.transform;
+        if (!play)
+        {
+            int a = 0;
+            for (int i = 0; i < meneger.ArcadeMachines.Length; i++)
+            {
+                if (meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().CanWork && !meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().hasTarget)
+                {
+                    a++;
+                }
+            }
+            if (a > 0)
+            {
+                for (int i = 0; i < meneger.ArcadeMachines.Length; i++)
+                {
+                    if (meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().CanWork && !meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().hasTarget)
+                    {
+                        meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().hasTarget = true;
+                        machine = meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>();
+                        target = "Play";
+                        targetPos = machine.CustomerPos.transform;
+                        st.QueueList.Remove(gameObject);
+                        st.Queue = st.QueueList.ToArray();
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                target = "Delete";
+                targetPos = DeletePlace.transform;
+                st.QueueList.Remove(gameObject);
+                st.Queue = st.QueueList.ToArray();
+            }
+        }
+        else if(play && !toilet)
+        {
+            int a = 0;
+            for (int i = 0; i < meneger.Toilets.Length; i++)
+            {
+                if (meneger.Toilets[i].GetComponent<ArcadeMachine>().CanWork && !meneger.Toilets[i].GetComponent<ArcadeMachine>().hasTarget)
+                {
+                    a++;
+                }
+            }
+            if (a > 0)
+            {
+                for (int i = 0; i < meneger.Toilets.Length; i++)
+                {
+                    if (meneger.Toilets[i].GetComponent<ArcadeMachine>().CanWork && !meneger.Toilets[i].GetComponent<ArcadeMachine>().hasTarget)
+                    {
+                        meneger.Toilets[i].GetComponent<ArcadeMachine>().hasTarget = true;
+                        machine = meneger.Toilets[i].GetComponent<ArcadeMachine>();
+                        target = "Play";
+                        targetPos = machine.CustomerPos.transform;
+                        st.QueueList.Remove(gameObject);
+                        st.Queue = st.QueueList.ToArray();
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                target = "Delete";
+                targetPos = DeletePlace.transform;
+                st.QueueList.Remove(gameObject);
+                st.Queue = st.QueueList.ToArray();
+            }
+        }
+
+        else
+        {
+
+            target = "Delete";
+            targetPos = DeletePlace.transform;
+            st.QueueList.Remove(gameObject);
+            st.Queue = st.QueueList.ToArray();
+        }
+    }
+
+    public int GetPosinQueue()
+    {
+        int a = 0;
+
+        for (int i = 0; i < st.Queue.Length; i++)
+        {
+            if (st.Queue[i] == gameObject)
+            {
+                a = i;
+                break;
+            }
+        }
+        return a;
     }
 
     public void OnTriggerEnter(Collider other)

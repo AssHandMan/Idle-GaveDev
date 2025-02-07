@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (CanMove)
         {
-            rb.velocity = new Vector3(joystick.Horizontal * speed, rb.velocity.y, joystick.Vertical * speed);
+            rb.linearVelocity = new Vector3(joystick.Horizontal * speed, rb.linearVelocity.y, joystick.Vertical * speed);
 
             movementDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
             movementDirection.Normalize();

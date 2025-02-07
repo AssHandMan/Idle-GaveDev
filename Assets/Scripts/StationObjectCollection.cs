@@ -22,12 +22,19 @@ public class StationObjectCollection : MonoBehaviour
     {
 
     }
-    public void OnDestroy()
+
+    public void RemoveAll()
     {
-        for(int i = 0; i < ObjectsList.Count; i++)
+        for (int i = 0; i < ObjectsList.Count; i++)
         {
             Destroy(ObjectsList[i]);
             ObjectsList.RemoveAt(i);
+            LustPosY -= 0.1f;
         }
+    }
+
+    public void OnDestroy()
+    {
+        RemoveAll();
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CarCustomer : MonoBehaviour
 {
-    public CustomerGenerator meneger;
+    public CustomersMeneger meneger;
     public CarSellStation station;
     public Text CountObjImg;
     public Image OrderBoard;
@@ -20,8 +20,6 @@ public class CarCustomer : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         MaxSpeed = speed;
-        
-        BuyObjCount = Random.Range(4, 8);
         CountObjImg.text = BuyObjCount.ToString();
     }
 
@@ -29,7 +27,7 @@ public class CarCustomer : MonoBehaviour
     void Update()
     {
 
-        rb.velocity = new Vector3(0, 0, speed);
+        rb.linearVelocity = new Vector3(0, 0, speed);
         if (OrderBoard != null) { OrderBoard.transform.LookAt(Camera.main.transform.position); }
         if (transform.position.z < station.transform.position.z + 3)
         {
@@ -45,7 +43,6 @@ public class CarCustomer : MonoBehaviour
         }
         if(transform.position.z < -20)
         {
-            meneger.CountOfCars--;
             Destroy(gameObject);
         }
     }
@@ -58,6 +55,7 @@ public class CarCustomer : MonoBehaviour
         {
             Destroy(OrderBoard);
             Destroy(CountObjImg);
+            meneger.CountOfCars--;
         }
     }
 

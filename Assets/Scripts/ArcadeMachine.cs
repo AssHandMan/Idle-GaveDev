@@ -9,7 +9,7 @@ public class ArcadeMachine : MonoBehaviour
     public GameObject trash;
     public Transform CustomerPos;
     public Customer client;
-    public bool isPlaying, CanWork;
+    public bool isPlaying, hasTarget, CanWork;
 
     void Start()
     {
@@ -32,6 +32,7 @@ public class ArcadeMachine : MonoBehaviour
         yield return new WaitForSeconds(5);
         PlayerWallet plr = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
         plr.ChangeCount(10, "Money");
+        client.play = true;
         client.GoAway();
         client = null;
         Vector3 pos = new Vector3(station.PlaceObj.transform.position.x, station.LustPosY, station.PlaceObj.transform.position.z);
@@ -42,5 +43,6 @@ public class ArcadeMachine : MonoBehaviour
         station.CountObj++;
         CanWork = false;
         isPlaying = false;
+        hasTarget = false;
     }
 }
