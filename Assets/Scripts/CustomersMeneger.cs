@@ -107,7 +107,15 @@ public class CustomersMeneger : MonoBehaviour
             yield return new WaitForSeconds(CustomerCreateTime);
             CreateCustomer(CashMachine2);
         }
-        StartCoroutine(DefinQueue());
+        if (CashMachine1.Queue.Length == MaxCustomer && CashMachine2.Queue.Length == MaxCustomer && CountOfCars == MaxCars)
+        {
+            yield return new WaitForSeconds(3);
+            StartCoroutine(DefinQueue());
+        }
+        else
+        {
+            StartCoroutine(DefinQueue());
+        }
     }
     private IEnumerator DeliverManCreateProcces()
     {
