@@ -2,6 +2,7 @@ using Firebase.Analytics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,7 +31,7 @@ public class SkinsRoom : MonoBehaviour
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
 
         //Firebase TEST EVENT
-        fireBase_obj = FindObjectOfType<FireBaseIniti>();
+        fireBase_obj = Object.FindFirstObjectByType<FireBaseIniti>();
     }
 
     // Update is called once per frame
