@@ -956,11 +956,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 4d9a0413-e5dc-47cc-a52b-7b48fb45cd6e
+  cloudProjectId: fd48cfab-284b-4cbc-a7c2-7aa166beadaf
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: SuperCooked
-  organizationId: timamandrik
+  projectName: Idle-GaveDev
+  organizationId: the-world-of-games
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
