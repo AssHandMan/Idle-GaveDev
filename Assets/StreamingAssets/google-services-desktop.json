@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "279121934230",
-    "project_id": "pinkfox-project-2",
-    "storage_bucket": "pinkfox-project-2.firebasestorage.app"
+    "project_number": "25126417453",
+    "project_id": "pinkfox-game",
+    "storage_bucket": "pinkfox-game.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:279121934230:android:f9c9357242b2f7bad38fb7",
+        "mobilesdk_app_id": "1:25126417453:android:d364fedd4ed0849f6db4a4",
         "android_client_info": {
           "package_name": "com.DefaultCompany.SuperCooked"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDW3z7O1PWOcXDBVUy7-DHzJjPJkk0SM5Q"
+          "current_key": "AIzaSyAsg6sNpgnVcqz-Dyr9Au4_D6rWdL3qY94"
         }
       ],
       "services": {
