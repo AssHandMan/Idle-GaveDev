@@ -1,6 +1,8 @@
+using Firebase.Analytics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,11 +21,17 @@ public class SkinsRoom : MonoBehaviour
     private PlayerWallet wallet;
     private bool CanChange;
 
+    //Firebase TEST EVENT
+    private FireBaseIniti fireBase_obj;
+
     void Start()
     {
         CanChange = true;
         ButtonText.text = "Equipped";
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
+
+        //Firebase TEST EVENT
+        fireBase_obj = Object.FindFirstObjectByType<FireBaseIniti>();
     }
 
     // Update is called once per frame
@@ -56,6 +64,9 @@ public class SkinsRoom : MonoBehaviour
                 wallet.ChangeCount(-float.Parse(priceList[SkinPos]), "Money");
                 isBuy[SkinPos] = true;
                 ButtonText.text = "Equipe";
+
+                //Firebase TEST EVENT
+                fireBase_obj.LogTestEvent2();
             }
         }
         else
