@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 4138955487669011318}
-  RefObj: {fileID: 2477510402182393779, guid: 75a308a68f629cb41916f217e48ca605, type: 3}
+  RefObj: {fileID: 7256253613399459888, guid: f45184fb44b0a13458076994fd3beec7, type: 3}
   Car: {fileID: 5978090268184861276, guid: 1dccbe77f4ab4694da3b494e741bed38, type: 3}
   CarPlace: {fileID: 8697588028931697016}
   TimeToCreate: 1

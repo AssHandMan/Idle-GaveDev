@@ -21,9 +21,9 @@ public class Customer : MonoBehaviour
     public CustomersMeneger meneger;
     public int BuyObjCount;
     public SellStation st;
-    private ArcadeMachine machine;
+    public ArcadeMachine machine;
 
-    public bool play, toilet;
+    public bool play, toilet, kiosk;
 
     void Start()
     {
@@ -80,88 +80,99 @@ public class Customer : MonoBehaviour
         {
             Destroy(OrderBar);
             Destroy(OrderCount);
+            st.QueueList.Remove(gameObject);
+            st.Queue = st.QueueList.ToArray();
             GoAway();
         }
     }
 
     public void GoAway()
     {
-        if (!play)
+        if (kiosk)
         {
-            int a = 0;
-            for (int i = 0; i < meneger.ArcadeMachines.Length; i++)
-            {
-                if (meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().CanWork && !meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().hasTarget)
-                {
-                    a++;
-                }
-            }
-            if (a > 0)
-            {
-                for (int i = 0; i < meneger.ArcadeMachines.Length; i++)
-                {
-                    if (meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().CanWork && !meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().hasTarget)
-                    {
-                        meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().hasTarget = true;
-                        machine = meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>();
-                        target = "Play";
-                        targetPos = machine.CustomerPos.transform;
-                        st.QueueList.Remove(gameObject);
-                        st.Queue = st.QueueList.ToArray();
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                target = "Delete";
-                targetPos = DeletePlace.transform;
-                st.QueueList.Remove(gameObject);
-                st.Queue = st.QueueList.ToArray();
-            }
-        }
-        else if(play && !toilet)
-        {
-            int a = 0;
-            for (int i = 0; i < meneger.Toilets.Length; i++)
-            {
-                if (meneger.Toilets[i].GetComponent<ArcadeMachine>().CanWork && !meneger.Toilets[i].GetComponent<ArcadeMachine>().hasTarget)
-                {
-                    a++;
-                }
-            }
-            if (a > 0)
-            {
-                for (int i = 0; i < meneger.Toilets.Length; i++)
-                {
-                    if (meneger.Toilets[i].GetComponent<ArcadeMachine>().CanWork && !meneger.Toilets[i].GetComponent<ArcadeMachine>().hasTarget)
-                    {
-                        meneger.Toilets[i].GetComponent<ArcadeMachine>().hasTarget = true;
-                        machine = meneger.Toilets[i].GetComponent<ArcadeMachine>();
-                        target = "Play";
-                        targetPos = machine.CustomerPos.transform;
-                        st.QueueList.Remove(gameObject);
-                        st.Queue = st.QueueList.ToArray();
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                target = "Delete";
-                targetPos = DeletePlace.transform;
-                st.QueueList.Remove(gameObject);
-                st.Queue = st.QueueList.ToArray();
-            }
-        }
-
-        else
-        {
-
             target = "Delete";
             targetPos = DeletePlace.transform;
             st.QueueList.Remove(gameObject);
             st.Queue = st.QueueList.ToArray();
+        }
+        else
+        {
+
+            if (!play)
+            {
+                int a = 0;
+                for (int i = 0; i < meneger.ArcadeMachines.Length; i++)
+                {
+                    if (meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().CanWork && !meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().hasTarget)
+                    {
+                        a++;
+                    }
+                }
+                if (a > 0)
+                {
+                    for (int i = 0; i < meneger.ArcadeMachines.Length; i++)
+                    {
+                        if (meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().CanWork && !meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().hasTarget)
+                        {
+                            target = "Play";
+                            meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().hasTarget = true;
+                            machine = meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>();
+                            targetPos = machine.CustomerPos.transform;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    target = "Delete";
+                    targetPos = DeletePlace.transform;
+                    st.QueueList.Remove(gameObject);
+                    st.Queue = st.QueueList.ToArray();
+                }
+            }
+            else if (play && !toilet)
+            {
+                int a = 0;
+                for (int i = 0; i < meneger.Toilets.Length; i++)
+                {
+                    if (meneger.Toilets[i].GetComponent<ArcadeMachine>().CanWork && !meneger.Toilets[i].GetComponent<ArcadeMachine>().hasTarget)
+                    {
+                        a++;
+                    }
+                }
+                if (a > 0)
+                {
+                    for (int i = 0; i < meneger.Toilets.Length; i++)
+                    {
+                        if (meneger.Toilets[i].GetComponent<ArcadeMachine>().CanWork && !meneger.Toilets[i].GetComponent<ArcadeMachine>().hasTarget)
+                        {
+                            meneger.Toilets[i].GetComponent<ArcadeMachine>().hasTarget = true;
+                            machine = meneger.Toilets[i].GetComponent<ArcadeMachine>();
+                            target = "Play";
+                            targetPos = machine.CustomerPos.transform;
+                            st.QueueList.Remove(gameObject);
+                            st.Queue = st.QueueList.ToArray();
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    target = "Delete";
+                    targetPos = DeletePlace.transform;
+                    st.QueueList.Remove(gameObject);
+                    st.Queue = st.QueueList.ToArray();
+                }
+            }
+
+            else
+            {
+
+                target = "Delete";
+                targetPos = DeletePlace.transform;
+                st.QueueList.Remove(gameObject);
+                st.Queue = st.QueueList.ToArray();
+            }
         }
     }
 

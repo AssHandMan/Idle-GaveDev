@@ -124,8 +124,11 @@ public class PlayerTakeDropSystem : MonoBehaviour
     {
         if (other.gameObject.GetComponent<TakeStation>() != null)
         {
-            box = other.gameObject.GetComponent<TakeStation>();
-            StartCoroutine(AddingObjectProc());
+            if (other.gameObject.tag != "Kiosk")
+            {
+                box = other.gameObject.GetComponent<TakeStation>();
+                StartCoroutine(AddingObjectProc());
+            }
         }
         if (other.gameObject.GetComponent<DropStation>() != null)
         {
@@ -150,8 +153,11 @@ public class PlayerTakeDropSystem : MonoBehaviour
     {
         if (other.gameObject.GetComponent<TakeStation>() != null)
         {
-            box = null;
-            StopAllCoroutines();
+            if (other.gameObject.tag != "Kiosk")
+            {
+                box = null;
+                StopAllCoroutines();
+            }
         }
         if (other.gameObject.GetComponent<DropStation>() != null)
         {

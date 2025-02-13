@@ -10,14 +10,14 @@ public class CustomersMeneger : MonoBehaviour
     public GameObject[] PoorCustomer, RichCustomer, Bloger;
     public GameObject Car, Delivery;
     private string[] CustomerType = { "Poor", "Rich", "Bloger" };
-    public int CountCustomer, MaxCustomer, MaxCars;
+    public int CountCustomer, MaxCustomer, MaxCars, MaxKioskCustomers;
     public float CustomerCreateTime;
     public Transform CustomerPos, DeletePos, CarPlace, DeliveryPlace;
 
     public int CountOfCars;
     public string[] QueueTypes;
 
-    public SellStation CashMachine1, CashMachine2;
+    public SellStation CashMachine1, CashMachine2, kiosk;
     public CarSellStation CarCashMachine;
     public GameObject[] ArcadeMachines;
     public GameObject[] Toilets;
@@ -66,6 +66,7 @@ public class CustomersMeneger : MonoBehaviour
         station.Queue.Append(customer);
         station.QueueList.Add(customer);
         station.MakeArray();
+        if(station == kiosk) { _customer.kiosk = true; }
     }
 
     public void CreateCar()
@@ -107,6 +108,12 @@ public class CustomersMeneger : MonoBehaviour
             yield return new WaitForSeconds(CustomerCreateTime);
             CreateCustomer(CashMachine2);
         }
+        if(kiosk.CanWork && kiosk.Queue.Length < MaxKioskCustomers)
+        {
+            yield return new WaitForSeconds(CustomerCreateTime);
+            CreateCustomer(kiosk);
+        }
+        
         if (CashMachine1.Queue.Length == MaxCustomer && CashMachine2.Queue.Length == MaxCustomer && CountOfCars == MaxCars)
         {
             yield return new WaitForSeconds(3);
