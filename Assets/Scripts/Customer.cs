@@ -32,7 +32,7 @@ public class Customer : MonoBehaviour
         if (target == "Buy")
         {
             targetPos = st.CustomerPlace[GetPosinQueue()];
-            OrderCount.text = BuyObjCount.ToString();       
+            OrderCount.text = BuyObjCount.ToString();
         }
 
     }
@@ -40,14 +40,14 @@ public class Customer : MonoBehaviour
 
     void Update()
     {
-        if(OrderBar != null) { OrderBar.transform.LookAt(Camera.main.transform); }
-        if(CallBar.activeSelf) { CallBar.transform.LookAt(Camera.main.transform); }
+        if (OrderBar != null) { OrderBar.transform.LookAt(Camera.main.transform); }
+        if (CallBar.activeSelf) { CallBar.transform.LookAt(Camera.main.transform); }
         agent.SetDestination(targetPos.position);
 
         if (target == "Buy")
         {
             targetPos = st.CustomerPlace[GetPosinQueue()];
-            
+
             if (transform.position.x == targetPos.position.x && transform.position.z == targetPos.position.z)
             {
 
@@ -85,7 +85,7 @@ public class Customer : MonoBehaviour
                 }
             }
         }
-        else if(target == "Play")
+        else if (target == "Play")
         {
             if (transform.position.x == targetPos.position.x && transform.position.z == targetPos.position.z)
             {
@@ -103,7 +103,7 @@ public class Customer : MonoBehaviour
     {
         BuyObjCount--;
         OrderCount.text = BuyObjCount.ToString();
-        if(BuyObjCount == 0)
+        if (BuyObjCount == 0)
         {
             OrderBar.SetActive(false);
 
@@ -217,9 +217,9 @@ public class Customer : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<PlayerTakeDropSystem>() != null)
+        if (other.GetComponent<PlayerTakeDropSystem>() != null)
         {
-            if(isCalling)
+            if (isCalling)
             {
                 StartCoroutine(Calling());
             }
@@ -256,11 +256,11 @@ public class Customer : MonoBehaviour
             CallBar.SetActive(false);
             isCalling = false;
             st.isCalling = false;
-            for(int i = 0; i < st.Queue.Length; i++)
+            for (int i = 0; i < st.Queue.Length; i++)
             {
                 st.Queue[i].GetComponent<Customer>().agent.speed = 5;
             }
-            if(st.LustCustomer != null)
+            if (st.LustCustomer != null)
             {
                 st.LustCustomer = null;
             }

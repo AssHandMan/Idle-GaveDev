@@ -27,18 +27,18 @@ public class SellStation : MonoBehaviour
     void Update()
     {
         CanWork = MainObj.activeSelf;
-        if(isKiosk && client == null )
+        if (isKiosk && client == null)
         {
             StopAllCoroutines();
             inProgress = false;
         }
-        if(isKiosk && client != null && !inProgress) 
+        if (isKiosk && client != null && !inProgress)
         {
             StartCoroutine(Working());
             inProgress = true;
         }
 
-        if(Queue.Length == 10)
+        if (Queue.Length == 10)
         {
             if (LustCustomer == null)
             {
@@ -54,7 +54,7 @@ public class SellStation : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if(!isKiosk)
+        if (!isKiosk)
         {
             if (other.gameObject.tag == "Player")
             {

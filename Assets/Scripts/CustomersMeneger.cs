@@ -33,7 +33,7 @@ public class CustomersMeneger : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     public void CreateCustomer(SellStation station)
@@ -41,20 +41,20 @@ public class CustomersMeneger : MonoBehaviour
         int Type = Random.Range(0, 3);
         GameObject customer;
         Customer _customer;
-        if (Type == 0) 
-        { 
-            customer = Instantiate(PoorCustomer[Random.Range(0,PoorCustomer.Length)], CustomerPos.position, CustomerPos.rotation);
+        if (Type == 0)
+        {
+            customer = Instantiate(PoorCustomer[Random.Range(0, PoorCustomer.Length)], CustomerPos.position, CustomerPos.rotation);
             _customer = customer.GetComponent<Customer>();
             _customer.BuyObjCount = Random.Range(1, 4);
 
         }
-        else if (Type == 1) 
+        else if (Type == 1)
         {
             customer = Instantiate(RichCustomer[Random.Range(0, RichCustomer.Length)], CustomerPos.position, CustomerPos.rotation);
             _customer = customer.GetComponent<Customer>();
             _customer.BuyObjCount = Random.Range(4, 7);
         }
-        else 
+        else
         {
             customer = Instantiate(Bloger[Random.Range(0, Bloger.Length)], CustomerPos.position, CustomerPos.rotation);
             _customer = customer.GetComponent<Customer>();
@@ -68,7 +68,7 @@ public class CustomersMeneger : MonoBehaviour
         station.Queue.Append(customer);
         station.QueueList.Add(customer);
         station.MakeArray();
-        if(station == kiosk) { _customer.kiosk = true; }
+        if (station == kiosk) { _customer.kiosk = true; }
 
         if (station == CashMachine1)
         {
@@ -101,7 +101,7 @@ public class CustomersMeneger : MonoBehaviour
     {
         if (CashMachine1.CanWork && CashMachine1.Queue.Length < MaxCustomer)
         {
-            if(CashMachine1.LustCustomer == null)
+            if (CashMachine1.LustCustomer == null)
             {
                 yield return new WaitForSeconds(CustomerCreateTime);
                 CreateCustomer(CashMachine1);
@@ -130,12 +130,12 @@ public class CustomersMeneger : MonoBehaviour
                 yield return new WaitForSeconds(CustomerCreateTime);
             }
         }
-        if(kiosk.CanWork && kiosk.Queue.Length < MaxKioskCustomers)
+        if (kiosk.CanWork && kiosk.Queue.Length < MaxKioskCustomers)
         {
             yield return new WaitForSeconds(CustomerCreateTime);
             CreateCustomer(kiosk);
         }
-        
+
         if (CashMachine1.Queue.Length == MaxCustomer && CashMachine2.Queue.Length == MaxCustomer && CountOfCars == MaxCars)
         {
             yield return new WaitForSeconds(3);
@@ -148,7 +148,7 @@ public class CustomersMeneger : MonoBehaviour
     }
     private IEnumerator DeliverManCreateProcces()
     {
-        if(DeliveryNow == null) { CreateDeliverMan(); }
+        if (DeliveryNow == null) { CreateDeliverMan(); }
         yield return new WaitForSeconds(20);
         StartCoroutine(DeliverManCreateProcces());
     }
