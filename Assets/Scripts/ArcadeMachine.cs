@@ -6,10 +6,10 @@ using static System.Collections.Specialized.BitVector32;
 public class ArcadeMachine : MonoBehaviour
 {
     public StationObjectCollection station;
-    public GameObject trash;
+    public GameObject trash, TrashViewe;
     public Transform CustomerPos;
     public Customer client;
-    public bool isPlaying, hasTarget, CanWork;
+    public bool isPlaying, hasTarget, CanWork, isToilet;
 
     void Start()
     {
@@ -19,7 +19,14 @@ public class ArcadeMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(station.CountObj == 0) { CanWork = true; }
+        if(station.CountObj == 0) 
+        { 
+            CanWork = true;
+            if(isToilet)
+            {
+                TrashViewe.SetActive(false);
+            }
+        }
     }
 
     public void StartPlay()
@@ -44,5 +51,9 @@ public class ArcadeMachine : MonoBehaviour
         CanWork = false;
         isPlaying = false;
         hasTarget = false;
+        if(isToilet)
+        {
+            TrashViewe.SetActive(true);
+        }
     }
 }
