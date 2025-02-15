@@ -236,7 +236,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!54 &8495431131598295767
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -298,10 +298,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   place: {fileID: 0}
+  delete: {fileID: 0}
+  target: {fileID: 0}
   BuyObjCount: 0
   OrderBar: {fileID: 139072424008858665}
   OrderCount: {fileID: 1479378668177440033}
-  Type: Blue
+  Type: Toy
 --- !u!1001 &1312749275278341568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -425,7 +427,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2315622, guid: d7ada917e78e68c4faa65010233e8244, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: b828aea738e39e74ca605ee2cdd6804d, type: 2}
     m_RemovedComponents: []

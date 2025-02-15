@@ -793,6 +793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   station: {fileID: 3473887599566759121}
   ObjectType: Console
+  deltaY: 0.1
 --- !u!114 &3598635542927757193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -806,6 +807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 3473887599566759121}
+  deltaY: 0
   CanGive: 0
 --- !u!65 &8634815131489052746
 BoxCollider:
@@ -983,6 +985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   station: {fileID: 7921016811569232900}
   ObjectType: Game
+  deltaY: 0.1
 --- !u!114 &231585310678028786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -996,6 +999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 7921016811569232900}
+  deltaY: 0
   CanGive: 0
 --- !u!65 &1594362517990486858
 BoxCollider:

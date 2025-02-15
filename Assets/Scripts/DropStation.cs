@@ -6,6 +6,7 @@ public class DropStation : MonoBehaviour
 {
     public StationObjectCollection station;
     public string ObjectType;
+    public float deltaY;
 
     void Start()
     {
@@ -26,7 +27,7 @@ public class DropStation : MonoBehaviour
             GameObject newObj = Instantiate(obj, pos, transform.rotation);
             newObj.transform.parent = transform;
             station.ObjectsList.Add(newObj);
-            station.LustPosY += 0.1f;
+            station.LustPosY += deltaY;
             station.CountObj++;
         }
     }

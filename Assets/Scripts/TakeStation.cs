@@ -5,6 +5,7 @@ using UnityEngine;
 public class TakeStation : MonoBehaviour
 {
     public StationObjectCollection station;
+    public float deltaY;
     public bool CanGive;
 
     void Start()
@@ -23,7 +24,7 @@ public class TakeStation : MonoBehaviour
     {
         Destroy(station.ObjectsList[station.CountObj - 1]);
         station.ObjectsList.RemoveAt(station.CountObj - 1);
-        station.LustPosY -= 0.1f;
+        station.LustPosY -= deltaY;
         station.CountObj--;
     }
 

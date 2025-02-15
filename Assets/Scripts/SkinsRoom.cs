@@ -9,7 +9,8 @@ using UnityEngine.UI;
 
 public class SkinsRoom : MonoBehaviour
 {
-    public GameObject Character, menu, MainCam, SkinCam;
+    public CameraController cam;
+    public GameObject Character, menu;
     public GameObject[] characters;
     public GameObject[] Player;
     public bool[] isBuy;
@@ -59,7 +60,7 @@ public class SkinsRoom : MonoBehaviour
     {
         if (!isBuy[SkinPos])
         {
-            if (wallet.Money > Convert.ToInt32(priceList[SkinPos]))
+            if (wallet.Money >= Convert.ToInt32(priceList[SkinPos]))
             {
                 wallet.ChangeCount(-float.Parse(priceList[SkinPos]), "Money");
                 isBuy[SkinPos] = true;
@@ -114,8 +115,7 @@ public class SkinsRoom : MonoBehaviour
     public void CloseMenu()
     {
         menu.SetActive(false);
-        MainCam.SetActive(true);
-        SkinCam.SetActive(false);
+        cam.SetPlayMood();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -123,8 +123,7 @@ public class SkinsRoom : MonoBehaviour
         if (other.GetComponent<PlayerMovement>() != null)
         {
             menu.SetActive(true);
-            MainCam.SetActive(false);
-            SkinCam.SetActive(true);
+            cam.SetSkinMood();
         }
     }
 

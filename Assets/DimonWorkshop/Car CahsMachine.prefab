@@ -468,6 +468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   station: {fileID: 1835644092565815152}
   ObjectType: Box
+  deltaY: 0.1
 --- !u!4 &890824875879413432 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 443612, guid: 6b24f606b4a556a48b2f9fbb46026043, type: 3}

@@ -554,7 +554,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   CanWork: 1
+  isKiosk: 0
   CountObj: 0
+  deltaY: 0.1
   client: {fileID: 0}
   QueueList: []
   Queue: []
@@ -950,3 +952,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   station: {fileID: 4271952861696962645}
   ObjectType: Game
+  deltaY: 0.1

@@ -80,8 +80,13 @@ MonoBehaviour:
   canvas: {fileID: 0}
   isCalling: 0
   target: 
+  meneger: {fileID: 0}
   BuyObjCount: 0
   st: {fileID: 0}
+  machine: {fileID: 0}
+  play: 0
+  toilet: 0
+  kiosk: 0
 --- !u!195 &8373679091880906631
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -103,7 +108,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!54 &5589178414374083435
 Rigidbody:
   m_ObjectHideFlags: 0

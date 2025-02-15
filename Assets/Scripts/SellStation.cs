@@ -8,11 +8,13 @@ public class SellStation : MonoBehaviour
     public StationObjectCollection station;
     public GameObject WorkSpace, MainObj;
     public Transform[] CustomerPlace;
-    public bool CanWork, isKiosk;
+    public bool CanWork, isKiosk, isCalling;
     public int CountObj;
+    public float deltaY;
     public Customer client;
     public List<GameObject> QueueList = new List<GameObject>();
     public GameObject[] Queue;
+    public Customer CallingCustomer, LustCustomer;
 
     private bool isIncreasing, inProgress;
     private PlayerWallet wallet;
@@ -34,6 +36,14 @@ public class SellStation : MonoBehaviour
         {
             StartCoroutine(Working());
             inProgress = true;
+        }
+
+        if(Queue.Length == 10)
+        {
+            if (LustCustomer == null)
+            {
+                LustCustomer = Queue[9].GetComponent<Customer>();
+            }
         }
     }
 
@@ -69,16 +79,16 @@ public class SellStation : MonoBehaviour
 
     public IEnumerator Working()
     {
-        Debug.Log("!");
+
         yield return new WaitForSeconds(0.3f);
 
         if (client != null)
         {
-            if (station.CountObj > 0 && client.BuyObjCount > 0)
+            if (station.CountObj > 0 && client.BuyObjCount > 0 && !client.isCalling)
             {
                 Destroy(station.ObjectsList[station.CountObj - 1]);
                 station.ObjectsList.RemoveAt(station.CountObj - 1);
-                station.LustPosY -= 0.1f;
+                station.LustPosY -= deltaY;
                 station.CountObj--;
                 wallet.ChangeCount(5, "Money");
                 client.ChangeBuyCount();

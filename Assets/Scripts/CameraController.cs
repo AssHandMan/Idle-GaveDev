@@ -6,25 +6,39 @@ public class CameraController : MonoBehaviour
 {
 
     public float OffsetX, OffsetY, OffsetZ;
-    public float L, R, U, D;
+    public Vector3 PlatRotate, SkinRotate, SkinPos;
+    public bool isPlay;
     private GameObject plr;
     private Vector3 target;
 
     void Start()
     {
+        isPlay = true;
         plr = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
-        target = new Vector3(plr.transform.position.x - OffsetX, plr.transform.position.y + OffsetY, plr.transform.position.z - OffsetZ);
-        if (plr != null)
+        if(isPlay)
         {
-            if (plr.transform.position.x > L && plr.transform.position.x < R && plr.transform.position.z > D && plr.transform.position.z < U)
+            target = new Vector3(plr.transform.position.x - OffsetX, plr.transform.position.y + OffsetY, plr.transform.position.z - OffsetZ);
+            if (plr != null)
             {
                 transform.position = new Vector3(target.x, target.y, target.z);
             }
         }
+    }
+
+    public void SetPlayMood()
+    {
+        isPlay=true;
+        transform.rotation = Quaternion.Euler(PlatRotate);
+    }
+    public void SetSkinMood()
+    {
+        isPlay = false;
+        transform.position = SkinPos;
+        transform.rotation = Quaternion.Euler(SkinRotate);
     }
 
 }

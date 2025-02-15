@@ -13,7 +13,7 @@ public class Customer : MonoBehaviour
     public Text OrderCount;
     public Canvas canvas;
     public bool isCalling;
-    private float CallTime, step;
+    public float CallTime, step;
     private Rigidbody rb;
     private NavMeshAgent agent;
     private string[] BuyType = { "Buy", "Play" };
@@ -28,17 +28,11 @@ public class Customer : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        OrderBar.SetActive(false);
         if (target == "Buy")
         {
             targetPos = st.CustomerPlace[GetPosinQueue()];
-            OrderCount.text = BuyObjCount.ToString();
-            //StartCoroutine(MakeCalll());
-            CallTime = 200;
-            step = CallTime;
-        }
-        if(target == "Play")
-        {
-            targetPos = machine.CustomerPos.transform;
+            OrderCount.text = BuyObjCount.ToString();       
         }
 
     }
@@ -47,15 +41,48 @@ public class Customer : MonoBehaviour
     void Update()
     {
         if(OrderBar != null) { OrderBar.transform.LookAt(Camera.main.transform); }
+        if(CallBar.activeSelf) { CallBar.transform.LookAt(Camera.main.transform); }
         agent.SetDestination(targetPos.position);
 
         if (target == "Buy")
         {
             targetPos = st.CustomerPlace[GetPosinQueue()];
-            if (transform.position.x == targetPos.position.x && transform.position.z == targetPos.position.z && targetPos == st.CustomerPlace[0])
+            
+            if (transform.position.x == targetPos.position.x && transform.position.z == targetPos.position.z)
             {
-                st.client = this;
-                st.CountObj = BuyObjCount;
+
+                if (st.isCalling)
+                {
+                    if (GetPosinQueue() > st.CallingCustomer.GetPosinQueue())
+                    {
+                        agent.speed = 0;
+                    }
+                }
+
+                if (targetPos == st.CustomerPlace[0])
+                {
+                    if (!OrderBar.activeSelf & BuyObjCount > 0) { OrderBar.SetActive(true); }
+                    st.client = this;
+                    st.CountObj = BuyObjCount;
+                }
+            }
+
+            if (BuyObjCount == 0)
+            {
+                int a = 0;
+                for (int i = 0; i < meneger.ArcadeMachines.Length; i++)
+                {
+                    if (meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().CanWork && !meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().hasTarget)
+                    {
+                        a++;
+                    }
+                }
+                if (a > 0)
+                {
+                    st.QueueList.Remove(gameObject);
+                    st.Queue = st.QueueList.ToArray();
+                    GoAway();
+                }
             }
         }
         else if(target == "Play")
@@ -78,11 +105,8 @@ public class Customer : MonoBehaviour
         OrderCount.text = BuyObjCount.ToString();
         if(BuyObjCount == 0)
         {
-            Destroy(OrderBar);
-            Destroy(OrderCount);
-            st.QueueList.Remove(gameObject);
-            st.Queue = st.QueueList.ToArray();
-            GoAway();
+            OrderBar.SetActive(false);
+
         }
     }
 
@@ -202,24 +226,17 @@ public class Customer : MonoBehaviour
         }
     }
 
-    private IEnumerator MakeCalll()
+    public void MakeCall()
     {
-        if(!isCalling && transform.position != targetPos.position)
-        {
-            yield return new WaitForSeconds(1);
-            if(UnityEngine.Random.Range(0,2) == 1)
-            {
-                agent.speed = 0;
-                OrderBar.SetActive(false);
-                CallBar.SetActive(true);
-                isCalling = true;
-            }
-            else
-            {
-                StartCoroutine(MakeCalll());
-            }
-        }
+        CallTime = 200;
+        step = CallTime;
+        CallBar.GetComponent<Image>().fillAmount = 1;
+        agent.speed = 0;
+        OrderBar.SetActive(false);
+        CallBar.SetActive(true);
+        isCalling = true;
     }
+
     private IEnumerator Calling()
     {
         if (CallTime > 0)
@@ -232,9 +249,21 @@ public class Customer : MonoBehaviour
         else
         {
             agent.speed = 5;
-            OrderBar.SetActive(true);
+            if (GetPosinQueue() == 0)
+            {
+                OrderBar.SetActive(true);
+            }
             CallBar.SetActive(false);
             isCalling = false;
+            st.isCalling = false;
+            for(int i = 0; i < st.Queue.Length; i++)
+            {
+                st.Queue[i].GetComponent<Customer>().agent.speed = 5;
+            }
+            if(st.LustCustomer != null)
+            {
+                st.LustCustomer = null;
+            }
         }
     }
 

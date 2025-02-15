@@ -23,6 +23,8 @@ public class CustomersMeneger : MonoBehaviour
     public GameObject[] Toilets;
     private GameObject DeliveryNow;
 
+    private int a;
+
     void Start()
     {
         StartCoroutine(DefinQueue());
@@ -67,6 +69,12 @@ public class CustomersMeneger : MonoBehaviour
         station.QueueList.Add(customer);
         station.MakeArray();
         if(station == kiosk) { _customer.kiosk = true; }
+
+        if (station == CashMachine1)
+        {
+            customer.name = a.ToString();
+            a++;
+        }
     }
 
     public void CreateCar()
@@ -93,8 +101,15 @@ public class CustomersMeneger : MonoBehaviour
     {
         if (CashMachine1.CanWork && CashMachine1.Queue.Length < MaxCustomer)
         {
-            yield return new WaitForSeconds(CustomerCreateTime);
-            CreateCustomer(CashMachine1);
+            if(CashMachine1.LustCustomer == null)
+            {
+                yield return new WaitForSeconds(CustomerCreateTime);
+                CreateCustomer(CashMachine1);
+            }
+            else
+            {
+                yield return new WaitForSeconds(CustomerCreateTime);
+            }
         }
 
         if (CarCashMachine.gameObject.activeSelf && CountOfCars < MaxCars)
@@ -105,8 +120,15 @@ public class CustomersMeneger : MonoBehaviour
 
         if (CashMachine2.CanWork && CashMachine2.Queue.Length < MaxCustomer)
         {
-            yield return new WaitForSeconds(CustomerCreateTime);
-            CreateCustomer(CashMachine2);
+            if (CashMachine2.LustCustomer == null)
+            {
+                yield return new WaitForSeconds(CustomerCreateTime);
+                CreateCustomer(CashMachine2);
+            }
+            else
+            {
+                yield return new WaitForSeconds(CustomerCreateTime);
+            }
         }
         if(kiosk.CanWork && kiosk.Queue.Length < MaxKioskCustomers)
         {

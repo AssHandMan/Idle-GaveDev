@@ -23,6 +23,7 @@ public class CreateStation : MonoBehaviour
         yield return new WaitForSeconds(TimeCreateCar);
         //CarNow = Instantiate(Car, CarPlace.transform.position, Car.transform.rotation);
         StartCoroutine(Creating());
+        CountUploads = station.MuxCountObj - station.CountObj;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -40,11 +41,11 @@ public class CreateStation : MonoBehaviour
 
         yield return new WaitForSeconds(TimeToCreate);
 
-        if (station.CountObj < station.MuxCountObj /*&& CountUploads != 0*/)
+        if (station.CountObj < station.MuxCountObj && CountUploads != 0)
         {
             Vector3 pos = new Vector3(station.PlaceObj.transform.position.x, station.LustPosY, station.PlaceObj.transform.position.z);
-            GameObject refObj = RefObj[Random.Range(0, RefObj.Length)];
-            GameObject obj = Instantiate(refObj, pos, refObj.transform.rotation);
+            int a = Random.Range(0, RefObj.Length);
+            GameObject obj = Instantiate(RefObj[a], pos, RefObj[a].transform.rotation);
             station.ObjectsList.Add(obj);
             station.LustPosY += deltaY;
             station.CountObj++;

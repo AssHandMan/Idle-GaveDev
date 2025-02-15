@@ -23,7 +23,7 @@ public class PlayerTakeDropSystem : MonoBehaviour
 
     void Update()
     {
-
+        if(Input.GetKeyDown(KeyCode.E)) { Time.timeScale = 3; }
     }
 
     public void TakeObject()
@@ -64,7 +64,7 @@ public class PlayerTakeDropSystem : MonoBehaviour
         {
             if (ObjType == drop.ObjectType)
             {
-                drop.AddObj(IngredientsCollection[0]);
+                drop.AddObj(IngredientsCollection[Count - 1]);
                 Destroy(IngredientsCollection[Count - 1]);
                 IngredientsCollection.RemoveAt(Count - 1);
                 LustPosY -= 0.1f;
