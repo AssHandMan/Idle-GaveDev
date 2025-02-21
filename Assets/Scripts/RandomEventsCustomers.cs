@@ -19,7 +19,7 @@ public class RandomEventsCustomers : MonoBehaviour
 
     private IEnumerator MakeCall()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(5);
         if (station.Queue.Length > 0)
         {
 
@@ -27,13 +27,16 @@ public class RandomEventsCustomers : MonoBehaviour
             {
                 GameObject customer = station.Queue[Random.Range(0, station.Queue.Length)];
                 Customer _customer = customer.GetComponent<Customer>();
-                if (_customer.transform.position.x == _customer.targetPos.position.x && _customer.transform.position.z == _customer.targetPos.position.z)
+                if (_customer.target != null)
                 {
-                    if (!_customer.isCalling)
+                    if (_customer.transform.position.x == _customer.targetPos.position.x && _customer.transform.position.z == _customer.targetPos.position.z)
                     {
-                        _customer.MakeCall();
-                        station.isCalling = true;
-                        station.CallingCustomer = _customer;
+                        if (!_customer.isCalling)
+                        {
+                            _customer.MakeCall();
+                            station.isCalling = true;
+                            station.CallingCustomer = _customer;
+                        }
                     }
                 }
             }

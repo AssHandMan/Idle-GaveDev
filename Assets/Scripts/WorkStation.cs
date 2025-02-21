@@ -6,8 +6,13 @@ public class WorkStation : MonoBehaviour
 {
     public StationObjectCollection station, newStation;
     public TakeStation TakeStationNew;
-    public GameObject obj, WorkSpace, HandsPlayer;
+    public GameObject obj, WorkSpace, HandsPlayer, MainObj;
     private bool isIncreasing;
+    public float TimeWork;
+
+    public BuySpace space;
+    public int lvl;
+    public int[] PriceList;
 
     void Start()
     {
@@ -46,13 +51,13 @@ public class WorkStation : MonoBehaviour
 
     public IEnumerator Working()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(TimeWork);
 
         if (station.CountObj > 0 & newStation.CountObj < newStation.MuxCountObj)
         {
             Destroy(station.ObjectsList[station.CountObj - 1]);
             station.ObjectsList.RemoveAt(station.CountObj - 1);
-            station.LustPosY -= 0.1f;
+            station.LustPosY -= 0.4f;
             station.CountObj--;
 
             Vector3 pos = new Vector3(newStation.PlaceObj.transform.position.x, newStation.LustPosY, newStation.PlaceObj.transform.position.z);
@@ -87,5 +92,28 @@ public class WorkStation : MonoBehaviour
 
         yield return new WaitForSeconds(0.01f);
         StartCoroutine(WorkSpaceEffect());
+    }
+
+    public void BuyUpgrade()
+    {
+        if (!MainObj.activeSelf)
+        {
+            MainObj.SetActive(true);
+            space.ChangePrice(PriceList[lvl]);
+        }
+        else
+        {
+            if (lvl <= PriceList.Length)
+            {
+                station.MuxCountObj += 5;
+                newStation.MuxCountObj += 5;
+                TimeWork -= 0.5f;
+            }
+            if (lvl < PriceList.Length)
+            {
+                space.ChangePrice(PriceList[lvl]);
+            }
+        }
+        if (lvl < 3) { lvl++; }
     }
 }

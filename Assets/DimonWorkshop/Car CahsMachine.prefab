@@ -104,9 +104,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   station: {fileID: 1835644092565815152}
   WorkSpace: {fileID: 6410587683143095608}
+  MainObj: {fileID: 0}
   CustomerPlace: {fileID: 3849010095899339032}
+  CanWork: 0
   client: {fileID: 0}
   Queue: []
+  space: {fileID: 0}
+  lvl: 0
 --- !u!1 &6410587683143095608
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,7 +455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlaceObj: {fileID: 8886670382136638916}
   ObjectsList: []
-  MuxCountObj: 15
+  MuxCountObj: 5
   CountObj: 0
   LustPosY: 0
 --- !u!114 &8040883656045858805

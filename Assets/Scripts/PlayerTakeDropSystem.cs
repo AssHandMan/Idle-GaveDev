@@ -23,7 +23,8 @@ public class PlayerTakeDropSystem : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E)) { Time.timeScale = 3; }
+        if(Input.GetKeyDown(KeyCode.E)) { Time.timeScale = 5; }
+        else if (Input.GetKeyUp(KeyCode.E)) { Time.timeScale = 1; }
     }
 
     public void TakeObject()
@@ -82,7 +83,7 @@ public class PlayerTakeDropSystem : MonoBehaviour
                 Count--;
                 if (Count == 0) { ObjType = ""; }
             }
-            if (Delivery != null && Count > 0 && IngredientsCollection[0].GetComponent<Object>().Type == Delivery.GetComponent<DeliveryMan>().Type)
+            if (Delivery != null && Delivery.GetComponent<DeliveryMan>().OrderBar.activeSelf && Count > 0 && IngredientsCollection[0].GetComponent<Object>().Type == Delivery.GetComponent<DeliveryMan>().Type)
             {
                 if (Delivery.GetComponent<DeliveryMan>().BuyObjCount > 0)
                 {
@@ -101,7 +102,7 @@ public class PlayerTakeDropSystem : MonoBehaviour
     {
         DropObject();
         yield return new WaitForSeconds(0.2f);
-        if (drop != null || Bin != null || Delivery != null)
+        if (drop != null || Bin != null || (Delivery != null && Delivery.GetComponent<DeliveryMan>().OrderBar.activeSelf))
         {
             StartCoroutine(DroppingObjectProc());
         }

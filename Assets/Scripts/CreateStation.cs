@@ -12,6 +12,10 @@ public class CreateStation : MonoBehaviour
     private GameObject CarNow;
     private int CountUploads;
 
+    public int lvl;
+    public BuySpace space;
+    public int[] PriceList;
+
     void Start()
     {
         station.LustPosY = station.PlaceObj.transform.position.y;
@@ -58,6 +62,19 @@ public class CreateStation : MonoBehaviour
             //  CarNow = null;
             StartCoroutine(CarCreat());
         }
+    }
+
+    public void BuyUpgrade()
+    {
+        if (lvl <= PriceList.Length)
+        {
+            gameObject.GetComponent<StationObjectCollection>().MuxCountObj += 5;
+        }
+        if (lvl < PriceList.Length)
+        {
+            space.ChangePrice(PriceList[lvl]);
+        }
+        if (lvl < 3) { lvl++; }
     }
 
     public void OnDestroy()

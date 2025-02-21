@@ -72,9 +72,12 @@ public class Customer : MonoBehaviour
                 int a = 0;
                 for (int i = 0; i < meneger.ArcadeMachines.Length; i++)
                 {
-                    if (meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().CanWork && !meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().hasTarget)
+                    if (meneger.ArcadeMachines[i].gameObject.activeSelf)
                     {
-                        a++;
+                        if (meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().CanWork && !meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().hasTarget)
+                        {
+                            a++;
+                        }
                     }
                 }
                 if (a > 0)
@@ -127,9 +130,12 @@ public class Customer : MonoBehaviour
                 int a = 0;
                 for (int i = 0; i < meneger.ArcadeMachines.Length; i++)
                 {
-                    if (meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().CanWork && !meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().hasTarget)
+                    if (meneger.ArcadeMachines[i].gameObject.activeSelf)
                     {
-                        a++;
+                        if (meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().CanWork && !meneger.ArcadeMachines[i].GetComponent<ArcadeMachine>().hasTarget)
+                        {
+                            a++;
+                        }
                     }
                 }
                 if (a > 0)

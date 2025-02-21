@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
 
@@ -15,9 +16,13 @@ public class SellStation : MonoBehaviour
     public List<GameObject> QueueList = new List<GameObject>();
     public GameObject[] Queue;
     public Customer CallingCustomer, LustCustomer;
-
     private bool isIncreasing, inProgress;
     private PlayerWallet wallet;
+
+    public BuySpace space;
+    public int lvl;
+    public int[] PriceList;
+
     void Start()
     {
         isIncreasing = true;
@@ -120,5 +125,26 @@ public class SellStation : MonoBehaviour
 
         yield return new WaitForSeconds(0.01f);
         StartCoroutine(WorkSpaceEffect());
+    }
+
+    public void BuyUpgrade()
+    {
+        if(!MainObj.activeSelf)
+        {
+            MainObj.SetActive(true);
+            if(!isKiosk)space.ChangePrice(PriceList[lvl]);
+        }
+        else
+        {
+            if (lvl <= PriceList.Length) 
+            {
+                station.MuxCountObj += 5;
+            }
+            if (lvl < PriceList.Length)
+            {
+                space.ChangePrice(PriceList[lvl]);
+            }
+        }
+        if (lvl < 3) { lvl++; }
     }
 }

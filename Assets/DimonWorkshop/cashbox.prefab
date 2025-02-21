@@ -483,6 +483,7 @@ GameObject:
   - component: {fileID: 4319088557135927790}
   - component: {fileID: 2823929508335575093}
   - component: {fileID: 3980281311312766499}
+  - component: {fileID: 5328869488359356225}
   m_Layer: 0
   m_Name: WorkSpace
   m_TagString: Cashmachine
@@ -555,11 +556,27 @@ MonoBehaviour:
   - {fileID: 0}
   CanWork: 1
   isKiosk: 0
+  isCalling: 0
   CountObj: 0
   deltaY: 0.1
   client: {fileID: 0}
   QueueList: []
   Queue: []
+  CallingCustomer: {fileID: 0}
+  LustCustomer: {fileID: 0}
+--- !u!114 &5328869488359356225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8940588588448562651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3c44df5b4f13a42a489834f1a25099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  station: {fileID: 3980281311312766499}
 --- !u!1001 &1917161136623668276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -935,7 +952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlaceObj: {fileID: 7180844581317497760}
   ObjectsList: []
-  MuxCountObj: 15
+  MuxCountObj: 5
   CountObj: 0
   LustPosY: 0
 --- !u!114 &7636262141714948740

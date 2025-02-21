@@ -1022,12 +1022,17 @@ MonoBehaviour:
   station: {fileID: 2513042720245929960}
   trash: {fileID: 2917366894149496288, guid: f8f68ff2ff4e257439af29154c8df645, type: 3}
   TrashViewe: {fileID: 6896450007082769353}
+  Main: {fileID: 2445715453093132346}
   CustomerPos: {fileID: 4050069590071194151}
   client: {fileID: 0}
   isPlaying: 0
   hasTarget: 0
-  CanWork: 1
+  CanWork: 0
   isToilet: 1
+  lvl: 0
+  BoxLvl: []
+  space: {fileID: 0}
+  PriceList: c80000002c010000
 --- !u!65 &358284143797332342
 BoxCollider:
   m_ObjectHideFlags: 0

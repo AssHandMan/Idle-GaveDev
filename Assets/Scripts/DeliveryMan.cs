@@ -16,20 +16,23 @@ public class DeliveryMan : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        OrderBar.SetActive(false);
         OrderCount.text = BuyObjCount.ToString();
+        target = place;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (BuyObjCount > 0)
-        {
-            OrderBar.transform.LookAt(Camera.main.transform);
-            target = place;
-        }
-        agent.SetDestination(target.position);
 
-        if(transform.position.x == delete.position.x && transform.position.z == delete.position.z) { Destroy(gameObject); }
+        agent.SetDestination(target.position);
+        if (transform.position.x == target.position.x && transform.position.z == target.position.z) 
+        {
+            if(!OrderBar.activeSelf) { OrderBar.SetActive(true); }
+            if (BuyObjCount > 0) { OrderBar.transform.LookAt(Camera.main.transform); }
+        }
+
+        if (transform.position.x == delete.position.x && transform.position.z == delete.position.z) { Destroy(gameObject); }
     }
 
     public void AddToOrder()

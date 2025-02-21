@@ -6,14 +6,23 @@ using static System.Collections.Specialized.BitVector32;
 public class ArcadeMachine : MonoBehaviour
 {
     public StationObjectCollection station;
-    public GameObject trash, TrashViewe;
+    public GameObject trash, TrashViewe, Main;
     public Transform CustomerPos;
     public Customer client;
     public bool isPlaying, hasTarget, CanWork, isToilet;
 
+    public int lvl;
+    public Mesh[] BoxLvl;
+    public BuySpace space;
+    public int[] PriceList;
+
     void Start()
     {
-        CanWork = true;
+        if (!isToilet) { CanWork = true; }
+        else
+        {
+            CanWork = Main.activeSelf;
+        }
     }
 
     // Update is called once per frame
@@ -21,10 +30,14 @@ public class ArcadeMachine : MonoBehaviour
     {
         if(station.CountObj == 0) 
         { 
-            CanWork = true;
             if(isToilet)
             {
                 TrashViewe.SetActive(false);
+                if(Main.activeSelf) { CanWork = true; }
+            }
+            else
+            {
+                CanWork = true;
             }
         }
     }
@@ -55,5 +68,17 @@ public class ArcadeMachine : MonoBehaviour
         {
             TrashViewe.SetActive(true);
         }
+    }
+    public void BuyUpgrade()
+    {
+        if (lvl <= PriceList.Length)
+        {
+            if (BoxLvl[lvl] != null) { gameObject.GetComponent<MeshFilter>().mesh = BoxLvl[lvl]; }
+        }
+        if(lvl < PriceList.Length)
+        {
+            space.ChangePrice(PriceList[lvl]);
+        }
+        if (lvl < 3) { lvl++; }
     }
 }

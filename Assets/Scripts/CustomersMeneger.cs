@@ -101,6 +101,7 @@ public class CustomersMeneger : MonoBehaviour
     {
         if (CashMachine1.CanWork && CashMachine1.Queue.Length < MaxCustomer)
         {
+            
             if (CashMachine1.LustCustomer == null)
             {
                 yield return new WaitForSeconds(CustomerCreateTime);
@@ -111,12 +112,21 @@ public class CustomersMeneger : MonoBehaviour
                 yield return new WaitForSeconds(CustomerCreateTime);
             }
         }
+        else
+        {
+            yield return new WaitForSeconds(CustomerCreateTime);
+        }
 
-        if (CarCashMachine.gameObject.activeSelf && CountOfCars < MaxCars)
+        if (CarCashMachine.CanWork && CountOfCars < MaxCars)
         {
             yield return new WaitForSeconds(CustomerCreateTime);
             CreateCar();
         }
+        else
+        {
+            yield return new WaitForSeconds(CustomerCreateTime);
+        }
+
 
         if (CashMachine2.CanWork && CashMachine2.Queue.Length < MaxCustomer)
         {
@@ -130,11 +140,21 @@ public class CustomersMeneger : MonoBehaviour
                 yield return new WaitForSeconds(CustomerCreateTime);
             }
         }
+        else
+        {
+            yield return new WaitForSeconds(CustomerCreateTime);
+        }
+
         if (kiosk.CanWork && kiosk.Queue.Length < MaxKioskCustomers)
         {
             yield return new WaitForSeconds(CustomerCreateTime);
             CreateCustomer(kiosk);
         }
+        else
+        {
+            yield return new WaitForSeconds(CustomerCreateTime);
+        }
+
 
         if (CashMachine1.Queue.Length == MaxCustomer && CashMachine2.Queue.Length == MaxCustomer && CountOfCars == MaxCars)
         {

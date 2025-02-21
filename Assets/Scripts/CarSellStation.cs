@@ -5,13 +5,18 @@ using UnityEngine;
 public class CarSellStation : MonoBehaviour
 {
     public StationObjectCollection station;
-    public GameObject WorkSpace;
+    public GameObject WorkSpace, MainObj;
     public Transform CustomerPlace;
+    public bool CanWork;
     private bool isIncreasing;
     private PlayerWallet wallet;
     public CarCustomer client;
-
     public GameObject[] Queue;
+
+    public BuySpace space;
+    public int lvl;
+    public int[] PriceList;
+
     void Start()
     {
         isIncreasing = true;
@@ -20,7 +25,7 @@ public class CarSellStation : MonoBehaviour
 
     void Update()
     {
-
+        CanWork = MainObj.activeSelf;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -81,5 +86,26 @@ public class CarSellStation : MonoBehaviour
 
         yield return new WaitForSeconds(0.01f);
         StartCoroutine(WorkSpaceEffect());
+    }
+
+    public void BuyUpgrade()
+    {
+        if (!MainObj.activeSelf)
+        {
+            MainObj.SetActive(true);
+            space.ChangePrice(PriceList[lvl]);
+        }
+        else
+        {
+            if (lvl <= PriceList.Length)
+            {
+                station.MuxCountObj += 5;
+            }
+            if (lvl < PriceList.Length)
+            {
+                space.ChangePrice(PriceList[lvl]);
+            }
+        }
+        if (lvl < 3) { lvl++; }
     }
 }

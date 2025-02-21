@@ -62,7 +62,7 @@ public class SkinsRoom : MonoBehaviour
         {
             if (wallet.Money >= Convert.ToInt32(priceList[SkinPos]))
             {
-                wallet.ChangeCount(-float.Parse(priceList[SkinPos]), "Money");
+                wallet.ChangeCount(-float.Parse(priceList[SkinPos]), "Skin");
                 isBuy[SkinPos] = true;
                 ButtonText.text = "Equipe";
 

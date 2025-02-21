@@ -257,6 +257,10 @@ MonoBehaviour:
   obj: {fileID: 2155953119310351073, guid: 850adfb3b7e463e49bc6c059c2efa73c, type: 3}
   WorkSpace: {fileID: 8289847471408254713}
   HandsPlayer: {fileID: 0}
+  MainObj: {fileID: 5093351497974363986}
+  TimeWork: 2
+  space: {fileID: 0}
+  lvl: 0
 --- !u!1001 &228035253746839316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -453,6 +457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   station: {fileID: 1851785805796589557}
   ObjectType: Game
+  deltaY: 0
 --- !u!114 &1851785805796589557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,7 +472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlaceObj: {fileID: 3162687931768467316}
   ObjectsList: []
-  MuxCountObj: 15
+  MuxCountObj: 5
   CountObj: 0
   LustPosY: 0
 --- !u!1001 &7636822787633392950
@@ -592,7 +597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlaceObj: {fileID: 8034643878217223943}
   ObjectsList: []
-  MuxCountObj: 15
+  MuxCountObj: 5
   CountObj: 0
   LustPosY: 0
 --- !u!114 &2960266336181202908
@@ -608,4 +613,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 5611737695297729202}
+  deltaY: 0
   CanGive: 0

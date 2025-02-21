@@ -15,6 +15,7 @@ TagManager:
   - CarCashmachine
   - Customer
   - Kiosk
+  - Meneger
   layers:
   - Default
   - TransparentFX

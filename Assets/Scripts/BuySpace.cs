@@ -6,26 +6,25 @@ using static UnityEngine.UIElements.VisualElement;
 
 public class BuySpace : MonoBehaviour
 {
-    public GameObject[] BuyObject;
-    public GameObject NowStation, NextBuy;
-    public Transform CreatePlace, UpgrapdeSpacePlace;
+    public GameObject station;
+
     public Text PriceText;
     public Image ProgressBar;
-    public int[] priceList;
     public int price;
+    public string type;
 
     private PlayerMovement plr;
     private bool inProgress;
     private float step;
-    private int UpgrageStatement;
     private PlayerWallet wallet;
+    private UpgreadeSceneMeneger meneger;
 
     void Start()
     {
-        price = priceList[0];
         PriceText.text = price.ToString();
         step = price;
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
+        meneger = GameObject.FindGameObjectWithTag("Meneger").GetComponent<UpgreadeSceneMeneger>();
     }
 
     // Update is called once per frame
@@ -40,6 +39,8 @@ public class BuySpace : MonoBehaviour
                 inProgress = false;
             }
         }
+
+
     }
 
     public void OnTriggerEnter(Collider other)
@@ -83,27 +84,88 @@ public class BuySpace : MonoBehaviour
 
                 wallet.ChangeCount(-1, "Money");
             }
-            StartCoroutine(Paying());
+            else
+            {
+                yield return new WaitForSeconds(0.5f);
+                StartCoroutine(Paying());
+            }
         }
         else
         {
-            if(NextBuy != null) { NextBuy.SetActive(true); }
-            if (NowStation != null) { Destroy(NowStation); }
-            NowStation = Instantiate(BuyObject[UpgrageStatement], CreatePlace.position, BuyObject[UpgrageStatement].transform.rotation);
-            if (UpgrageStatement < BuyObject.Length-1)
+            if (station.name == "Door")
             {
-                UpgrageStatement++;
-                
-                price = priceList[UpgrageStatement];
-                step = price;
-                PriceText.text = price.ToString();
-                ProgressBar.fillAmount = 0;
+                station.SetActive(false);
+            }
+            else if (station.name == "Office" || station.name == "Toilet")
+            {
+                station.SetActive(true);
             }
             else
             {
-                Destroy(gameObject);
+
+                if (station.GetComponent<SellStation>() != null)
+                {
+                    station.GetComponent<SellStation>().space = this;
+                    station.GetComponent<SellStation>().BuyUpgrade();
+                }
+
+                else if (station.GetComponent<ArcadeMachine>() != null)
+                {
+                    if (!station.GetComponent<ArcadeMachine>().isToilet)
+                    {
+                        if (!station.activeSelf)
+                        {
+                            station.SetActive(true);
+                            station.GetComponent<ArcadeMachine>().lvl = 1;
+                            station.GetComponent<ArcadeMachine>().space = this;
+                            ChangePrice(station.GetComponent<ArcadeMachine>().PriceList[0]);
+                        }
+                        else
+                        {
+                            station.GetComponent<ArcadeMachine>().BuyUpgrade();
+                        }
+                    }
+                    else
+                    {
+                        station.GetComponent<ArcadeMachine>().Main.SetActive(true);
+                    }
+                }
+                else if (station.GetComponent<CreateStation>() != null)
+                {
+                    if (!station.activeSelf)
+                    {
+                        station.SetActive(true);
+                        station.GetComponent<CreateStation>().lvl = 1;
+                        station.GetComponent<CreateStation>().space = this;
+                        ChangePrice(station.GetComponent<CreateStation>().PriceList[0]);
+                    }
+                    else
+                    {
+                        station.GetComponent<CreateStation>().BuyUpgrade();
+                    }
+                }
+                else if (station.GetComponent<WorkStation>() != null)
+                {
+                    station.GetComponent<WorkStation>().space = this;
+                    station.GetComponent<WorkStation>().BuyUpgrade();
+                }
+                else if (station.GetComponent<CarSellStation>() != null)
+                {
+                    station.GetComponent<CarSellStation>().space = this;
+                    station.GetComponent<CarSellStation>().BuyUpgrade();
+                }
             }
 
+            meneger.LevelUp(this);
+
+            gameObject.SetActive(false);
         }
+    }
+    public void ChangePrice(int count)
+    {
+        ProgressBar.fillAmount = 0;
+        price = count;
+        PriceText.text = price.ToString();
+        step = price;
     }
 }
