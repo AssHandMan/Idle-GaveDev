@@ -83,6 +83,7 @@ public class BuySpace : MonoBehaviour
                 PriceText.text = price.ToString();
 
                 wallet.ChangeCount(-1, "Money");
+                StartCoroutine(Paying());
             }
             else
             {
