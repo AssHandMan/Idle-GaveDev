@@ -15,7 +15,7 @@ public class Customer : MonoBehaviour
     public bool isCalling;
     public float CallTime, step;
     private Rigidbody rb;
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     private string[] BuyType = { "Buy", "Play" };
     public string target;
     public CustomersMeneger meneger;
@@ -180,8 +180,9 @@ public class Customer : MonoBehaviour
                             machine = meneger.Toilets[i].GetComponent<ArcadeMachine>();
                             target = "Play";
                             targetPos = machine.CustomerPos.transform;
-                            st.QueueList.Remove(gameObject);
-                            st.Queue = st.QueueList.ToArray();
+                            //st.QueueList.Remove(gameObject);
+                            //st.Queue = st.QueueList.ToArray();
+                            toilet = true;
                             break;
                         }
                     }
@@ -190,8 +191,8 @@ public class Customer : MonoBehaviour
                 {
                     target = "Delete";
                     targetPos = DeletePlace.transform;
-                    st.QueueList.Remove(gameObject);
-                    st.Queue = st.QueueList.ToArray();
+                    //st.QueueList.Remove(gameObject);
+                    //st.Queue = st.QueueList.ToArray();
                 }
             }
 

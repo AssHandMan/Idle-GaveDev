@@ -235,6 +235,7 @@ MonoBehaviour:
   isCalling: 0
   CallTime: 0
   step: 0
+  agent: {fileID: 1781702068261729015}
   target: 
   meneger: {fileID: 0}
   BuyObjCount: 0
@@ -397,9 +398,53 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3091773803560267561}
     m_Modifications:
+    - target: {fileID: 1234649359009040, guid: 086eb706c3edcf447aa2a9e0e0155538, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1247525152638002, guid: 086eb706c3edcf447aa2a9e0e0155538, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1269969655095048, guid: 086eb706c3edcf447aa2a9e0e0155538, type: 3}
       propertyPath: m_Name
       value: MiniCharacter_BusinessMan_Suit_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445388185611910, guid: 086eb706c3edcf447aa2a9e0e0155538, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530331117225630, guid: 086eb706c3edcf447aa2a9e0e0155538, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586033994408904, guid: 086eb706c3edcf447aa2a9e0e0155538, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691977861540360, guid: 086eb706c3edcf447aa2a9e0e0155538, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1762929439999344, guid: 086eb706c3edcf447aa2a9e0e0155538, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763485009290522, guid: 086eb706c3edcf447aa2a9e0e0155538, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830630581051454, guid: 086eb706c3edcf447aa2a9e0e0155538, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843247610930358, guid: 086eb706c3edcf447aa2a9e0e0155538, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933684407989150, guid: 086eb706c3edcf447aa2a9e0e0155538, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4646879947215738, guid: 086eb706c3edcf447aa2a9e0e0155538, type: 3}
       propertyPath: m_LocalPosition.x

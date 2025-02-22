@@ -28,7 +28,7 @@ public class DeliveryMan : MonoBehaviour
         agent.SetDestination(target.position);
         if (transform.position.x == target.position.x && transform.position.z == target.position.z) 
         {
-            if(!OrderBar.activeSelf) { OrderBar.SetActive(true); }
+            if (!OrderBar.activeSelf) { OrderBar.SetActive(true); } 
             if (BuyObjCount > 0) { OrderBar.transform.LookAt(Camera.main.transform); }
         }
 
@@ -44,8 +44,7 @@ public class DeliveryMan : MonoBehaviour
         }
         if (BuyObjCount == 0)
         {
-            Destroy(OrderBar);
-            Destroy(OrderCount);
+            OrderBar.SetActive(false);
             target = delete;
         }
     }

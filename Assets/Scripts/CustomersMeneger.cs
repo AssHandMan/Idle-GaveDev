@@ -7,7 +7,7 @@ public class CustomersMeneger : MonoBehaviour
 {
     public Canvas canvas;
 
-    public GameObject[] PoorCustomer, RichCustomer, Bloger;
+    public GameObject[] PoorCustomer, RichCustomer, Bloger, PoorCustomer2, RichCustomer2, Bloger2, PoorCustomer3, RichCustomer3, Bloger3;
     public GameObject Car, Delivery;
     private string[] CustomerType = { "Poor", "Rich", "Bloger" };
     public int CountCustomer, MaxCustomer, MaxCars, MaxKioskCustomers;
@@ -41,25 +41,74 @@ public class CustomersMeneger : MonoBehaviour
         int Type = Random.Range(0, 3);
         GameObject customer;
         Customer _customer;
-        if (Type == 0)
+        if(station == CashMachine1)
         {
-            customer = Instantiate(PoorCustomer[Random.Range(0, PoorCustomer.Length)], CustomerPos.position, CustomerPos.rotation);
-            _customer = customer.GetComponent<Customer>();
-            _customer.BuyObjCount = Random.Range(1, 4);
+            if (Type == 0)
+            {
+                customer = Instantiate(PoorCustomer[Random.Range(0, PoorCustomer.Length)], CustomerPos.position, CustomerPos.rotation);
+                _customer = customer.GetComponent<Customer>();
+                _customer.BuyObjCount = Random.Range(1, 4);
 
+            }
+            else if (Type == 1)
+            {
+                customer = Instantiate(RichCustomer[Random.Range(0, RichCustomer.Length)], CustomerPos.position, CustomerPos.rotation);
+                _customer = customer.GetComponent<Customer>();
+                _customer.BuyObjCount = Random.Range(4, 7);
+            }
+            else
+            {
+                customer = Instantiate(Bloger[Random.Range(0, Bloger.Length)], CustomerPos.position, CustomerPos.rotation);
+                _customer = customer.GetComponent<Customer>();
+                _customer.BuyObjCount = Random.Range(7, 11);
+            }
         }
-        else if (Type == 1)
+        else if (station == CashMachine2)
         {
-            customer = Instantiate(RichCustomer[Random.Range(0, RichCustomer.Length)], CustomerPos.position, CustomerPos.rotation);
-            _customer = customer.GetComponent<Customer>();
-            _customer.BuyObjCount = Random.Range(4, 7);
+            if (Type == 0)
+            {
+                customer = Instantiate(PoorCustomer2[Random.Range(0, PoorCustomer2.Length)], CustomerPos.position, CustomerPos.rotation);
+                _customer = customer.GetComponent<Customer>();
+                _customer.BuyObjCount = Random.Range(1, 4);
+
+            }
+            else if (Type == 1)
+            {
+                customer = Instantiate(RichCustomer2[Random.Range(0, RichCustomer2.Length)], CustomerPos.position, CustomerPos.rotation);
+                _customer = customer.GetComponent<Customer>();
+                _customer.BuyObjCount = Random.Range(4, 7);
+            }
+            else
+            {
+                customer = Instantiate(Bloger2[Random.Range(0, Bloger2.Length)], CustomerPos.position, CustomerPos.rotation);
+                _customer = customer.GetComponent<Customer>();
+                _customer.BuyObjCount = Random.Range(7, 11);
+            }
         }
         else
         {
-            customer = Instantiate(Bloger[Random.Range(0, Bloger.Length)], CustomerPos.position, CustomerPos.rotation);
-            _customer = customer.GetComponent<Customer>();
-            _customer.BuyObjCount = Random.Range(7, 11);
+            if (Type == 0)
+            {
+                customer = Instantiate(PoorCustomer3[Random.Range(0, PoorCustomer3.Length)], CustomerPos.position, CustomerPos.rotation);
+                _customer = customer.GetComponent<Customer>();
+                _customer.BuyObjCount = Random.Range(1, 4);
+
+            }
+            else if (Type == 1)
+            {
+                customer = Instantiate(RichCustomer3[Random.Range(0, RichCustomer3.Length)], CustomerPos.position, CustomerPos.rotation);
+                _customer = customer.GetComponent<Customer>();
+                _customer.BuyObjCount = Random.Range(4, 7);
+            }
+            else
+            {
+                customer = Instantiate(Bloger3[Random.Range(0, Bloger3.Length)], CustomerPos.position, CustomerPos.rotation);
+                _customer = customer.GetComponent<Customer>();
+                _customer.BuyObjCount = Random.Range(7, 11);
+            }
         }
+
+
         customer.transform.SetParent(canvas.transform, true);
         _customer.DeletePlace = DeletePos;
         _customer.target = "Buy";
@@ -69,12 +118,6 @@ public class CustomersMeneger : MonoBehaviour
         station.QueueList.Add(customer);
         station.MakeArray();
         if (station == kiosk) { _customer.kiosk = true; }
-
-        if (station == CashMachine1)
-        {
-            customer.name = a.ToString();
-            a++;
-        }
     }
 
     public void CreateCar()
@@ -89,11 +132,14 @@ public class CustomersMeneger : MonoBehaviour
 
     public void CreateDeliverMan()
     {
-        DeliveryNow = Instantiate(Delivery, CustomerPos.transform.position, CustomerPos.transform.rotation);
-        DeliveryNow.transform.SetParent(canvas.transform, true);
-        DeliveryNow.GetComponent<DeliveryMan>().place = DeliveryPlace;
-        DeliveryNow.GetComponent<DeliveryMan>().BuyObjCount = Random.Range(3, 10);
-        DeliveryNow.GetComponent<DeliveryMan>().delete = DeletePos;
+        if(CashMachine1.CanWork)
+        {
+            DeliveryNow = Instantiate(Delivery, CustomerPos.transform.position, CustomerPos.transform.rotation);
+            DeliveryNow.transform.SetParent(canvas.transform, true);
+            DeliveryNow.GetComponent<DeliveryMan>().place = DeliveryPlace;
+            DeliveryNow.GetComponent<DeliveryMan>().BuyObjCount = Random.Range(3, 10);
+            DeliveryNow.GetComponent<DeliveryMan>().delete = DeletePos;
+        }
 
     }
 

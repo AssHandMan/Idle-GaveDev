@@ -9,7 +9,7 @@ public class ArcadeMachine : MonoBehaviour
     public GameObject trash, TrashViewe, Main;
     public Transform CustomerPos;
     public Customer client;
-    public bool isPlaying, hasTarget, CanWork, isToilet;
+    public bool isPlaying, hasTarget, CanWork, isToilet, hasMenegerTarget;
 
     public int lvl;
     public Mesh[] BoxLvl;

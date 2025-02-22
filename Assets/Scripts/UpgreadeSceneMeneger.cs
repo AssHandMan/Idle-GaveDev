@@ -23,7 +23,7 @@ public class UpgreadeSceneMeneger : MonoBehaviour
         {
             if (Spaces[i] == space)
             {
-                Spaces[i+1].gameObject.SetActive(true);
+                if (i + 1 < Spaces.Length ) { Spaces[i + 1].gameObject.SetActive(true); }
                 LustPlace = i;
                 break;
             }
