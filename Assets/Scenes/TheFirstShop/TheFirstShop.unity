@@ -9472,7 +9472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &409739973
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11065,7 +11065,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &497737539
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27379,7 +27379,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1136702476
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36550,7 +36550,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1548763177
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44838,7 +44838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1846570822
 RectTransform:
   m_ObjectHideFlags: 0
@@ -48050,6 +48050,7 @@ MonoBehaviour:
   - {fileID: 249007590}
   isWorkingCash: 0
   isAdding: 0
+  isWorkingCash2: 0
 --- !u!65 &1988466270
 BoxCollider:
   m_ObjectHideFlags: 0

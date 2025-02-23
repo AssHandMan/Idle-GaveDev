@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -92,7 +93,7 @@ public class Meneger : MonoBehaviour
                 else if(!Cashmachine.isSelling)
                 {
                     room.CheckWork();
-                    if (!room.isWorkingCash)
+                    if (!room.isWorkingCash && Cashmachine == Cashmachines[0] || !room.isWorkingCash2 && Cashmachine == Cashmachines[1])
                     {
                         Target = Cashmachine.WorkSpace.transform;
                         TargetType = "WorkerCashmachine";
@@ -173,7 +174,10 @@ public class Meneger : MonoBehaviour
             
             if(type == 0)
             {
-                if (Cashmachines[0].CanWork)
+
+                int Cash = UnityEngine.Random.Range(0, 2);
+
+                if (Cash == 0 && Cashmachines[0].CanWork)
                 {
                     if (Cashmachines[0].station.CountObj == 0)
                     {
@@ -192,7 +196,7 @@ public class Meneger : MonoBehaviour
                         }
                     }
                 }
-                if(Cashmachines[1].CanWork & Cashmachine == null)
+                else if(Cash == 1 && Cashmachines[1].CanWork)
                 {
                     if (Cashmachines[1].station.CountObj == 0)
                     {
@@ -203,7 +207,7 @@ public class Meneger : MonoBehaviour
                     else
                     {
                         room.CheckWork();
-                        if (!Cashmachine.isSelling && !room.isWorkingCash)
+                        if (!Cashmachine.isSelling && !room.isWorkingCash2)
                         {
                             Target = Cashmachine.WorkSpace.transform;
                             TargetType = "WorkerCashmachine";

@@ -21,8 +21,8 @@ public class HrRoom : MonoBehaviour
     private PlayerWallet wallet;
 
     public Meneger[] menegersScript;
-    public bool isWorkingCash, isAdding;
-    private int a,b;
+    public bool isWorkingCash, isAdding, isWorkingCash2;
+    private int a,a2,b;
 
     void Start()
     {
@@ -42,7 +42,11 @@ public class HrRoom : MonoBehaviour
         a = 0;
         for (int i = 0; i < menegersScript.Length; i++)
         {
-            if (menegersScript[i].TargetType == "WorkerCashmachine") { a++; }
+            if (menegersScript[i].TargetType == "WorkerCashmachine") 
+            { 
+               if(menegersScript[i].Cashmachine == menegersScript[i].Cashmachines[0]) { a++; }
+               else if (menegersScript[i].Cashmachine == menegersScript[i].Cashmachines[1]) { a2++; }
+            }
         }
         for (int i = 0; i < menegersScript.Length; i++)
         {
@@ -50,7 +54,10 @@ public class HrRoom : MonoBehaviour
         }
         if (a > 0) { isWorkingCash = true; }
         else { isWorkingCash = false; }
-        
+
+        if (a2 > 0) { isWorkingCash2 = true; }
+        else { isWorkingCash2 = false; }
+
         if (b > 0) { isAdding = true; }
         else { isAdding = false; }
 

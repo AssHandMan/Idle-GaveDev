@@ -1,4 +1,4 @@
-set(CMAKE_C_COMPILER "C:/Users/Noname/Desktop/World/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe")
+set(CMAKE_C_COMPILER "C:/Program Files (x86)/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe")
 set(CMAKE_C_COMPILER_ARG1 "")
 set(CMAKE_C_COMPILER_ID "Clang")
 set(CMAKE_C_COMPILER_VERSION "12.0.8")
@@ -21,11 +21,11 @@ set(CMAKE_C_SIMULATE_VERSION "")
 
 
 
-set(CMAKE_AR "C:/Users/Noname/Desktop/World/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/bin/llvm-ar.exe")
+set(CMAKE_AR "C:/Program Files (x86)/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/bin/llvm-ar.exe")
 set(CMAKE_C_COMPILER_AR "CMAKE_C_COMPILER_AR-NOTFOUND")
-set(CMAKE_RANLIB "C:/Users/Noname/Desktop/World/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/bin/llvm-ranlib.exe")
+set(CMAKE_RANLIB "C:/Program Files (x86)/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/bin/llvm-ranlib.exe")
 set(CMAKE_C_COMPILER_RANLIB "CMAKE_C_COMPILER_RANLIB-NOTFOUND")
-set(CMAKE_LINKER "C:/Users/Noname/Desktop/World/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/bin/ld.lld.exe")
+set(CMAKE_LINKER "C:/Program Files (x86)/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/bin/ld.lld.exe")
 set(CMAKE_MT "")
 set(CMAKE_COMPILER_IS_GNUCC )
 set(CMAKE_C_COMPILER_LOADED 1)
@@ -67,13 +67,13 @@ set(CMAKE_ANDROID_NDK_TOOLCHAIN_VERSION "clang")
 set(CMAKE_C_ANDROID_TOOLCHAIN_MACHINE "arm-linux-androideabi")
 set(CMAKE_C_ANDROID_TOOLCHAIN_VERSION "")
 set(CMAKE_C_COMPILER_EXTERNAL_TOOLCHAIN "")
-set(CMAKE_C_ANDROID_TOOLCHAIN_PREFIX "C:/Users/Noname/Desktop/World/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/bin/arm-linux-androideabi-")
+set(CMAKE_C_ANDROID_TOOLCHAIN_PREFIX "C:/Program Files (x86)/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/bin/arm-linux-androideabi-")
 set(CMAKE_C_ANDROID_TOOLCHAIN_SUFFIX ".exe")
 
 
 
 
-set(CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES "C:/Users/Noname/Desktop/World/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/local/include;C:/Users/Noname/Desktop/World/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/lib64/clang/12.0.8/include;C:/Users/Noname/Desktop/World/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/arm-linux-androideabi;C:/Users/Noname/Desktop/World/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include")
+set(CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES "C:/Program Files (x86)/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/local/include;C:/Program Files (x86)/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/lib64/clang/12.0.8/include;C:/Program Files (x86)/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/arm-linux-androideabi;C:/Program Files (x86)/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include")
 set(CMAKE_C_IMPLICIT_LINK_LIBRARIES "atomic;m;-l:libunwind.a;dl;c;-l:libunwind.a;dl")
-set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "C:/Users/Noname/Desktop/World/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/lib64/clang/12.0.8/lib/linux/arm;C:/Users/Noname/Desktop/World/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/lib/gcc/arm-linux-androideabi/4.9.x;C:/Users/Noname/Desktop/World/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/arm-linux-androideabi/23;C:/Users/Noname/Desktop/World/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/arm-linux-androideabi;C:/Users/Noname/Desktop/World/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib")
+set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "C:/Program Files (x86)/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/lib64/clang/12.0.8/lib/linux/arm;C:/Program Files (x86)/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/lib/gcc/arm-linux-androideabi/4.9.x;C:/Program Files (x86)/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/arm-linux-androideabi/23;C:/Program Files (x86)/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/arm-linux-androideabi;C:/Program Files (x86)/Unity Projects/6000.0.37f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib")
 set(CMAKE_C_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")

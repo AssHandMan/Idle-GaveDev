@@ -40,6 +40,10 @@ public class MenegerHands : MonoBehaviour
                     arcade.GetComponent<TakeStation>().DeleteObj();
                     arcade.hasMenegerTarget = false;
                 }
+                else
+                {
+                    meneger.DefineTarget();
+                }
             }
         }
         else if (meneger.TargetType == "Delete" && other.GetComponent<Trashbin>() != null)
