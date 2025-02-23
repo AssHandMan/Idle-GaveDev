@@ -12,9 +12,11 @@ public class DeliveryMan : MonoBehaviour
     public Text OrderCount;
     public string Type;
     private NavMeshAgent agent;
+    private PlayerWallet wallet;
 
     void Start()
     {
+        wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
         agent = GetComponent<NavMeshAgent>();
         OrderBar.SetActive(false);
         OrderCount.text = BuyObjCount.ToString();
@@ -40,6 +42,7 @@ public class DeliveryMan : MonoBehaviour
         if (BuyObjCount > 0)
         {
             BuyObjCount--;
+            wallet.ChangeCount(5, "Money");
             OrderCount.text = BuyObjCount.ToString();
         }
         if (BuyObjCount == 0)

@@ -11,6 +11,7 @@ public class CreateStation : MonoBehaviour
 
     private GameObject CarNow;
     private int CountUploads;
+    public Transform MenegerPlace;
 
     public int lvl;
     public BuySpace space;

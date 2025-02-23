@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +20,10 @@ public class HrRoom : MonoBehaviour
     private PlayerMovement plr;
     private PlayerWallet wallet;
 
+    public Meneger[] menegersScript;
+    public bool isWorkingCash, isAdding;
+    private int a,b;
+
     void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -29,19 +34,41 @@ public class HrRoom : MonoBehaviour
 
     void Update()
     {
+
+    }
+
+    public void CheckWork()
+    {
+        a = 0;
+        for (int i = 0; i < menegersScript.Length; i++)
+        {
+            if (menegersScript[i].TargetType == "WorkerCashmachine") { a++; }
+        }
+        for (int i = 0; i < menegersScript.Length; i++)
+        {
+            if (menegersScript[i].TargetType == "CreateStation") { b++; }
+        }
+        if (a > 0) { isWorkingCash = true; }
+        else { isWorkingCash = false; }
         
+        if (b > 0) { isAdding = true; }
+        else { isAdding = false; }
+
     }
 
     public void BuyButton(int name)
     {
         if (!BoughtMenegres[name] && wallet.Money >= price[name, lvl[name]])
         {
-            wallet.ChangeCount(-price[name, lvl[name]], "Money");
-            BoughtMenegres[name] = true;
-            ProgressBar[name].SetActive(true);
-            Menegers[name].SetActive(true);
-            PriceButton[name].text = Convert.ToString(price[name, lvl[name] + 1]);
-            PriceDiamondsButton[name].text = Convert.ToString(priceDiamonds[name, lvl[name] + 1]);
+            if (name == 0 || (name > 0 & BoughtMenegres[name - 1] == true))
+            {
+                wallet.ChangeCount(-price[name, lvl[name]], "Money");
+                BoughtMenegres[name] = true;
+                ProgressBar[name].SetActive(true);
+                Menegers[name].SetActive(true);
+                PriceButton[name].text = Convert.ToString(price[name, lvl[name] + 1]);
+                PriceDiamondsButton[name].text = Convert.ToString(priceDiamonds[name, lvl[name] + 1]);
+            }
         }
         else
         {

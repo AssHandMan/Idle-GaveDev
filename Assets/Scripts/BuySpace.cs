@@ -26,7 +26,6 @@ public class BuySpace : MonoBehaviour
         meneger = GameObject.FindGameObjectWithTag("Meneger").GetComponent<UpgreadeSceneMeneger>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (plr != null)
@@ -142,16 +141,18 @@ public class BuySpace : MonoBehaviour
 
     private IEnumerator Paying()
     {
-        float totalTime = 2f; 
+        float totalTime = 2f;
         float elapsedTime = 0f;
         int startPrice = price;
 
         while (price > 0 && wallet.Money > 0)
         {
-            float progress = elapsedTime / totalTime;
-            int amountToDeduct = Mathf.CeilToInt(startPrice * progress) - (startPrice - price); 
+            elapsedTime += Time.deltaTime;
+            float progress = Mathf.Clamp01(elapsedTime / totalTime);  // Держим прогресс в диапазоне [0, 1]
 
-            if (wallet.Money >= amountToDeduct && amountToDeduct > 0)
+            int amountToDeduct = Mathf.Min(Mathf.CeilToInt(startPrice * progress) - (startPrice - price), wallet.Money, price);
+
+            if (amountToDeduct > 0)
             {
                 wallet.ChangeCount(-amountToDeduct, "Money");
                 price -= amountToDeduct;
@@ -159,7 +160,6 @@ public class BuySpace : MonoBehaviour
                 PriceText.text = price.ToString();
             }
 
-            elapsedTime += Time.deltaTime;
             yield return null;
         }
 

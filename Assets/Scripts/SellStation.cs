@@ -2,23 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SellStation : MonoBehaviour
 {
     public StationObjectCollection station;
-    public GameObject WorkSpace, MainObj;
+    public GameObject WorkSpace, MainObj, Worker;
     public Transform[] CustomerPlace;
-    public bool CanWork, isKiosk, isCalling;
+    public bool CanWork, isKiosk, isCalling, isSelling, hasAddingObjMenegerTarget, hasworkerTarget;
     public int CountObj;
     public float deltaY;
     public Customer client;
     public List<GameObject> QueueList = new List<GameObject>();
     public GameObject[] Queue;
     public Customer CallingCustomer, LustCustomer;
-    private bool isIncreasing, inProgress;
+    private bool isIncreasing, inProgress, withMeneger;
     private PlayerWallet wallet;
+    private Meneger meneger;
 
+    public Transform MenegerPlace;
     public BuySpace space;
     public int lvl;
     public int[] PriceList;
@@ -61,11 +64,29 @@ public class SellStation : MonoBehaviour
     {
         if (!isKiosk)
         {
-            if (other.gameObject.tag == "Player")
+            if (other.gameObject.tag == "Player" && lvl < 2)
             {
                 StartCoroutine(WorkSpaceEffect());
                 StartCoroutine(Working());
                 WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
+                isSelling = true;
+            }
+
+            if (other.gameObject.tag == "Worker")
+            {
+                StartCoroutine(WorkSpaceEffect());
+                StartCoroutine(Working());
+                WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
+                isSelling = true;
+            }
+            if(other.GetComponent<Meneger>() != null)
+            {
+                StartCoroutine(WorkSpaceEffect());
+                StartCoroutine(Working());
+                WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
+                isSelling = true;
+                withMeneger = true;
+                meneger = other.GetComponent<Meneger>();
             }
         }
     }
@@ -73,11 +94,20 @@ public class SellStation : MonoBehaviour
     {
         if (!isKiosk)
         {
-            if (other.gameObject.tag == "Player")
+            if (other.gameObject.tag == "Player" && lvl < 2 && !withMeneger)
             {
                 StopAllCoroutines();
                 WorkSpace.GetComponent<SpriteRenderer>().color = Color.white;
                 WorkSpace.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                isSelling = false;
+            }
+            if (other.GetComponent<Meneger>() != null && lvl < 2)
+            {
+                StopAllCoroutines();
+                WorkSpace.GetComponent<SpriteRenderer>().color = Color.white;
+                isSelling = false;
+                withMeneger = false;
+                meneger = null;
             }
         }
     }
@@ -98,6 +128,7 @@ public class SellStation : MonoBehaviour
                 wallet.ChangeCount(5, "Money");
                 client.ChangeBuyCount();
             }
+            
         }
         StartCoroutine(Working());
     }
@@ -146,5 +177,6 @@ public class SellStation : MonoBehaviour
             }
         }
         if (lvl < 3) { lvl++; }
+        if(lvl == 2) { Worker.SetActive(true); }
     }
 }

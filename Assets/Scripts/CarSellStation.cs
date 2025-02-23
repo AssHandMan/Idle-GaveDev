@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarSellStation : MonoBehaviour
 {
     public StationObjectCollection station;
-    public GameObject WorkSpace, MainObj;
+    public GameObject WorkSpace, MainObj, Worker;
     public Transform CustomerPlace;
     public bool CanWork;
     private bool isIncreasing;
@@ -30,7 +30,7 @@ public class CarSellStation : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if ((other.gameObject.tag == "Player" && lvl < 2) || (other.gameObject.tag == "Worker"))
         {
             StartCoroutine(WorkSpaceEffect());
             StartCoroutine(Working());
@@ -39,7 +39,7 @@ public class CarSellStation : MonoBehaviour
     }
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && lvl < 2)
         {
             StopAllCoroutines();
             WorkSpace.GetComponent<SpriteRenderer>().color = Color.white;
@@ -107,5 +107,6 @@ public class CarSellStation : MonoBehaviour
             }
         }
         if (lvl < 3) { lvl++; }
+        if(lvl == 2) { Worker.SetActive(true); }
     }
 }

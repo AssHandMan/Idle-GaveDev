@@ -6,7 +6,8 @@ public class WorkStation : MonoBehaviour
 {
     public StationObjectCollection station, newStation;
     public TakeStation TakeStationNew;
-    public GameObject obj, WorkSpace, HandsPlayer, MainObj;
+    public GameObject obj, WorkSpace, HandsPlayer, MainObj, Worker;
+    public bool CanWork;
     private bool isIncreasing;
     public float TimeWork;
 
@@ -23,23 +24,30 @@ public class WorkStation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CanWork = MainObj.activeSelf;
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && lvl < 2)
         {
             HandsPlayer.SetActive(false);
             StartCoroutine(WorkSpaceEffect());
             WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
             TakeStationNew.CanGive = false;
-            if (station.CountObj >= 1 & newStation.CountObj < newStation.MuxCountObj) { StartCoroutine(Working()); }   
+            if (station.CountObj >= 1 & newStation.CountObj < newStation.MuxCountObj) { StartCoroutine(Working()); }
+        }
+
+        if (other.gameObject.tag == "Worker")
+        {
+            StartCoroutine(WorkSpaceEffect());
+            WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
+            StartCoroutine(Working());
         }
     }
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && lvl < 2)
         {
             HandsPlayer.SetActive(true);
             TakeStationNew.CanGive = true;
@@ -115,5 +123,6 @@ public class WorkStation : MonoBehaviour
             }
         }
         if (lvl < 3) { lvl++; }
+        if(lvl == 2) { Worker.SetActive(true); }
     }
 }
