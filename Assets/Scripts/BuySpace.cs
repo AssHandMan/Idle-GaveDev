@@ -15,6 +15,7 @@ public class BuySpace : MonoBehaviour
     private PlayerMovement plr;
     private bool inProgress;
     private float step;
+    private float savedElapsedTime = 0f;    
     private PlayerWallet wallet;
     private UpgreadeSceneMeneger meneger;
 
@@ -142,13 +143,15 @@ public class BuySpace : MonoBehaviour
     private IEnumerator Paying()
     {
         float totalTime = 2f;
-        float elapsedTime = 0f;
+        float elapsedTime = savedElapsedTime; // Загружаем сохранённое время
         int startPrice = price;
 
         while (price > 0 && wallet.Money > 0)
         {
             elapsedTime += Time.deltaTime;
-            float progress = Mathf.Clamp01(elapsedTime / totalTime);  // Держим прогресс в диапазоне [0, 1]
+            savedElapsedTime = elapsedTime; // Сохраняем прогресс
+
+            float progress = Mathf.Clamp01(elapsedTime / totalTime);
 
             int amountToDeduct = Mathf.Min(Mathf.CeilToInt(startPrice * progress) - (startPrice - price), wallet.Money, price);
 
@@ -166,6 +169,7 @@ public class BuySpace : MonoBehaviour
         if (price <= 0)
         {
             Buy();
+            savedElapsedTime = 0f; // Сбрасываем сохранённый прогресс после покупки
         }
     }
 

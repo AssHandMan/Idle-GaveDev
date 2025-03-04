@@ -234,12 +234,15 @@ public class HrRoom : MonoBehaviour
     {
         if (!BoughtMenegres[name] && wallet.Diamonds >= priceDiamonds[name, lvl[name]])
         {
-            wallet.ChangeCount(-priceDiamonds[name, lvl[name]], "Diamonds");
-            BoughtMenegres[name] = true;
-            ProgressBar[name].SetActive(true);
-            Menegers[name].SetActive(true);
-            PriceButton[name].text = Convert.ToString(price[name, lvl[name] + 1]);
-            PriceDiamondsButton[name].text = Convert.ToString(priceDiamonds[name, lvl[name] + 1]);
+            if (name == 0 || (name > 0 & BoughtMenegres[name - 1] == true))
+            {
+                wallet.ChangeCount(-priceDiamonds[name, lvl[name]], "Diamonds");
+                BoughtMenegres[name] = true;
+                ProgressBar[name].SetActive(true);
+                Menegers[name].SetActive(true);
+                PriceButton[name].text = Convert.ToString(price[name, lvl[name] + 1]);
+                PriceDiamondsButton[name].text = Convert.ToString(priceDiamonds[name, lvl[name] + 1]);
+            }
         }
         else
         {
