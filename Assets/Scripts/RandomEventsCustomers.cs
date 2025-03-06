@@ -4,6 +4,7 @@ using UnityEngine;
 public class RandomEventsCustomers : MonoBehaviour
 {
     public SellStation station;
+    public float timeEventInterval = 60;
 
     void Start()
     {
@@ -19,7 +20,7 @@ public class RandomEventsCustomers : MonoBehaviour
 
     private IEnumerator MakeCall()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(timeEventInterval);
         if (station.Queue.Length > 0)
         {
 
