@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
@@ -17,18 +18,26 @@ public class MoneyZoneController : MonoBehaviour
     public List<GameObject> _cash3D = new List<GameObject>();
     public List<GameObject> _Listlayer;
     List<GameObject> _Pointlist = new List<GameObject>();
-    [SerializeField] private int _testMaxCash_126; //ƒл€ проверки максимального количества отображаемых ден€г(126)
+    [SerializeField] private int _testMaxCash; //ƒл€ проверки максимального количества отображаемых ден€г
+
+    [SerializeField] private int _X_SizeStack;
+    [SerializeField] private int _Y_SizeStack;
+    [SerializeField] private int _Z_SizeStack;
+    [SerializeField] private float _X_Spacing;
+    [SerializeField] private float _Y_Spacing;
+    [SerializeField] private float _Z_Spacing;
+    [SerializeField] public GameObject _FirstPoint;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Start()
     {
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
-        foreach (GameObject p in _Listlayer)
+        StackSize();
+        /*foreach (GameObject p in _Listlayer)
         {
             GetChildRecursive(p);
-        }
-        for (int i = 0; i < _testMaxCash_126; i++) Add();
-        
+        }*/
+        for (int i = 0; i < _testMaxCash; i++) Add();
     }
     private void GetChildRecursive(GameObject obj)
     {
@@ -46,7 +55,7 @@ public class MoneyZoneController : MonoBehaviour
     }
     public void Add()//пополнение денег в куче
     {
-        if (_realCountCash < 126)
+        if (_realCountCash < (_X_SizeStack* _Y_SizeStack* _Z_SizeStack))
         {
             for(int i =0; i < _PriceOfCash/5;i++)
             _cash3D.Add(Instantiate(_model, _Pointlist[_realCountCash].transform.position, _model.transform.rotation));
@@ -59,18 +68,41 @@ public class MoneyZoneController : MonoBehaviour
     {
         if(other.tag == "Player" && _cash3D.Count>0)
         {
-            StartCoroutine(DelCash());
+            for (int i = 0; i < _realCountCash+1; i++)
+            {
+                wallet.ChangeCount(_PriceOfCash, "Money");
+                if (_cash3D.ElementAtOrDefault(i) != null)
+                {
+                    Destroy(_cash3D[i]);
+                    _cash3D.RemoveAt(i);
+                }
+                _realCountCash--;
+            }
         }
     }
-    private IEnumerator DelCash()
+    private void StackSize()
+    {
+
+        for (int x = 0; x < _X_SizeStack; x++)
+        {
+            for (int y = 0; y < _Y_SizeStack; y++)
+            {
+                for (int z = 0; z < _Z_SizeStack; z++)
+                {
+                    // ¬ычисл€ем позицию дл€ каждого объекта
+                    Vector3 position = new Vector3(_FirstPoint.transform.position.x + x * _X_Spacing,
+                        _FirstPoint.transform.position.y + y * _Y_Spacing,
+                        _FirstPoint.transform.position.z + z * _Z_Spacing);
+
+                    _Pointlist.Add(Instantiate(_FirstPoint, position, _model.transform.rotation));
+                    
+                }
+            }
+        }
+        }
+   /* private IEnumerator DelCash()
     {
         yield return new WaitForSeconds(1);
-        for (int i = 0; i < _cash3D.Count; i++)
-        {
-            wallet.ChangeCount(_PriceOfCash, "Money");
-            Destroy(_cash3D[i]);
-            _cash3D.RemoveAt(i);
-            _realCountCash--;
-        }
-    }
+        
+    }*/
 }
