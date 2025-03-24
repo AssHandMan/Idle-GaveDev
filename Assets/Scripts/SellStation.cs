@@ -26,6 +26,7 @@ public class SellStation : MonoBehaviour
     public int lvl;
     public int[] PriceList;
 
+    [SerializeField] private GameObject _stackOfMoney;
     void Start()
     {
         isIncreasing = true;
@@ -125,7 +126,8 @@ public class SellStation : MonoBehaviour
                 station.ObjectsList.RemoveAt(station.CountObj - 1);
                 station.LustPosY -= deltaY;
                 station.CountObj--;
-                wallet.ChangeCount(5, "Money");
+                //wallet.ChangeCount(5, "Money");//изменить
+                _stackOfMoney.GetComponent<MoneyZoneController>().Add();
                 client.ChangeBuyCount();
             }
             

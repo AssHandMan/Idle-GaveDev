@@ -10,6 +10,7 @@ public class ArcadeMachine : MonoBehaviour
     public Transform CustomerPos;
     public Customer client;
     public bool isPlaying, hasTarget, CanWork, isToilet, hasMenegerTarget;
+    [SerializeField] private GameObject _stackOfMoney;
 
     public int lvl;
     public Mesh[] BoxLvl;
@@ -51,7 +52,9 @@ public class ArcadeMachine : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         PlayerWallet plr = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
-        plr.ChangeCount(10, "Money");
+        //изменено на кучу
+        //plr.ChangeCount(10, "Money");
+        _stackOfMoney.GetComponent<MoneyZoneController>().Add();
         client.play = true;
         client.GoAway();
         client = null;
