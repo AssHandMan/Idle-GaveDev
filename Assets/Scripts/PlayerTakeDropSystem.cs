@@ -23,8 +23,19 @@ public class PlayerTakeDropSystem : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E)) { Time.timeScale = 5; }
-        else if (Input.GetKeyUp(KeyCode.E)) { Time.timeScale = 1; }
+        if(Input.GetKeyDown(KeyCode.E)) { TimeMagic(); }
+    }
+
+    public void TimeMagic()
+    {
+        if(Time.timeScale == 1)
+        {
+            Time.timeScale = 5;
+        }
+        else if (Time.timeScale == 5)
+        {
+            Time.timeScale = 1;
+        }
     }
 
     public void TakeObject()

@@ -609,6 +609,7 @@ MonoBehaviour:
   PriceText: {fileID: 410557306}
   ProgressBar: {fileID: 23244032}
   price: 100
+  startPrice: 0
   type: 
 --- !u!4 &32223512 stripped
 Transform:
@@ -1493,6 +1494,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69009057}
   m_CullTransparentMesh: 1
+--- !u!1 &71049040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 71049041}
+  m_Layer: 0
+  m_Name: SaveStationPlace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &71049041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71049040}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: -2.43, y: 0.14256501, z: 0.847}
+  m_LocalScale: {x: 0.6999998, y: 0.77133566, z: 2.0030901}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1342934434}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &73466099
 GameObject:
   m_ObjectHideFlags: 0
@@ -2922,6 +2954,7 @@ MonoBehaviour:
   PriceText: {fileID: 934057771}
   ProgressBar: {fileID: 131137232}
   price: 1830
+  startPrice: 0
   type: 
 --- !u!1 &137840761
 GameObject:
@@ -3079,6 +3112,8 @@ MonoBehaviour:
   Count: 0
   LustPosY: 0
   dropStation: {fileID: 0}
+  takeStation: {fileID: 0}
+  isTakingFromTakeStation: 0
 --- !u!65 &139966562
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3433,6 +3468,85 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8ee657c6800ab849bb30b4375d02323, type: 3}
+--- !u!1 &153003737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 153003738}
+  - component: {fileID: 153003740}
+  - component: {fileID: 153003739}
+  m_Layer: 5
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &153003738
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153003737}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 728001153}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &153003739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153003737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 5
+    m_MaxSize: 50
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: U
+--- !u!222 &153003740
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153003737}
+  m_CullTransparentMesh: 1
 --- !u!1 &158959439
 GameObject:
   m_ObjectHideFlags: 0
@@ -5321,6 +5435,7 @@ MonoBehaviour:
   PriceText: {fileID: 725212641}
   ProgressBar: {fileID: 242312134}
   price: 760
+  startPrice: 0
   type: 
 --- !u!114 &242312134
 MonoBehaviour:
@@ -5636,8 +5751,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc09fe829d34a1f4f85af6e2b3cc7893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CashType: 0
   speed: 5
-  capacity: 1
+  capacity: 0
+  capacityUpgreadeBufer: 1
   profit: 1
   TargetType: 
   Target: {fileID: 0}
@@ -5782,6 +5899,37 @@ PrefabInstance:
       addedObject: {fileID: 1423727260}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72adfe7153110de4a967813b545748eb, type: 3}
+--- !u!1 &250027287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 250027288}
+  m_Layer: 0
+  m_Name: SaveStationPlace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &250027288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250027287}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.2999856, y: 0.12759402, z: 0.8679979}
+  m_LocalScale: {x: 2.0030904, y: 0.77133566, z: 0.7}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1295386622}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &252767708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7074,6 +7222,7 @@ MonoBehaviour:
   PriceText: {fileID: 960730210}
   ProgressBar: {fileID: 317317507}
   price: 1870
+  startPrice: 0
   type: 
 --- !u!1001 &320503529
 PrefabInstance:
@@ -7811,6 +7960,7 @@ MonoBehaviour:
   PriceText: {fileID: 1645792753}
   ProgressBar: {fileID: 334362553}
   price: 550
+  startPrice: 0
   type: 
 --- !u!114 &334362553
 MonoBehaviour:
@@ -8782,6 +8932,85 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ec25066ec33fa84d9227e27c5f5a8a0, type: 3}
+--- !u!1 &394532102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 394532103}
+  - component: {fileID: 394532105}
+  - component: {fileID: 394532104}
+  m_Layer: 5
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &394532103
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394532102}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1950236933}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &394532104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394532102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 5
+    m_MaxSize: 50
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: T
+--- !u!222 &394532105
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394532102}
+  m_CullTransparentMesh: 1
 --- !u!1001 &395643015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9218,6 +9447,7 @@ MonoBehaviour:
   PriceText: {fileID: 2108908200}
   ProgressBar: {fileID: 402872958}
   price: 700
+  startPrice: 0
   type: 
 --- !u!114 &402872958
 MonoBehaviour:
@@ -10064,6 +10294,7 @@ MonoBehaviour:
   PriceText: {fileID: 1555211664}
   ProgressBar: {fileID: 440596761}
   price: 50
+  startPrice: 0
   type: 
 --- !u!114 &440596761
 MonoBehaviour:
@@ -10238,6 +10469,7 @@ MonoBehaviour:
   PriceText: {fileID: 437416505}
   ProgressBar: {fileID: 443006219}
   price: 290
+  startPrice: 0
   type: 
 --- !u!114 &443006219
 MonoBehaviour:
@@ -10938,8 +11170,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc09fe829d34a1f4f85af6e2b3cc7893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CashType: 0
   speed: 5
-  capacity: 1
+  capacity: 0
+  capacityUpgreadeBufer: 1
   profit: 1
   TargetType: 
   Target: {fileID: 0}
@@ -11413,8 +11647,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc09fe829d34a1f4f85af6e2b3cc7893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CashType: 0
   speed: 3
   capacity: 3
+  capacityUpgreadeBufer: 0
   profit: 3
   TargetType: 
   Target: {fileID: 0}
@@ -11639,6 +11875,7 @@ MonoBehaviour:
   PriceText: {fileID: 393383688}
   ProgressBar: {fileID: 524477024}
   price: 250
+  startPrice: 0
   type: 
 --- !u!114 &524477024
 MonoBehaviour:
@@ -12338,6 +12575,8 @@ MonoBehaviour:
   Count: 0
   LustPosY: 0
   dropStation: {fileID: 0}
+  takeStation: {fileID: 0}
+  isTakingFromTakeStation: 0
 --- !u!65 &550628219
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14465,6 +14704,7 @@ MonoBehaviour:
   PriceText: {fileID: 1584612445}
   ProgressBar: {fileID: 656160105}
   price: 1750
+  startPrice: 0
   type: 
 --- !u!114 &656160105
 MonoBehaviour:
@@ -15338,6 +15578,7 @@ MonoBehaviour:
   PriceText: {fileID: 632693313}
   ProgressBar: {fileID: 682753045}
   price: 50
+  startPrice: 0
   type: 
 --- !u!114 &682753045
 MonoBehaviour:
@@ -15534,6 +15775,7 @@ MonoBehaviour:
   PriceText: {fileID: 73466101}
   ProgressBar: {fileID: 684919808}
   price: 50
+  startPrice: 0
   type: 
 --- !u!114 &684919808
 MonoBehaviour:
@@ -16651,6 +16893,139 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 725212639}
   m_CullTransparentMesh: 1
+--- !u!1 &728001152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 728001153}
+  - component: {fileID: 728001156}
+  - component: {fileID: 728001155}
+  - component: {fileID: 728001154}
+  m_Layer: 5
+  m_Name: Upgreade All
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &728001153
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728001152}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.64639, y: 0.64639, z: 0.64639}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 153003738}
+  m_Father: {fileID: 757167100}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -511, y: 612}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &728001154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728001152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 728001155}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1134624004}
+        m_TargetAssemblyTypeName: UpgreadeSceneMeneger, Assembly-CSharp
+        m_MethodName: BuyAll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &728001155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728001152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &728001156
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728001152}
+  m_CullTransparentMesh: 1
 --- !u!1 &728565566
 GameObject:
   m_ObjectHideFlags: 0
@@ -16762,6 +17137,7 @@ MonoBehaviour:
   PriceText: {fileID: 1807978744}
   ProgressBar: {fileID: 729924652}
   price: 700
+  startPrice: 0
   type: 
 --- !u!114 &729924652
 MonoBehaviour:
@@ -17460,6 +17836,7 @@ MonoBehaviour:
   PriceText: {fileID: 2089868797}
   ProgressBar: {fileID: 750676025}
   price: 2700
+  startPrice: 0
   type: 
 --- !u!114 &750676025
 MonoBehaviour:
@@ -17640,6 +18017,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1950236933}
+  - {fileID: 728001153}
   - {fileID: 2071810004}
   - {fileID: 1162457289}
   - {fileID: 1984923817}
@@ -17871,6 +18250,7 @@ MonoBehaviour:
   PriceText: {fileID: 1252274006}
   ProgressBar: {fileID: 769381031}
   price: 60
+  startPrice: 0
   type: 
 --- !u!114 &769381031
 MonoBehaviour:
@@ -18203,8 +18583,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc09fe829d34a1f4f85af6e2b3cc7893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CashType: 0
   speed: 5
-  capacity: 1
+  capacity: 0
+  capacityUpgreadeBufer: 1
   profit: 1
   TargetType: 
   Target: {fileID: 0}
@@ -18337,8 +18719,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc09fe829d34a1f4f85af6e2b3cc7893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CashType: 0
   speed: 3
   capacity: 3
+  capacityUpgreadeBufer: 0
   profit: 3
   TargetType: 
   Target: {fileID: 0}
@@ -20584,8 +20968,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc09fe829d34a1f4f85af6e2b3cc7893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CashType: 0
   speed: 3
   capacity: 3
+  capacityUpgreadeBufer: 0
   profit: 3
   TargetType: 
   Target: {fileID: 0}
@@ -20679,6 +21065,7 @@ MonoBehaviour:
   PriceText: {fileID: 1669987395}
   ProgressBar: {fileID: 863875439}
   price: 1710
+  startPrice: 0
   type: 
 --- !u!114 &863875439
 MonoBehaviour:
@@ -21196,6 +21583,7 @@ MonoBehaviour:
   PriceText: {fileID: 2111067975}
   ProgressBar: {fileID: 885136567}
   price: 150
+  startPrice: 0
   type: 
 --- !u!114 &885136567
 MonoBehaviour:
@@ -21512,6 +21900,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 4f32dfddb033d3e40b5841bc53cc1689, type: 3}
   m_PrefabInstance: {fileID: 1787946790}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &901730643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 901730644}
+  m_Layer: 0
+  m_Name: WorkPlace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &901730644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901730643}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 3.05, y: 0.14256501, z: 1.238}
+  m_LocalScale: {x: 0.6999998, y: 0.77133566, z: 2.0030901}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1342934434}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &902018355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22221,6 +22640,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7848643, y: 0.92120963, z: 2.8815832}
   m_Center: {x: 0, y: 0.46033958, z: -1.0281644}
+--- !u!114 &925710448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925710442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da2fb7b78a3307c4c8844910727c8359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &930144546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22643,8 +23074,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc09fe829d34a1f4f85af6e2b3cc7893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CashType: 0
   speed: 3
   capacity: 3
+  capacityUpgreadeBufer: 0
   profit: 3
   TargetType: 
   Target: {fileID: 0}
@@ -22981,6 +23414,7 @@ MonoBehaviour:
   PriceText: {fileID: 1788733582}
   ProgressBar: {fileID: 953959474}
   price: 1000
+  startPrice: 0
   type: 
 --- !u!114 &953959474
 MonoBehaviour:
@@ -25016,6 +25450,7 @@ MonoBehaviour:
   PriceText: {fileID: 1774840289}
   ProgressBar: {fileID: 1012085737}
   price: 230
+  startPrice: 0
   type: 
 --- !u!114 &1012085737
 MonoBehaviour:
@@ -26303,8 +26738,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc09fe829d34a1f4f85af6e2b3cc7893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CashType: 0
   speed: 5
-  capacity: 1
+  capacity: 0
+  capacityUpgreadeBufer: 1
   profit: 1
   TargetType: 
   Target: {fileID: 0}
@@ -28866,6 +29303,8 @@ MonoBehaviour:
   Count: 0
   LustPosY: 0
   dropStation: {fileID: 0}
+  takeStation: {fileID: 0}
+  isTakingFromTakeStation: 0
 --- !u!65 &1176608570
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29348,8 +29787,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc09fe829d34a1f4f85af6e2b3cc7893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CashType: 0
   speed: 5
-  capacity: 1
+  capacity: 0
+  capacityUpgreadeBufer: 1
   profit: 1
   TargetType: 
   Target: {fileID: 0}
@@ -29822,6 +30263,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 52f3bf47c9c62af4588469ff668b805c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 925710445}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 52f3bf47c9c62af4588469ff668b805c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 925710448}
   m_SourcePrefab: {fileID: 100100000, guid: 52f3bf47c9c62af4588469ff668b805c, type: 3}
 --- !u!1 &1211151029
 GameObject:
@@ -30097,8 +30541,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc09fe829d34a1f4f85af6e2b3cc7893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CashType: 0
   speed: 3
   capacity: 3
+  capacityUpgreadeBufer: 0
   profit: 3
   TargetType: 
   Target: {fileID: 0}
@@ -30963,6 +31409,7 @@ MonoBehaviour:
   PriceText: {fileID: 538510926}
   ProgressBar: {fileID: 1270723247}
   price: 40
+  startPrice: 0
   type: 
 --- !u!114 &1270723247
 MonoBehaviour:
@@ -31150,6 +31597,11 @@ GameObject:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2878635115880811016, guid: febc99149f460034db903481a84f7d05, type: 3}
   m_PrefabInstance: {fileID: 2015288509907784834}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1295386622 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7250722231832742511, guid: afbd6e0a8a2034347bc1b1bed8b24d38, type: 3}
+  m_PrefabInstance: {fileID: 5067907692356819452}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1298735993
 PrefabInstance:
@@ -32526,6 +32978,7 @@ MonoBehaviour:
   PriceText: {fileID: 1908183892}
   ProgressBar: {fileID: 1335791945}
   price: 900
+  startPrice: 0
   type: 
 --- !u!114 &1335791945
 MonoBehaviour:
@@ -32830,6 +33283,8 @@ MonoBehaviour:
   Count: 0
   LustPosY: 0
   dropStation: {fileID: 0}
+  takeStation: {fileID: 0}
+  isTakingFromTakeStation: 0
 --- !u!65 &1340956838
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32851,6 +33306,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.6838837, y: 1.1961259, z: 2.711863}
   m_Center: {x: 0.08240509, y: 0.09806293, z: -0.47989535}
+--- !u!4 &1342934434 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 890824875879413432, guid: febc99149f460034db903481a84f7d05, type: 3}
+  m_PrefabInstance: {fileID: 2015288509907784834}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1344306867
 GameObject:
   m_ObjectHideFlags: 0
@@ -32988,6 +33448,7 @@ MonoBehaviour:
   PriceText: {fileID: 1746192937}
   ProgressBar: {fileID: 1347438352}
   price: 1870
+  startPrice: 0
   type: 
 --- !u!114 &1347438352
 MonoBehaviour:
@@ -34580,6 +35041,7 @@ MonoBehaviour:
   PriceText: {fileID: 698728102}
   ProgressBar: {fileID: 1393926409}
   price: 100
+  startPrice: 0
   type: 
 --- !u!114 &1393926409
 MonoBehaviour:
@@ -35124,8 +35586,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc09fe829d34a1f4f85af6e2b3cc7893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CashType: 0
   speed: 5
-  capacity: 1
+  capacity: 0
+  capacityUpgreadeBufer: 1
   profit: 1
   TargetType: 
   Target: {fileID: 0}
@@ -35380,6 +35844,7 @@ MonoBehaviour:
   PriceText: {fileID: 803364842}
   ProgressBar: {fileID: 1457958962}
   price: 100
+  startPrice: 0
   type: 
 --- !u!114 &1457958962
 MonoBehaviour:
@@ -36017,6 +36482,7 @@ MonoBehaviour:
   PriceText: {fileID: 175553093}
   ProgressBar: {fileID: 1483453354}
   price: 25
+  startPrice: 0
   type: 
 --- !u!114 &1483453354
 MonoBehaviour:
@@ -36691,7 +37157,7 @@ Transform:
   m_GameObject: {fileID: 1520792943}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3, y: 0, z: 0}
+  m_LocalPosition: {x: 3.3, y: 0, z: -0.325}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -37058,6 +37524,7 @@ MonoBehaviour:
   PriceText: {fileID: 574950826}
   ProgressBar: {fileID: 1552202641}
   price: 1590
+  startPrice: 0
   type: 
 --- !u!114 &1552202641
 MonoBehaviour:
@@ -38171,6 +38638,7 @@ MonoBehaviour:
   PriceText: {fileID: 1204120167}
   ProgressBar: {fileID: 1590004255}
   price: 900
+  startPrice: 0
   type: 
 --- !u!114 &1590004255
 MonoBehaviour:
@@ -39442,6 +39910,7 @@ MonoBehaviour:
   PriceText: {fileID: 1988695942}
   ProgressBar: {fileID: 1661748607}
   price: 230
+  startPrice: 0
   type: 
 --- !u!114 &1661748607
 MonoBehaviour:
@@ -39753,6 +40222,7 @@ MonoBehaviour:
   PriceText: {fileID: 233462866}
   ProgressBar: {fileID: 1669655326}
   price: 1350
+  startPrice: 0
   type: 
 --- !u!114 &1669655326
 MonoBehaviour:
@@ -40063,6 +40533,7 @@ MonoBehaviour:
   PriceText: {fileID: 1118176720}
   ProgressBar: {fileID: 1676331041}
   price: 100
+  startPrice: 0
   type: 
 --- !u!114 &1676331041
 MonoBehaviour:
@@ -40912,6 +41383,7 @@ MonoBehaviour:
   PriceText: {fileID: 989624772}
   ProgressBar: {fileID: 1699500299}
   price: 5
+  startPrice: 0
   type: 
 --- !u!114 &1699500299
 MonoBehaviour:
@@ -41737,6 +42209,7 @@ MonoBehaviour:
   PriceText: {fileID: 615023362}
   ProgressBar: {fileID: 1735988956}
   price: 50
+  startPrice: 0
   type: 
 --- !u!114 &1735988956
 MonoBehaviour:
@@ -42511,7 +42984,7 @@ Transform:
   m_GameObject: {fileID: 1757068615}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.213, y: 0, z: 0}
+  m_LocalPosition: {x: 1.091, y: 0, z: -0.295}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42611,8 +43084,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc09fe829d34a1f4f85af6e2b3cc7893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CashType: 0
   speed: 3
   capacity: 3
+  capacityUpgreadeBufer: 0
   profit: 3
   TargetType: 
   Target: {fileID: 0}
@@ -43179,6 +43654,8 @@ MonoBehaviour:
   Count: 0
   LustPosY: 0
   dropStation: {fileID: 0}
+  takeStation: {fileID: 0}
+  isTakingFromTakeStation: 0
 --- !u!65 &1785829927
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -43428,6 +43905,7 @@ MonoBehaviour:
   PriceText: {fileID: 1811090195}
   ProgressBar: {fileID: 1790325830}
   price: 200
+  startPrice: 0
   type: 
 --- !u!114 &1790325830
 MonoBehaviour:
@@ -44016,6 +44494,7 @@ MonoBehaviour:
   PriceText: {fileID: 1536980883}
   ProgressBar: {fileID: 1812979271}
   price: 2000
+  startPrice: 0
   type: 
 --- !u!114 &1812979271
 MonoBehaviour:
@@ -44561,6 +45040,7 @@ MonoBehaviour:
   PriceText: {fileID: 532293811}
   ProgressBar: {fileID: 1827954475}
   price: 1410
+  startPrice: 0
   type: 
 --- !u!114 &1827954475
 MonoBehaviour:
@@ -44932,6 +45412,7 @@ MonoBehaviour:
   PriceText: {fileID: 716870908}
   ProgressBar: {fileID: 1841861983}
   price: 1400
+  startPrice: 0
   type: 
 --- !u!114 &1841861983
 MonoBehaviour:
@@ -47071,6 +47552,8 @@ MonoBehaviour:
   Count: 0
   LustPosY: 0
   dropStation: {fileID: 0}
+  takeStation: {fileID: 0}
+  isTakingFromTakeStation: 0
 --- !u!65 &1922796657
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -47268,6 +47751,7 @@ MonoBehaviour:
   PriceText: {fileID: 1579887232}
   ProgressBar: {fileID: 1933056803}
   price: 50
+  startPrice: 0
   type: 
 --- !u!114 &1933056803
 MonoBehaviour:
@@ -47685,6 +48169,139 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1898536823}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1950236932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1950236933}
+  - component: {fileID: 1950236936}
+  - component: {fileID: 1950236935}
+  - component: {fileID: 1950236934}
+  m_Layer: 5
+  m_Name: TimeTravel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1950236933
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950236932}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.64639, y: 0.64639, z: 0.64639}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 394532103}
+  m_Father: {fileID: 757167100}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -617, y: 612}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1950236934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950236932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1950236935}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 279462200}
+        m_TargetAssemblyTypeName: PlayerTakeDropSystem, Assembly-CSharp
+        m_MethodName: TimeMagic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1950236935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950236932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1950236936
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950236932}
+  m_CullTransparentMesh: 1
 --- !u!1 &1951512119
 GameObject:
   m_ObjectHideFlags: 0
@@ -47960,8 +48577,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc09fe829d34a1f4f85af6e2b3cc7893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CashType: 0
   speed: 3
   capacity: 3
+  capacityUpgreadeBufer: 0
   profit: 3
   TargetType: 
   Target: {fileID: 0}
@@ -48483,6 +49102,8 @@ MonoBehaviour:
   isWorkingCash: 0
   isAdding: 0
   isWorkingCash2: 0
+  isAdding2: 0
+  TargetTypes: []
 --- !u!65 &1988466270
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49255,6 +49876,8 @@ MonoBehaviour:
   Count: 0
   LustPosY: 0
   dropStation: {fileID: 0}
+  takeStation: {fileID: 0}
+  isTakingFromTakeStation: 0
 --- !u!1 &2055470141
 GameObject:
   m_ObjectHideFlags: 0
@@ -50445,6 +51068,7 @@ MonoBehaviour:
   PriceText: {fileID: 385948231}
   ProgressBar: {fileID: 2110959458}
   price: 25
+  startPrice: 0
   type: 
 --- !u!114 &2110959458
 MonoBehaviour:
@@ -50938,6 +51562,7 @@ MonoBehaviour:
   PriceText: {fileID: 1181269888}
   ProgressBar: {fileID: 2116264279}
   price: 750
+  startPrice: 0
   type: 
 --- !u!114 &2116264279
 MonoBehaviour:
@@ -51296,6 +51921,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1758954803}
     - target: {fileID: 6054309891591490681, guid: febc99149f460034db903481a84f7d05, type: 3}
+      propertyPath: WorkPlace
+      value: 
+      objectReference: {fileID: 901730644}
+    - target: {fileID: 6054309891591490681, guid: febc99149f460034db903481a84f7d05, type: 3}
+      propertyPath: SaveStationPlace
+      value: 
+      objectReference: {fileID: 71049041}
+    - target: {fileID: 6054309891591490681, guid: febc99149f460034db903481a84f7d05, type: 3}
       propertyPath: PriceList.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -51350,6 +51983,12 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 890824875879413432, guid: febc99149f460034db903481a84f7d05, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 71049041}
+    - targetCorrespondingSourceObject: {fileID: 890824875879413432, guid: febc99149f460034db903481a84f7d05, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 901730644}
     - targetCorrespondingSourceObject: {fileID: 2878635115880811016, guid: febc99149f460034db903481a84f7d05, type: 3}
       insertIndex: 0
       addedObject: {fileID: 2111844456}
@@ -51476,6 +52115,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1414518792}
     - target: {fileID: 817608626670203441, guid: afbd6e0a8a2034347bc1b1bed8b24d38, type: 3}
+      propertyPath: WorkPlace
+      value: 
+      objectReference: {fileID: 1757068616}
+    - target: {fileID: 817608626670203441, guid: afbd6e0a8a2034347bc1b1bed8b24d38, type: 3}
+      propertyPath: NewStationPlace
+      value: 
+      objectReference: {fileID: 1520792944}
+    - target: {fileID: 817608626670203441, guid: afbd6e0a8a2034347bc1b1bed8b24d38, type: 3}
+      propertyPath: SaveStationPlace
+      value: 
+      objectReference: {fileID: 250027288}
+    - target: {fileID: 817608626670203441, guid: afbd6e0a8a2034347bc1b1bed8b24d38, type: 3}
       propertyPath: PriceList.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -51550,6 +52201,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7250722231832742511, guid: afbd6e0a8a2034347bc1b1bed8b24d38, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 250027288}
     - targetCorrespondingSourceObject: {fileID: 5846714145265217413, guid: afbd6e0a8a2034347bc1b1bed8b24d38, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1414518793}
@@ -51597,6 +52251,10 @@ PrefabInstance:
       propertyPath: Dtext
       value: 
       objectReference: {fileID: 621098326}
+    - target: {fileID: 3433455002323945335, guid: 6561a4621fc6da84280a32406023f4c4, type: 3}
+      propertyPath: Money
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: 3433455002323945335, guid: 6561a4621fc6da84280a32406023f4c4, type: 3}
       propertyPath: Mtext
       value: 
@@ -51716,8 +52374,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc09fe829d34a1f4f85af6e2b3cc7893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CashType: 0
   speed: 5
-  capacity: 1
+  capacity: 0
+  capacityUpgreadeBufer: 1
   profit: 1
   TargetType: 
   Target: {fileID: 0}

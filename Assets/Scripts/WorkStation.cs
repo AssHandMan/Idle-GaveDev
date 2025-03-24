@@ -7,13 +7,16 @@ public class WorkStation : MonoBehaviour
     public StationObjectCollection station, newStation;
     public TakeStation TakeStationNew;
     public GameObject obj, WorkSpace, HandsPlayer, MainObj, Worker;
-    public bool CanWork;
+    public bool CanWork, isSelling;
     private bool isIncreasing;
     public float TimeWork;
 
     public BuySpace space;
     public int lvl;
     public int[] PriceList;
+    public Transform SaveStationPlace, WorkPlace, NewStationPlace;
+
+    private GameObject meneger;
 
     void Start()
     {
@@ -35,6 +38,7 @@ public class WorkStation : MonoBehaviour
             StartCoroutine(WorkSpaceEffect());
             WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
             TakeStationNew.CanGive = false;
+            isSelling = true;
             if (station.CountObj >= 1 & newStation.CountObj < newStation.MuxCountObj) { StartCoroutine(Working()); }
         }
 
@@ -43,17 +47,38 @@ public class WorkStation : MonoBehaviour
             StartCoroutine(WorkSpaceEffect());
             WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
             StartCoroutine(Working());
+            isSelling = true;
+        }
+
+        if (other.GetComponent<Meneger>() != null && lvl < 2 && other.GetComponent<Meneger>().TargetType == "WorkWork" && !isSelling)
+        {
+            StartCoroutine(WorkSpaceEffect());
+            StartCoroutine(Working());
+            WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
+            isSelling = true;
+            meneger = other.gameObject;
         }
     }
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player" && lvl < 2)
+        if (other.gameObject.tag == "Player" && lvl < 2 && meneger == null)
         {
             HandsPlayer.SetActive(true);
             TakeStationNew.CanGive = true;
             StopAllCoroutines();
             WorkSpace.GetComponent<SpriteRenderer>().color = Color.white;
             WorkSpace.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            isSelling = false;
+        }
+
+        if (other.GetComponent<Meneger>() != null && lvl < 2)
+        {
+            HandsPlayer.SetActive(true);
+            TakeStationNew.CanGive = true;
+            StopAllCoroutines();
+            WorkSpace.GetComponent<SpriteRenderer>().color = Color.white;
+            WorkSpace.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            isSelling = false;
         }
     }
 

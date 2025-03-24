@@ -1,5 +1,7 @@
+
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,8 +23,9 @@ public class HrRoom : MonoBehaviour
     private PlayerWallet wallet;
 
     public Meneger[] menegersScript;
-    public bool isWorkingCash, isAdding, isWorkingCash2;
-    private int a,a2,b;
+
+
+    public List<string> TargetTypes = new List<string>();
 
     void Start()
     {
@@ -37,30 +40,39 @@ public class HrRoom : MonoBehaviour
 
     }
 
-    public void CheckWork()
+    public bool CheckWork(string type)
     {
-        a = 0;
-        for (int i = 0; i < menegersScript.Length; i++)
+
+
+        int count = 0;
+
+        for(int i = 0; i < TargetTypes.Count; i++)
         {
-            if (menegersScript[i].TargetType == "WorkerCashmachine") 
-            { 
-               if(menegersScript[i].Cashmachine == menegersScript[i].Cashmachines[0]) { a++; }
-               else if (menegersScript[i].Cashmachine == menegersScript[i].Cashmachines[1]) { a2++; }
+            if(type == TargetTypes[i])
+            {
+                count++;
+                break;
             }
         }
-        for (int i = 0; i < menegersScript.Length; i++)
+        if(count==0)
         {
-            if (menegersScript[i].TargetType == "CreateStation") { b++; }
+            return false;
         }
-        if (a > 0) { isWorkingCash = true; }
-        else { isWorkingCash = false; }
+        else
+        {
+            return true;
+        }
 
-        if (a2 > 0) { isWorkingCash2 = true; }
-        else { isWorkingCash2 = false; }
+    }
 
-        if (b > 0) { isAdding = true; }
-        else { isAdding = false; }
+    public void AddTarget(string type)
+    {
+        TargetTypes.Add(type);
+    }
 
+    public void RemoveTarget(string type)
+    {
+        TargetTypes.Remove(type);
     }
 
     public void BuyButton(int name)
@@ -107,7 +119,7 @@ public class HrRoom : MonoBehaviour
                             else if (lvl[name] == 2 || lvl[name] == 5)
                             {
                                 Jack[1].fillAmount += 0.5f;
-                                mg.capacity = UpgreadStats[lvl[name]];
+                                mg.capacityUpgreadeBufer = UpgreadStats[lvl[name]];
                             }
                             else
                             {
@@ -125,7 +137,7 @@ public class HrRoom : MonoBehaviour
                             else if (lvl[name] == 2 || lvl[name] == 5)
                             {
                                 Andy[1].fillAmount += 0.5f;
-                                mg.capacity = UpgreadStats[lvl[name]];
+                                mg.capacityUpgreadeBufer = UpgreadStats[lvl[name]];
                             }
                             else
                             {
@@ -143,7 +155,7 @@ public class HrRoom : MonoBehaviour
                             else if (lvl[name] == 2 || lvl[name] == 5)
                             {
                                 Mag[1].fillAmount += 0.5f;
-                                mg.capacity = UpgreadStats[lvl[name]];
+                                mg.capacityUpgreadeBufer = UpgreadStats[lvl[name]];
                             }
                             else
                             {
@@ -161,7 +173,7 @@ public class HrRoom : MonoBehaviour
                             else if (lvl[name] == 2 || lvl[name] == 5)
                             {
                                 Bob[1].fillAmount += 0.5f;
-                                mg.capacity = UpgreadStats[lvl[name]];
+                                mg.capacityUpgreadeBufer = UpgreadStats[lvl[name]];
                             }
                             else
                             {
@@ -179,7 +191,7 @@ public class HrRoom : MonoBehaviour
                             else if (lvl[name] == 2 || lvl[name] == 5)
                             {
                                 Tom[1].fillAmount += 0.5f;
-                                mg.capacity = UpgreadStats[lvl[name]];
+                                mg.capacityUpgreadeBufer = UpgreadStats[lvl[name]];
                             }
                             else
                             {
@@ -197,7 +209,7 @@ public class HrRoom : MonoBehaviour
                             else if (lvl[name] == 2 || lvl[name] == 5)
                             {
                                 Sam[1].fillAmount += 0.5f;
-                                mg.capacity = UpgreadStats[lvl[name]];
+                                mg.capacityUpgreadeBufer = UpgreadStats[lvl[name]];
                             }
                             else
                             {
@@ -215,7 +227,7 @@ public class HrRoom : MonoBehaviour
                             else if (lvl[name] == 2 || lvl[name] == 5)
                             {
                                 Dan[1].fillAmount += 0.5f;
-                                mg.capacity = UpgreadStats[lvl[name]];
+                                mg.capacityUpgreadeBufer = UpgreadStats[lvl[name]];
                             }
                             else
                             {
@@ -274,7 +286,7 @@ public class HrRoom : MonoBehaviour
                             else if (lvl[name] == 2 || lvl[name] == 5)
                             {
                                 Jack[1].fillAmount += 0.5f;
-                                mg.capacity = UpgreadStats[lvl[name]];
+                                mg.capacityUpgreadeBufer = UpgreadStats[lvl[name]];
                             }
                             else
                             {
@@ -292,7 +304,7 @@ public class HrRoom : MonoBehaviour
                             else if (lvl[name] == 2 || lvl[name] == 5)
                             {
                                 Andy[1].fillAmount += 0.5f;
-                                mg.capacity = UpgreadStats[lvl[name]];
+                                mg.capacityUpgreadeBufer = UpgreadStats[lvl[name]];
                             }
                             else
                             {
@@ -310,7 +322,7 @@ public class HrRoom : MonoBehaviour
                             else if (lvl[name] == 2 || lvl[name] == 5)
                             {
                                 Mag[1].fillAmount += 0.5f;
-                                mg.capacity = UpgreadStats[lvl[name]];
+                                mg.capacityUpgreadeBufer = UpgreadStats[lvl[name]];
                             }
                             else
                             {
@@ -328,7 +340,7 @@ public class HrRoom : MonoBehaviour
                             else if (lvl[name] == 2 || lvl[name] == 5)
                             {
                                 Bob[1].fillAmount += 0.5f;
-                                mg.capacity = UpgreadStats[lvl[name]];
+                                mg.capacityUpgreadeBufer = UpgreadStats[lvl[name]];
                             }
                             else
                             {
@@ -346,7 +358,7 @@ public class HrRoom : MonoBehaviour
                             else if (lvl[name] == 2 || lvl[name] == 5)
                             {
                                 Tom[1].fillAmount += 0.5f;
-                                mg.capacity = UpgreadStats[lvl[name]];
+                                mg.capacityUpgreadeBufer = UpgreadStats[lvl[name]];
                             }
                             else
                             {
@@ -364,7 +376,7 @@ public class HrRoom : MonoBehaviour
                             else if (lvl[name] == 2 || lvl[name] == 5)
                             {
                                 Sam[1].fillAmount += 0.5f;
-                                mg.capacity = UpgreadStats[lvl[name]];
+                                mg.capacityUpgreadeBufer = UpgreadStats[lvl[name]];
                             }
                             else
                             {
@@ -382,7 +394,7 @@ public class HrRoom : MonoBehaviour
                             else if (lvl[name] == 2 || lvl[name] == 5)
                             {
                                 Dan[1].fillAmount += 0.5f;
-                                mg.capacity = UpgreadStats[lvl[name]];
+                                mg.capacityUpgreadeBufer = UpgreadStats[lvl[name]];
                             }
                             else
                             {
