@@ -25,7 +25,8 @@ public class Meneger : MonoBehaviour
     public CreateStation[] CreateStations;
     public CarSellStation CarsStations;
     public WorkStation workStation;
-    public SellStation kiosk;
+    public Kiosk kiosk;
+    public DropStation KioskDrop1, KioskDrop2;
     public HrRoom room;
 
     public SellStation Cashmachine;
@@ -66,7 +67,7 @@ public class Meneger : MonoBehaviour
                 Target = null;
             }
         }
-        if(TargetType == "CreateStation" || TargetType == "CreateStation2" || TargetType == "CreateStationCar")
+        if(TargetType == "CreateStation" || TargetType == "CreateStation2" || TargetType == "CreateStationCar" || TargetType == "CreateKiosk1" || TargetType == "CreateKiosk2")
         {
             if(Target == null && Cashmachine == Cashmachines[1]) {Target = GetCreateStation(Cashmachines[1]).MenegerPlace; }
 
@@ -88,6 +89,26 @@ public class Meneger : MonoBehaviour
                     room.AddTarget("AddToWorkStation");
                 }
             }
+            else if (TargetType == "CreateKiosk1" || TargetType == "CreateKiosk2")
+            {
+                if (hands.Count == capacity)
+                {
+                    if(TargetType == "CreateKiosk1") { TargetType = "AddToKiosk1"; }
+                    else if (TargetType == "CreateKiosk2") { TargetType = "AddToKiosk2"; }
+                    Target = kiosk.menegerPlace;
+                }
+            }
+        }
+        if(TargetType == "AddToKiosk1" || TargetType == "AddToKiosk2")
+        {
+            agent.SetDestination(Target.position);
+            if(hands.Count == 0)
+            {
+                if (TargetType == "AddToKiosk1") { room.RemoveTarget("CreateKiosk1"); }
+                else if (TargetType == "AddToKiosk2") { room.RemoveTarget("CreateKiosk2"); }
+                DefineTarget();
+            }
+              
         }
         if(TargetType == "AddToCashmachine")
         {
@@ -257,7 +278,8 @@ public class Meneger : MonoBehaviour
         {
             List<int> TargetTypes = new List<int>();
             if(Cashmachines[0].CanWork || Cashmachines[1].CanWork) { TargetTypes.Add(0); }
-            if (workStation.CanWork && CarsStations.CanWork && !room.CheckWork("CreateStationCar") && !room.CheckWork("WorkWork") && !room.CheckWork("TakeStationCar") && !room.CheckWork("CashCarWork") && !room.CheckWork("AddToCashMachineCar")) { TargetTypes.Add(1); }
+            if (workStation.CanWork && CarsStations.CanWork) { TargetTypes.Add(1); }
+            if (kiosk.GetComponent<SellStation>().CanWork && CreateStations[2].CanWork) { TargetTypes.Add(2); }
             int type = TargetTypes[UnityEngine.Random.Range(0, TargetTypes.Count)];
 
             if (type == 0)
@@ -331,15 +353,47 @@ public class Meneger : MonoBehaviour
                 else*/ 
                 if (!room.CheckWork("CreateStationCar") && !room.CheckWork("WorkWork") && !room.CheckWork("TakeStationCar") && !room.CheckWork("CashCarWork") && !room.CheckWork("AddToCashMachineCar"))
                 {
-                    if (workStation.station.CountObj == 0 && !room.CheckWork("CreateStationCar"))
+                    if (workStation.station.CountObj == 0 && TargetType != "Corotune")
                     {
-                        room.AddTarget("CreateStationCar");
-                        Target = GetCreateStation(Cashmachines[0]).MenegerPlace;
-                        TargetType = "CreateStationCar";
+                        TargetType = "Corotune";
+                        StartCoroutine(TimeToGetCarCreate());
                     }
                 }
 
             }
+            if(type == 2)
+            {
+                if(!room.CheckWork("CreateKiosk1") && kiosk.station1.CountObj == 0)
+                {
+                    TargetType = "CreateKiosk1";
+                    room.AddTarget("CreateKiosk1");
+                    Target = GetCreateStation(Cashmachines[1]).MenegerPlace;
+                }
+                else if (!room.CheckWork("CreateKiosk2") && kiosk.station2.CountObj == 0)
+                {
+                    TargetType = "CreateKiosk2";
+                    room.AddTarget("CreateKiosk2");
+                    Target = GetCreateStation(Cashmachines[0]).MenegerPlace;
+                }
+            }
+        }
+    }
+
+    private IEnumerator TimeToGetCarCreate()
+    {
+        yield return new WaitForSeconds(UnityEngine.Random.Range(0.1f, 1f));
+        if (!room.CheckWork("CreateStationCar") && !room.CheckWork("WorkWork") && !room.CheckWork("TakeStationCar") && !room.CheckWork("CashCarWork") && !room.CheckWork("AddToCashMachineCar"))
+        {
+            if (workStation.station.CountObj == 0 && !room.CheckWork("CreateStationCar"))
+            {
+                room.AddTarget("CreateStationCar");
+                Target = GetCreateStation(Cashmachines[0]).MenegerPlace;
+                TargetType = "CreateStationCar";
+            }
+        }
+        if(TargetType == "Corotune")
+        {
+            DefineTarget();
         }
     }
 }

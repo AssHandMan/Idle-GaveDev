@@ -60,7 +60,7 @@ public class MenegerHands : MonoBehaviour
                 Count--;
             }
         }
-        else if ((meneger.TargetType == "CreateStation" || meneger.TargetType == "CreateStation2" || meneger.TargetType == "CreateStationCar") && other.GetComponent<CreateStation>() != null)
+        else if ((meneger.TargetType == "CreateStation" || meneger.TargetType == "CreateStation2" || meneger.TargetType == "CreateStationCar" || meneger.TargetType == "CreateKiosk1" || meneger.TargetType == "CreateKiosk2") && other.GetComponent<CreateStation>() != null)
         {
             Debug.Log("1");
             if (meneger.Target == other.GetComponent<CreateStation>().MenegerPlace)
@@ -75,7 +75,7 @@ public class MenegerHands : MonoBehaviour
             dropStation = other.GetComponent<DropStation>();
             StartCoroutine(AddToCashMachine());
         }
-        else if ((meneger.TargetType == "AddToWorkStation" || meneger.TargetType == "AddToCashMachineCar") && other.GetComponent<DropStation>() != null)
+        else if ((meneger.TargetType == "AddToWorkStation" || meneger.TargetType == "AddToCashMachineCar" || meneger.TargetType == "AddToKiosk1" || meneger.TargetType == "AddToKiosk2") && other.GetComponent<DropStation>() != null)
         {
             dropStation = other.GetComponent<DropStation>();
             StartCoroutine(AddToCashMachine());
@@ -103,7 +103,7 @@ public class MenegerHands : MonoBehaviour
     private IEnumerator GetFromCreateStation()
     {
         yield return new WaitForSeconds(0.2f);
-        if (meneger.TargetType == "CreateStation" || meneger.TargetType == "CreateStation2")
+        if (meneger.TargetType == "CreateStation" || meneger.TargetType == "CreateStation2" || meneger.TargetType == "CreateKiosk1" || meneger.TargetType == "CreateKiosk2")
         {
             if (createStation.station.CountObj == 0) { StartCoroutine(WaitNewCreateObj()); }
             else if (Count < meneger.capacity)
@@ -152,16 +152,47 @@ public class MenegerHands : MonoBehaviour
 
     private IEnumerator AddToCashMachine()
     {
-        yield return new WaitForSeconds(0.2f);
-        if (Count > 0)
+        if(meneger.TargetType == "AddToKiosk1")
         {
-            dropStation.AddObj(IngredientsCollection[Count - 1]);
+            yield return new WaitForSeconds(0.2f);
+            if (Count > 0)
+            {
+                meneger.KioskDrop1.AddObj(IngredientsCollection[Count - 1]);
 
-            Destroy(IngredientsCollection[Count - 1]);
-            IngredientsCollection.RemoveAt(Count - 1);
-            LustPosY -= 0.1f;
-            Count--;
-            if (Count > 0) { StartCoroutine(AddToCashMachine()); }
+                Destroy(IngredientsCollection[Count - 1]);
+                IngredientsCollection.RemoveAt(Count - 1);
+                LustPosY -= 0.1f;
+                Count--;
+                if (Count > 0) { StartCoroutine(AddToCashMachine()); }
+            }
+        }
+        else if (meneger.TargetType == "AddToKiosk2")
+        {
+            yield return new WaitForSeconds(0.2f);
+            if (Count > 0)
+            {
+                meneger.KioskDrop2.AddObj(IngredientsCollection[Count - 1]);
+
+                Destroy(IngredientsCollection[Count - 1]);
+                IngredientsCollection.RemoveAt(Count - 1);
+                LustPosY -= 0.1f;
+                Count--;
+                if (Count > 0) { StartCoroutine(AddToCashMachine()); }
+            }
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.2f);
+            if (Count > 0)
+            {
+                dropStation.AddObj(IngredientsCollection[Count - 1]);
+
+                Destroy(IngredientsCollection[Count - 1]);
+                IngredientsCollection.RemoveAt(Count - 1);
+                LustPosY -= 0.1f;
+                Count--;
+                if (Count > 0) { StartCoroutine(AddToCashMachine()); }
+            }
         }
     }
 
