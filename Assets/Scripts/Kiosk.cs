@@ -6,6 +6,7 @@ public class Kiosk : MonoBehaviour
 {
     public StationObjectCollection station1, station2, station3;
     public GameObject PresentCase;
+    public Transform menegerPlace;
 
     public List<GameObject> QueueList = new List<GameObject>();
     private bool inProgress;

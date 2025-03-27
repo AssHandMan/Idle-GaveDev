@@ -39,6 +39,7 @@ public class ArcadeMachine : MonoBehaviour
             else
             {
                 CanWork = true;
+                hasMenegerTarget = false;
             }
         }
     }

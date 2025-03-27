@@ -16,11 +16,17 @@ public class CreateStation : MonoBehaviour
     public int lvl;
     public BuySpace space;
     public int[] PriceList;
+    public bool CanWork;
 
     void Start()
     {
         station.LustPosY = station.PlaceObj.transform.position.y;
         StartCoroutine(CarCreat());
+    }
+
+    private void Update()
+    {
+        CanWork = gameObject.activeSelf;
     }
 
     private IEnumerator CarCreat()

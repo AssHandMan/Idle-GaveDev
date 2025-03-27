@@ -14,7 +14,18 @@ public class UpgreadeSceneMeneger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyUp(KeyCode.W))
+        {
+            BuyAll();
+        }   
+    }
+
+    public void BuyAll()
+    {
+        for (int i = 0; i < Spaces.Length; i++)
+        {
+            Spaces[i].Buy(true);
+        }
     }
 
     public void LevelUp(BuySpace space)

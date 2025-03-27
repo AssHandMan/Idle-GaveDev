@@ -12,6 +12,9 @@ public class MenegerHands : MonoBehaviour
 
     private CreateStation createStation;
     public DropStation dropStation;
+    public TakeStation takeStation;
+
+    public bool isTakingFromTakeStation;
     void Start()
     {
         
@@ -42,6 +45,7 @@ public class MenegerHands : MonoBehaviour
                 }
                 else
                 {
+                    arcade.hasMenegerTarget = false;
                     meneger.DefineTarget();
                 }
             }
@@ -56,12 +60,14 @@ public class MenegerHands : MonoBehaviour
                 Count--;
             }
         }
-        else if (meneger.TargetType == "CreateStation" && other.GetComponent<CreateStation>() != null)
+        else if ((meneger.TargetType == "CreateStation" || meneger.TargetType == "CreateStation2" || meneger.TargetType == "CreateStationCar" || meneger.TargetType == "CreateKiosk1" || meneger.TargetType == "CreateKiosk2") && other.GetComponent<CreateStation>() != null)
         {
+            Debug.Log("1");
             if (meneger.Target == other.GetComponent<CreateStation>().MenegerPlace)
             {
                 createStation = other.GetComponent<CreateStation>();
                 StartCoroutine(GetFromCreateStation());
+                Debug.Log("2");
             }
         }
         else if (meneger.TargetType == "AddToCashmachine" && other.GetComponent<DropStation>() != null)
@@ -69,23 +75,66 @@ public class MenegerHands : MonoBehaviour
             dropStation = other.GetComponent<DropStation>();
             StartCoroutine(AddToCashMachine());
         }
+        else if ((meneger.TargetType == "AddToWorkStation" || meneger.TargetType == "AddToCashMachineCar" || meneger.TargetType == "AddToKiosk1" || meneger.TargetType == "AddToKiosk2") && other.GetComponent<DropStation>() != null)
+        {
+            dropStation = other.GetComponent<DropStation>();
+            StartCoroutine(AddToCashMachine());
+        }
+        else if(meneger.TargetType == "TakeStationCar" && other.GetComponent<TakeStation>() != null)
+        {
+            takeStation = other.GetComponent<TakeStation>();
+            StartCoroutine(GetFromTakeStation());
+        }
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (meneger.TargetType == "TakeStationCar" && other.GetComponent<TakeStation>() != null && other.GetComponent<CreateStation>() == null)
+        {
+            if(!isTakingFromTakeStation)
+            {
+                takeStation = other.GetComponent<TakeStation>();
+                StartCoroutine(GetFromTakeStation());
+                isTakingFromTakeStation = true;
+            }
+        }
     }
 
     private IEnumerator GetFromCreateStation()
     {
         yield return new WaitForSeconds(0.2f);
-        if(createStation.station.CountObj == 0) { StartCoroutine(WaitNewCreateObj()); }
-        else if((meneger.capacity > meneger.Cashmachine.station.MuxCountObj && Count < meneger.Cashmachine.station.MuxCountObj) || (meneger.capacity < meneger.Cashmachine.station.MuxCountObj && Count < meneger.capacity))
+        if (meneger.TargetType == "CreateStation" || meneger.TargetType == "CreateStation2" || meneger.TargetType == "CreateKiosk1" || meneger.TargetType == "CreateKiosk2")
         {
-            Vector3 pos = new Vector3(transform.position.x, LustPosY, transform.position.z);
-            GameObject newObj = Instantiate(createStation.station.ObjectsList[createStation.station.CountObj - 1], pos, transform.rotation);
-            newObj.transform.parent = transform;
-            IngredientsCollection.Add(newObj);
-            LustPosY += 0.1f;
-            Count++;
-            createStation.GetComponent<TakeStation>().DeleteObj();
+            if (createStation.station.CountObj == 0) { StartCoroutine(WaitNewCreateObj()); }
+            else if (Count < meneger.capacity)
+            {
+                Vector3 pos = new Vector3(transform.position.x, LustPosY, transform.position.z);
+                GameObject newObj = Instantiate(createStation.station.ObjectsList[createStation.station.CountObj - 1], pos, transform.rotation);
+                newObj.transform.parent = transform;
+                IngredientsCollection.Add(newObj);
+                LustPosY += 0.1f;
+                Count++;
+                createStation.GetComponent<TakeStation>().DeleteObj();
 
-            if ((meneger.capacity > meneger.Cashmachine.station.MuxCountObj && Count < meneger.Cashmachine.station.MuxCountObj) || (meneger.capacity < meneger.Cashmachine.station.MuxCountObj && Count < meneger.capacity)) { StartCoroutine(GetFromCreateStation()); }   
+                if(Count < meneger.capacity) { StartCoroutine(GetFromCreateStation()); }
+            }
+        }
+        else if(meneger.TargetType == "CreateStationCar")
+        {
+            Debug.Log("3");
+            if (createStation.station.CountObj == 0) { StartCoroutine(WaitNewCreateObj()); }
+            else if (Count < meneger.capacity)
+            {
+                Vector3 pos = new Vector3(transform.position.x, LustPosY, transform.position.z);
+                GameObject newObj = Instantiate(createStation.station.ObjectsList[createStation.station.CountObj - 1], pos, transform.rotation);
+                newObj.transform.parent = transform;
+                IngredientsCollection.Add(newObj);
+                LustPosY += 0.1f;
+                Count++;
+                createStation.GetComponent<TakeStation>().DeleteObj();
+
+                if (Count < meneger.capacity) { StartCoroutine(GetFromCreateStation()); }
+            }
         }
     }
 
@@ -95,18 +144,75 @@ public class MenegerHands : MonoBehaviour
         StartCoroutine(GetFromCreateStation());
     }
 
-    private IEnumerator AddToCashMachine()
+    private IEnumerator WaitNewCreateObjÑar()
     {
         yield return new WaitForSeconds(0.2f);
-        if (Count > 0 && dropStation.station.CountObj < dropStation.station.MuxCountObj)
-        {
-            dropStation.AddObj(IngredientsCollection[Count - 1]);
+        StartCoroutine(GetFromTakeStation());
+    }
 
-            Destroy(IngredientsCollection[Count - 1]);
-            IngredientsCollection.RemoveAt(Count - 1);
-            LustPosY -= 0.1f;
-            Count--;
-            if (Count > 0 && dropStation.station.CountObj < dropStation.station.MuxCountObj) { StartCoroutine(AddToCashMachine()); }
+    private IEnumerator AddToCashMachine()
+    {
+        if(meneger.TargetType == "AddToKiosk1")
+        {
+            yield return new WaitForSeconds(0.2f);
+            if (Count > 0)
+            {
+                meneger.KioskDrop1.AddObj(IngredientsCollection[Count - 1]);
+
+                Destroy(IngredientsCollection[Count - 1]);
+                IngredientsCollection.RemoveAt(Count - 1);
+                LustPosY -= 0.1f;
+                Count--;
+                if (Count > 0) { StartCoroutine(AddToCashMachine()); }
+            }
         }
+        else if (meneger.TargetType == "AddToKiosk2")
+        {
+            yield return new WaitForSeconds(0.2f);
+            if (Count > 0)
+            {
+                meneger.KioskDrop2.AddObj(IngredientsCollection[Count - 1]);
+
+                Destroy(IngredientsCollection[Count - 1]);
+                IngredientsCollection.RemoveAt(Count - 1);
+                LustPosY -= 0.1f;
+                Count--;
+                if (Count > 0) { StartCoroutine(AddToCashMachine()); }
+            }
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.2f);
+            if (Count > 0)
+            {
+                dropStation.AddObj(IngredientsCollection[Count - 1]);
+
+                Destroy(IngredientsCollection[Count - 1]);
+                IngredientsCollection.RemoveAt(Count - 1);
+                LustPosY -= 0.1f;
+                Count--;
+                if (Count > 0) { StartCoroutine(AddToCashMachine()); }
+            }
+        }
+    }
+
+    private IEnumerator GetFromTakeStation()
+    {
+        yield return new WaitForSeconds(0.2f);
+        if (meneger.workStation.newStation.CountObj == 0 && meneger.workStation.station.CountObj > 0 && Count < meneger.capacity) { StartCoroutine(WaitNewCreateObjÑar()); }
+        else if (meneger.workStation.newStation.CountObj > 0)
+        {
+            Vector3 pos = new Vector3(transform.position.x, LustPosY, transform.position.z);
+            GameObject newObj = Instantiate(takeStation.station.ObjectsList[takeStation.station.CountObj - 1], pos, transform.rotation);
+            newObj.transform.parent = transform;
+            IngredientsCollection.Add(newObj);
+            LustPosY += 0.1f;
+            Count++;
+            takeStation.GetComponent<TakeStation>().DeleteObj();
+
+            if (meneger.workStation.newStation.CountObj > 0) { StartCoroutine(GetFromTakeStation()); }
+            else { isTakingFromTakeStation = false; }
+        }
+        Debug.Log("WHAT");
     }
 }
