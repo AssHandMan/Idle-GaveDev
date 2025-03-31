@@ -8,7 +8,6 @@ public class MenegerHands : MonoBehaviour
     public Meneger meneger;
     public List<GameObject> IngredientsCollection;
     public int Count;
-    public float LustPosY;
 
     private CreateStation createStation;
     public DropStation dropStation;
@@ -34,11 +33,12 @@ public class MenegerHands : MonoBehaviour
             {
                 if (arcade.station.CountObj != 0)
                 {
-                    Vector3 pos = new Vector3(transform.position.x, LustPosY, transform.position.z);
+                    Vector3 pos;
+                    if (Count == 0) { pos = transform.position; }
+                    else { pos = IngredientsCollection[IngredientsCollection.Count - 1].GetComponent<Object>().UpPos.position - arcade.station.ObjectsList[arcade.station.CountObj - 1].GetComponent<Object>().DownPos.localPosition; }
                     GameObject newObj = Instantiate(arcade.station.ObjectsList[arcade.station.CountObj - 1], pos, transform.rotation);
                     newObj.transform.parent = transform;
                     IngredientsCollection.Add(newObj);
-                    LustPosY += 0.1f;
                     Count++;
                     arcade.GetComponent<TakeStation>().DeleteObj();
                     arcade.hasMenegerTarget = false;
@@ -56,7 +56,6 @@ public class MenegerHands : MonoBehaviour
             {
                 Destroy(IngredientsCollection[Count - 1]);
                 IngredientsCollection.RemoveAt(Count - 1);
-                LustPosY -= 0.1f;
                 Count--;
             }
         }
@@ -108,11 +107,12 @@ public class MenegerHands : MonoBehaviour
             if (createStation.station.CountObj == 0) { StartCoroutine(WaitNewCreateObj()); }
             else if (Count < meneger.capacity)
             {
-                Vector3 pos = new Vector3(transform.position.x, LustPosY, transform.position.z);
+                Vector3 pos;
+                if (Count == 0) { pos = transform.position; }
+                else { pos = IngredientsCollection[IngredientsCollection.Count - 1].GetComponent<Object>().UpPos.position - createStation.station.ObjectsList[createStation.station.CountObj - 1].GetComponent<Object>().DownPos.localPosition;  }
                 GameObject newObj = Instantiate(createStation.station.ObjectsList[createStation.station.CountObj - 1], pos, transform.rotation);
                 newObj.transform.parent = transform;
                 IngredientsCollection.Add(newObj);
-                LustPosY += 0.1f;
                 Count++;
                 createStation.GetComponent<TakeStation>().DeleteObj();
 
@@ -125,11 +125,12 @@ public class MenegerHands : MonoBehaviour
             if (createStation.station.CountObj == 0) { StartCoroutine(WaitNewCreateObj()); }
             else if (Count < meneger.capacity)
             {
-                Vector3 pos = new Vector3(transform.position.x, LustPosY, transform.position.z);
+                Vector3 pos;
+                if (Count == 0) { pos = transform.position; }
+                else { pos = IngredientsCollection[IngredientsCollection.Count - 1].GetComponent<Object>().UpPos.position - createStation.station.ObjectsList[createStation.station.CountObj - 1].GetComponent<Object>().DownPos.localPosition; }
                 GameObject newObj = Instantiate(createStation.station.ObjectsList[createStation.station.CountObj - 1], pos, transform.rotation);
                 newObj.transform.parent = transform;
                 IngredientsCollection.Add(newObj);
-                LustPosY += 0.1f;
                 Count++;
                 createStation.GetComponent<TakeStation>().DeleteObj();
 
@@ -161,7 +162,6 @@ public class MenegerHands : MonoBehaviour
 
                 Destroy(IngredientsCollection[Count - 1]);
                 IngredientsCollection.RemoveAt(Count - 1);
-                LustPosY -= 0.1f;
                 Count--;
                 if (Count > 0) { StartCoroutine(AddToCashMachine()); }
             }
@@ -175,7 +175,6 @@ public class MenegerHands : MonoBehaviour
 
                 Destroy(IngredientsCollection[Count - 1]);
                 IngredientsCollection.RemoveAt(Count - 1);
-                LustPosY -= 0.1f;
                 Count--;
                 if (Count > 0) { StartCoroutine(AddToCashMachine()); }
             }
@@ -189,7 +188,6 @@ public class MenegerHands : MonoBehaviour
 
                 Destroy(IngredientsCollection[Count - 1]);
                 IngredientsCollection.RemoveAt(Count - 1);
-                LustPosY -= 0.1f;
                 Count--;
                 if (Count > 0) { StartCoroutine(AddToCashMachine()); }
             }
@@ -202,11 +200,12 @@ public class MenegerHands : MonoBehaviour
         if (meneger.workStation.newStation.CountObj == 0 && meneger.workStation.station.CountObj > 0 && Count < meneger.capacity) { StartCoroutine(WaitNewCreateObjÑar()); }
         else if (meneger.workStation.newStation.CountObj > 0)
         {
-            Vector3 pos = new Vector3(transform.position.x, LustPosY, transform.position.z);
+            Vector3 pos;
+            if (Count == 0) { pos = transform.position; }
+            else { pos = IngredientsCollection[IngredientsCollection.Count - 1].GetComponent<Object>().UpPos.position - takeStation.station.ObjectsList[takeStation.station.CountObj - 1].GetComponent<Object>().DownPos.localPosition; }
             GameObject newObj = Instantiate(takeStation.station.ObjectsList[takeStation.station.CountObj - 1], pos, transform.rotation);
             newObj.transform.parent = transform;
             IngredientsCollection.Add(newObj);
-            LustPosY += 0.1f;
             Count++;
             takeStation.GetComponent<TakeStation>().DeleteObj();
 

@@ -950,6 +950,96 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2778607136161394224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5867838508764409168}
+  - component: {fileID: 3677403267914543307}
+  - component: {fileID: 1264456367881222942}
+  - component: {fileID: 2280891214735910268}
+  m_Layer: 0
+  m_Name: DoorSimple
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5867838508764409168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2778607136161394224}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.988001, y: 18.05387, z: -14.57239}
+  m_LocalScale: {x: 0.78551495, y: 0.7364262, z: 1.3115102}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6399901648736276345}
+  m_Father: {fileID: 7121456267193758910}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3677403267914543307
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2778607136161394224}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 4, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1264456367881222942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2778607136161394224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1056839172861f24ba42f3b5a3ed18b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &2280891214735910268
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2778607136161394224}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2061dea975083b84da34c6b0e1abc45e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2823491963649801448
 GameObject:
   m_ObjectHideFlags: 0
@@ -7964,7 +8054,7 @@ GameObject:
   - component: {fileID: 6399901648737109603}
   - component: {fileID: 6399901648738131705}
   m_Layer: 0
-  m_Name: SI_Env_Door_01
+  m_Name: Door Obj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7979,11 +8069,11 @@ Transform:
   m_GameObject: {fileID: 6399901648736210757}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -8.057409, y: 16.581022, z: -15.357903}
-  m_LocalScale: {x: 0.7855149, y: 0.7364262, z: 2.067328}
+  m_LocalPosition: {x: 0, y: -2, z: -0.446}
+  m_LocalScale: {x: 0.51048374, y: 0.9651, z: 1.669618}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7121456267193758910}
+  m_Father: {fileID: 5867838508764409168}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &6399901648737109603
 MeshFilter:
@@ -8439,7 +8529,7 @@ Transform:
   - {fileID: 8390571348660245381}
   - {fileID: 7127793770969938247}
   - {fileID: 3668729804620464727}
-  - {fileID: 6399901648736276345}
+  - {fileID: 5867838508764409168}
   m_Father: {fileID: 8048225154330092989}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7268510866661814820

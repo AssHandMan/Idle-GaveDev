@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static System.Collections.Specialized.BitVector32;
 
 public class PlayerTakeDropSystem : MonoBehaviour
 {
     public List<GameObject> IngredientsCollection;
     public int MaxCount;
     public int Count;
-    public float LustPosY;
 
     public string ObjType;
     private TakeStation box;
@@ -16,7 +16,6 @@ public class PlayerTakeDropSystem : MonoBehaviour
 
     void Start()
     {
-        LustPosY = transform.position.y;
         plr = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -44,12 +43,13 @@ public class PlayerTakeDropSystem : MonoBehaviour
         {
             if (ObjType == "" | ObjType == box.station.ObjectsList[0].GetComponent<Object>().Type)
             {
-                Vector3 pos = new Vector3(transform.position.x, LustPosY, transform.position.z);
+                Vector3 pos;
+                if(Count == 0) { pos = transform.position; }
+                else { pos = IngredientsCollection[IngredientsCollection.Count - 1].GetComponent<Object>().UpPos.position - box.station.ObjectsList[box.station.CountObj - 1].GetComponent<Object>().DownPos.localPosition; }
                 GameObject newObj = Instantiate(box.station.ObjectsList[box.station.CountObj - 1], pos, transform.rotation);
                 newObj.transform.parent = plr.transform;
                 if (Count == 0) { ObjType = newObj.GetComponent<Object>().Type; }
                 IngredientsCollection.Add(newObj);
-                LustPosY += 0.1f;
                 Count++;
                 box.DeleteObj();
             }
@@ -79,7 +79,6 @@ public class PlayerTakeDropSystem : MonoBehaviour
                 drop.AddObj(IngredientsCollection[Count - 1]);
                 Destroy(IngredientsCollection[Count - 1]);
                 IngredientsCollection.RemoveAt(Count - 1);
-                LustPosY -= 0.1f;
                 Count--;
                 if (Count == 0) { ObjType = ""; }
             }
@@ -90,7 +89,6 @@ public class PlayerTakeDropSystem : MonoBehaviour
             {
                 Destroy(IngredientsCollection[Count - 1]);
                 IngredientsCollection.RemoveAt(Count - 1);
-                LustPosY -= 0.1f;
                 Count--;
                 if (Count == 0) { ObjType = ""; }
             }
@@ -100,7 +98,6 @@ public class PlayerTakeDropSystem : MonoBehaviour
                 {
                     Destroy(IngredientsCollection[Count - 1]);
                     IngredientsCollection.RemoveAt(Count - 1);
-                    LustPosY -= 0.1f;
                     Count--;
                     Delivery.GetComponent<DeliveryMan>().AddToOrder();
                     if (Count == 0) { ObjType = ""; }

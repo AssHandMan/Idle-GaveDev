@@ -5,4 +5,5 @@ using UnityEngine;
 public class Object : MonoBehaviour
 {
     public string Type;
+    public Transform UpPos, DownPos;
 }

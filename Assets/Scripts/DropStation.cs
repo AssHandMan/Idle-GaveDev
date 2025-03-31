@@ -6,7 +6,6 @@ public class DropStation : MonoBehaviour
 {
     public StationObjectCollection station;
     public string ObjectType;
-    public float deltaY;
 
     void Start()
     {
@@ -23,11 +22,12 @@ public class DropStation : MonoBehaviour
     {
         if (obj.GetComponent<Object>().Type == ObjectType)
         {
-            Vector3 pos = new Vector3(station.PlaceObj.transform.position.x, station.LustPosY, station.PlaceObj.transform.position.z);
-            GameObject newObj = Instantiate(obj, pos, transform.rotation);
+            Vector3 pos;
+            if (station.CountObj == 0) { pos = station.PlaceObj.transform.position; }
+            else { pos = station.ObjectsList[station.ObjectsList.Count - 1].GetComponent<Object>().UpPos.position - obj.GetComponent<Object>().DownPos.localPosition; }
+            GameObject newObj = Instantiate(obj, pos, station.PlaceObj.transform.rotation);
             newObj.transform.parent = transform;
             station.ObjectsList.Add(newObj);
-            station.LustPosY += deltaY;
             station.CountObj++;
         }
     }

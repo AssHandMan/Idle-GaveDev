@@ -17,7 +17,18 @@ public class UpgreadeSceneMeneger : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.W))
         {
             BuyAll();
-        }   
+        }
+        if (Input.GetKeyUp(KeyCode.Q))
+        {
+            BuyNext();
+        }
+    }
+
+    public void BuyNext()
+    {
+        Spaces[LustPlace].Buy(true);
+        LustPlace++;
+        Spaces[LustPlace].gameObject.SetActive(true);
     }
 
     public void BuyAll()
