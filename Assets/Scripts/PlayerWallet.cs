@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+public enum TypeAccount { Free, Manager, SEO}
 
 public class PlayerWallet : MonoBehaviour
 {
     public Text Mtext, Dtext, Stext;
     public int Money, Diamonds, Skins;
     public float MoneyMultiplier;
+    public TypeAccount typeAccount;
     void Start()
     {
         TextForm(Money, Mtext);
