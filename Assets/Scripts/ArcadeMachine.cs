@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static System.Collections.Specialized.BitVector32;
-using static UnityEditor.PlayerSettings;
 
 public class ArcadeMachine : MonoBehaviour
 {
