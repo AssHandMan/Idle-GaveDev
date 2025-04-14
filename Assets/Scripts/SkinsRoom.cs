@@ -95,12 +95,14 @@ public class SkinsRoom : MonoBehaviour
             characters[SkinPos].SetActive(false);
             SkinPos++;
             characters[SkinPos].SetActive(true);
+            Character.transform.eulerAngles = new Vector3(0, 70, 0);
         }
         else
         {
             characters[SkinPos].SetActive(false);
             SkinPos--;
             characters[SkinPos].SetActive(true);
+            Character.transform.eulerAngles = new Vector3(0, 70, 0);
         }
         CanChange = true;
 

@@ -16,7 +16,8 @@ public class CarSellStation : MonoBehaviour
     public BuySpace space;
     public int lvl;
     public int[] PriceList;
-
+    public Transform SaveStationPlace, WorkPlace;
+    public bool isSelling;
     void Start()
     {
         isIncreasing = true;
@@ -30,7 +31,7 @@ public class CarSellStation : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if ((other.gameObject.tag == "Player" && lvl < 2) || (other.gameObject.tag == "Worker"))
+        if ((other.gameObject.tag == "Player" && lvl < 2 && !isSelling) || (other.gameObject.tag == "Worker") || (other.GetComponent<Meneger>() != null && lvl < 2 && !isSelling))
         {
             StartCoroutine(WorkSpaceEffect());
             StartCoroutine(Working());
@@ -39,7 +40,7 @@ public class CarSellStation : MonoBehaviour
     }
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player" && lvl < 2)
+        if (other.gameObject.tag == "Player" && lvl < 2 || other.GetComponent<Meneger>() != null && lvl < 2)
         {
             StopAllCoroutines();
             WorkSpace.GetComponent<SpriteRenderer>().color = Color.white;
@@ -55,7 +56,6 @@ public class CarSellStation : MonoBehaviour
         {
             Destroy(station.ObjectsList[station.CountObj - 1]);
             station.ObjectsList.RemoveAt(station.CountObj - 1);
-            station.LustPosY -= 0.1f;
             station.CountObj--;
             wallet.ChangeCount(5, "Money");
             client.ChangeCountBuy();

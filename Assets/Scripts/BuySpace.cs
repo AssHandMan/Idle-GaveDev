@@ -9,21 +9,25 @@ public class BuySpace : MonoBehaviour
 
     public Text PriceText;
     public Image ProgressBar;
-    public int price;
+    public int price, startPrice;
     public string type;
 
     private PlayerMovement plr;
     private bool inProgress;
     private float step;
+    private float savedElapsedTime = 0f;    
     private PlayerWallet wallet;
     private UpgreadeSceneMeneger meneger;
+    private Animator anim;
 
     void Start()
     {
         PriceText.text = price.ToString();
         step = price;
+        startPrice = price;
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
         meneger = GameObject.FindGameObjectWithTag("Meneger").GetComponent<UpgreadeSceneMeneger>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -44,6 +48,7 @@ public class BuySpace : MonoBehaviour
     {
         if(other.gameObject.GetComponent<PlayerMovement>() != null)
         {
+            anim.SetBool("isBigger", true);
             plr = other.gameObject.GetComponent<PlayerMovement>();
         }
     }
@@ -62,13 +67,14 @@ public class BuySpace : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerMovement>() != null)
         {
+            anim.SetBool("isBigger", false);
             plr = null;
             inProgress = false;
             StopAllCoroutines();
         }
     }
 
-    public void Buy()
+    public void Buy(bool forAll)
     {
         if (station.name == "Door")
         {
@@ -134,21 +140,37 @@ public class BuySpace : MonoBehaviour
             }
         }
 
-        meneger.LevelUp(this);
+        if (!forAll) { meneger.LevelUp(this); }
 
         gameObject.SetActive(false);
     }
 
     private IEnumerator Paying()
     {
-        float totalTime = 2f;
-        float elapsedTime = 0f;
-        int startPrice = price;
+        // Инициализируем переменные
+        float elapsedTime = savedElapsedTime;
+        float totalTime = 0f;
+
+        // Устанавливаем время в зависимости от цены плитки
+        if (startPrice == 5)
+        {
+            totalTime = 0.3f; // Заполнение за 2 секунды для цены 5
+        }
+        else if (startPrice == 25)
+        {
+            totalTime = 1f; // Заполнение за 3 секунды для цены 25
+        }
+        else
+        {
+            totalTime = 2f; // Для других цен оставляем стандартное время
+        }
 
         while (price > 0 && wallet.Money > 0)
         {
             elapsedTime += Time.deltaTime;
-            float progress = Mathf.Clamp01(elapsedTime / totalTime);  // Держим прогресс в диапазоне [0, 1]
+            savedElapsedTime = elapsedTime; // Сохраняем прогресс времени
+
+            float progress = Mathf.Clamp01(elapsedTime / totalTime); // Нормализуем прогресс
 
             int amountToDeduct = Mathf.Min(Mathf.CeilToInt(startPrice * progress) - (startPrice - price), wallet.Money, price);
 
@@ -156,7 +178,7 @@ public class BuySpace : MonoBehaviour
             {
                 wallet.ChangeCount(-amountToDeduct, "Money");
                 price -= amountToDeduct;
-                ProgressBar.fillAmount = 1f - ((float)price / startPrice);
+                ProgressBar.fillAmount = 1f - ((float)price / startPrice); // Обновляем прогресс-бар
                 PriceText.text = price.ToString();
             }
 
@@ -165,9 +187,11 @@ public class BuySpace : MonoBehaviour
 
         if (price <= 0)
         {
-            Buy();
+            Buy(false); // Если цена стала 0, совершаем покупку
+            savedElapsedTime = 0f; // Сбрасываем сохранённое время
         }
     }
+
 
     public void ChangePrice(int count)
     {

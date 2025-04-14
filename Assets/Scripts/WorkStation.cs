@@ -6,22 +6,23 @@ public class WorkStation : MonoBehaviour
 {
     public StationObjectCollection station, newStation;
     public TakeStation TakeStationNew;
-    public GameObject obj, WorkSpace, HandsPlayer, MainObj, Worker;
-    public bool CanWork;
+    public GameObject obj, WorkSpace, MainObj, Worker;
+    public bool CanWork, isSelling;
     private bool isIncreasing;
     public float TimeWork;
 
     public BuySpace space;
     public int lvl;
     public int[] PriceList;
+    public Transform SaveStationPlace, WorkPlace, NewStationPlace;
+
+    private GameObject meneger, player;
 
     void Start()
     {
         isIncreasing = true;
-        HandsPlayer = GameObject.FindGameObjectWithTag("Hands");
     }
 
-    // Update is called once per frame
     void Update()
     {
         CanWork = MainObj.activeSelf;
@@ -31,10 +32,10 @@ public class WorkStation : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && lvl < 2)
         {
-            HandsPlayer.SetActive(false);
-            StartCoroutine(WorkSpaceEffect());
+            if (meneger == null && lvl < 2) StartCoroutine(WorkSpaceEffect());
             WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
             TakeStationNew.CanGive = false;
+            isSelling = true;
             if (station.CountObj >= 1 & newStation.CountObj < newStation.MuxCountObj) { StartCoroutine(Working()); }
         }
 
@@ -43,17 +44,43 @@ public class WorkStation : MonoBehaviour
             StartCoroutine(WorkSpaceEffect());
             WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
             StartCoroutine(Working());
+            isSelling = true;
+        }
+
+        if (other.GetComponent<Meneger>() != null && lvl < 2 && other.GetComponent<Meneger>().TargetType == "WorkWork")
+        {
+            if (!isSelling) { StartCoroutine(WorkSpaceEffect()); }
+            StartCoroutine(Working());
+            WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
+            isSelling = true;
+            meneger = other.gameObject;
         }
     }
+
+    public void OnTriggerStay(Collider other)
+    {
+        
+    }
+
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player" && lvl < 2)
+        if (other.gameObject.tag == "Player" && lvl < 2 && meneger == null)
         {
-            HandsPlayer.SetActive(true);
             TakeStationNew.CanGive = true;
             StopAllCoroutines();
             WorkSpace.GetComponent<SpriteRenderer>().color = Color.white;
             WorkSpace.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            isSelling = false;
+        }
+
+        if (other.GetComponent<Meneger>() != null && lvl < 2)
+        {
+            TakeStationNew.CanGive = true;
+            StopAllCoroutines();
+            WorkSpace.GetComponent<SpriteRenderer>().color = Color.white;
+            WorkSpace.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            isSelling = false;
+            meneger = null;
         }
     }
 
@@ -65,13 +92,13 @@ public class WorkStation : MonoBehaviour
         {
             Destroy(station.ObjectsList[station.CountObj - 1]);
             station.ObjectsList.RemoveAt(station.CountObj - 1);
-            station.LustPosY -= 0.4f;
             station.CountObj--;
 
-            Vector3 pos = new Vector3(newStation.PlaceObj.transform.position.x, newStation.LustPosY, newStation.PlaceObj.transform.position.z);
+            Vector3 pos;
+            if (newStation.CountObj == 0) { pos = newStation.PlaceObj.transform.position; }
+            else { pos = newStation.ObjectsList[newStation.ObjectsList.Count - 1].GetComponent<Object>().UpPos.position - obj.GetComponent<Object>().DownPos.localPosition; }
             GameObject newObj = Instantiate(obj, pos, obj.transform.rotation);
             newStation.ObjectsList.Add(newObj);
-            newStation.LustPosY += 0.1f;
             newStation.CountObj++;
         }
         StartCoroutine(Working());

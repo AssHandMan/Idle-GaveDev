@@ -7,7 +7,7 @@ public class CreateStation : MonoBehaviour
     public StationObjectCollection station;
     public GameObject[] RefObj;
     public GameObject Car, CarPlace;
-    public float TimeToCreate, TimeCreateCar, deltaY;
+    public float TimeToCreate, TimeCreateCar;
 
     private GameObject CarNow;
     private int CountUploads;
@@ -16,11 +16,16 @@ public class CreateStation : MonoBehaviour
     public int lvl;
     public BuySpace space;
     public int[] PriceList;
+    public bool CanWork;
 
     void Start()
     {
-        station.LustPosY = station.PlaceObj.transform.position.y;
         StartCoroutine(CarCreat());
+    }
+
+    private void Update()
+    {
+        CanWork = gameObject.activeSelf;
     }
 
     private IEnumerator CarCreat()
@@ -48,11 +53,12 @@ public class CreateStation : MonoBehaviour
 
         if (station.CountObj < station.MuxCountObj && CountUploads != 0)
         {
-            Vector3 pos = new Vector3(station.PlaceObj.transform.position.x, station.LustPosY, station.PlaceObj.transform.position.z);
+            Vector3 pos;
             int a = Random.Range(0, RefObj.Length);
-            GameObject obj = Instantiate(RefObj[a], pos, RefObj[a].transform.rotation);
+            if (station.CountObj == 0) { pos = station.PlaceObj.transform.position; }
+            else { pos = station.ObjectsList[station.ObjectsList.Count - 1].GetComponent<Object>().UpPos.position - RefObj[a].GetComponent<Object>().DownPos.localPosition; }
+            GameObject obj = Instantiate(RefObj[a], pos, station.PlaceObj.transform.rotation);
             station.ObjectsList.Add(obj);
-            station.LustPosY += deltaY;
             station.CountObj++;
             CountUploads--;
             StartCoroutine(Creating());
