@@ -1,17 +1,30 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UpgreadeSceneMeneger : MonoBehaviour
 {
-    public BuySpace[] Spaces;
+    public BuySpace[] Spaces, NewSpaces;
+
+    public List<int> PriceList;
+    public List<Vector3> lPos;
+    public List<GameObject> stations, parents;
+
     public Text CountLvl;
     public int lvl, LustPlace;
     void Start()
     {
         CountLvl.text = lvl.ToString();
+
+        for (int i = 0; i < Spaces.Length; i++)
+        {
+            NewSpaces[i].price = PriceList[i];
+            NewSpaces[i].station = stations[i];
+            NewSpaces[i].transform.parent = parents[i].transform;
+            NewSpaces[i].transform.localPosition = lPos[i];
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyUp(KeyCode.W))
@@ -26,26 +39,26 @@ public class UpgreadeSceneMeneger : MonoBehaviour
 
     public void BuyNext()
     {
-        Spaces[LustPlace].Buy(true);
+        NewSpaces[LustPlace].Buy(true);
         LustPlace++;
-        Spaces[LustPlace].gameObject.SetActive(true);
+        NewSpaces[LustPlace].gameObject.SetActive(true);
     }
 
     public void BuyAll()
     {
-        for (int i = 0; i < Spaces.Length; i++)
+        for (int i = 0; i < NewSpaces.Length; i++)
         {
-            Spaces[i].Buy(true);
+            NewSpaces[i].Buy(true);
         }
     }
 
     public void LevelUp(BuySpace space)
     {
-        for(int i = LustPlace; i < Spaces.Length; i++)
+        for(int i = LustPlace; i < NewSpaces.Length; i++)
         {
-            if (Spaces[i] == space)
+            if (NewSpaces[i] == space)
             {
-                if (i + 1 < Spaces.Length ) { Spaces[i + 1].gameObject.SetActive(true); }
+                if (i + 1 < NewSpaces.Length ) { NewSpaces[i + 1].gameObject.SetActive(true); }
                 LustPlace = i;
                 break;
             }
