@@ -18,7 +18,6 @@ public class BuySpace : MonoBehaviour
     private float savedElapsedTime = 0f;    
     private PlayerWallet wallet;
     private UpgreadeSceneMeneger meneger;
-    private Animator anim;
 
     void Start()
     {
@@ -27,7 +26,6 @@ public class BuySpace : MonoBehaviour
         startPrice = price;
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
         meneger = GameObject.FindGameObjectWithTag("Meneger").GetComponent<UpgreadeSceneMeneger>();
-        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -48,7 +46,6 @@ public class BuySpace : MonoBehaviour
     {
         if(other.gameObject.GetComponent<PlayerMovement>() != null)
         {
-            anim.SetBool("isBigger", true);
             plr = other.gameObject.GetComponent<PlayerMovement>();
         }
     }
@@ -67,7 +64,6 @@ public class BuySpace : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerMovement>() != null)
         {
-            anim.SetBool("isBigger", false);
             plr = null;
             inProgress = false;
             StopAllCoroutines();
