@@ -1,10 +1,6 @@
-using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -20,7 +16,7 @@ public class Meneger : MonoBehaviour
     public MenegerHands hands;
     
     public ArcadeMachine[] arcade;
-    public Trashbin bin;
+    public Trashbin[] bin;
     public SellStation[] Cashmachines;
     public CreateStation[] CreateStations;
     public CarSellStation CarsStations;
@@ -30,8 +26,6 @@ public class Meneger : MonoBehaviour
     public HrRoom room;
 
     public SellStation Cashmachine;
-    private static float cooldownTaskTime = 0f;
-    private static float cooldownDuration = 0.5f;
 
     void Start()
     {
@@ -55,7 +49,15 @@ public class Meneger : MonoBehaviour
             if(hands.Count > 0)
             {
                 TargetType = "Delete";
-                Target = bin.MenegerPlace;
+                if (Cashmachines[1].CanWork)
+                {
+                    if (transform.localPosition.x < 17) { Target = bin[0].MenegerPlace; }
+                    else { Target = bin[1].MenegerPlace; }
+                }
+                else
+                {
+                    Target = bin[0].MenegerPlace;
+                }
             }
         }
         if (TargetType == "Delete")
@@ -82,7 +84,7 @@ public class Meneger : MonoBehaviour
             }
             else if(TargetType == "CreateStationCar")
             {
-                if ((hands.Count == capacity && capacity <= CarsStations.station.MuxCountObj) || (hands.Count == CarsStations.station.MuxCountObj && capacity >= CarsStations.station.MuxCountObj))
+                if ((hands.Count == capacity && capacity <= workStation.newStation.MuxCountObj) || (hands.Count == workStation.newStation.MuxCountObj && capacity >= workStation.newStation.MuxCountObj))
                 {
                     TargetType = "AddToWorkStation";
                     Target = workStation.SaveStationPlace;
@@ -137,7 +139,7 @@ public class Meneger : MonoBehaviour
         if(TargetType == "AddToWorkStation")
         {
             agent.SetDestination(Target.position);
-            if (hands.Count == 0 && workStation.lvl < 2 && !workStation.isSelling)
+            if (hands.Count == 0 && workStation.lvl < 2)
             {
                 Target = workStation.WorkPlace;
                 TargetType = "WorkWork";
@@ -169,6 +171,7 @@ public class Meneger : MonoBehaviour
         if (TargetType == "TakeStationCar")
         {
             agent.SetDestination(workStation.NewStationPlace.position);
+
             if ((workStation.newStation.CountObj == 0 && workStation.station.CountObj == 0) || hands.Count == capacity)
             {
                 TargetType = "AddToCashMachineCar";
@@ -205,7 +208,7 @@ public class Meneger : MonoBehaviour
             {
                 room.RemoveTarget("CreateStationCar");
                 room.RemoveTarget("CashCarWork");
-                DefineTarget();
+                TargetType = "";
             }
         }
     }
@@ -393,7 +396,7 @@ public class Meneger : MonoBehaviour
         }
         if(TargetType == "Corotune")
         {
-            DefineTarget();
+            TargetType = "";
         }
     }
 }

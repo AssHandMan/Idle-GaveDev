@@ -36,11 +36,12 @@ public class Kiosk : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         station1.GetComponent<TakeStation>().DeleteObj();
         station2.GetComponent<TakeStation>().DeleteObj();
-        Vector3 pos = new Vector3(station3.PlaceObj.transform.position.x, station3.LustPosY, station3.PlaceObj.transform.position.z);
+        Vector3 pos;
+        if (station3.CountObj == 0) { pos = station3.PlaceObj.transform.position; }
+        else { pos = station3.ObjectsList[station3.ObjectsList.Count - 1].GetComponent<Object>().UpPos.position - PresentCase.GetComponent<Object>().DownPos.localPosition; }
         GameObject newObj = Instantiate(PresentCase, pos, transform.rotation);
         newObj.transform.parent = station3.transform;
         station3.ObjectsList.Add(newObj);
-        station3.LustPosY += 0.1f;
         station3.CountObj++;
         
         if (station1.CountObj > 0 && station2.CountObj > 0)

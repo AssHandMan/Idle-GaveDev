@@ -67,7 +67,7 @@ public class SellStation : MonoBehaviour
         {
             if (other.gameObject.tag == "Player" && lvl < 2)
             {
-                StartCoroutine(WorkSpaceEffect());
+                if(meneger == null && lvl < 2) StartCoroutine(WorkSpaceEffect());
                 StartCoroutine(Working());
                 WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
                 isSelling = true;
@@ -124,7 +124,6 @@ public class SellStation : MonoBehaviour
             {
                 Destroy(station.ObjectsList[station.CountObj - 1]);
                 station.ObjectsList.RemoveAt(station.CountObj - 1);
-                station.LustPosY -= deltaY;
                 station.CountObj--;
                 //wallet.ChangeCount(5, "Money");//изменить
                 _stackOfMoney.GetComponent<MoneyZoneController>().Add();

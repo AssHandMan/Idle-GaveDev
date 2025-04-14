@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static System.Collections.Specialized.BitVector32;
 
 public class ArcadeMachine : MonoBehaviour
 {
@@ -59,11 +58,12 @@ public class ArcadeMachine : MonoBehaviour
         client.play = true;
         client.GoAway();
         client = null;
-        Vector3 pos = new Vector3(station.PlaceObj.transform.position.x, station.LustPosY, station.PlaceObj.transform.position.z);
+        Vector3 pos;
+        if (station.CountObj == 0) { pos = station.PlaceObj.transform.position; }
+        else { pos = station.ObjectsList[station.ObjectsList.Count - 1].GetComponent<Object>().UpPos.position - trash.GetComponent<Object>().DownPos.localPosition; }
         GameObject newObj = Instantiate(trash, pos, transform.rotation);
-        newObj.transform.parent = transform;
+        //newObj.transform.parent = transform;
         station.ObjectsList.Add(newObj);
-        station.LustPosY += 0.1f;
         station.CountObj++;
         CanWork = false;
         isPlaying = false;

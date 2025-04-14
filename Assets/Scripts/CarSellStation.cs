@@ -56,7 +56,6 @@ public class CarSellStation : MonoBehaviour
         {
             Destroy(station.ObjectsList[station.CountObj - 1]);
             station.ObjectsList.RemoveAt(station.CountObj - 1);
-            station.LustPosY -= 0.1f;
             station.CountObj--;
             wallet.ChangeCount(5, "Money");
             client.ChangeCountBuy();

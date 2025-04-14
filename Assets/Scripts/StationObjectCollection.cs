@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static System.Collections.Specialized.BitVector32;
 
 public class StationObjectCollection : MonoBehaviour
 {
@@ -10,11 +9,10 @@ public class StationObjectCollection : MonoBehaviour
     public List<GameObject> ObjectsList;
 
     public int MuxCountObj, CountObj;
-    public float LustPosY;
 
     void Start()
     {
-        LustPosY = PlaceObj.transform.position.y;
+
     }
 
     // Update is called once per frame
@@ -29,7 +27,6 @@ public class StationObjectCollection : MonoBehaviour
         {
             Destroy(ObjectsList[i]);
             ObjectsList.RemoveAt(i);
-            LustPosY -= 0.1f;
         }
     }
 

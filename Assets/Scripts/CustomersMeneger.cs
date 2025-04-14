@@ -11,17 +11,17 @@ public class CustomersMeneger : MonoBehaviour
     public GameObject Car, Delivery;
     private string[] CustomerType = { "Poor", "Rich", "Bloger" };
     public int CountCustomer, MaxCustomer, MaxCars, MaxKioskCustomers;
-    public float CustomerCreateTime;
+    public float CustomerCreateTime, DeliveryManCreateTime;
     public Transform CustomerPos, DeletePos, CarPlace, DeliveryPlace;
 
     public int CountOfCars;
-    public string[] QueueTypes;
 
     public SellStation CashMachine1, CashMachine2, kiosk;
     public CarSellStation CarCashMachine;
     public GameObject[] ArcadeMachines;
     public GameObject[] Toilets;
     private GameObject DeliveryNow;
+    private List<string> QueueTypes;
 
     private int a;
 
@@ -145,9 +145,11 @@ public class CustomersMeneger : MonoBehaviour
 
     private IEnumerator DefinQueue()
     {
+        #region old
+        /*
         if (CashMachine1.CanWork && CashMachine1.Queue.Length < MaxCustomer)
         {
-            
+
             if (CashMachine1.LustCustomer == null)
             {
                 yield return new WaitForSeconds(CustomerCreateTime);
@@ -210,12 +212,40 @@ public class CustomersMeneger : MonoBehaviour
         else
         {
             StartCoroutine(DefinQueue());
+        }*/
+        #endregion
+
+        QueueTypes = new List<string>();
+
+        if (CashMachine1.CanWork && CashMachine1.Queue.Length < MaxCustomer && CashMachine1.LustCustomer == null) { QueueTypes.Add("Cash1"); }
+        if (CarCashMachine.CanWork && CountOfCars < MaxCars) { QueueTypes.Add("Car"); }
+        if (CashMachine2.CanWork && CashMachine2.Queue.Length < MaxCustomer && CashMachine1.LustCustomer == null) { QueueTypes.Add("Cash2"); }
+        if (kiosk.CanWork && kiosk.Queue.Length < MaxKioskCustomers) { QueueTypes.Add("Kiosk"); }
+
+        if (QueueTypes.Count > 0)
+        {
+            for (int i = QueueTypes.Count; i > 0; i--)
+            {
+                string type = QueueTypes[Random.Range(0, QueueTypes.Count)];
+                if (type == "Cash1") { CreateCustomer(CashMachine1); }
+                else if (type == "Cash2") { CreateCustomer(CashMachine2); }
+                else if (type == "Kiosk") { CreateCustomer(kiosk); }
+                else { CreateCar(); }
+                QueueTypes.Remove(type);
+                yield return new WaitForSeconds(CustomerCreateTime);
+            }
+            StartCoroutine(DefinQueue());
+        }
+        else
+        {
+            yield return new WaitForSeconds(CustomerCreateTime);
+            StartCoroutine(DefinQueue());
         }
     }
     private IEnumerator DeliverManCreateProcces()
     {
         if (DeliveryNow == null) { CreateDeliverMan(); }
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(DeliveryManCreateTime);
         StartCoroutine(DeliverManCreateProcces());
     }
 }
