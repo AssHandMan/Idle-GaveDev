@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class UpgreadeSceneMeneger : MonoBehaviour
 {
-    public BuySpace[] Spaces, NewSpaces;
+    public BuySpace[] NewSpaces;
 
     public List<int> PriceList;
     public List<Vector3> lPos;
@@ -16,7 +16,7 @@ public class UpgreadeSceneMeneger : MonoBehaviour
     {
         CountLvl.text = lvl.ToString();
 
-        for (int i = 0; i < Spaces.Length; i++)
+        for (int i = 0; i < NewSpaces.Length; i++)
         {
             NewSpaces[i].price = PriceList[i];
             NewSpaces[i].station = stations[i];

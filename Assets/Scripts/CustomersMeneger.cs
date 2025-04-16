@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static System.Collections.Specialized.BitVector32;
 
 public class CustomersMeneger : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class CustomersMeneger : MonoBehaviour
     public GameObject Car, Delivery;
     private string[] CustomerType = { "Poor", "Rich", "Bloger" };
     public int CountCustomer, MaxCustomer, MaxCars, MaxKioskCustomers;
-    public float CustomerCreateTime, DeliveryManCreateTime;
+    public float CustomerCreateTime, DeliveryManCreateTime, timeEventInterval;
     public Transform CustomerPos, DeletePos, CarPlace, DeliveryPlace;
 
     public int CountOfCars;
@@ -29,6 +30,7 @@ public class CustomersMeneger : MonoBehaviour
     {
         StartCoroutine(DefinQueue());
         StartCoroutine(DeliverManCreateProcces());
+        StartCoroutine(MakeCall());
     }
 
     void Update()
@@ -247,5 +249,39 @@ public class CustomersMeneger : MonoBehaviour
         if (DeliveryNow == null) { CreateDeliverMan(); }
         yield return new WaitForSeconds(DeliveryManCreateTime);
         StartCoroutine(DeliverManCreateProcces());
+    }
+
+    private IEnumerator MakeCall()
+    {
+        yield return new WaitForSeconds(timeEventInterval);
+        if (!CashMachine1.isCalling && !CashMachine2.isCalling)
+        {
+            List<SellStation> StationsList = new List<SellStation>();
+            if (CashMachine1.CanWork && CashMachine1.Queue.Length > 0 && !CashMachine1.isCalling) { StationsList.Add(CashMachine1); }
+            if (CashMachine2.CanWork && CashMachine2.Queue.Length > 0 && !CashMachine2.isCalling) { StationsList.Add(CashMachine2); }
+            SellStation station = StationsList[Random.Range(0, StationsList.Count)];
+            if (station.Queue.Length > 0)
+            {
+
+                if (!station.isCalling)
+                {
+                    GameObject customer = station.Queue[Random.Range(0, station.Queue.Length)];
+                    Customer _customer = customer.GetComponent<Customer>();
+                    if (_customer.target != null)
+                    {
+                        if (_customer.transform.position.x == _customer.targetPos.position.x && _customer.transform.position.z == _customer.targetPos.position.z)
+                        {
+                            if (!_customer.isCalling)
+                            {
+                                _customer.MakeCall();
+                                station.isCalling = true;
+                                station.CallingCustomer = _customer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        StartCoroutine(MakeCall());
     }
 }
