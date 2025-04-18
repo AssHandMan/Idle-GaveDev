@@ -29,7 +29,7 @@ public class CarCustomer : MonoBehaviour
 
         rb.linearVelocity = new Vector3(0, 0, speed);
         if (OrderBoard != null) { OrderBoard.transform.LookAt(Camera.main.transform.position); }
-        if (transform.position.z < station.transform.position.z + 3)
+        if (transform.position.z < station.transform.position.z-2)
         {
             if (BuyObjCount != 0)
             {

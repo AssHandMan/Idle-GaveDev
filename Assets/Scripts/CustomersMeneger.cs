@@ -219,9 +219,9 @@ public class CustomersMeneger : MonoBehaviour
 
         QueueTypes = new List<string>();
 
-        if (CashMachine1.CanWork && CashMachine1.Queue.Length < MaxCustomer && CashMachine1.LustCustomer == null) { QueueTypes.Add("Cash1"); }
+        if (CashMachine1.CanWork && CashMachine1.Queue.Length < MaxCustomer && CashMachine1.LustCustomer == null && !CashMachine1.isCalling) { QueueTypes.Add("Cash1"); }
         if (CarCashMachine.CanWork && CountOfCars < MaxCars) { QueueTypes.Add("Car"); }
-        if (CashMachine2.CanWork && CashMachine2.Queue.Length < MaxCustomer && CashMachine1.LustCustomer == null) { QueueTypes.Add("Cash2"); }
+        if (CashMachine2.CanWork && CashMachine2.Queue.Length < MaxCustomer && CashMachine1.LustCustomer == null && !CashMachine1.isCalling) { QueueTypes.Add("Cash2"); }
         if (kiosk.CanWork && kiosk.Queue.Length < MaxKioskCustomers) { QueueTypes.Add("Kiosk"); }
 
         if (QueueTypes.Count > 0)

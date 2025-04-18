@@ -128,7 +128,7 @@ MonoBehaviour:
   station: {fileID: 0}
   CountObjImg: {fileID: 7698300453545136811}
   OrderBoard: {fileID: 3638934081338598805}
-  speed: -5
+  speed: -10
   BuyObjCount: 0
 --- !u!54 &2069025170329251504
 Rigidbody:
@@ -176,8 +176,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.9872097, y: 1.6433531, z: 1.1021795}
-  m_Center: {x: 0, y: 0.63089484, z: -2.0395627}
+  m_Size: {x: 1.9872097, y: 1.6433531, z: 2.4813075}
+  m_Center: {x: 0, y: 0.63089484, z: -2.7291267}
 --- !u!1 &1843811720467106995
 GameObject:
   m_ObjectHideFlags: 0
