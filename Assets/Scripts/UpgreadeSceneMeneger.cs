@@ -16,13 +16,13 @@ public class UpgreadeSceneMeneger : MonoBehaviour
     {
         CountLvl.text = lvl.ToString();
 
-        for (int i = 0; i < NewSpaces.Length; i++)
+        /*for (int i = 0; i < NewSpaces.Length; i++)
         {
             NewSpaces[i].price = PriceList[i];
             NewSpaces[i].station = stations[i];
             NewSpaces[i].transform.parent = parents[i].transform;
             NewSpaces[i].transform.localPosition = lPos[i];
-        }
+        }*/
     }
 
     void Update()
