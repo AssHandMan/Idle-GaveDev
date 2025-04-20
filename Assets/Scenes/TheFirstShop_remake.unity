@@ -2961,7 +2961,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 81159423}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -5.1606827}
+  m_LocalPosition: {x: 0, y: 0, z: -4.88}
   m_LocalScale: {x: 24, y: 24.000011, z: 24.000011}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2973,7 +2973,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -319.0096, y: -639.9132}
+  m_AnchoredPosition: {x: -434.26, y: -639.9132}
   m_SizeDelta: {x: 0.1, y: 0.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &81159425
@@ -9700,7 +9700,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244267821}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 2.7609215}
+  m_LocalPosition: {x: 0, y: 0, z: 11.47}
   m_LocalScale: {x: 24, y: 24.000011, z: 24.000011}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9712,7 +9712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -312.69897, y: -639.915}
+  m_AnchoredPosition: {x: -428.61, y: -639.915}
   m_SizeDelta: {x: 0.1, y: 0.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &244267823
@@ -9773,7 +9773,7 @@ MonoBehaviour:
   station: {fileID: 1069842923}
   PriceText: {fileID: 332330425}
   ProgressBar: {fileID: 244267826}
-  price: 900
+  price: 5
   startPrice: 0
   type: 
 --- !u!114 &244267826
