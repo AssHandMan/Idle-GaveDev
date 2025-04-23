@@ -145,6 +145,28 @@ public class CustomersMeneger : MonoBehaviour
 
     }
 
+    public bool CheckLustCustomer(SellStation st)
+    {
+        int a = 0;
+
+        for (int i = 0; i < st.Queue.Length; i++)
+        {
+            if (st.Queue[i].GetComponent<Customer>().targetPos == st.CustomerPlace[9])
+            {
+                a++;
+                break;
+            }
+        }
+        if(a>0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     private IEnumerator DefinQueue()
     {
         #region old
@@ -219,9 +241,9 @@ public class CustomersMeneger : MonoBehaviour
 
         QueueTypes = new List<string>();
 
-        if (CashMachine1.CanWork && CashMachine1.Queue.Length < MaxCustomer && CashMachine1.LustCustomer == null && !CashMachine1.isCalling) { QueueTypes.Add("Cash1"); }
+        if (CashMachine1.CanWork && CashMachine1.Queue.Length < MaxCustomer && !CheckLustCustomer(CashMachine1)) { QueueTypes.Add("Cash1"); }
         if (CarCashMachine.CanWork && CountOfCars < MaxCars) { QueueTypes.Add("Car"); }
-        if (CashMachine2.CanWork && CashMachine2.Queue.Length < MaxCustomer && CashMachine1.LustCustomer == null && !CashMachine1.isCalling) { QueueTypes.Add("Cash2"); }
+        if (CashMachine2.CanWork && CashMachine2.Queue.Length < MaxCustomer && !CheckLustCustomer(CashMachine2)) { QueueTypes.Add("Cash2"); }
         if (kiosk.CanWork && kiosk.Queue.Length < MaxKioskCustomers) { QueueTypes.Add("Kiosk"); }
 
         if (QueueTypes.Count > 0)
@@ -250,7 +272,20 @@ public class CustomersMeneger : MonoBehaviour
         yield return new WaitForSeconds(DeliveryManCreateTime);
         StartCoroutine(DeliverManCreateProcces());
     }
+    public int GetPosinQueue(GameObject obj, SellStation station)
+    {
+        int a = 0;
 
+        for (int i = 0; i < station.Queue.Length; i++)
+        {
+            if (station.Queue[i] == obj)
+            {
+                a = i;
+                break;
+            }
+        }
+        return a;
+    }
     private IEnumerator MakeCall()
     {
         yield return new WaitForSeconds(timeEventInterval);
@@ -276,6 +311,7 @@ public class CustomersMeneger : MonoBehaviour
                                 _customer.MakeCall();
                                 station.isCalling = true;
                                 station.CallingCustomer = _customer;
+                                station.LustCustomerPosinQueue = GetPosinQueue(customer, station);
                             }
                         }
                     }

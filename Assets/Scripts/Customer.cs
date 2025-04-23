@@ -25,6 +25,8 @@ public class Customer : MonoBehaviour
 
     public bool play, toilet, kiosk;
 
+    public bool CanChangePos;
+    public int ppos;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -40,13 +42,22 @@ public class Customer : MonoBehaviour
 
     void Update()
     {
+        ppos = GetPosinQueue(); 
+
+
         if (OrderBar != null) { OrderBar.transform.LookAt(Camera.main.transform); }
         if (CallBar.activeSelf) { CallBar.transform.LookAt(Camera.main.transform); }
         agent.SetDestination(targetPos.position);
 
         if (target == "Buy")
         {
-            targetPos = st.CustomerPlace[GetPosinQueue()];
+            if ((st.isCalling && GetPosinQueue() > st.LustCustomerPosinQueue) || isCalling) { CanChangePos = false; }
+            else { CanChangePos = true; }
+
+            if(CanChangePos)
+            {
+                targetPos = st.CustomerPlace[GetPosinQueue()];
+            }
 
             if (transform.position.x == targetPos.position.x && transform.position.z == targetPos.position.z)
             {
@@ -211,15 +222,23 @@ public class Customer : MonoBehaviour
     {
         int a = 0;
 
-        for (int i = 0; i < st.Queue.Length; i++)
+        if (CanChangePos)
         {
-            if (st.Queue[i] == gameObject)
+
+            for (int i = 0; i < st.Queue.Length; i++)
             {
-                a = i;
-                break;
+                if (st.Queue[i] == gameObject)
+                {
+                    a = i;
+                    break;
+                }
             }
+            return a;
         }
-        return a;
+        else
+        {
+            return ppos;
+        }
     }
 
     public void OnTriggerEnter(Collider other)
@@ -271,6 +290,7 @@ public class Customer : MonoBehaviour
             {
                 st.LustCustomer = null;
             }
+            st.LustCustomerPosinQueue = -1;
         }
     }
 

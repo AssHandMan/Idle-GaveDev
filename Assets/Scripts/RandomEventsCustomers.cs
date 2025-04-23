@@ -17,7 +17,20 @@ public class RandomEventsCustomers : MonoBehaviour
 
     }
 
+    public int GetPosinQueue(GameObject obj)
+    {
+        int a = 0;
 
+        for (int i = 0; i < station.Queue.Length; i++)
+        {
+            if (station.Queue[i] == obj)
+            {
+                a = i;
+                break;
+            }
+        }
+        return a;
+    }
     private IEnumerator MakeCall()
     {
         yield return new WaitForSeconds(timeEventInterval);
@@ -37,6 +50,7 @@ public class RandomEventsCustomers : MonoBehaviour
                             _customer.MakeCall();
                             station.isCalling = true;
                             station.CallingCustomer = _customer;
+                            station.LustCustomerPosinQueue = GetPosinQueue(customer);
                         }
                     }
                 }

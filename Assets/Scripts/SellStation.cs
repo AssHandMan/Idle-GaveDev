@@ -8,7 +8,7 @@ using UnityEngine;
 public class SellStation : MonoBehaviour
 {
     public StationObjectCollection station;
-    public GameObject WorkSpace, MainObj, Worker;
+    public GameObject WorkSpace, MainObj, Worker, LustCustomer;
     public Transform[] CustomerPlace;
     public bool CanWork, isKiosk, isCalling, isSelling, hasAddingObjMenegerTarget, hasworkerTarget;
     public int CountObj;
@@ -16,14 +16,14 @@ public class SellStation : MonoBehaviour
     public Customer client;
     public List<GameObject> QueueList = new List<GameObject>();
     public GameObject[] Queue;
-    public Customer CallingCustomer, LustCustomer;
+    public Customer CallingCustomer;
     private bool isIncreasing, inProgress, withMeneger;
     private PlayerWallet wallet;
     private Meneger meneger;
 
     public Transform MenegerPlace;
     public BuySpace space;
-    public int lvl;
+    public int lvl, LustCustomerPosinQueue;
     public int[] PriceList;
 
     [SerializeField] private GameObject _stackOfMoney;
@@ -45,14 +45,6 @@ public class SellStation : MonoBehaviour
         {
             StartCoroutine(Working());
             inProgress = true;
-        }
-
-        if (Queue.Length == 10)
-        {
-            if (LustCustomer == null)
-            {
-                LustCustomer = Queue[9].GetComponent<Customer>();
-            }
         }
     }
 

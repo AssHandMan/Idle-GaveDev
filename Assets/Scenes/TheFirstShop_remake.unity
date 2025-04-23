@@ -777,6 +777,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3980281311312766499, guid: 793dc47101f5d0c4b95d65795123b1a5, type: 3}
+      propertyPath: LustCustomerPosinQueue
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3980281311312766499, guid: 793dc47101f5d0c4b95d65795123b1a5, type: 3}
       propertyPath: 'PriceList.Array.data[0]'
       value: 100
       objectReference: {fileID: 0}
@@ -39723,6 +39727,10 @@ PrefabInstance:
     - target: {fileID: 3980281311312766499, guid: 793dc47101f5d0c4b95d65795123b1a5, type: 3}
       propertyPath: PriceList.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3980281311312766499, guid: 793dc47101f5d0c4b95d65795123b1a5, type: 3}
+      propertyPath: LustCustomerPosinQueue
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3980281311312766499, guid: 793dc47101f5d0c4b95d65795123b1a5, type: 3}
       propertyPath: 'PriceList.Array.data[0]'
