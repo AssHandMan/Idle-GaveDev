@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BuySpace : MonoBehaviour
 {
     public GameObject station;
-
+    public ParticleSystem MoneyEffect;
     public Text PriceText;
     public Image ProgressBar;
     public int price, startPrice;
@@ -39,6 +39,7 @@ public class BuySpace : MonoBehaviour
             {
                 StopAllCoroutines();
                 inProgress = false;
+                MoneyEffect.Stop();
             }
         }
 
@@ -59,6 +60,7 @@ public class BuySpace : MonoBehaviour
            if(plr.movementDirection == Vector3.zero && !inProgress && wallet.Money > 0)
             {
                 StartCoroutine(Paying());
+                if(!inProgress) { MoneyEffect.Play(); }
                 inProgress = true;
             }
         }
@@ -70,6 +72,7 @@ public class BuySpace : MonoBehaviour
             anim.SetBool("isBigger", false);
             plr = null;
             inProgress = false;
+            MoneyEffect.Stop();
             StopAllCoroutines();
         }
     }
@@ -147,30 +150,28 @@ public class BuySpace : MonoBehaviour
 
     private IEnumerator Paying()
     {
-        // Инициализируем переменные
         float elapsedTime = savedElapsedTime;
         float totalTime = 0f;
 
-        // Устанавливаем время в зависимости от цены плитки
         if (startPrice == 5)
         {
-            totalTime = 0.3f; // Заполнение за 2 секунды для цены 5
+            totalTime = 0.3f;
         }
         else if (startPrice == 25)
         {
-            totalTime = 1f; // Заполнение за 3 секунды для цены 25
+            totalTime = 1f;
         }
         else
         {
-            totalTime = 2f; // Для других цен оставляем стандартное время
+            totalTime = 2f;
         }
 
         while (price > 0 && wallet.Money > 0)
         {
             elapsedTime += Time.deltaTime;
-            savedElapsedTime = elapsedTime; // Сохраняем прогресс времени
+            savedElapsedTime = elapsedTime;
 
-            float progress = Mathf.Clamp01(elapsedTime / totalTime); // Нормализуем прогресс
+            float progress = Mathf.Clamp01(elapsedTime / totalTime);
 
             int amountToDeduct = Mathf.Min(Mathf.CeilToInt(startPrice * progress) - (startPrice - price), wallet.Money, price);
 
