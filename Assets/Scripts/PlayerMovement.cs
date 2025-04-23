@@ -12,11 +12,14 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     public bool CanMove;
     public Vector3 movementDirection;
+    private Animator _animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         CanMove = true;
+        _animator = GetComponent<Animator>();
+        _animator.applyRootMotion = false;
     }
 
     void Update()
@@ -30,13 +33,15 @@ public class PlayerMovement : MonoBehaviour
             if (movementDirection != Vector3.zero) 
             { 
                 transform.forward = movementDirection;
- 
+                _animator.SetBool("IsMoving", true);
             }
             else
             {
-
+                _animator.SetBool("IsMoving", false);
             }
         }
+        else
+            _animator.SetBool("IsMoving", false);
     }
 
 

@@ -68,7 +68,7 @@ public class MoneyZoneController : MonoBehaviour
        
         
     }
-    public void OnTriggerStay(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && _cash3D.Count > 0 && !isRemoving)
         {
@@ -77,18 +77,18 @@ public class MoneyZoneController : MonoBehaviour
     }
 
     // При выходе из триггера
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            // Останавливаем корутину, если она запущена
-            if (removalCoroutine != null)
-            {
-                StopCoroutine(removalCoroutine);
-                isRemoving = false;
-            }
-        }
-    }
+    //public void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        // Останавливаем корутину, если она запущена
+    //        if (removalCoroutine != null)
+    //        {
+    //            StopCoroutine(removalCoroutine);
+    //            isRemoving = false;
+    //        }
+    //    }
+    //}
     private void StackSize()
     {
 

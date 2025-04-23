@@ -28330,7 +28330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1110295964981958441, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4382094722124977179, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31788,91 +31788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce97cf07ead0f64eaf4a531bd5fd111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spaces:
-  - {fileID: 1483453353}
-  - {fileID: 1699500298}
-  - {fileID: 1735988955}
-  - {fileID: 23244035}
-  - {fileID: 684919807}
-  - {fileID: 1676331040}
-  - {fileID: 1270723246}
-  - {fileID: 769381030}
-  - {fileID: 23244035}
-  - {fileID: 885136566}
-  - {fileID: 1933056802}
-  - {fileID: 2110959457}
-  - {fileID: 1661748606}
-  - {fileID: 1790325829}
-  - {fileID: 524477023}
-  - {fileID: 443006218}
-  - {fileID: 1661748606}
-  - {fileID: 1699500298}
-  - {fileID: 1933056802}
-  - {fileID: 684919807}
-  - {fileID: 1335791944}
-  - {fileID: 1590004254}
-  - {fileID: 2110959457}
-  - {fileID: 334362552}
-  - {fileID: 885136566}
-  - {fileID: 1790325829}
-  - {fileID: 402872957}
-  - {fileID: 2116264278}
-  - {fileID: 1841861982}
-  - {fileID: 1393926408}
-  - {fileID: 440596760}
-  - {fileID: 682753044}
-  - {fileID: 1457958961}
-  - {fileID: 729924651}
-  - {fileID: 242312133}
-  - {fileID: 524477023}
-  - {fileID: 443006218}
-  - {fileID: 334362552}
-  - {fileID: 402872957}
-  - {fileID: 2116264278}
-  - {fileID: 1812979270}
-  - {fileID: 953959473}
-  - {fileID: 1012085736}
-  - {fileID: 440596760}
-  - {fileID: 729924651}
-  - {fileID: 242312133}
-  - {fileID: 1699500298}
-  - {fileID: 684919807}
-  - {fileID: 885136566}
-  - {fileID: 1790325829}
-  - {fileID: 750676024}
-  - {fileID: 1669655325}
-  - {fileID: 1827954474}
-  - {fileID: 682753044}
-  - {fileID: 1012085736}
-  - {fileID: 1552202640}
-  - {fileID: 1393926408}
-  - {fileID: 863875438}
-  - {fileID: 656160104}
-  - {fileID: 23244035}
-  - {fileID: 131137235}
-  - {fileID: 317317510}
-  - {fileID: 1347438351}
-  - {fileID: 524477023}
-  - {fileID: 443006218}
-  - {fileID: 1735988955}
-  - {fileID: 1933056802}
-  - {fileID: 1661748606}
-  - {fileID: 2110959457}
-  - {fileID: 863875438}
-  - {fileID: 656160104}
-  - {fileID: 1669655325}
-  - {fileID: 1827954474}
-  - {fileID: 1552202640}
-  - {fileID: 334362552}
-  - {fileID: 402872957}
-  - {fileID: 2116264278}
-  - {fileID: 1393926408}
-  - {fileID: 682753044}
-  - {fileID: 1012085736}
-  - {fileID: 131137235}
-  - {fileID: 317317510}
-  - {fileID: 1347438351}
-  - {fileID: 440596760}
+  SpacesNew: []
   parents: []
   stations:
   - {fileID: 1835359593}
@@ -37902,6 +37818,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8595701866329958876, guid: 793dc47101f5d0c4b95d65795123b1a5, type: 3}
+      propertyPath: _testMaxCash
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8646066177969106619, guid: 793dc47101f5d0c4b95d65795123b1a5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.602528
@@ -40581,17 +40501,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8449948706190050460, guid: 552facb153f535b4f88bc4d28f82c8d4, type: 3}
   m_PrefabInstance: {fileID: 5715289624045634756}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1483453353 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5461974351132095008, guid: 552facb153f535b4f88bc4d28f82c8d4, type: 3}
-  m_PrefabInstance: {fileID: 5715289624045634756}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f1b2610d4644124195e37b78311d519, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1484490656
 GameObject:
   m_ObjectHideFlags: 0
@@ -55751,6 +55660,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuySpace
       objectReference: {fileID: 0}
+    - target: {fileID: 5211789177289503846, guid: 552facb153f535b4f88bc4d28f82c8d4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5461974351132095008, guid: 552facb153f535b4f88bc4d28f82c8d4, type: 3}
       propertyPath: station
       value: 
@@ -55908,6 +55821,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4036485058562381140, guid: 6561a4621fc6da84280a32406023f4c4, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 24488cba9973be9478c33ff162420ce2, type: 2}
     - target: {fileID: 4093509051871894173, guid: 6561a4621fc6da84280a32406023f4c4, type: 3}
       propertyPath: m_IsActive
       value: 0
