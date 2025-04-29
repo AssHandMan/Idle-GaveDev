@@ -8,8 +8,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TheFirstShop/TheFirstShop.unity
     guid: 478904cc4074c3b4d8aff2ecc2fe2c89
-  - enabled: 1
-    path: Assets/Scenes/New Folder/RickScene.unity
-    guid: 9e36ce8d60163094ebf787bfe91ddba1
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
