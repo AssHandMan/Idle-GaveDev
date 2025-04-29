@@ -90,6 +90,8 @@ MonoBehaviour:
   play: 0
   toilet: 0
   kiosk: 0
+  CanChangePos: 0
+  ppos: 0
 --- !u!195 &8373679091880906631
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -219,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8792453, g: 0.8792453, b: 0.8792453, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

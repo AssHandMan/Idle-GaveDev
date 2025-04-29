@@ -577,6 +577,7 @@ MonoBehaviour:
   WorkSpace: {fileID: 78902496867392825}
   MainObj: {fileID: 8404482747125883005}
   Worker: {fileID: 0}
+  LustCustomer: {fileID: 0}
   CustomerPlace:
   - {fileID: 0}
   - {fileID: 0}
@@ -600,10 +601,10 @@ MonoBehaviour:
   QueueList: []
   Queue: []
   CallingCustomer: {fileID: 0}
-  LustCustomer: {fileID: 0}
   MenegerPlace: {fileID: 2729470439022216567}
   space: {fileID: 0}
   lvl: 0
+  LustCustomerPosinQueue: -1
   PriceList: 
   _stackOfMoney: {fileID: 0}
 --- !u!114 &5328869488359356225

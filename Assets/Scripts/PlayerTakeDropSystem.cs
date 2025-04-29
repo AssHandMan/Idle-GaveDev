@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static System.Collections.Specialized.BitVector32;
 
@@ -8,6 +9,7 @@ public class PlayerTakeDropSystem : MonoBehaviour
     public List<GameObject> IngredientsCollection;
     public int MaxCount;
     public int Count;
+    public ArrowPosController arrow;
 
     public string ObjType;
     private TakeStation box;
@@ -87,6 +89,11 @@ public class PlayerTakeDropSystem : MonoBehaviour
         {
             if(Bin != null && Count > 0)
             {
+                if(arrow.posLvl == 5 && IngredientsCollection[0].GetComponent<Object>().Type == "Trash")
+                {
+                    arrow.inStationPosesProgress = false;
+                    arrow.MoveNextToBuySpace();
+                }
                 Destroy(IngredientsCollection[Count - 1]);
                 IngredientsCollection.RemoveAt(Count - 1);
                 Count--;

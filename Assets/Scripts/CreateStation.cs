@@ -84,14 +84,4 @@ public class CreateStation : MonoBehaviour
         if (lvl < 3) { lvl++; }
     }
 
-    public void OnDestroy()
-    {
-        if(CarNow != null && !CarNow.GetComponent<GenerateObjCar>().CanMove) 
-        {
-            CarNow.GetComponent<GenerateObjCar>().isNewUdpate = true;
-            CarNow = null;
-        }
-        StopAllCoroutines();
-        station.OnDestroy();
-    }
 }

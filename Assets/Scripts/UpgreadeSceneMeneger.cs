@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class UpgreadeSceneMeneger : MonoBehaviour
 {
+    public ArrowPosController arrow;
     public BuySpace[] NewSpaces;
 
     public List<int> PriceList;
@@ -42,6 +43,9 @@ public class UpgreadeSceneMeneger : MonoBehaviour
         NewSpaces[LustPlace].Buy(true);
         LustPlace++;
         NewSpaces[LustPlace].gameObject.SetActive(true);
+        lvl++;
+        CountLvl.text = lvl.ToString();
+
     }
 
     public void BuyAll()
@@ -60,6 +64,7 @@ public class UpgreadeSceneMeneger : MonoBehaviour
             {
                 if (i + 1 < NewSpaces.Length ) { NewSpaces[i + 1].gameObject.SetActive(true); }
                 LustPlace = i;
+                arrow.MoveNextToBuySpace();
                 break;
             }
         }
