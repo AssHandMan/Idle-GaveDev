@@ -25,5 +25,10 @@ public class TakeStation : MonoBehaviour
         station.ObjectsList.RemoveAt(station.CountObj - 1);
         station.CountObj--;
     }
+    public void RemoveObj()
+    {
+        station.ObjectsList.RemoveAt(station.CountObj - 1);
+        station.CountObj--;
+    }
 
 }

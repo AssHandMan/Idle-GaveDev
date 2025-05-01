@@ -1,18 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static System.Collections.Specialized.BitVector32;
 
 public class MenegerHands : MonoBehaviour
 {
     public Meneger meneger;
     public List<GameObject> IngredientsCollection;
     public int Count;
-
+    public float TakeSpeed;
     private CreateStation createStation;
     public DropStation dropStation;
     public TakeStation takeStation;
 
     public bool isTakingFromTakeStation;
+        private int CountForLustObj;
+    private GameObject LustTakenObj, PrevTakenObj;
+    private bool inProgress;
+    private Vector3 startPos;
+    private Vector3 endPos;
+    private Vector3 controlPoint;
+    private float arcT = 0f;
+
     void Start()
     {
         
@@ -20,7 +30,28 @@ public class MenegerHands : MonoBehaviour
 
     void Update()
     {
-        
+        if (inProgress)
+        {
+            arcT += Time.deltaTime * TakeSpeed;
+            arcT = Mathf.Clamp01(arcT);
+
+            if (CountForLustObj == 0) { endPos = transform.position; }
+            else { endPos = PrevTakenObj.GetComponent<Object>().UpPos.position - LustTakenObj.GetComponent<Object>().DownPos.localPosition; }
+
+            controlPoint = (startPos + endPos) / 2f;
+            controlPoint.y += 3f;
+
+            Vector3 pos = Mathf.Pow(1 - arcT, 2) * startPos + 2 * (1 - arcT) * arcT * controlPoint + Mathf.Pow(arcT, 2) * endPos;
+            LustTakenObj.transform.position = pos;
+
+            if (arcT >= 1f)
+            {
+                LustTakenObj.transform.position = endPos;
+                LustTakenObj.transform.parent = transform;
+                LustTakenObj.transform.rotation = transform.rotation;
+                inProgress = false;
+            }
+        }
     }
 
     public void OnTriggerEnter(Collider other)
@@ -32,15 +63,22 @@ public class MenegerHands : MonoBehaviour
             {
                 if (arcade.station.CountObj != 0)
                 {
-                    Vector3 pos;
-                    if (Count == 0) { pos = transform.position; }
-                    else { pos = IngredientsCollection[IngredientsCollection.Count - 1].GetComponent<Object>().UpPos.position - arcade.station.ObjectsList[arcade.station.CountObj - 1].GetComponent<Object>().DownPos.localPosition; }
-                    GameObject newObj = Instantiate(arcade.station.ObjectsList[arcade.station.CountObj - 1], pos, transform.rotation);
-                    newObj.transform.parent = transform;
+                    GameObject newObj = arcade.station.ObjectsList[0];
+                    arcade.GetComponent<TakeStation>().RemoveObj();
+
+                    CountForLustObj = arcade.station.CountObj;
+                    GameObject prevObj = (Count > 0) ? IngredientsCollection[IngredientsCollection.Count - 1] : null;
+                    PrevTakenObj = prevObj;
+                    LustTakenObj = newObj;
+                    startPos = newObj.transform.position;
+                    arcT = 0f;
+
+                    inProgress = true;
                     IngredientsCollection.Add(newObj);
                     Count++;
-                    arcade.GetComponent<TakeStation>().DeleteObj();
-                    arcade.hasMenegerTarget = false;
+
+                    arcT = 0;
+                    inProgress = true;
                 }
                 else
                 {
@@ -53,9 +91,9 @@ public class MenegerHands : MonoBehaviour
         {
             if (meneger.Target == other.GetComponent<Trashbin>().MenegerPlace)
             {
-                Destroy(IngredientsCollection[Count - 1]);
-                IngredientsCollection.RemoveAt(Count - 1);
-                Count--;
+               other.GetComponent<Trashbin>().AddObj(IngredientsCollection[Count - 1], TakeSpeed);
+               IngredientsCollection.RemoveAt(Count - 1);
+               Count--;
             }
         }
         else if ((meneger.TargetType == "CreateStation" || meneger.TargetType == "CreateStation2" || meneger.TargetType == "CreateStationCar" || meneger.TargetType == "CreateKiosk1" || meneger.TargetType == "CreateKiosk2") && other.GetComponent<CreateStation>() != null)
@@ -155,11 +193,13 @@ public class MenegerHands : MonoBehaviour
         if(meneger.TargetType == "AddToKiosk1")
         {
             yield return new WaitForSeconds(0.2f);
-            if (Count > 0)
+            if (Count > 0 && !meneger.KioskDrop1.inProgress)
             {
-                meneger.KioskDrop1.AddObj(IngredientsCollection[Count - 1]);
-
-                Destroy(IngredientsCollection[Count - 1]);
+                while (meneger.KioskDrop1.inProgress)
+                {
+                    yield return null;
+                }
+                meneger.KioskDrop1.AddObj(IngredientsCollection[Count - 1], TakeSpeed);
                 IngredientsCollection.RemoveAt(Count - 1);
                 Count--;
                 if (Count > 0) { StartCoroutine(AddToCashMachine()); }
@@ -170,9 +210,11 @@ public class MenegerHands : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             if (Count > 0)
             {
-                meneger.KioskDrop2.AddObj(IngredientsCollection[Count - 1]);
-
-                Destroy(IngredientsCollection[Count - 1]);
+                while (meneger.KioskDrop2.inProgress)
+                {
+                    yield return null;
+                }
+                meneger.KioskDrop2.AddObj(IngredientsCollection[Count - 1], TakeSpeed);
                 IngredientsCollection.RemoveAt(Count - 1);
                 Count--;
                 if (Count > 0) { StartCoroutine(AddToCashMachine()); }
@@ -183,9 +225,11 @@ public class MenegerHands : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             if (Count > 0)
             {
-                dropStation.AddObj(IngredientsCollection[Count - 1]);
-
-                Destroy(IngredientsCollection[Count - 1]);
+                while (dropStation.inProgress)
+                {
+                    yield return null;
+                }
+                dropStation.AddObj(IngredientsCollection[Count - 1], TakeSpeed);
                 IngredientsCollection.RemoveAt(Count - 1);
                 Count--;
                 if (Count > 0) { StartCoroutine(AddToCashMachine()); }

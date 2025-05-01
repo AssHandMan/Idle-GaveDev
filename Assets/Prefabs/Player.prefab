@@ -1920,6 +1920,8 @@ MonoBehaviour:
   IngredientsCollection: []
   MaxCount: 5
   Count: 0
+  TakeSpeed: 3.5
+  arrow: {fileID: 0}
   ObjType: 
 --- !u!1 &2986625438361508111
 GameObject:
