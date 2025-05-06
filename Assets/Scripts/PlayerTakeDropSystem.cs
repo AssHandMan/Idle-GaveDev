@@ -52,6 +52,7 @@ public class PlayerTakeDropSystem : MonoBehaviour
                 LustTakenObj.transform.position = endPos;
                 LustTakenObj.transform.parent = transform;
                 LustTakenObj.transform.rotation = transform.rotation;
+                LustTakenObj.GetComponent<Object>().ChangeTrail();
                 inProgress = false;
             }
         }
@@ -113,6 +114,7 @@ public class PlayerTakeDropSystem : MonoBehaviour
         {
             if (ObjType == drop.ObjectType)
             {
+                IngredientsCollection[Count - 1].GetComponent<Object>().ChangeTrail();
                 drop.AddObj(IngredientsCollection[Count - 1], TakeSpeed);
                 //Destroy(IngredientsCollection[Count - 1]);
                 IngredientsCollection.RemoveAt(Count - 1);
@@ -129,6 +131,7 @@ public class PlayerTakeDropSystem : MonoBehaviour
                     arrow.inStationPosesProgress = false;
                     arrow.MoveNextToBuySpace();
                 }
+                IngredientsCollection[Count - 1].GetComponent<Object>().ChangeTrail();
                 Bin.GetComponent<Trashbin>().AddObj(IngredientsCollection[Count - 1], TakeSpeed);
                 IngredientsCollection.RemoveAt(Count - 1);
                 Count--;

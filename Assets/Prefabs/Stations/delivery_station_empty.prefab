@@ -53,7 +53,6 @@ MonoBehaviour:
   ObjectsList: []
   MuxCountObj: 15
   CountObj: 0
-  LustPosY: 0
 --- !u!114 &1093442696979729051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,14 +67,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   station: {fileID: 523997638528968739}
   RefObj:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7257837107624932512, guid: 250a6f228349a8543a58c30e79036832, type: 3}
+  - {fileID: 8395773889898569339, guid: 0024f47b8f83d7e44b14428724809976, type: 3}
+  - {fileID: 4902836227580919123, guid: 5eea561886094bb47b43d7e003bf15f5, type: 3}
+  - {fileID: 4963230273926471513, guid: 46bd23f40ce8d6c4fb480d659d55d567, type: 3}
   Car: {fileID: 0}
   CarPlace: {fileID: 0}
   TimeToCreate: 0.5
   TimeCreateCar: 5
-  deltaY: 0
   MenegerPlace: {fileID: 0}
   lvl: 0
   space: {fileID: 0}
@@ -94,7 +93,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 523997638528968739}
-  deltaY: 0
   CanGive: 0
 --- !u!65 &724033556392547781
 BoxCollider:

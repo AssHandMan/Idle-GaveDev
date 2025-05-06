@@ -3716,29 +3716,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2039770617}
     - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
-      propertyPath: RefObj.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: PriceList.Array.size
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
-      propertyPath: 'RefObj.Array.data[0]'
-      value: 
-      objectReference: {fileID: 7257837107624932512, guid: 250a6f228349a8543a58c30e79036832, type: 3}
-    - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
-      propertyPath: 'RefObj.Array.data[1]'
-      value: 
-      objectReference: {fileID: 4983789191636868950, guid: be531f43f9943e04dbbfd24ed7c45015, type: 3}
-    - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
-      propertyPath: 'RefObj.Array.data[2]'
-      value: 
-      objectReference: {fileID: 3274151308524974699, guid: 4d21005c3502eba45b77f985761f9fe1, type: 3}
-    - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
-      propertyPath: 'RefObj.Array.data[3]'
-      value: 
-      objectReference: {fileID: 9184683922775093774, guid: 2b43cccf060e9b4479e1b042000a039e, type: 3}
     - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: 'PriceList.Array.data[0]'
       value: 330
@@ -5517,6 +5497,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 147412087}
     m_Modifications:
+    - target: {fileID: 523997638528968739, guid: 72adfe7153110de4a967813b545748eb, type: 3}
+      propertyPath: ObjectsList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 523997638528968739, guid: 72adfe7153110de4a967813b545748eb, type: 3}
+      propertyPath: 'ObjectsList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: space
       value: 
@@ -5544,7 +5532,7 @@ PrefabInstance:
     - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: 'RefObj.Array.data[0]'
       value: 
-      objectReference: {fileID: 7256253613399459888, guid: f45184fb44b0a13458076994fd3beec7, type: 3}
+      objectReference: {fileID: 3419207840952784735, guid: bac44d5569b72de4db7f18f6084731f3, type: 3}
     - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: 'PriceList.Array.data[0]'
       value: 1530
@@ -22088,6 +22076,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 147412087}
     m_Modifications:
+    - target: {fileID: 523997638528968739, guid: 72adfe7153110de4a967813b545748eb, type: 3}
+      propertyPath: ObjectsList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 523997638528968739, guid: 72adfe7153110de4a967813b545748eb, type: 3}
+      propertyPath: 'ObjectsList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: space
       value: 
@@ -22115,7 +22111,7 @@ PrefabInstance:
     - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: 'RefObj.Array.data[0]'
       value: 
-      objectReference: {fileID: 7256253613399459888, guid: f45184fb44b0a13458076994fd3beec7, type: 3}
+      objectReference: {fileID: 3419207840952784735, guid: bac44d5569b72de4db7f18f6084731f3, type: 3}
     - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: 'PriceList.Array.data[0]'
       value: 1470
@@ -28092,10 +28088,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
-      propertyPath: RefObj
-      value: 
-      objectReference: {fileID: 7256253613399459888, guid: f45184fb44b0a13458076994fd3beec7, type: 3}
-    - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: deltaY
       value: 0.4
       objectReference: {fileID: 0}
@@ -28104,29 +28096,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 613530338}
     - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
-      propertyPath: RefObj.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: PriceList.Array.size
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
-      propertyPath: 'RefObj.Array.data[0]'
-      value: 
-      objectReference: {fileID: 7257837107624932512, guid: 250a6f228349a8543a58c30e79036832, type: 3}
-    - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
-      propertyPath: 'RefObj.Array.data[1]'
-      value: 
-      objectReference: {fileID: 4983789191636868950, guid: be531f43f9943e04dbbfd24ed7c45015, type: 3}
-    - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
-      propertyPath: 'RefObj.Array.data[2]'
-      value: 
-      objectReference: {fileID: 3274151308524974699, guid: 4d21005c3502eba45b77f985761f9fe1, type: 3}
-    - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
-      propertyPath: 'RefObj.Array.data[3]'
-      value: 
-      objectReference: {fileID: 9184683922775093774, guid: 2b43cccf060e9b4479e1b042000a039e, type: 3}
     - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: 'PriceList.Array.data[0]'
       value: 120

@@ -49,6 +49,7 @@ public class MenegerHands : MonoBehaviour
                 LustTakenObj.transform.rotation = transform.rotation;
                 IngredientsCollection.Add(LustTakenObj);
                 Count++;
+                LustTakenObj.GetComponent<Object>().ChangeTrail();
                 inProgress = false;
             }
         }
@@ -207,6 +208,7 @@ public class MenegerHands : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             if (Count > 0)
             {
+                IngredientsCollection[Count - 1].GetComponent<Object>().ChangeTrail();
                 while (meneger.KioskDrop1.inProgress)
                 {
                     yield return null;
@@ -222,6 +224,7 @@ public class MenegerHands : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             if (Count > 0)
             {
+                IngredientsCollection[Count - 1].GetComponent<Object>().ChangeTrail();
                 while (meneger.KioskDrop2.inProgress)
                 {
                     yield return null;
@@ -237,6 +240,7 @@ public class MenegerHands : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             if (Count > 0)
             {
+                IngredientsCollection[Count - 1].GetComponent<Object>().ChangeTrail();
                 while (dropStation.inProgress)
                 {
                     yield return null;

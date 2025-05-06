@@ -254,7 +254,7 @@ MonoBehaviour:
   station: {fileID: 1851785805796589557}
   newStation: {fileID: 5611737695297729202}
   TakeStationNew: {fileID: 2960266336181202908}
-  obj: {fileID: 2155953119310351073, guid: 850adfb3b7e463e49bc6c059c2efa73c, type: 3}
+  obj: {fileID: 4718027141913095941, guid: 01d17a5d63c799349885bc5c8c4e68f4, type: 3}
   WorkSpace: {fileID: 8289847471408254713}
   MainObj: {fileID: 5093351497974363986}
   Worker: {fileID: 0}
@@ -463,6 +463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   station: {fileID: 1851785805796589557}
   ObjectType: Game
+  inProgress: 0
 --- !u!114 &1851785805796589557
 MonoBehaviour:
   m_ObjectHideFlags: 0
