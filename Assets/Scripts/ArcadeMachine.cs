@@ -8,6 +8,7 @@ public class ArcadeMachine : MonoBehaviour
     public GameObject trash, TrashViewe, Main;
     public Transform CustomerPos;
     public Customer client;
+    public ParticleSystem playEffect;
     public bool isPlaying, hasTarget, CanWork, isToilet, hasMenegerTarget;
     [SerializeField] private GameObject _stackOfMoney;
 
@@ -47,6 +48,16 @@ public class ArcadeMachine : MonoBehaviour
     {
         isPlaying = true;
         StartCoroutine(Playing());
+        StartCoroutine(PlayEffect());
+    }
+    private IEnumerator PlayEffect()
+    {
+        playEffect.Play();
+        yield return new WaitForSeconds(1);
+        if(client != null )
+        {
+            StartCoroutine(PlayEffect());
+        }
     }
     private IEnumerator Playing()
     {
