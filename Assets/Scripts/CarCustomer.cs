@@ -38,7 +38,7 @@ public class CarCustomer : MonoBehaviour
             }
             else
             {
-                speed = MaxSpeed;
+                if(speed != MaxSpeed*2) { speed = MaxSpeed * 2; }
             }
         }
         if(transform.position.z < -20)
