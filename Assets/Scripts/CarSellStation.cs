@@ -18,10 +18,13 @@ public class CarSellStation : MonoBehaviour
     public int[] PriceList;
     public Transform SaveStationPlace, WorkPlace;
     public bool isSelling;
+
+    private List<GameObject> PeopleInWorkZone;
     void Start()
     {
         isIncreasing = true;
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
+        PeopleInWorkZone = new List<GameObject>();
     }
 
     void Update()
@@ -31,20 +34,30 @@ public class CarSellStation : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if ((other.gameObject.tag == "Player" && lvl < 2 && !isSelling) || (other.gameObject.tag == "Worker") || (other.GetComponent<Meneger>() != null && lvl < 2 && !isSelling))
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Worker" || other.GetComponent<Meneger>() != null)
         {
-            StartCoroutine(WorkSpaceEffect());
-            StartCoroutine(Working());
-            WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
+            PeopleInWorkZone.Add(other.gameObject);
+            if(!isSelling)
+            {
+                StartCoroutine(WorkSpaceEffect());
+                StartCoroutine(Working());
+                WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
+                isSelling = true;
+            }
         }
     }
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player" && lvl < 2 || other.GetComponent<Meneger>() != null && lvl < 2)
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Worker" || other.GetComponent<Meneger>() != null)
         {
-            StopAllCoroutines();
-            WorkSpace.GetComponent<SpriteRenderer>().color = Color.white;
-            WorkSpace.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            PeopleInWorkZone.Remove(other.gameObject);
+            if(PeopleInWorkZone.Count == 0)
+            {
+                StopAllCoroutines();
+                WorkSpace.GetComponent<SpriteRenderer>().color = Color.white;
+                WorkSpace.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                isSelling = false;
+            }
         }
     }
 

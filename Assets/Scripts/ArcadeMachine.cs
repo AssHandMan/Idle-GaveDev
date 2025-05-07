@@ -48,13 +48,13 @@ public class ArcadeMachine : MonoBehaviour
     {
         isPlaying = true;
         StartCoroutine(Playing());
-        StartCoroutine(PlayEffect());
+        if(!isToilet) { StartCoroutine(PlayEffect()); }
     }
     private IEnumerator PlayEffect()
     {
         playEffect.Play();
         yield return new WaitForSeconds(1);
-        if(client != null )
+        if(client != null)
         {
             StartCoroutine(PlayEffect());
         }

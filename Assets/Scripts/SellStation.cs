@@ -22,12 +22,15 @@ public class SellStation : MonoBehaviour
     public BuySpace space;
     public int lvl, LustCustomerPosinQueue;
     public int[] PriceList;
+    private List<GameObject> PeopleInWorkZone;
 
     [SerializeField] private GameObject _stackOfMoney;
+
     void Start()
     {
         isIncreasing = true;
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
+        PeopleInWorkZone = new List<GameObject>();
     }
 
     void Update()
@@ -53,30 +56,18 @@ public class SellStation : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         if (!isKiosk)
-        {
-            if (other.gameObject.tag == "Player" && lvl < 2)
+        {     
+            if (other.gameObject.tag == "Player" || other.gameObject.tag == "Worker" || other.GetComponent<Meneger>() != null)
             {
-                if(meneger == null && lvl < 2) StartCoroutine(WorkSpaceEffect());
-                StartCoroutine(Working());
-                WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
-                isSelling = true;
-            }
-
-            if (other.gameObject.tag == "Worker")
-            {
-                StartCoroutine(WorkSpaceEffect());
-                StartCoroutine(Working());
-                WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
-                isSelling = true;
-            }
-            if(other.GetComponent<Meneger>() != null)
-            {
-                StartCoroutine(WorkSpaceEffect());
-                StartCoroutine(Working());
-                WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
-                isSelling = true;
-                withMeneger = true;
-                meneger = other.GetComponent<Meneger>();
+                PeopleInWorkZone.Add(other.gameObject);
+                if (!isSelling)
+                {
+                    StartCoroutine(WorkSpaceEffect());
+                    StartCoroutine(Working());
+                    WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
+                    isSelling = true;
+                }
+                if (other.GetComponent<Meneger>() != null) { withMeneger = true; meneger = other.GetComponent<Meneger>(); }
             }
         }
     }
@@ -84,20 +75,17 @@ public class SellStation : MonoBehaviour
     {
         if (!isKiosk)
         {
-            if (other.gameObject.tag == "Player" && lvl < 2 && !withMeneger)
+            if (other.gameObject.tag == "Player" || other.gameObject.tag == "Worker" || other.GetComponent<Meneger>() != null)
             {
-                StopAllCoroutines();
-                WorkSpace.GetComponent<SpriteRenderer>().color = Color.white;
-                WorkSpace.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                isSelling = false;
-            }
-            if (other.GetComponent<Meneger>() != null && lvl < 2)
-            {
-                StopAllCoroutines();
-                WorkSpace.GetComponent<SpriteRenderer>().color = Color.white;
-                isSelling = false;
-                withMeneger = false;
-                meneger = null;
+                if (other.GetComponent<Meneger>() != null) { withMeneger = false; meneger = null; }
+                PeopleInWorkZone.Remove(other.gameObject);
+                if (PeopleInWorkZone.Count == 0)
+                {
+                    StopAllCoroutines();
+                    WorkSpace.GetComponent<SpriteRenderer>().color = Color.white;
+                    WorkSpace.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                    isSelling = false;
+                }
             }
         }
     }
