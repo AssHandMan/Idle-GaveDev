@@ -32663,24 +32663,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 910875113}
-  PoorCustomer:
+  Customers:
   - {fileID: 5568098467577615350, guid: fc1cd9348d5f44a4e8a9a66760a894e6, type: 3}
-  RichCustomer:
-  - {fileID: 6758357509476856084, guid: 2630e1c7c32f9a34ba93ed8d9b0053a7, type: 3}
-  Bloger:
-  - {fileID: 5600091265708340827, guid: ce7b5aae2719e3c42b005f5f53926f4d, type: 3}
-  PoorCustomer2:
-  - {fileID: 5568098467577615350, guid: 41351fe2d180ca04e9ae231ab9640ded, type: 3}
-  RichCustomer2:
-  - {fileID: 6758357509476856084, guid: 2aac2a2f93fc91d4887d1bb14773d3d6, type: 3}
-  Bloger2:
-  - {fileID: 5600091265708340827, guid: e9781bf5886b0414c8fe5c3aa6ea3b97, type: 3}
-  PoorCustomer3:
-  - {fileID: 5568098467577615350, guid: ff450a76482cfe24c9ac1ca6621d622f, type: 3}
-  RichCustomer3:
-  - {fileID: 6758357509476856084, guid: 494ca0ca0d930b746b5acb4556b213e5, type: 3}
-  Bloger3:
-  - {fileID: 5600091265708340827, guid: b2841d5e709df4b4d86de8c8ca68adb7, type: 3}
+  - {fileID: 2768980868643473540, guid: b7ce051a5bff0124e87fe20eccb18c8d, type: 3}
+  - {fileID: 1217966272605394361, guid: 684dc64e009ad2c44bd0a61ff4550a06, type: 3}
   Car: {fileID: 104545728173837897, guid: 66658fc40a306004f9c8e9826d577951, type: 3}
   Delivery: {fileID: 7855870997478361312, guid: 8b885360bfd0f9440a1e12a23faa2d53, type: 3}
   CountCustomer: 0

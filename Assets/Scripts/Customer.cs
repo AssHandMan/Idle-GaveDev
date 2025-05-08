@@ -9,7 +9,8 @@ using UnityEngine.UI;
 public class Customer : MonoBehaviour
 {
     public Transform targetPos, DeletePlace;
-    public GameObject OrderBar, CallBar;
+    public GameObject OrderBar, CallIcon;
+    public Image CallBar;
     public Text OrderCount;
     public Canvas canvas;
     public bool isCalling;
@@ -22,7 +23,7 @@ public class Customer : MonoBehaviour
     public int BuyObjCount;
     public SellStation st;
     public ArcadeMachine machine;
-
+    public GameObject[] PoorSkins, RichSkins, BloggerSkins;
     public bool play, toilet, kiosk;
 
     public bool CanChangePos;
@@ -46,7 +47,7 @@ public class Customer : MonoBehaviour
 
 
         if (OrderBar != null) { OrderBar.transform.LookAt(Camera.main.transform); }
-        if (CallBar.activeSelf) { CallBar.transform.LookAt(Camera.main.transform); }
+        if (CallIcon.activeSelf) { CallIcon.transform.LookAt(Camera.main.transform); }
         agent.SetDestination(targetPos.position);
 
         if (target == "Buy")
@@ -113,6 +114,29 @@ public class Customer : MonoBehaviour
         if (transform.position.x == DeletePlace.position.x && transform.position.z == DeletePlace.position.z) { Destroy(gameObject); }
     }
 
+
+    public void ChangeType(int type)
+    {
+        // 0 - poor
+        // 1 - rich
+        // 2 - bloger
+        PoorSkins[0].SetActive(false);
+        if(type == 0) 
+        { 
+            PoorSkins[UnityEngine.Random.Range(0, PoorSkins.Length)].SetActive(true);
+            BuyObjCount = UnityEngine.Random.Range(1, 4);
+        }
+        else if (type == 1) 
+        { 
+            RichSkins[UnityEngine.Random.Range(0, RichSkins.Length)].SetActive(true);
+            BuyObjCount = UnityEngine.Random.Range(4, 10);
+        }
+        else 
+        { 
+            BloggerSkins[UnityEngine.Random.Range(0, BloggerSkins.Length)].SetActive(true);
+            BuyObjCount = UnityEngine.Random.Range(10, 16);
+        }
+    }
     public void ChangeBuyCount()
     {
         BuyObjCount--;
@@ -256,10 +280,10 @@ public class Customer : MonoBehaviour
     {
         CallTime = 200;
         step = CallTime;
-        CallBar.GetComponent<Image>().fillAmount = 1;
+        CallBar.fillAmount = 1;
+        CallIcon.SetActive(true);
         agent.speed = 0;
         OrderBar.SetActive(false);
-        CallBar.SetActive(true);
         isCalling = true;
     }
 
@@ -279,7 +303,7 @@ public class Customer : MonoBehaviour
             {
                 OrderBar.SetActive(true);
             }
-            CallBar.SetActive(false);
+            CallIcon.SetActive(false);
             isCalling = false;
             st.isCalling = false;
             for (int i = 0; i < st.Queue.Length; i++)
