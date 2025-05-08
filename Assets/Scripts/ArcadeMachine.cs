@@ -9,13 +9,14 @@ public class ArcadeMachine : MonoBehaviour
     public Transform CustomerPos;
     public Customer client;
     public ParticleSystem playEffect;
-    public bool isPlaying, hasTarget, CanWork, isToilet, hasMenegerTarget;
+    public bool isPlaying, hasTarget, CanWork, isToilet, hasMenegerTarget, isPause;
     [SerializeField] private GameObject _stackOfMoney;
 
     public int lvl;
     public Mesh[] BoxLvl;
     public BuySpace space;
     public int[] PriceList;
+    private int GameTime;
 
     void Start()
     {
@@ -48,10 +49,16 @@ public class ArcadeMachine : MonoBehaviour
     {
         isPlaying = true;
         StartCoroutine(Playing());
-        if(!isToilet) { StartCoroutine(PlayEffect()); }
+        GameTime = 5;
+        if (!isToilet) { StartCoroutine(PlayEffect()); }
     }
     private IEnumerator PlayEffect()
     {
+        while (isPause)
+        {
+            yield return null;
+            playEffect.Stop();
+        }
         playEffect.Play();
         yield return new WaitForSeconds(1);
         if(client != null)
@@ -61,7 +68,24 @@ public class ArcadeMachine : MonoBehaviour
     }
     private IEnumerator Playing()
     {
-        yield return new WaitForSeconds(5);
+        while (isPause)
+        {
+            yield return null;
+        }
+        yield return new WaitForSeconds(1);
+        GameTime--;
+        if(GameTime > 0)
+        {
+            StartCoroutine(Playing());
+        }
+        else
+        {
+            EndGame();
+        }
+        
+    }
+    private void EndGame()
+    {
         PlayerWallet plr = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
         //изменено на кучу
         //plr.ChangeCount(10, "Money");
@@ -79,7 +103,7 @@ public class ArcadeMachine : MonoBehaviour
         CanWork = false;
         isPlaying = false;
         hasTarget = false;
-        if(isToilet)
+        if (isToilet)
         {
             TrashViewe.SetActive(true);
         }

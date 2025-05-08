@@ -11,7 +11,7 @@ public class CustomersMeneger : MonoBehaviour
     public GameObject Car, Delivery;
     private string[] CustomerType = { "Poor", "Rich", "Bloger" };
     public int CountCustomer, MaxCustomer, MaxCars, MaxKioskCustomers;
-    public float CustomerCreateTime, DeliveryManCreateTime, timeEventInterval;
+    public float CustomerCreateTime, DeliveryManCreateTime, timeEventIntervalCall, timeEventIntervalSleep;
     public Transform CustomerPos, DeletePos, CarPlace, DeliveryPlace;
 
     public int CountOfCars;
@@ -22,6 +22,7 @@ public class CustomersMeneger : MonoBehaviour
     public GameObject[] Toilets;
     private GameObject DeliveryNow;
     private List<string> QueueTypes;
+    public List<Customer> ReadyforSleep;
 
     private int a;
 
@@ -30,6 +31,7 @@ public class CustomersMeneger : MonoBehaviour
         StartCoroutine(DefinQueue());
         StartCoroutine(DeliverManCreateProcces());
         StartCoroutine(MakeCall());
+        StartCoroutine(DoSleep());
     }
 
     void Update()
@@ -225,7 +227,7 @@ public class CustomersMeneger : MonoBehaviour
     }
     private IEnumerator MakeCall()
     {
-        yield return new WaitForSeconds(timeEventInterval);
+        yield return new WaitForSeconds(timeEventIntervalCall);
         if (!CashMachine1.isCalling && !CashMachine2.isCalling)
         {
             List<SellStation> StationsList = new List<SellStation>();
@@ -256,5 +258,29 @@ public class CustomersMeneger : MonoBehaviour
             }
         }
         StartCoroutine(MakeCall());
+    }
+
+    private IEnumerator DoSleep()
+    {
+        yield return new WaitForSeconds(timeEventIntervalSleep);
+        if(ReadyforSleep.Count > 0)
+        {
+            int count = 0;
+            for(int i = 0; i < ReadyforSleep.Count; i++)
+            {
+                if (ReadyforSleep[i].isSleeping == true)
+                {
+                    count++;
+                    break;
+                }
+            }
+            if (count == 0)
+            {
+                int n = Random.Range(0, ReadyforSleep.Count);
+                ReadyforSleep[n].Sleep();
+                ReadyforSleep.RemoveAt(n);
+            }
+        }
+        StartCoroutine(DoSleep());
     }
 }

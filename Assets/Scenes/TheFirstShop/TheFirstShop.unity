@@ -24165,6 +24165,7 @@ MonoBehaviour:
   CanWork: 0
   isToilet: 0
   hasMenegerTarget: 0
+  isPause: 0
   _stackOfMoney: {fileID: 106824842}
   lvl: 0
   BoxLvl:
@@ -32311,6 +32312,7 @@ MonoBehaviour:
   CanWork: 0
   isToilet: 0
   hasMenegerTarget: 0
+  isPause: 0
   _stackOfMoney: {fileID: 1821540618}
   lvl: 0
   BoxLvl:
@@ -32675,7 +32677,8 @@ MonoBehaviour:
   MaxKioskCustomers: 5
   CustomerCreateTime: 1
   DeliveryManCreateTime: 0
-  timeEventInterval: 60
+  timeEventIntervalCall: 100
+  timeEventIntervalSleep: 100
   CustomerPos: {fileID: 55809694}
   DeletePos: {fileID: 1012217640}
   CarPlace: {fileID: 1143961776}
@@ -32710,6 +32713,7 @@ MonoBehaviour:
   - {fileID: 630384851}
   - {fileID: 907660243}
   - {fileID: 1648751955}
+  ReadyforSleep: []
 --- !u!114 &1134624004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49537,6 +49541,7 @@ MonoBehaviour:
   CanWork: 0
   isToilet: 0
   hasMenegerTarget: 0
+  isPause: 0
   _stackOfMoney: {fileID: 1341335713}
   lvl: 0
   BoxLvl:

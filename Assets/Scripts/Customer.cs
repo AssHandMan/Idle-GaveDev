@@ -9,12 +9,12 @@ using UnityEngine.UI;
 public class Customer : MonoBehaviour
 {
     public Transform targetPos, DeletePlace;
-    public GameObject OrderBar, CallIcon;
-    public Image CallBar;
+    public GameObject OrderBar, CallIcon, SleepIcon;
+    public Image CallBar, SleepBar;
     public Text OrderCount;
     public Canvas canvas;
-    public bool isCalling;
-    public float CallTime, step;
+    public bool isCalling, isSleeping;
+    public float CallTime, SleepTime, step;
     private Rigidbody rb;
     public NavMeshAgent agent;
     private string[] BuyType = { "Buy", "Play" };
@@ -48,6 +48,7 @@ public class Customer : MonoBehaviour
 
         if (OrderBar != null) { OrderBar.transform.LookAt(Camera.main.transform); }
         if (CallIcon.activeSelf) { CallIcon.transform.LookAt(Camera.main.transform); }
+        if (SleepIcon.activeSelf) { SleepIcon.transform.LookAt(Camera.main.transform); }
         agent.SetDestination(targetPos.position);
 
         if (target == "Buy")
@@ -104,6 +105,7 @@ public class Customer : MonoBehaviour
         {
             if (transform.position.x == targetPos.position.x && transform.position.z == targetPos.position.z)
             {
+                if(machine.client == null) { meneger.ReadyforSleep.Add(this); }
                 machine.client = this;
                 if (!machine.isPlaying && machine.CanWork)
                 {
@@ -273,6 +275,10 @@ public class Customer : MonoBehaviour
             {
                 StartCoroutine(Calling());
             }
+            if (isSleeping)
+            {
+                StartCoroutine(Sleeping());
+            }
         }
     }
 
@@ -285,6 +291,17 @@ public class Customer : MonoBehaviour
         agent.speed = 0;
         OrderBar.SetActive(false);
         isCalling = true;
+    }
+    public void Sleep()
+    {
+        SleepTime = 200;
+        step = SleepTime;
+        SleepBar.fillAmount = 1;
+        SleepIcon.SetActive(true);
+        agent.speed = 0;
+        OrderBar.SetActive(false);
+        isSleeping = true;
+        machine.isPause = true;
     }
 
     private IEnumerator Calling()
@@ -317,12 +334,33 @@ public class Customer : MonoBehaviour
             st.LustCustomerPosinQueue = -1;
         }
     }
+    private IEnumerator Sleeping()
+    {
+        if (SleepTime > 0)
+        {
+            yield return new WaitForSeconds(0.01f);
+            SleepTime--;
+            SleepBar.GetComponent<Image>().fillAmount -= (1 / step);
+            StartCoroutine(Sleeping());
+        }
+        else
+        {
+            agent.speed = 5;  
+            SleepIcon.SetActive(false);
+            isSleeping = false;
+            machine.isPause = false;
+        }
+    }
 
     public void OnTriggerExit(Collider other)
     {
         if (other.GetComponent<PlayerTakeDropSystem>() != null)
         {
             if (isCalling)
+            {
+                StopAllCoroutines();
+            }
+            if (isSleeping)
             {
                 StopAllCoroutines();
             }
