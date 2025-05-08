@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -140,11 +140,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 768
-        width: 997
-        height: 996
+        y: 1303
+        width: 800
+        height: 804
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -161,12 +161,12 @@ TextureImporter:
       name: Sleep and Call Icons_1
       rect:
         serializedVersion: 2
-        x: 1048
-        y: 780
-        width: 997
-        height: 997
+        x: 244
+        y: 2107
+        width: 4
+        height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -183,12 +183,12 @@ TextureImporter:
       name: Sleep and Call Icons_2
       rect:
         serializedVersion: 2
-        x: 176
-        y: 0
-        width: 655
-        height: 667
+        x: 836
+        y: 1312
+        width: 803
+        height: 803
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -205,12 +205,12 @@ TextureImporter:
       name: Sleep and Call Icons_4
       rect:
         serializedVersion: 2
-        x: 1153
-        y: 91
-        width: 630
-        height: 405
+        x: 113
+        y: 762
+        width: 640
+        height: 409
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -219,6 +219,50 @@ TextureImporter:
       bones: []
       spriteID: 5db5296cdb9d106418517784ad158372
       internalID: -7849981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sleep and Call Icons_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 654
+        height: 663
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0bc82c9184ea2d45aa167dad6d091e0
+      internalID: -1937118552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sleep and Call Icons_7
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 0
+        width: 447
+        height: 659
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b7741822b476154cb914249d8aa4ba4
+      internalID: 29482598
       vertices: []
       indices: 
       edges: []
@@ -244,6 +288,7 @@ TextureImporter:
       Sleep and Call Icons_4: -7849981
       Sleep and Call Icons_5: -1935241150
       Sleep and Call Icons_6: -1937118552
+      Sleep and Call Icons_7: 29482598
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

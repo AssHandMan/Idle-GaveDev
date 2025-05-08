@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class Customer : MonoBehaviour
 {
     public Transform targetPos, DeletePlace;
-    public GameObject OrderBar, CallIcon, SleepIcon;
+    public GameObject OrderBar, CallIcon, SleepIcon, ToiletIcon;
     public Image CallBar, SleepBar;
     public Text OrderCount;
     public Canvas canvas;
@@ -49,6 +49,7 @@ public class Customer : MonoBehaviour
         if (OrderBar != null) { OrderBar.transform.LookAt(Camera.main.transform); }
         if (CallIcon.activeSelf) { CallIcon.transform.LookAt(Camera.main.transform); }
         if (SleepIcon.activeSelf) { SleepIcon.transform.LookAt(Camera.main.transform); }
+        if(ToiletIcon.activeSelf) { ToiletIcon.transform.LookAt(Camera.main.transform); }
         agent.SetDestination(targetPos.position);
 
         if (target == "Buy")
@@ -220,6 +221,7 @@ public class Customer : MonoBehaviour
                             //st.QueueList.Remove(gameObject);
                             //st.Queue = st.QueueList.ToArray();
                             toilet = true;
+                            ToiletIcon.SetActive(true);
                             break;
                         }
                     }
@@ -228,6 +230,7 @@ public class Customer : MonoBehaviour
                 {
                     target = "Delete";
                     targetPos = DeletePlace.transform;
+                    
                     //st.QueueList.Remove(gameObject);
                     //st.Queue = st.QueueList.ToArray();
                 }
@@ -235,7 +238,7 @@ public class Customer : MonoBehaviour
 
             else
             {
-
+                ToiletIcon.SetActive(false);
                 target = "Delete";
                 targetPos = DeletePlace.transform;
                 st.QueueList.Remove(gameObject);
