@@ -183,4 +183,5 @@ MonoBehaviour:
   _Y_Spacing: 0.2
   _Z_Spacing: 1
   _FirstPoint: {fileID: 2998281643227656181}
+  _MoneyEffectObj: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   removalSpeed: 75

@@ -13,9 +13,9 @@ public class MenegerHands : MonoBehaviour
     public TakeStation takeStation;
 
     public bool isTakingFromTakeStation;
-        private int CountForLustObj;
+    private int CountForLustObj;
     private GameObject LustTakenObj, PrevTakenObj;
-    private bool inProgress;
+    public bool inProgress;
     private Vector3 startPos;
     private Vector3 endPos;
     private Vector3 controlPoint;
@@ -30,6 +30,11 @@ public class MenegerHands : MonoBehaviour
     {
         if (inProgress)
         {
+            if (LustTakenObj.transform.parent == GameObject.FindGameObjectWithTag("Player").transform && LustTakenObj.GetComponent<Object>().Type == "Trash")
+            {
+                inProgress = false;
+            }
+            
             arcT += Time.deltaTime * TakeSpeed;
             arcT = Mathf.Clamp01(arcT);
 
@@ -50,8 +55,13 @@ public class MenegerHands : MonoBehaviour
                 IngredientsCollection.Add(LustTakenObj);
                 Count++;
                 LustTakenObj.GetComponent<Object>().ChangeTrail();
+                LustTakenObj = null;
                 inProgress = false;
             }
+        }
+        if(Count == 0 && transform.childCount > 0)
+        {
+            Destroy(transform.GetChild(0).gameObject);
         }
     }
 
@@ -96,12 +106,10 @@ public class MenegerHands : MonoBehaviour
         }
         else if ((meneger.TargetType == "CreateStation" || meneger.TargetType == "CreateStation2" || meneger.TargetType == "CreateStationCar" || meneger.TargetType == "CreateKiosk1" || meneger.TargetType == "CreateKiosk2") && other.GetComponent<CreateStation>() != null)
         {
-            Debug.Log("1");
             if (meneger.Target == other.GetComponent<CreateStation>().MenegerPlace)
             {
                 createStation = other.GetComponent<CreateStation>();
                 StartCoroutine(GetFromCreateStation());
-                Debug.Log("2");
             }
         }
         else if (meneger.TargetType == "AddToCashmachine" && other.GetComponent<DropStation>() != null)
@@ -163,7 +171,6 @@ public class MenegerHands : MonoBehaviour
         }
         else if(meneger.TargetType == "CreateStationCar")
         {
-            Debug.Log("3");
             if (createStation.station.CountObj == 0) { StartCoroutine(WaitNewCreateObj()); }
             else if (Count < meneger.capacity)
             {
@@ -247,6 +254,10 @@ public class MenegerHands : MonoBehaviour
                 }
                 dropStation.AddObj(IngredientsCollection[Count - 1], TakeSpeed);
                 IngredientsCollection.RemoveAt(Count - 1);
+                while (dropStation.inProgress)
+                {
+                    yield return null;
+                }
                 Count--;
                 if (Count > 0) { StartCoroutine(AddToCashMachine()); }
             }
@@ -280,6 +291,5 @@ public class MenegerHands : MonoBehaviour
             else if (meneger.workStation.newStation.CountObj == 0 && meneger.workStation.station.CountObj > 0 && Count < meneger.capacity) { StartCoroutine(WaitNewCreateObjÑar()); }
             else { isTakingFromTakeStation = false; }
         }
-        Debug.Log("WHAT");
     }
 }

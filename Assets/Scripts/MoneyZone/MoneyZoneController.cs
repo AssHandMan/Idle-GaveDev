@@ -28,6 +28,9 @@ public class MoneyZoneController : MonoBehaviour
     [SerializeField] private float _Z_Spacing;
     [SerializeField] public GameObject _FirstPoint;
 
+    [SerializeField] private GameObject _MoneyEffectObj;
+    private Coroutine moneyEffectCoroutine;
+
     public float removalSpeed = 1.0f; // 1.0 - нормальная скорость, >1 - ускорение, <1 - замедление
     private bool isRemoving = false; // Флаг, чтобы не запускать несколько корутин сразу
     private Coroutine removalCoroutine; // Ссылка на запущенную корутину
@@ -87,6 +90,14 @@ public class MoneyZoneController : MonoBehaviour
                 StopCoroutine(removalCoroutine);
                 isRemoving = false;
             }
+            if (other.CompareTag("Player"))
+            {
+                if (moneyEffectCoroutine != null)
+                {
+                    StopCoroutine(moneyEffectCoroutine);
+                    moneyEffectCoroutine = null;
+                }
+            }
         }
     }
     private void StackSize()
@@ -139,5 +150,25 @@ public class MoneyZoneController : MonoBehaviour
         }
 
         isRemoving = false;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && _cash3D.Count > 0)
+        {
+            if (moneyEffectCoroutine == null)
+                moneyEffectCoroutine = StartCoroutine(MoneyEffectGenerator());
+        }
+    }
+    private IEnumerator MoneyEffectGenerator()
+    {
+        while (_cash3D.Count > 0)
+        {
+            GameObject money = Instantiate(_MoneyEffectObj, transform.position, _MoneyEffectObj.transform.rotation);
+            money.GetComponent<MoneyBuySpace>().TakeMoney();
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        moneyEffectCoroutine = null;
     }
 }

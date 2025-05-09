@@ -26,7 +26,6 @@ public class Meneger : MonoBehaviour
     public HrRoom room;
 
     public SellStation Cashmachine;
-
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -36,8 +35,7 @@ public class Meneger : MonoBehaviour
     
     void Update()
     {
-        
-        if(agent.speed != speed) { agent.speed = speed; }
+        if (agent.speed != speed) { agent.speed = speed; }
         if (TargetType == "")
         {
             DefineTarget();
@@ -183,7 +181,7 @@ public class Meneger : MonoBehaviour
         if (TargetType == "AddToCashMachineCar")
         {
             agent.SetDestination(CarsStations.SaveStationPlace.position);
-            if (hands.Count == 0)
+            if (hands.Count == 0 && !hands.inProgress)
             {
                 if (CarsStations.lvl < 2 && !CarsStations.isSelling)
                 {

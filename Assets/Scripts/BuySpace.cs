@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class BuySpace : MonoBehaviour
 {
-    public GameObject station;
-    public ParticleSystem MoneyEffect;
+    public GameObject station, money;
     public Text PriceText;
     public Image ProgressBar;
     public int price, startPrice;
@@ -19,6 +18,7 @@ public class BuySpace : MonoBehaviour
     private PlayerWallet wallet;
     private UpgreadeSceneMeneger meneger;
     private Animator anim;
+    private Transform plrPos;
 
     void Start()
     {
@@ -39,7 +39,6 @@ public class BuySpace : MonoBehaviour
             {
                 StopAllCoroutines();
                 inProgress = false;
-                MoneyEffect.Stop();
             }
         }
 
@@ -51,6 +50,7 @@ public class BuySpace : MonoBehaviour
         {
             anim.SetBool("isBigger", true);
             plr = other.gameObject.GetComponent<PlayerMovement>();
+            plrPos = other.gameObject.transform;
         }
     }
     public void OnTriggerStay(Collider other)
@@ -60,7 +60,7 @@ public class BuySpace : MonoBehaviour
            if(plr.movementDirection == Vector3.zero && !inProgress && wallet.Money > 0)
             {
                 StartCoroutine(Paying());
-                if(!inProgress) { MoneyEffect.Play(); }
+                StartCoroutine(MoneyEffectGenerator());
                 inProgress = true;
             }
         }
@@ -72,7 +72,6 @@ public class BuySpace : MonoBehaviour
             anim.SetBool("isBigger", false);
             plr = null;
             inProgress = false;
-            MoneyEffect.Stop();
             StopAllCoroutines();
         }
     }
@@ -181,7 +180,7 @@ public class BuySpace : MonoBehaviour
             {
                 wallet.ChangeCount(-amountToDeduct, "Money");
                 price -= amountToDeduct;
-                ProgressBar.fillAmount = 1f - ((float)price / startPrice); // Обновляем прогресс-бар
+                ProgressBar.fillAmount = 1f - ((float)price / startPrice);
                 PriceText.text = price.ToString();
             }
 
@@ -190,9 +189,17 @@ public class BuySpace : MonoBehaviour
 
         if (price <= 0)
         {
-            Buy(false); // Если цена стала 0, совершаем покупку
-            savedElapsedTime = 0f; // Сбрасываем сохранённое время
+            Buy(false);
+            savedElapsedTime = 0f;
         }
+    }
+    private IEnumerator MoneyEffectGenerator()
+    {
+        Vector3 pos = new Vector3(plrPos.position.x, plrPos.position.y + 2f, plrPos.position.z);
+        GameObject m = Instantiate(money, pos, money.transform.rotation);
+        m.GetComponent<MoneyBuySpace>().GiveMoney(transform.position);
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine(MoneyEffectGenerator());
     }
 
 
