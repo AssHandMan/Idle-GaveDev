@@ -10,13 +10,22 @@ public class LvlObject : MonoBehaviour
     public Text _Free;
     public Text _Man;
     public Text _SEO;
+    public GameObject _GiftMain;
+    public GameObject _FreeMain;
+    public GameObject _ManMain;
+    public GameObject _SEOMain;
     public GameObject _imgCheckLvl;
     public GameObject _imgCheckGift;
     public GameObject _imgCheckFree;
     public GameObject _imgCheckMan;
     public GameObject _imgCheckSEO;
+    public GameObject _imgGift;
+    public GameObject _imgFree;
+    public GameObject _imgMan;
+    public GameObject _imgSEO;
     private PlayerWallet wallet;
     private Exp_Controller exp_menu;
+
 
     public void Start()
     {
@@ -34,20 +43,23 @@ public class LvlObject : MonoBehaviour
     private void GetCash(string ars)
     {
         string[] temp = ars.Split(' ');
-        //Debug.Log($"{temp[0]} {temp[1]} темп");
-        if (temp[1] == "b")
+        if (temp[0] != "" && temp[0] != "-")
         {
-            temp[1] = "Money";
+            Debug.Log($"{temp[0]} {temp[1]} темп");
+            if (temp[1] == "b")
+            {
+                temp[1] = "Money";
+            }
+            else if (temp[1] == "k")
+            {
+                temp[1] = "Diamonds";
+            }
+            else
+            {
+                temp[1] = "Tokens";
+            }
+            wallet.ChangeCount(float.Parse(temp[0]), temp[1]);
         }
-        else if (temp[1] == "k")
-        {
-            temp[1] = "Diamonds";
-        }
-        else
-        {
-            temp[1] = "Tokens";
-        }
-        wallet.ChangeCount(float.Parse(temp[0]), temp[1]);
     }
     private void CheckPlayer()
     {

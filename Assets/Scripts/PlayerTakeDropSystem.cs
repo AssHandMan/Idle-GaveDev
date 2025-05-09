@@ -13,16 +13,23 @@ public class PlayerTakeDropSystem : MonoBehaviour
     private TakeStation box;
     private DropStation drop;
     private GameObject plr, Bin, Delivery;
+    private Animator _animator;
 
     void Start()
     {
         plr = GameObject.FindGameObjectWithTag("Player");
+        _animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+
     }
 
 
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E)) { TimeMagic(); }
+        if (Count > 0)
+            _animator.SetBool("IsTransfer", true);
+        else
+            _animator.SetBool("IsTransfer", false);
     }
 
     public void TimeMagic()

@@ -24,6 +24,7 @@ public class Customer : MonoBehaviour
     public ArcadeMachine machine;
 
     public bool play, toilet, kiosk;
+    public Animator _animator;
 
     void Start()
     {
@@ -34,7 +35,8 @@ public class Customer : MonoBehaviour
             targetPos = st.CustomerPlace[GetPosinQueue()];
             OrderCount.text = BuyObjCount.ToString();
         }
-
+       
+        _animator.SetBool("IsMoving", true);
     }
 
 
@@ -43,6 +45,8 @@ public class Customer : MonoBehaviour
         if (OrderBar != null) { OrderBar.transform.LookAt(Camera.main.transform); }
         if (CallBar.activeSelf) { CallBar.transform.LookAt(Camera.main.transform); }
         agent.SetDestination(targetPos.position);
+
+        
 
         if (target == "Buy")
         {
@@ -56,6 +60,8 @@ public class Customer : MonoBehaviour
                     if (GetPosinQueue() > st.CallingCustomer.GetPosinQueue())
                     {
                         agent.speed = 0;
+                        StartCoroutine(animator1("IsMoving", false, 0));
+                        StartCoroutine(animator1("IsTalking", false, 0));
                     }
                 }
 
@@ -64,6 +70,13 @@ public class Customer : MonoBehaviour
                     if (!OrderBar.activeSelf & BuyObjCount > 0) { OrderBar.SetActive(true); }
                     st.client = this;
                     st.CountObj = BuyObjCount;
+
+                }
+                //остановка анимации, при вступлении в очередь
+                foreach (var item in st.CustomerPlace)
+                {
+                    if(targetPos == item)
+                        StartCoroutine(animator1("IsMoving", false, 0));
                 }
             }
 
@@ -95,13 +108,22 @@ public class Customer : MonoBehaviour
                 machine.client = this;
                 if (!machine.isPlaying && machine.CanWork)
                 {
+                    StartCoroutine(animator1("IsPlay",true,0));
+                    StartCoroutine(animator1("IsMoving", false, 0));
                     machine.StartPlay();
+                    StartCoroutine(animator1("IsPlay", false, 5));
+
+
                 }
             }
         }
         if (transform.position.x == DeletePlace.position.x && transform.position.z == DeletePlace.position.z) { Destroy(gameObject); }
     }
-
+    private IEnumerator animator1(string parametr, bool tf,int sec)
+    {
+        yield return new WaitForSeconds(sec);
+        _animator.SetBool(parametr, tf);
+    }
     public void ChangeBuyCount()
     {
         BuyObjCount--;
@@ -205,6 +227,7 @@ public class Customer : MonoBehaviour
                 st.Queue = st.QueueList.ToArray();
             }
         }
+        _animator.SetBool("IsMoving",true);
     }
 
     public int GetPosinQueue()
@@ -242,6 +265,7 @@ public class Customer : MonoBehaviour
         OrderBar.SetActive(false);
         CallBar.SetActive(true);
         isCalling = true;
+        _animator.SetBool("IsTalking",true);
     }
 
     private IEnumerator Calling()
@@ -262,6 +286,8 @@ public class Customer : MonoBehaviour
             }
             CallBar.SetActive(false);
             isCalling = false;
+            _animator.SetBool("IsTalking", false);
+            _animator.SetBool("IsMoving", true);
             st.isCalling = false;
             for (int i = 0; i < st.Queue.Length; i++)
             {

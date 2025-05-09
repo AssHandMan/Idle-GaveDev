@@ -22,13 +22,15 @@ public class Exp_Controller : MonoBehaviour
     [SerializeField] private GameObject _NEWbtn;
     [SerializeField] private GameObject _btn;
     [SerializeField] private Text _LabelLVL;
-
+    [SerializeField] private Sprite _money;
+    [SerializeField] private Sprite _skins;
+    [SerializeField] private Sprite _diamonds;
+    [SerializeField] private Image _voidImg;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Parse()
     {
         string[] lines = _csvData.text.Split('\n');
 
-        //изменить когда будет норм таблица
         for (int i = 2; i < lines.Length; i++)
         {
             GameObject panelLevel = _panelLevel;
@@ -38,7 +40,9 @@ public class Exp_Controller : MonoBehaviour
             string[] fields = line.Split(',');
             CreatePanel(fields, panelLevel);
             GameObject newObj = Instantiate(_panelLevel, _ScrollView.transform);
-            _Lvls.Add(newObj);
+            if(newObj.GetComponent<LvlObject>()._Gift.text=="")
+                newObj.GetComponent<LvlObject>()._GiftMain.gameObject.SetActive(false);
+             _Lvls.Add(newObj);
             
         }
     }
@@ -47,12 +51,55 @@ public class Exp_Controller : MonoBehaviour
         LvlObject temp = panel.GetComponent<LvlObject>();
         temp._Level.text = lines[0];
         _sliderLVLs.Add(lines[1]);
+       
+            Debug.Log(lines[2]);
+        
         temp._Gift.text = lines[2];
+        temp._imgGift.GetComponent<Image>().sprite = SelectImgIcon(lines[2]);
+        
+
         temp._Free.text = lines[3];
+        temp._imgFree.GetComponent<Image>().sprite = SelectImgIcon(lines[3]);
+        
+
         temp._Man.text = lines[4];
+        temp._imgMan.GetComponent<Image>().sprite = SelectImgIcon(lines[4]);
+       
+
         temp._SEO.text = lines[5];
+        temp._imgSEO.GetComponent<Image>().sprite = SelectImgIcon(lines[5]);
+       
+
         _gifts.Add(panel.GetComponent<LvlObject>());
     }
+    private Sprite SelectImgIcon(string str)
+    {
+        //Debug.Log(str);
+        if (str != "-" && str != "")
+        {
+            //Debug.Log(str);
+            string type = str.Split(" ")[1];
+            if (type == "b")
+            {
+                return _money;
+            }
+            else if (type == "k")
+            {
+                return _diamonds;
+            }
+            else if (type == "t")
+            {
+                return _skins;
+            }
+            else
+            {
+                return null;
+            }
+        }
+       
+        return null;
+    }
+    
     private void NewLvl()
     {
         _btn.SetActive(false);

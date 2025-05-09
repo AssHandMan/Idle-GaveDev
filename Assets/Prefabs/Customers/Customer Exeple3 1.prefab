@@ -320,6 +320,7 @@ MonoBehaviour:
   play: 0
   toilet: 0
   kiosk: 0
+  _animator: {fileID: 4408319462635993083}
 --- !u!195 &3155657778286735971
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -442,6 +443,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95172115886350004, guid: 8290cdcc311ae774b8b2337965af0c77, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 26ed74997c5156c44b7c250b715751bc, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -450,5 +455,10 @@ PrefabInstance:
 --- !u!4 &4355318705270361281 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4031842071569806, guid: 8290cdcc311ae774b8b2337965af0c77, type: 3}
+  m_PrefabInstance: {fileID: 4359310411870660943}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4408319462635993083 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95172115886350004, guid: 8290cdcc311ae774b8b2337965af0c77, type: 3}
   m_PrefabInstance: {fileID: 4359310411870660943}
   m_PrefabAsset: {fileID: 0}

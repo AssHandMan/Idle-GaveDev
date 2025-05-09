@@ -4458,6 +4458,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 691619285}
     m_Modifications:
+    - target: {fileID: 382098974596570201, guid: a3578d39b03c3ed43a22e9fefe9d0dc1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 880383298339242408, guid: a3578d39b03c3ed43a22e9fefe9d0dc1, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.32419482
@@ -4534,9 +4538,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.24644
       objectReference: {fileID: 0}
+    - target: {fileID: 5808808168871239944, guid: a3578d39b03c3ed43a22e9fefe9d0dc1, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 876ccec41dd520641be9a59425533900, type: 2}
     - target: {fileID: 8777270137952733379, guid: a3578d39b03c3ed43a22e9fefe9d0dc1, type: 3}
       propertyPath: m_Name
       value: Office_HR
+      objectReference: {fileID: 0}
+    - target: {fileID: 8777270137952733379, guid: a3578d39b03c3ed43a22e9fefe9d0dc1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9079855759259937964, guid: a3578d39b03c3ed43a22e9fefe9d0dc1, type: 3}
       propertyPath: m_IsTrigger
@@ -25636,6 +25648,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Office_SKIN
       objectReference: {fileID: 0}
+    - target: {fileID: 2605912780327549782, guid: 5d8943c082454a34f890529db754f668, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 876ccec41dd520641be9a59425533900, type: 2}
     - target: {fileID: 4297792448314113085, guid: 5d8943c082454a34f890529db754f668, type: 3}
       propertyPath: cam
       value: 
@@ -37816,7 +37832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8404482747125883005, guid: 793dc47101f5d0c4b95d65795123b1a5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8595701866329958876, guid: 793dc47101f5d0c4b95d65795123b1a5, type: 3}
       propertyPath: _testMaxCash
@@ -40583,6 +40599,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2535289502527813060, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 876ccec41dd520641be9a59425533900, type: 2}
     - target: {fileID: 3277169742126905541, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.28771925
@@ -40666,6 +40686,10 @@ PrefabInstance:
     - target: {fileID: 7263009247642287843, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
       propertyPath: m_Name
       value: Office_UPGRADE
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263009247642287843, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8791614768297009629, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
       propertyPath: m_Size.x
@@ -56068,7 +56092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3454155032323644473, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4632626241186287912, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -56128,9 +56152,57 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 757167100}
     m_Modifications:
+    - target: {fileID: 729787909534985720, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667585081033936333, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667585081033936333, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667585081033936333, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030843841017491155, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
+      propertyPath: _money
+      value: 
+      objectReference: {fileID: 21300000, guid: ac45bba38d5c6554f87f50478598f689, type: 3}
+    - target: {fileID: 4030843841017491155, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
+      propertyPath: _skins
+      value: 
+      objectReference: {fileID: 21300000, guid: 6bd55f0abc5a8634197772e65a9f13f9, type: 3}
+    - target: {fileID: 4030843841017491155, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
+      propertyPath: _csvData
+      value: 
+      objectReference: {fileID: 4900000, guid: f45dc48ab0a75f34298ebaa2c04f5d82, type: 3}
+    - target: {fileID: 4030843841017491155, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
+      propertyPath: _voidImg
+      value: 
+      objectReference: {fileID: 8281497295983108444, guid: 44dc4be9ea7bdd74783505fcc36b32f9, type: 3}
+    - target: {fileID: 4030843841017491155, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
+      propertyPath: _diamonds
+      value: 
+      objectReference: {fileID: 21300000, guid: 99d6759787f57634bb70ccbcd336fb69, type: 3}
+    - target: {fileID: 4030843841017491155, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
+      propertyPath: _playerEXP
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030843841017491155, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
+      propertyPath: _playerLVL
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4604958794704606555, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
       propertyPath: m_Name
       value: UI_EXP
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122672393380839918, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6409415861091782047, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
       propertyPath: m_AnchorMax.y
@@ -56140,6 +56212,22 @@ PrefabInstance:
       propertyPath: _joystick
       value: 
       objectReference: {fileID: 1324671369}
+    - target: {fileID: 6842758382029286430, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842758382029286430, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216058798794634317, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7836915591101953022, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9014898452302318578, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
