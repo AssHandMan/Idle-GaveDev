@@ -335,6 +335,7 @@ public class Customer : MonoBehaviour
                 st.LustCustomer = null;
             }
             st.LustCustomerPosinQueue = -1;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>().AddMoneyEvent();
         }
     }
     private IEnumerator Sleeping()
@@ -352,6 +353,7 @@ public class Customer : MonoBehaviour
             SleepIcon.SetActive(false);
             isSleeping = false;
             machine.isPause = false;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>().AddMoneyEvent();
         }
     }
 

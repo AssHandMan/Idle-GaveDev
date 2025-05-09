@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,9 @@ public class PlayerWallet : MonoBehaviour
     public Text Mtext, Dtext, Stext;
     public int Money, Diamonds, Skins;
     public float MoneyMultiplier;
+    public TextMeshProUGUI EventText;
+    private float MoneyForEvent;
+    private bool inProgress;
     void Start()
     {
         TextForm(Money, Mtext);
@@ -19,8 +23,34 @@ public class PlayerWallet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
+    public void AddMoneyEvent()
+    {   
+        if(inProgress)
+        {
+            ChangeCount(MoneyForEvent, "Money");
+            StopAllCoroutines();
+        }
+        MoneyForEvent = UnityEngine.Random.Range(30, 50);
+        EventText.text = "$0";  
+        EventText.gameObject.SetActive(true);
+        StartCoroutine(AddingMoneyEvent());
+        inProgress = true;
+    }
+
+    private IEnumerator AddingMoneyEvent()
+    {
+        for (int i = 0; i <= MoneyForEvent; i++)
+        {
+            yield return new WaitForSeconds(0.03f);
+            EventText.text = "$" + i;
+        }
+        ChangeCount(MoneyForEvent, "Money");
+        yield return new WaitForSeconds(1.5f);  
+        EventText.gameObject.SetActive(false);
+        inProgress = false;
+    }
+
 
     public void ChangeCount(float count, string type)
     {
