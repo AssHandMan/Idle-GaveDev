@@ -24,7 +24,7 @@ public class ArrowPosController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene("Sample Scene");
+            SceneManager.LoadScene("TheFirstShop");
         }
     }
 

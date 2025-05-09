@@ -121,5 +121,6 @@ public class CarSellStation : MonoBehaviour
         }
         if (lvl < 3) { lvl++; }
         if(lvl == 2) { Worker.SetActive(true); }
+        transform.parent.gameObject.GetComponent<Animator>().SetTrigger("Buy");
     }
 }

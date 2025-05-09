@@ -5,6 +5,7 @@ using UnityEngine;
 public class ArcadeMachine : MonoBehaviour
 {
     public StationObjectCollection station;
+    public MeshFilter filter;
     public GameObject trash, TrashViewe, Main;
     public Transform CustomerPos;
     public Customer client;
@@ -110,9 +111,10 @@ public class ArcadeMachine : MonoBehaviour
     }
     public void BuyUpgrade()
     {
+        GetComponent<Animator>().SetTrigger("Buy");
         if (lvl <= PriceList.Length)
         {
-            if (BoxLvl[lvl] != null) { gameObject.GetComponent<MeshFilter>().mesh = BoxLvl[lvl]; }
+            if (BoxLvl[lvl] != null) { filter.mesh = BoxLvl[lvl]; }
         }
         if(lvl < PriceList.Length)
         {

@@ -93,6 +93,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4690683233177268934}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2708565449936204779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 394688839186093021}
+  m_Layer: 0
+  m_Name: All Table
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &394688839186093021
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2708565449936204779}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.700057, y: 0.74029756, z: -0.50180626}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2649298794678251783}
+  - {fileID: 6944718733466579752}
+  - {fileID: 8985734142481442109}
+  m_Father: {fileID: 4690683233177268934}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2956162265997411127
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4690683233177268934}
+  - component: {fileID: 8627407547140957722}
   m_Layer: 0
   m_Name: Kiosk
   m_TagString: Untagged
@@ -246,16 +281,36 @@ Transform:
   m_LocalScale: {x: 0.87100697, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2649298794678251783}
+  - {fileID: 394688839186093021}
   - {fileID: 8681303707589792559}
   - {fileID: 6918209345093140282}
   - {fileID: 2237184052268779134}
   - {fileID: 8505557973457887968}
   - {fileID: 8621591919644677597}
-  - {fileID: 6944718733466579752}
-  - {fileID: 8985734142481442109}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+--- !u!95 &8627407547140957722
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5454335647086775516}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fd3354e44026b11428cfb7471e257ed5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6223879675247649976
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,7 +422,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 4690683233177268934}
+    m_TransformParent: {fileID: 394688839186093021}
     m_Modifications:
     - target: {fileID: 149434, guid: 6b24f606b4a556a48b2f9fbb46026043, type: 3}
       propertyPath: m_Name
@@ -383,15 +438,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 443612, guid: 6b24f606b4a556a48b2f9fbb46026043, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.700057
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 443612, guid: 6b24f606b4a556a48b2f9fbb46026043, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.74029756
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 443612, guid: 6b24f606b4a556a48b2f9fbb46026043, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.50180626
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 443612, guid: 6b24f606b4a556a48b2f9fbb46026043, type: 3}
       propertyPath: m_LocalRotation.w
@@ -473,7 +528,6 @@ MonoBehaviour:
   ObjectsList: []
   MuxCountObj: 5
   CountObj: 0
-  LustPosY: 0
 --- !u!114 &3100720801205580468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,7 +543,8 @@ MonoBehaviour:
   station1: {fileID: 3473887599566759121}
   station2: {fileID: 7921016811569232900}
   station3: {fileID: 3941420463762415719}
-  PresentCase: {fileID: 2155953119310351073, guid: 850adfb3b7e463e49bc6c059c2efa73c, type: 3}
+  PresentCase: {fileID: 4718027141913095941, guid: 01d17a5d63c799349885bc5c8c4e68f4, type: 3}
+  menegerPlace: {fileID: 0}
   QueueList: []
 --- !u!114 &3072939136291405257
 MonoBehaviour:
@@ -506,6 +561,8 @@ MonoBehaviour:
   station: {fileID: 3941420463762415719}
   WorkSpace: {fileID: 0}
   MainObj: {fileID: 5454335647086775516}
+  Worker: {fileID: 0}
+  LustCustomer: {fileID: 0}
   CustomerPlace:
   - {fileID: 8681303707589792559}
   - {fileID: 6918209345093140282}
@@ -514,10 +571,22 @@ MonoBehaviour:
   - {fileID: 8621591919644677597}
   CanWork: 0
   isKiosk: 1
+  isCalling: 0
+  isSelling: 0
+  hasAddingObjMenegerTarget: 0
+  hasworkerTarget: 0
   CountObj: 0
+  deltaY: 0
   client: {fileID: 0}
   QueueList: []
   Queue: []
+  CallingCustomer: {fileID: 0}
+  MenegerPlace: {fileID: 0}
+  space: {fileID: 0}
+  lvl: 0
+  LustCustomerPosinQueue: 0
+  PriceList: 
+  _stackOfMoney: {fileID: 0}
 --- !u!1001 &2841732727754043148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -676,7 +745,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 4690683233177268934}
+    m_TransformParent: {fileID: 394688839186093021}
     m_Modifications:
     - target: {fileID: 149434, guid: 6b24f606b4a556a48b2f9fbb46026043, type: 3}
       propertyPath: m_Name
@@ -696,15 +765,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 443612, guid: 6b24f606b4a556a48b2f9fbb46026043, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.9451
+      value: 1.2450429
       objectReference: {fileID: 0}
     - target: {fileID: 443612, guid: 6b24f606b4a556a48b2f9fbb46026043, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.750298
+      value: 0.010000467
       objectReference: {fileID: 0}
     - target: {fileID: 443612, guid: 6b24f606b4a556a48b2f9fbb46026043, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5018501
+      value: -0.00004386902
       objectReference: {fileID: 0}
     - target: {fileID: 443612, guid: 6b24f606b4a556a48b2f9fbb46026043, type: 3}
       propertyPath: m_LocalRotation.w
@@ -778,7 +847,6 @@ MonoBehaviour:
   ObjectsList: []
   MuxCountObj: 15
   CountObj: 0
-  LustPosY: 0
 --- !u!114 &4370118189154081974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -793,7 +861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   station: {fileID: 3473887599566759121}
   ObjectType: Console
-  deltaY: 0.1
+  inProgress: 0
 --- !u!114 &3598635542927757193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,7 +875,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 3473887599566759121}
-  deltaY: 0
   CanGive: 0
 --- !u!65 &8634815131489052746
 BoxCollider:
@@ -868,7 +935,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 4690683233177268934}
+    m_TransformParent: {fileID: 394688839186093021}
     m_Modifications:
     - target: {fileID: 149434, guid: 6b24f606b4a556a48b2f9fbb46026043, type: 3}
       propertyPath: m_Name
@@ -888,15 +955,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 443612, guid: 6b24f606b4a556a48b2f9fbb46026043, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.241
+      value: 2.540943
       objectReference: {fileID: 0}
     - target: {fileID: 443612, guid: 6b24f606b4a556a48b2f9fbb46026043, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.750298
+      value: 0.010000467
       objectReference: {fileID: 0}
     - target: {fileID: 443612, guid: 6b24f606b4a556a48b2f9fbb46026043, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5018501
+      value: -0.00004386902
       objectReference: {fileID: 0}
     - target: {fileID: 443612, guid: 6b24f606b4a556a48b2f9fbb46026043, type: 3}
       propertyPath: m_LocalRotation.w
@@ -970,7 +1037,6 @@ MonoBehaviour:
   ObjectsList: []
   MuxCountObj: 15
   CountObj: 0
-  LustPosY: 0
 --- !u!114 &5174922986048809905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -985,7 +1051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   station: {fileID: 7921016811569232900}
   ObjectType: Game
-  deltaY: 0.1
+  inProgress: 0
 --- !u!114 &231585310678028786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,7 +1065,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 7921016811569232900}
-  deltaY: 0
   CanGive: 0
 --- !u!65 &1594362517990486858
 BoxCollider:

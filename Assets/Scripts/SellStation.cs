@@ -138,14 +138,15 @@ public class SellStation : MonoBehaviour
 
     public void BuyUpgrade()
     {
-        if(!MainObj.activeSelf)
+        if (!MainObj.activeSelf)
         {
             MainObj.SetActive(true);
-            if(!isKiosk)space.ChangePrice(PriceList[lvl]);
+            if (!isKiosk) space.ChangePrice(PriceList[lvl]);
+
         }
         else
         {
-            if (lvl <= PriceList.Length) 
+            if (lvl <= PriceList.Length)
             {
                 station.MuxCountObj += 5;
             }
@@ -153,8 +154,16 @@ public class SellStation : MonoBehaviour
             {
                 space.ChangePrice(PriceList[lvl]);
             }
+
         }
         if (lvl < 3) { lvl++; }
-        if(lvl == 2) { Worker.SetActive(true); }
+        if (lvl == 2) { Worker.SetActive(true); }
+        if (!isKiosk) { transform.parent.gameObject.GetComponent<Animator>().SetTrigger("Buy"); }
+        else 
+        {
+            Transform topParent = transform;
+            for(int i = 0; i <2; i++) { topParent = topParent.parent; }
+            topParent.gameObject.GetComponent<Animator>().SetTrigger("Buy");
+        }
     }
 }

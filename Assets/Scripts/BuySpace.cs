@@ -106,6 +106,7 @@ public class BuySpace : MonoBehaviour
                         station.GetComponent<ArcadeMachine>().lvl = 1;
                         station.GetComponent<ArcadeMachine>().space = this;
                         ChangePrice(station.GetComponent<ArcadeMachine>().PriceList[0]);
+                        station.GetComponent<Animator>().SetTrigger("Buy");
                     }
                     else
                     {
@@ -125,6 +126,7 @@ public class BuySpace : MonoBehaviour
                     station.GetComponent<CreateStation>().lvl = 1;
                     station.GetComponent<CreateStation>().space = this;
                     ChangePrice(station.GetComponent<CreateStation>().PriceList[0]);
+                    
                 }
                 else
                 {

@@ -73,6 +73,7 @@ public class CreateStation : MonoBehaviour
 
     public void BuyUpgrade()
     {
+        GetComponent<Animator>().SetTrigger("Buy");
         if (lvl <= PriceList.Length)
         {
             gameObject.GetComponent<StationObjectCollection>().MuxCountObj += 5;
