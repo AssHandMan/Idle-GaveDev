@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorSlider : MonoBehaviour
 {
     private Animator anim;
-    private GameObject plr;
+    private GameObject plr, DeliveryManObj;
     private List<GameObject> Menegers = new List<GameObject>();
     private List<GameObject> Customers = new List<GameObject>();
     private bool isClosed;
@@ -16,12 +16,11 @@ public class DoorSlider : MonoBehaviour
         isClosed = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(!isClosed)
         {
-            if (plr == null && Menegers.Count == 0 && Customers.Count == 0)
+            if (plr == null && Menegers.Count == 0 && Customers.Count == 0 && DeliveryManObj == null)
             {
                 anim.SetBool("Close", true);
                 isClosed = true;
@@ -29,7 +28,7 @@ public class DoorSlider : MonoBehaviour
         }
         else
         {
-            if (plr != null || Menegers.Count > 0 || Customers.Count > 0)
+            if (plr != null || Menegers.Count > 0 || Customers.Count > 0 || DeliveryManObj != null)
             {
                 anim.SetBool("Close", false);
                 isClosed = false;
@@ -51,6 +50,10 @@ public class DoorSlider : MonoBehaviour
        {
             Customers.Add(other.gameObject);
        }
+       if (other.GetComponent<DeliveryMan>() != null)
+       {
+            DeliveryManObj = other.gameObject;
+       }
     }
 
     public void OnTriggerExit(Collider other)
@@ -66,6 +69,10 @@ public class DoorSlider : MonoBehaviour
         if (other.GetComponent<Customer>() != null)
         {
             Customers.Remove(other.gameObject);
+        }
+        if (other.GetComponent<DeliveryMan>() != null)
+        {
+            DeliveryManObj = null;
         }
     }
 }

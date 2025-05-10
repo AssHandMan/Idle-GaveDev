@@ -106,7 +106,6 @@ public class Customer : MonoBehaviour
         {
             if (transform.position.x == targetPos.position.x && transform.position.z == targetPos.position.z)
             {
-                if(machine.client == null) { meneger.ReadyforSleep.Add(this); }
                 machine.client = this;
                 if (!machine.isPlaying && machine.CanWork)
                 {
@@ -221,7 +220,6 @@ public class Customer : MonoBehaviour
                             //st.QueueList.Remove(gameObject);
                             //st.Queue = st.QueueList.ToArray();
                             toilet = true;
-                            ToiletIcon.SetActive(true);
                             break;
                         }
                     }

@@ -63,7 +63,8 @@ public class CarCustomer : MonoBehaviour
     {
         if(other.GetComponent<CarCustomer>() != null)
         {
-            speed = 0;
+            if (other.gameObject.transform.position.z < transform.position.z)
+            { speed = 0; }
         }
     }
     public void OnTriggerExit(Collider other)

@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Android.Gradle;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class ArcadeMachine : MonoBehaviour
@@ -48,6 +50,8 @@ public class ArcadeMachine : MonoBehaviour
 
     public void StartPlay()
     {
+        if(isToilet) { client.ToiletIcon.SetActive(true); }
+        client.meneger.ReadyforSleep.Add(client);
         isPlaying = true;
         StartCoroutine(Playing());
         GameTime = 5;
@@ -88,17 +92,15 @@ public class ArcadeMachine : MonoBehaviour
     private void EndGame()
     {
         PlayerWallet plr = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
-        //изменено на кучу
-        //plr.ChangeCount(10, "Money");
         _stackOfMoney.GetComponent<MoneyZoneController>().Add();
         client.play = true;
         client.GoAway();
+        client.meneger.ReadyforSleep.Remove(client);
         client = null;
         Vector3 pos;
         if (station.CountObj == 0) { pos = station.PlaceObj.transform.position; }
         else { pos = station.ObjectsList[station.ObjectsList.Count - 1].GetComponent<Object>().UpPos.position - trash.GetComponent<Object>().DownPos.localPosition; }
         GameObject newObj = Instantiate(trash, pos, transform.rotation);
-        //newObj.transform.parent = transform;
         station.ObjectsList.Add(newObj);
         station.CountObj++;
         CanWork = false;

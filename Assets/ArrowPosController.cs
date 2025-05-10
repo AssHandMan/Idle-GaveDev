@@ -40,12 +40,15 @@ public class ArrowPosController : MonoBehaviour
             }
             else
             {
-                Vector3 globalPosition = sceneMeneger.NewSpaces[sceneMeneger.LustPlace + 1].transform.parent.TransformPoint(sceneMeneger.lPos[sceneMeneger.LustPlace + 1]);
-                transform.position = new Vector3(globalPosition.x, transform.position.y, globalPosition.z);
-                if (sceneMeneger.lvl == 3 || sceneMeneger.lvl == 11)
+                if (sceneMeneger.LustPlace + 1 < sceneMeneger.NewSpaces.Length && sceneMeneger.LustPlace + 1 < sceneMeneger.lPos.Count)
                 {
-                    inStationPosesProgress = true;
-                    MoveNextToStation();
+                    Vector3 globalPosition = sceneMeneger.NewSpaces[sceneMeneger.LustPlace + 1].transform.parent.TransformPoint(sceneMeneger.lPos[sceneMeneger.LustPlace + 1]);
+                    transform.position = new Vector3(globalPosition.x, transform.position.y, globalPosition.z);
+                    if (sceneMeneger.lvl == 3 || sceneMeneger.lvl == 11)
+                    {
+                        inStationPosesProgress = true;
+                        MoveNextToStation();
+                    }
                 }
             }
         }

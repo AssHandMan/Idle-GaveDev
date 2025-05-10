@@ -19,6 +19,8 @@ public class CarSellStation : MonoBehaviour
     public Transform SaveStationPlace, WorkPlace;
     public bool isSelling;
 
+    [SerializeField] private GameObject _stackOfMoney;
+
     private List<GameObject> PeopleInWorkZone;
     void Start()
     {
@@ -70,7 +72,7 @@ public class CarSellStation : MonoBehaviour
             Destroy(station.ObjectsList[station.CountObj - 1]);
             station.ObjectsList.RemoveAt(station.CountObj - 1);
             station.CountObj--;
-            wallet.ChangeCount(5, "Money");
+            _stackOfMoney.GetComponent<MoneyZoneController>().Add();
             client.ChangeCountBuy();
         }
         StartCoroutine(Working());

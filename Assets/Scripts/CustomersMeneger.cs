@@ -278,7 +278,6 @@ public class CustomersMeneger : MonoBehaviour
             {
                 int n = Random.Range(0, ReadyforSleep.Count);
                 ReadyforSleep[n].Sleep();
-                ReadyforSleep.RemoveAt(n);
             }
         }
         StartCoroutine(DoSleep());

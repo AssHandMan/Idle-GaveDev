@@ -82,23 +82,7 @@ public class MoneyZoneController : MonoBehaviour
     // При выходе из триггера
     public void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            // Останавливаем корутину, если она запущена
-            if (removalCoroutine != null)
-            {
-                StopCoroutine(removalCoroutine);
-                isRemoving = false;
-            }
-            if (other.CompareTag("Player"))
-            {
-                if (moneyEffectCoroutine != null)
-                {
-                    StopCoroutine(moneyEffectCoroutine);
-                    moneyEffectCoroutine = null;
-                }
-            }
-        }
+
     }
     private void StackSize()
     {

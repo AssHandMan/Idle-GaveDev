@@ -199,7 +199,7 @@ public class BuySpace : MonoBehaviour
         GameObject m = Instantiate(money, pos, money.transform.rotation);
         m.GetComponent<MoneyBuySpace>().GiveMoney(transform.position);
         yield return new WaitForSeconds(0.1f);
-        StartCoroutine(MoneyEffectGenerator());
+        if (wallet.Money > 0) { StartCoroutine(MoneyEffectGenerator()); }
     }
 
 
