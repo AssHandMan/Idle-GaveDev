@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Android.Gradle;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class ArcadeMachine : MonoBehaviour

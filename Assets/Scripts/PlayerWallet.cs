@@ -12,7 +12,7 @@ public class PlayerWallet : MonoBehaviour
     public float MoneyMultiplier;
     public TextMeshProUGUI EventText;
     private float MoneyForEvent;
-    private bool inProgress;
+    private bool inProgress, vibrations;
     void Start()
     {
         TextForm(Money, Mtext);
@@ -59,6 +59,7 @@ public class PlayerWallet : MonoBehaviour
             if (count > 0) { Money += Convert.ToInt32(count * MoneyMultiplier); }
             else { Money += Convert.ToInt32(count); }
             TextForm(Money, Mtext);
+            Vibrate();
         }
         else if (type == "Diamonds")
         {
@@ -69,6 +70,18 @@ public class PlayerWallet : MonoBehaviour
         {
             Skins += Convert.ToInt32(count);
             TextForm(Skins, Stext);
+        }
+    }
+    public void SetVibrations(bool vibr)
+    {
+        vibrations = vibr;
+    }
+
+    private void Vibrate()
+    {
+        if (vibrations)
+        {
+            Handheld.Vibrate();
         }
     }
 

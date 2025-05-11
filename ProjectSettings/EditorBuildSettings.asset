@@ -8,5 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TheFirstShop/TheFirstShop.unity
     guid: 478904cc4074c3b4d8aff2ecc2fe2c89
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: ee7443e1d9ff1ba46bbfb4a5e729504c, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: 25a5d88b116532d4182afefebcc66963, type: 2}
   m_UseUCBPForAssetBundles: 0
