@@ -78,6 +78,11 @@ public class MoneyZoneController : MonoBehaviour
             removalCoroutine = StartCoroutine(RemoveCashLayers());
             
         }
+        if (other.CompareTag("Player") && _cash3D.Count > 0)
+        {
+            if (moneyEffectCoroutine == null)
+                moneyEffectCoroutine = StartCoroutine(MoneyEffectGenerator());
+        }
     }
 
     private void StackSize()
@@ -131,15 +136,6 @@ public class MoneyZoneController : MonoBehaviour
         }
 
         isRemoving = false;
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player") && _cash3D.Count > 0)
-        {
-            if (moneyEffectCoroutine == null)
-                moneyEffectCoroutine = StartCoroutine(MoneyEffectGenerator());
-        }
     }
     private IEnumerator MoneyEffectGenerator()
     {
