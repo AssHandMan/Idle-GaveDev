@@ -70,9 +70,10 @@ public class MoneyZoneController : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && _cash3D.Count > 0 && !isRemoving)
+        if (other.CompareTag("Player") && _realCountCash > 0 && !isRemoving)
         {
             removalCoroutine = StartCoroutine(RemoveCashLayers());
+            
         }
     }
 
@@ -116,23 +117,24 @@ public class MoneyZoneController : MonoBehaviour
         // Определяем, сколько купюр в одном слое (если у вас слоистая структура)
         int billsPerLayer = Mathf.Max(1, _cash3D.Count / _realCountCash);
 
-        while (_cash3D.Count > 0)
+        while (_realCountCash > 0)
         {
             // Удаляем один слой (или несколько, если нужно)
             int startIndex = Mathf.Max(0, _cash3D.Count - billsPerLayer);
             int countToRemove = Mathf.Min(billsPerLayer, _cash3D.Count);
-
-            for (int i = startIndex; i < startIndex + countToRemove; i++)
+            Debug.Log(countToRemove);
+            for (int i = startIndex; i < _realCountCash; i++)
             {
-                if (_cash3D[i] != null)
+                if (i < startIndex + countToRemove)
                 {
-                    wallet.ChangeCount(_PriceOfCash, "Money");
                     Destroy(_cash3D[i]);
                 }
+                _realCountCash--;
+                wallet.ChangeCount(_PriceOfCash, "Money");
+
             }
 
             _cash3D.RemoveRange(startIndex, countToRemove);
-            _realCountCash -= countToRemove;
 
             // Ждём перед удалением следующего слоя (регулируем скорость)
             yield return new WaitForSeconds(1f / removalSpeed);
