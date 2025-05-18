@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+public enum TypeAccount { Free, Manager, SEO}
 
 public class PlayerWallet : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class PlayerWallet : MonoBehaviour
     public TextMeshProUGUI EventText;
     private float MoneyForEvent;
     private bool inProgress, vibrations;
+    public TypeAccount typeAccount;
+
     void Start()
     {
         TextForm(Money, Mtext);

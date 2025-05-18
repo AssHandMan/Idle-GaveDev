@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-//Special for Tima для работы в других стешенов
-//1.obj с этим скриптом размещай как надо
-//2. в строчке где ты писал писал wallet.ChangeCount(5, "Money") меняй на .GetComponent<MoneyZoneController>().Add();
-//3. цена теперь будет тут _PriceOfCash
+//Special for Tima пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+//1.obj пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+//2. пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ wallet.ChangeCount(5, "Money") пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ .GetComponent<MoneyZoneController>().Add();
+//3. пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ _PriceOfCash
 public class MoneyZoneController : MonoBehaviour
 {
     public GameObject _model;
@@ -18,7 +18,7 @@ public class MoneyZoneController : MonoBehaviour
     public List<GameObject> _cash3D = new List<GameObject>();
     public List<GameObject> _Listlayer;
     List<GameObject> _Pointlist = new List<GameObject>();
-    [SerializeField] private int _testMaxCash; //Для проверки максимального количества отображаемых деняг
+    [SerializeField] private int _testMaxCash; //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
     [SerializeField] private int _X_SizeStack;
     [SerializeField] private int _Y_SizeStack;
@@ -31,9 +31,9 @@ public class MoneyZoneController : MonoBehaviour
     [SerializeField] private GameObject _MoneyEffectObj;
     private Coroutine moneyEffectCoroutine;
 
-    public float removalSpeed = 1.0f; // 1.0 - нормальная скорость, >1 - ускорение, <1 - замедление
-    private bool isRemoving = false; // Флаг, чтобы не запускать несколько корутин сразу
-    private Coroutine removalCoroutine; // Ссылка на запущенную корутину
+    public float removalSpeed = 1.0f; // 1.0 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, >1 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, <1 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    private bool isRemoving = false; // пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+    private Coroutine removalCoroutine; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Start()
@@ -60,7 +60,7 @@ public class MoneyZoneController : MonoBehaviour
             GetChildRecursive(child.gameObject);
         }
     }
-    public void Add()//пополнение денег в куче
+    public void Add()//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
     {
         if (_realCountCash < (_X_SizeStack* _Y_SizeStack* _Z_SizeStack))
         {
@@ -71,19 +71,15 @@ public class MoneyZoneController : MonoBehaviour
        
         
     }
-    public void OnTriggerStay(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && _cash3D.Count > 0 && !isRemoving)
+        if (other.CompareTag("Player") && _realCountCash > 0 && !isRemoving)
         {
             removalCoroutine = StartCoroutine(RemoveCashLayers());
+            
         }
     }
 
-    // При выходе из триггера
-    public void OnTriggerExit(Collider other)
-    {
-
-    }
     private void StackSize()
     {
 
@@ -93,7 +89,7 @@ public class MoneyZoneController : MonoBehaviour
             {
                 for (int z = 0; z < _Z_SizeStack; z++)
                 {
-                    // Вычисляем позицию для каждого объекта
+                    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                     Vector3 position = new Vector3(_FirstPoint.transform.position.x + x * _X_Spacing,
                         _FirstPoint.transform.position.y + y * _Y_Spacing,
                         _FirstPoint.transform.position.z + z * _Z_Spacing);
@@ -108,28 +104,29 @@ public class MoneyZoneController : MonoBehaviour
     {
         isRemoving = true;
 
-        // Определяем, сколько купюр в одном слое (если у вас слоистая структура)
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
         int billsPerLayer = Mathf.Max(1, _cash3D.Count / _realCountCash);
 
-        while (_cash3D.Count > 0)
+        while (_realCountCash > 0)
         {
-            // Удаляем один слой (или несколько, если нужно)
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ)
             int startIndex = Mathf.Max(0, _cash3D.Count - billsPerLayer);
             int countToRemove = Mathf.Min(billsPerLayer, _cash3D.Count);
-
-            for (int i = startIndex; i < startIndex + countToRemove; i++)
+            Debug.Log(countToRemove);
+            for (int i = startIndex; i < _realCountCash; i++)
             {
-                if (_cash3D[i] != null)
+                if (i < startIndex + countToRemove)
                 {
-                    wallet.ChangeCount(_PriceOfCash, "Money");
                     Destroy(_cash3D[i]);
                 }
+                _realCountCash--;
+                wallet.ChangeCount(_PriceOfCash, "Money");
+
             }
 
             _cash3D.RemoveRange(startIndex, countToRemove);
-            _realCountCash -= countToRemove;
 
-            // Ждём перед удалением следующего слоя (регулируем скорость)
+            // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
             yield return new WaitForSeconds(1f / removalSpeed);
         }
 

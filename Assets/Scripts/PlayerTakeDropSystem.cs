@@ -14,6 +14,7 @@ public class PlayerTakeDropSystem : MonoBehaviour
     private TakeStation box;
     private DropStation drop;
     private GameObject plr, Bin, Delivery;
+    private Animator _animator;
 
     private bool inProgress;
     private int CountForLustObj;
@@ -27,6 +28,8 @@ public class PlayerTakeDropSystem : MonoBehaviour
     void Start()
     {
         plr = GameObject.FindGameObjectWithTag("Player");
+        _animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+
     }
 
 
@@ -56,6 +59,8 @@ public class PlayerTakeDropSystem : MonoBehaviour
                 inProgress = false;
             }
         }
+        if (Count > 0) {_animator.SetBool("IsTransfer", true);}
+        else {_animator.SetBool("IsTransfer", false);}
     }
 
     public void TimeMagic()

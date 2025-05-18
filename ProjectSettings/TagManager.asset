@@ -17,6 +17,7 @@ TagManager:
   - Kiosk
   - Meneger
   - Worker
+  - ExpController
   layers:
   - Default
   - TransparentFX

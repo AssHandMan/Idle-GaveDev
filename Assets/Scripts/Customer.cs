@@ -25,6 +25,7 @@ public class Customer : MonoBehaviour
     public ArcadeMachine machine;
     public GameObject[] PoorSkins, RichSkins, BloggerSkins;
     public bool play, toilet, kiosk;
+    public Animator _animator;
 
     public bool CanChangePos;
     public int ppos;
@@ -38,6 +39,7 @@ public class Customer : MonoBehaviour
             OrderCount.text = BuyObjCount.ToString();
         }
 
+        _animator.SetBool("IsMoving", true);
     }
 
 
@@ -51,6 +53,8 @@ public class Customer : MonoBehaviour
         if (SleepIcon.activeSelf) { SleepIcon.transform.LookAt(Camera.main.transform); }
         if(ToiletIcon.activeSelf) { ToiletIcon.transform.LookAt(Camera.main.transform); }
         agent.SetDestination(targetPos.position);
+
+
 
         if (target == "Buy")
         {
@@ -70,6 +74,8 @@ public class Customer : MonoBehaviour
                     if (GetPosinQueue() > st.CallingCustomer.GetPosinQueue())
                     {
                         agent.speed = 0;
+                        StartCoroutine(animator1("IsMoving", false, 0));
+                        StartCoroutine(animator1("IsTalking", false, 0));
                     }
                 }
 
@@ -78,6 +84,13 @@ public class Customer : MonoBehaviour
                     if (!OrderBar.activeSelf & BuyObjCount > 0) { OrderBar.SetActive(true); }
                     st.client = this;
                     st.CountObj = BuyObjCount;
+
+                }
+                //��������� ��������, ��� ���������� � �������
+                foreach (var item in st.CustomerPlace)
+                {
+                    if (targetPos == item)
+                        StartCoroutine(animator1("IsMoving", false, 0));
                 }
             }
 
@@ -104,19 +117,29 @@ public class Customer : MonoBehaviour
         }
         else if (target == "Play")
         {
+            if(_animator.GetBool("IsPlay") != true) 
+                StartCoroutine(animator1("IsMoving", true, 0));
             if (transform.position.x == targetPos.position.x && transform.position.z == targetPos.position.z)
             {
                 machine.client = this;
                 if (!machine.isPlaying && machine.CanWork)
                 {
+                    //transform.Rotate(st.transform.position);
+                    //transform.LookAt(st.transform.position);
+                    Vector3 dir = machine.transform.position - this.transform.position;
+                    this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(dir),1f);
+                    StartCoroutine(animator1("IsPlay", true, 0));
+                    StartCoroutine(animator1("IsMoving", false, 0));
                     machine.StartPlay();
+                    StartCoroutine(animator1("IsPlay", false, 5));
+
+
                 }
             }
         }
         if (transform.position.x == DeletePlace.position.x && transform.position.z == DeletePlace.position.z) { Destroy(gameObject); }
     }
-
-
+    
     public void ChangeType(int type)
     {
         // 0 - poor
@@ -139,6 +162,13 @@ public class Customer : MonoBehaviour
             BuyObjCount = UnityEngine.Random.Range(10, 16);
         }
     }
+
+    private IEnumerator animator1(string parametr, bool tf, int sec)
+    {
+        yield return new WaitForSeconds(sec);
+        _animator.SetBool(parametr, tf);
+    }
+
     public void ChangeBuyCount()
     {
         BuyObjCount--;
@@ -243,6 +273,7 @@ public class Customer : MonoBehaviour
                 st.Queue = st.QueueList.ToArray();
             }
         }
+        _animator.SetBool("IsMoving", true);
     }
 
     public int GetPosinQueue()
@@ -292,6 +323,7 @@ public class Customer : MonoBehaviour
         agent.speed = 0;
         OrderBar.SetActive(false);
         isCalling = true;
+        _animator.SetBool("IsTalking", true);
     }
     public void Sleep()
     {
@@ -323,6 +355,8 @@ public class Customer : MonoBehaviour
             }
             CallIcon.SetActive(false);
             isCalling = false;
+            _animator.SetBool("IsTalking", false);
+            _animator.SetBool("IsMoving", true);
             st.isCalling = false;
             for (int i = 0; i < st.Queue.Length; i++)
             {
