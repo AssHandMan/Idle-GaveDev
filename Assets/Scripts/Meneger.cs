@@ -26,15 +26,23 @@ public class Meneger : MonoBehaviour
     public HrRoom room;
 
     public SellStation Cashmachine;
+    private Animator anim;
+    public bool isMoving, isTransfer;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
         if(capacity != capacityUpgreadeBufer) { capacity = capacityUpgreadeBufer; }
     }
 
     
     void Update()
     {
+        isMoving = agent.velocity.magnitude > 0.1f && agent.remainingDistance > agent.stoppingDistance;
+        anim.SetBool("IsMoving", isMoving);
+        isTransfer = hands.Count > 0;
+        anim.SetBool("IsTransfer", isTransfer);
+
         if (agent.speed != speed) { agent.speed = speed; }
         if (TargetType == "")
         {

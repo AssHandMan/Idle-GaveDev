@@ -3552,6 +3552,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6239785969844910979, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 789925201}
+    - targetCorrespondingSourceObject: {fileID: 6239785969844910979, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 789925205}
   m_SourcePrefab: {fileID: 100100000, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
 --- !u!1001 &150975868
 PrefabInstance:
@@ -6037,11 +6040,35 @@ MonoBehaviour:
   KioskDrop2: {fileID: 1345595465}
   room: {fileID: 1988466269}
   Cashmachine: {fileID: 0}
+  isMoving: 0
+  isTransfer: 0
 --- !u!4 &249007591 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6154433999307816364, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
   m_PrefabInstance: {fileID: 289050162}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &249007595
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249007589}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 997bc81db2a138e4cbdc0d5283456dab, type: 3}
+  m_Controller: {fileID: 9100000, guid: 24488cba9973be9478c33ff162420ce2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &249858901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6843,6 +6870,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6239785969844910979, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 249007590}
+    - targetCorrespondingSourceObject: {fileID: 6239785969844910979, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 249007595}
   m_SourcePrefab: {fileID: 100100000, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
 --- !u!1001 &289293636
 PrefabInstance:
@@ -16715,6 +16745,30 @@ MonoBehaviour:
   KioskDrop2: {fileID: 1345595465}
   room: {fileID: 1988466269}
   Cashmachine: {fileID: 0}
+  isMoving: 0
+  isTransfer: 0
+--- !u!95 &488588210
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488588204}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 997bc81db2a138e4cbdc0d5283456dab, type: 3}
+  m_Controller: {fileID: 9100000, guid: 24488cba9973be9478c33ff162420ce2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &490454389
 GameObject:
   m_ObjectHideFlags: 0
@@ -18958,7 +19012,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 40.799988, y: -28}
+  m_AnchoredPosition: {x: 40.80005, y: -28}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &582472598
@@ -24126,6 +24180,30 @@ MonoBehaviour:
   KioskDrop2: {fileID: 1345595465}
   room: {fileID: 1988466269}
   Cashmachine: {fileID: 0}
+  isMoving: 0
+  isTransfer: 0
+--- !u!95 &789925205
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789925199}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 997bc81db2a138e4cbdc0d5283456dab, type: 3}
+  m_Controller: {fileID: 9100000, guid: 24488cba9973be9478c33ff162420ce2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &792192730
 GameObject:
   m_ObjectHideFlags: 0
@@ -31450,6 +31528,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6239785969844910979, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1431756330}
+    - targetCorrespondingSourceObject: {fileID: 6239785969844910979, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1431756334}
   m_SourcePrefab: {fileID: 100100000, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
 --- !u!4 &1041206895 stripped
 Transform:
@@ -32500,6 +32581,30 @@ MonoBehaviour:
   KioskDrop2: {fileID: 1345595465}
   room: {fileID: 1988466269}
   Cashmachine: {fileID: 0}
+  isMoving: 0
+  isTransfer: 0
+--- !u!95 &1074063129
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074063123}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 997bc81db2a138e4cbdc0d5283456dab, type: 3}
+  m_Controller: {fileID: 9100000, guid: 24488cba9973be9478c33ff162420ce2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1079211646
 GameObject:
   m_ObjectHideFlags: 0
@@ -37360,11 +37465,35 @@ MonoBehaviour:
   KioskDrop2: {fileID: 1345595465}
   room: {fileID: 1988466269}
   Cashmachine: {fileID: 0}
+  isMoving: 0
+  isTransfer: 0
 --- !u!4 &1195274435 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6154433999307816364, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
   m_PrefabInstance: {fileID: 1201795153}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1195274439
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195274430}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 997bc81db2a138e4cbdc0d5283456dab, type: 3}
+  m_Controller: {fileID: 9100000, guid: 24488cba9973be9478c33ff162420ce2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1199359828 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5329356650430431823, guid: 5d8943c082454a34f890529db754f668, type: 3}
@@ -37504,6 +37633,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6239785969844910979, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1195274431}
+    - targetCorrespondingSourceObject: {fileID: 6239785969844910979, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1195274439}
   m_SourcePrefab: {fileID: 100100000, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
 --- !u!4 &1202983071 stripped
 Transform:
@@ -39726,6 +39858,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6239785969844910979, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 488588206}
+    - targetCorrespondingSourceObject: {fileID: 6239785969844910979, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 488588210}
   m_SourcePrefab: {fileID: 100100000, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
 --- !u!1001 &1300432177
 PrefabInstance:
@@ -41059,6 +41194,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6239785969844910979, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1074063125}
+    - targetCorrespondingSourceObject: {fileID: 6239785969844910979, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1074063129}
   m_SourcePrefab: {fileID: 100100000, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
 --- !u!1 &1335606313
 GameObject:
@@ -44215,6 +44353,30 @@ MonoBehaviour:
   KioskDrop2: {fileID: 1345595465}
   room: {fileID: 1988466269}
   Cashmachine: {fileID: 0}
+  isMoving: 0
+  isTransfer: 0
+--- !u!95 &1431756334
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431756328}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 997bc81db2a138e4cbdc0d5283456dab, type: 3}
+  m_Controller: {fileID: 9100000, guid: 24488cba9973be9478c33ff162420ce2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1431776362 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3980281311312766499, guid: 793dc47101f5d0c4b95d65795123b1a5, type: 3}
@@ -60453,6 +60615,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6239785969844910979, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9114092997349357857}
+    - targetCorrespondingSourceObject: {fileID: 6239785969844910979, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9114092997349357861}
   m_SourcePrefab: {fileID: 100100000, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
 --- !u!1001 &4489345515754098839
 PrefabInstance:
@@ -61152,6 +61317,30 @@ MonoBehaviour:
   KioskDrop2: {fileID: 1345595465}
   room: {fileID: 1988466269}
   Cashmachine: {fileID: 0}
+  isMoving: 0
+  isTransfer: 0
+--- !u!95 &9114092997349357861
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673691624970479389}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 997bc81db2a138e4cbdc0d5283456dab, type: 3}
+  m_Controller: {fileID: 9100000, guid: 24488cba9973be9478c33ff162420ce2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
