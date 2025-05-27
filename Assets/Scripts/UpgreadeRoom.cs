@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class UpgreadeRoom : MonoBehaviour
 {
@@ -24,6 +26,10 @@ public class UpgreadeRoom : MonoBehaviour
 
     public Text SpeedCount, CapacityCount, ProfitCount;
     private int speed, capacity, profit;
+    public int CountAds;
+    public VideoPlayer adsPlayer;
+    public GameObject AdsScreen;
+    public GameSettingsController settings;
     void Start()
     {
         SpeedCount.text = SpeedPrice[speed].ToString();
@@ -37,33 +43,89 @@ public class UpgreadeRoom : MonoBehaviour
         
     }
 
-    public void BuySpeed()
+    private void BuyAdvertisement()
     {
-        if (speed < 5 && wallet.Money >= SpeedPrice[speed])
+        if(CountAds > 0)
         {
-            wallet.ChangeCount(-SpeedPrice[speed], "Money");
-            plr.speed = SpeedValue[speed];
-            SpeedBar.fillAmount += 0.2f;
-            speed++;
-            if(speed == 5) { SpeedCount.text = "Complete"; }
-            else { SpeedCount.text = SpeedPrice[speed].ToString(); }
+            settings.SetMusic();
+            AdsScreen.SetActive(true);
+            adsPlayer.Play();
+            CountAds--;
+            StartCoroutine(TimeToEndAds());
         }
     }
 
-    public void BuyCapacity()
+    private IEnumerator TimeToEndAds()
     {
-        if (capacity < 5 && wallet.Money >= CapacityPrice[capacity])
+        yield return new WaitForSeconds(21);
+        AdsScreen.SetActive(false);
+        settings.SetMusic();
+    }
+
+    public void BuySpeed(bool isAdButton)
+    {
+
+        if(speed < 5)
         {
-            wallet.ChangeCount(-CapacityPrice[capacity], "Money");
-            hands.MaxCount = CapacityValue[capacity];
-            CapacityBar.fillAmount += 0.2f;
-            capacity++;
-            if (capacity == 5) { CapacityCount.text = "Complete"; }
-            else { CapacityCount.text = CapacityPrice[capacity].ToString(); }
+            if(isAdButton)
+            {
+                if(CountAds > 0)
+                {
+                    plr.speed = SpeedValue[speed];
+                    SpeedBar.fillAmount += 0.2f;
+                    speed++;
+                    if (speed == 5) { SpeedCount.text = "Complete"; }
+                    else { SpeedCount.text = SpeedPrice[speed].ToString(); }
+                    BuyAdvertisement();
+                }
+            }
+            else
+            {
+                if (wallet.Money >= SpeedPrice[speed])
+                {
+                    wallet.ChangeCount(-SpeedPrice[speed], "Money");
+                    plr.speed = SpeedValue[speed];
+                    SpeedBar.fillAmount += 0.2f;
+                    speed++;
+                    if (speed == 5) { SpeedCount.text = "Complete"; }
+                    else { SpeedCount.text = SpeedPrice[speed].ToString(); }
+                }
+            }
         }
     }
 
-    public void BuyProfit()
+    public void BuyCapacity(bool isAdButton)
+    {
+        if (capacity < 5)
+        {
+            if (isAdButton)
+            {
+                if (CountAds > 0)
+                {
+                    hands.MaxCount = CapacityValue[capacity];
+                    CapacityBar.fillAmount += 0.2f;
+                    capacity++;
+                    if (capacity == 5) { CapacityCount.text = "Complete"; }
+                    else { CapacityCount.text = CapacityPrice[capacity].ToString(); }
+                    BuyAdvertisement();
+                }
+            }
+            else
+            {
+                if (wallet.Money >= CapacityPrice[capacity])
+                {
+                    wallet.ChangeCount(-CapacityPrice[capacity], "Money");
+                    hands.MaxCount = CapacityValue[capacity];
+                    CapacityBar.fillAmount += 0.2f;
+                    capacity++;
+                    if (capacity == 5) { CapacityCount.text = "Complete"; }
+                    else { CapacityCount.text = CapacityPrice[capacity].ToString(); }
+                }
+            }
+        }
+    }
+
+    public void BuyProfit(bool isAdButton)
     {
         if (profit < 5 && wallet.Money >= ProfitPrice[profit])
         {
@@ -71,9 +133,36 @@ public class UpgreadeRoom : MonoBehaviour
             wallet.MoneyMultiplier = ProfitValue[profit];
             ProfitBar.fillAmount += 0.2f;
             profit++;
-
             if (profit == 5) { ProfitCount.text = "Complete"; }
             else { ProfitCount.text = ProfitPrice[profit].ToString(); }
+        }
+
+        if (profit < 5)
+        {
+            if (isAdButton)
+            {
+                if (CountAds > 0)
+                {
+                    wallet.MoneyMultiplier = ProfitValue[profit];
+                    ProfitBar.fillAmount += 0.2f;
+                    profit++;
+                    if (profit == 5) { ProfitCount.text = "Complete"; }
+                    else { ProfitCount.text = ProfitPrice[profit].ToString(); }
+                    BuyAdvertisement();
+                }
+            }
+            else
+            {
+                if (wallet.Money >= ProfitPrice[profit])
+                {
+                    wallet.ChangeCount(-ProfitPrice[profit], "Money");
+                    wallet.MoneyMultiplier = ProfitValue[profit];
+                    ProfitBar.fillAmount += 0.2f;
+                    profit++;
+                    if (profit == 5) { ProfitCount.text = "Complete"; }
+                    else { ProfitCount.text = ProfitPrice[profit].ToString(); }
+                }
+            }
         }
     }
 
