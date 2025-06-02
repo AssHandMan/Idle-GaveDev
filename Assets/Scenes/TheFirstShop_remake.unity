@@ -1832,7 +1832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 143449612}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1792858242}
   ProgressBar: {fileID: 36785462}
   price: 100
@@ -2176,7 +2176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 499568936}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 652483299}
   ProgressBar: {fileID: 40099863}
   price: 200
@@ -4770,7 +4770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1835359593}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1059389300}
   ProgressBar: {fileID: 81159428}
   price: 25
@@ -5928,16 +5928,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dd1b41bfb84ad9f4a9d9364f7b2e7ce8, type: 3}
   m_PrefabInstance: {fileID: 1543194483}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &106824842 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5122721636405830023, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
-  m_PrefabInstance: {fileID: 1868184414}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &106824843 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2981904185369435389, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
-  m_PrefabInstance: {fileID: 1868184414}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &109355982
 GameObject:
   m_ObjectHideFlags: 0
@@ -6837,6 +6827,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116524973}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &117333635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6944718733466284110, guid: 8277909797274ed49881266e20ac6ed9, type: 3}
+  m_PrefabInstance: {fileID: 1159363074}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &117339296 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
@@ -7468,7 +7463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1575891413}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 349945114}
   ProgressBar: {fileID: 124175130}
   price: 550
@@ -8705,7 +8700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 41688490}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1109601959}
   ProgressBar: {fileID: 141376916}
   price: 50
@@ -9095,14 +9090,14 @@ Transform:
   m_GameObject: {fileID: 147412086}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -30.161934, y: -17.699234, z: 42.482132}
+  m_LocalPosition: {x: -120.989975, y: -41.191742, z: 57.449997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2025626642}
   - {fileID: 1129382374}
   - {fileID: 1268128431}
-  m_Father: {fileID: 612286691}
+  m_Father: {fileID: 1002927467}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &148923439 stripped
 Transform:
@@ -10515,15 +10510,15 @@ PrefabInstance:
     - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: 'RefObj.Array.data[1]'
       value: 
-      objectReference: {fileID: 4983789191636868950, guid: be531f43f9943e04dbbfd24ed7c45015, type: 3}
+      objectReference: {fileID: 8395773889898569339, guid: 0024f47b8f83d7e44b14428724809976, type: 3}
     - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: 'RefObj.Array.data[2]'
       value: 
-      objectReference: {fileID: 3274151308524974699, guid: 4d21005c3502eba45b77f985761f9fe1, type: 3}
+      objectReference: {fileID: 4902836227580919123, guid: 5eea561886094bb47b43d7e003bf15f5, type: 3}
     - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: 'RefObj.Array.data[3]'
       value: 
-      objectReference: {fileID: 9184683922775093774, guid: 2b43cccf060e9b4479e1b042000a039e, type: 3}
+      objectReference: {fileID: 4963230273926471513, guid: 46bd23f40ce8d6c4fb480d659d55d567, type: 3}
     - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: 'PriceList.Array.data[0]'
       value: 330
@@ -10780,7 +10775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 539176732}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 463267080}
   ProgressBar: {fileID: 169990727}
   price: 230
@@ -11372,7 +11367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 787723996}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1915866102}
   ProgressBar: {fileID: 179081340}
   price: 700
@@ -11839,7 +11834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 648748778}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 298743403}
   ProgressBar: {fileID: 181639437}
   price: 5
@@ -12334,7 +12329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 2001642091}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 267615597}
   ProgressBar: {fileID: 186211873}
   price: 1870
@@ -12721,7 +12716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 2001642091}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 614621770}
   ProgressBar: {fileID: 191349273}
   price: 1870
@@ -13008,7 +13003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3454155032323644473, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4291867478598933043, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14817,6 +14812,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 235525921}
   m_CullTransparentMesh: 1
+--- !u!1 &235644249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8289847471408254713, guid: afbd6e0a8a2034347bc1b1bed8b24d38, type: 3}
+  m_PrefabInstance: {fileID: 5067907692356819452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &235901924
 GameObject:
   m_ObjectHideFlags: 0
@@ -15380,7 +15380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1069842923}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 332330425}
   ProgressBar: {fileID: 244267826}
   price: 5
@@ -15685,6 +15685,8 @@ MonoBehaviour:
   KioskDrop2: {fileID: 1345595465}
   room: {fileID: 1988466269}
   Cashmachine: {fileID: 0}
+  isMoving: 0
+  isTransfer: 0
 --- !u!4 &249007591 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6154433999307816364, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
@@ -17660,7 +17662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1620971144}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1938348386}
   ProgressBar: {fileID: 281600876}
   price: 1000
@@ -18042,7 +18044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 851259179}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 2072465904}
   ProgressBar: {fileID: 285207925}
   price: 1350
@@ -19545,7 +19547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 41688490}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 224696434}
   ProgressBar: {fileID: 304556620}
   price: 50
@@ -20777,7 +20779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 648748778}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 972615361}
   ProgressBar: {fileID: 319682965}
   price: 5
@@ -27752,7 +27754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1603428645}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 853495311}
   ProgressBar: {fileID: 353352895}
   price: 1830
@@ -28783,7 +28785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1696422465}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 169610236}
   ProgressBar: {fileID: 371783543}
   price: 50
@@ -29146,7 +29148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3454155032323644473, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4291867478598933043, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31034,7 +31036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1109976442}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 876762115}
   ProgressBar: {fileID: 405550288}
   price: 1750
@@ -33085,7 +33087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 896423248}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 732760862}
   ProgressBar: {fileID: 436627317}
   price: 2000
@@ -35580,7 +35582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1373636060}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 674456980}
   ProgressBar: {fileID: 476429123}
   price: 50
@@ -36357,6 +36359,8 @@ MonoBehaviour:
   KioskDrop2: {fileID: 1345595465}
   room: {fileID: 1988466269}
   Cashmachine: {fileID: 0}
+  isMoving: 0
+  isTransfer: 0
 --- !u!1 &488880102
 GameObject:
   m_ObjectHideFlags: 0
@@ -36458,7 +36462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 705534681}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 693438763}
   ProgressBar: {fileID: 488880107}
   price: 50
@@ -37302,7 +37306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3454155032323644473, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4291867478598933043, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -39404,7 +39408,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4370118189154081974, guid: 8277909797274ed49881266e20ac6ed9, type: 3}
   m_PrefabInstance: {fileID: 1159363074}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 117333635}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df4f1b1d3681b3a49905885b7abce7d6, type: 3}
@@ -39628,7 +39632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1603428645}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1112018283}
   ProgressBar: {fileID: 548744297}
   price: 1830
@@ -40543,7 +40547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3454155032323644473, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4291867478598933043, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -40826,7 +40830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 774961451}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 186681503}
   ProgressBar: {fileID: 573525849}
   price: 150
@@ -41301,7 +41305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 499568936}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 180971296}
   ProgressBar: {fileID: 583440231}
   price: 200
@@ -41620,7 +41624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 499568936}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1425833244}
   ProgressBar: {fileID: 584691401}
   price: 200
@@ -42953,7 +42957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1795516802}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 660747234}
   ProgressBar: {fileID: 605569710}
   price: 1590
@@ -43436,39 +43440,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610179730}
   m_CullTransparentMesh: 1
---- !u!1 &612286690
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 612286691}
-  m_Layer: 0
-  m_Name: Work_spaces
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &612286691
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 612286690}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -90.82806, y: -23.492538, z: 14.967865}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 992386058}
-  - {fileID: 147412087}
-  m_Father: {fileID: 1002927467}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &612957767
 GameObject:
   m_ObjectHideFlags: 0
@@ -45091,7 +45062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3454155032323644473, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4291867478598933043, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -45268,7 +45239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1795516802}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 321618907}
   ProgressBar: {fileID: 639457768}
   price: 1590
@@ -46010,7 +45981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 916374286}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 584431019}
   ProgressBar: {fileID: 658254141}
   price: 1870
@@ -46295,37 +46266,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 659662527}
   m_CullTransparentMesh: 1
---- !u!1 &660295775
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 660295776}
-  m_Layer: 0
-  m_Name: CustomerPlace (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &660295776
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 660295775}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.005884294, z: 4.73}
-  m_LocalScale: {x: 0.11837969, y: 0.118379675, z: 0.11837969}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 818980503}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &660747232
 GameObject:
   m_ObjectHideFlags: 0
@@ -47468,7 +47408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 115400573}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 91082594}
   ProgressBar: {fileID: 678431391}
   price: 700
@@ -48291,7 +48231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1438245979}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1871069257}
   ProgressBar: {fileID: 693097321}
   price: 760
@@ -49757,6 +49697,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd1b41bfb84ad9f4a9d9364f7b2e7ce8, type: 3}
+--- !u!1 &729241276 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3178225191020910282, guid: 793dc47101f5d0c4b95d65795123b1a5, type: 3}
+  m_PrefabInstance: {fileID: 1348552363}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &730148594
 GameObject:
   m_ObjectHideFlags: 0
@@ -52036,7 +51981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 648748778}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1129703767}
   ProgressBar: {fileID: 762705306}
   price: 5
@@ -52613,7 +52558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1291028592}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 321833068}
   ProgressBar: {fileID: 767443673}
   price: 50
@@ -53078,7 +53023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3454155032323644473, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4291867478598933043, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -53722,7 +53667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7416776602714956195, guid: 47fae48553191fa4fb8c9f0e9159eafe, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7712026607109679625, guid: 47fae48553191fa4fb8c9f0e9159eafe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -53864,6 +53809,8 @@ MonoBehaviour:
   KioskDrop2: {fileID: 1345595465}
   room: {fileID: 1988466269}
   Cashmachine: {fileID: 0}
+  isMoving: 0
+  isTransfer: 0
 --- !u!1 &790444355
 GameObject:
   m_ObjectHideFlags: 0
@@ -54107,7 +54054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 258750490}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1755161599}
   ProgressBar: {fileID: 798808530}
   price: 100
@@ -55295,7 +55242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3454155032323644473, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4291867478598933043, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -55733,7 +55680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 624090909}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 979184663}
   ProgressBar: {fileID: 814897069}
   price: 290
@@ -55967,7 +55914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1621215489}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1406860175}
   ProgressBar: {fileID: 815760005}
   price: 1400
@@ -56147,220 +56094,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1428115251629550129, guid: 793dc47101f5d0c4b95d65795123b1a5, type: 3}
   m_PrefabInstance: {fileID: 40625036}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &818980502
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1898536823}
-    m_Modifications:
-    - target: {fileID: 198108, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      propertyPath: m_Name
-      value: A17
-      objectReference: {fileID: 0}
-    - target: {fileID: 198108, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 463968, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.6619203
-      objectReference: {fileID: 0}
-    - target: {fileID: 463968, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.6619203
-      objectReference: {fileID: 0}
-    - target: {fileID: 463968, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.6619203
-      objectReference: {fileID: 0}
-    - target: {fileID: 463968, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 15.720007
-      objectReference: {fileID: 0}
-    - target: {fileID: 463968, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 463968, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -23.822
-      objectReference: {fileID: 0}
-    - target: {fileID: 463968, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 463968, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 463968, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 463968, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 463968, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 463968, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 463968, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3343576, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 19d2c583c94dffd438d07441de4702f2, type: 3}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 463968, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 660295776}
-    - targetCorrespondingSourceObject: {fileID: 463968, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 106824843}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 198108, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 818980508}
-    - targetCorrespondingSourceObject: {fileID: 198108, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 818980507}
-    - targetCorrespondingSourceObject: {fileID: 198108, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 818980506}
-    - targetCorrespondingSourceObject: {fileID: 198108, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 818980505}
-    - targetCorrespondingSourceObject: {fileID: 198108, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 818980511}
-  m_SourcePrefab: {fileID: 100100000, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
---- !u!4 &818980503 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 463968, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-  m_PrefabInstance: {fileID: 818980502}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &818980504 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 198108, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
-  m_PrefabInstance: {fileID: 818980502}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &818980505
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 818980504}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.1023216, y: 3.29659, z: 6.209482}
-  m_Center: {x: -0.000022888184, y: 1.6482539, z: 0.0000011920929}
---- !u!114 &818980506
+--- !u!114 &818980506 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 799515646623340415, guid: 0dabe0eab4120624bbdfef49b1f4bca9, type: 3}
+  m_PrefabInstance: {fileID: 7145226064961174588}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 818980504}
+  m_GameObject: {fileID: 819176266}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3f8f6dea89c04d4998a1325ab62fa54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  station: {fileID: 818980507}
-  filter: {fileID: 0}
-  trash: {fileID: 4496556255211700070, guid: 660ea1e4642ced1439538756e32cf5e4, type: 3}
-  TrashViewe: {fileID: 0}
-  Main: {fileID: 0}
-  CustomerPos: {fileID: 660295776}
-  client: {fileID: 0}
-  playEffect: {fileID: 0}
-  isPlaying: 0
-  hasTarget: 0
-  CanWork: 0
-  isToilet: 0
-  hasMenegerTarget: 0
-  isPause: 0
-  _stackOfMoney: {fileID: 106824842}
-  lvl: 0
-  BoxLvl:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  space: {fileID: 0}
-  PriceList: c008000000000000
---- !u!114 &818980507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!1 &819176266 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2843853471200413290, guid: 0dabe0eab4120624bbdfef49b1f4bca9, type: 3}
+  m_PrefabInstance: {fileID: 7145226064961174588}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 818980504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cc03cc12b2c5804c91e8caadd1853f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlaceObj: {fileID: 660295775}
-  ObjectsList: []
-  MuxCountObj: 1
-  CountObj: 0
---- !u!114 &818980508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!4 &819442422 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7812126060119151227, guid: 0dabe0eab4120624bbdfef49b1f4bca9, type: 3}
+  m_PrefabInstance: {fileID: 7145226064961174588}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 818980504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2239af6fb727f5945a60654f6e6892c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  station: {fileID: 818980507}
-  CanGive: 0
---- !u!65 &818980511
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 818980504}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.2829552, y: 2.4995267, z: 1.0224379}
-  m_Center: {x: -0.000015240892, y: 1.3179573, z: 4.4}
 --- !u!1 &819520251
 GameObject:
   m_ObjectHideFlags: 0
@@ -56781,8 +56535,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f1b2610d4644124195e37b78311d519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  station: {fileID: 818980504}
-  money: {fileID: 0}
+  station: {fileID: 819176266}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 472981675}
   ProgressBar: {fileID: 836007062}
   price: 1410
@@ -59891,7 +59645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 916374286}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 174273758}
   ProgressBar: {fileID: 900580140}
   price: 1870
@@ -60127,7 +59881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 143449612}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1961491597}
   ProgressBar: {fileID: 901742548}
   price: 100
@@ -60836,6 +60590,7 @@ RectTransform:
   - {fileID: 1143961776}
   - {fileID: 1532318779}
   - {fileID: 1012217640}
+  - {fileID: 960261762}
   - {fileID: 81159424}
   - {fileID: 244267822}
   - {fileID: 1948855593}
@@ -61604,7 +61359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1260506569}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 479333136}
   ProgressBar: {fileID: 915481927}
   price: 40
@@ -61990,7 +61745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1373636060}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1333216423}
   ProgressBar: {fileID: 921928486}
   price: 50
@@ -64038,14 +63793,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 960261761}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.25014, y: -162.36404, z: 117.2424}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -324.74985, y: -802.364, z: 117.2424}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 843330501}
   - {fileID: 265751156}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 910875114}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &960977859
 GameObject:
@@ -65348,15 +65103,15 @@ PrefabInstance:
     - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: 'RefObj.Array.data[1]'
       value: 
-      objectReference: {fileID: 4983789191636868950, guid: be531f43f9943e04dbbfd24ed7c45015, type: 3}
+      objectReference: {fileID: 8395773889898569339, guid: 0024f47b8f83d7e44b14428724809976, type: 3}
     - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: 'RefObj.Array.data[2]'
       value: 
-      objectReference: {fileID: 3274151308524974699, guid: 4d21005c3502eba45b77f985761f9fe1, type: 3}
+      objectReference: {fileID: 4902836227580919123, guid: 5eea561886094bb47b43d7e003bf15f5, type: 3}
     - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: 'RefObj.Array.data[3]'
       value: 
-      objectReference: {fileID: 9184683922775093774, guid: 2b43cccf060e9b4479e1b042000a039e, type: 3}
+      objectReference: {fileID: 4963230273926471513, guid: 46bd23f40ce8d6c4fb480d659d55d567, type: 3}
     - target: {fileID: 1093442696979729051, guid: 72adfe7153110de4a967813b545748eb, type: 3}
       propertyPath: 'PriceList.Array.data[0]'
       value: 120
@@ -65972,6 +65727,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1110295964981958441, guid: 72adfe7153110de4a967813b545748eb, type: 3}
   m_PrefabInstance: {fileID: 249858901}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &983430811 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6410587683143095608, guid: febc99149f460034db903481a84f7d05, type: 3}
+  m_PrefabInstance: {fileID: 2015288509907784834}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &984611380
 GameObject:
   m_ObjectHideFlags: 0
@@ -66232,7 +65992,7 @@ Transform:
   m_GameObject: {fileID: 992386057}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.731941, y: -17.699234, z: 42.362137}
+  m_LocalPosition: {x: -101.55998, y: -41.191742, z: 57.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -66242,7 +66002,7 @@ Transform:
   - {fileID: 920464706}
   - {fileID: 1425150511}
   - {fileID: 8646066177929477328}
-  m_Father: {fileID: 612286691}
+  m_Father: {fileID: 1002927467}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &993757342 stripped
 GameObject:
@@ -66710,7 +66470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 41688490}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 853038047}
   ProgressBar: {fileID: 999026496}
   price: 50
@@ -67090,7 +66850,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1659825342}
-  - {fileID: 612286691}
+  - {fileID: 992386058}
+  - {fileID: 147412087}
   - {fileID: 1108798249}
   - {fileID: 285849240}
   m_Father: {fileID: 265751156}
@@ -67402,7 +67163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 539176732}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 2053663503}
   ProgressBar: {fileID: 1008428266}
   price: 230
@@ -67671,7 +67432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1620971144}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1384053991}
   ProgressBar: {fileID: 1010395417}
   price: 1000
@@ -68388,7 +68149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 787723996}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1685380159}
   ProgressBar: {fileID: 1017626809}
   price: 700
@@ -69959,7 +69720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1854873102}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 510552086}
   ProgressBar: {fileID: 1049297742}
   price: 750
@@ -71714,6 +71475,96 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069842923}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1070909066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1070909069}
+  - component: {fileID: 1070909068}
+  - component: {fileID: 1070909067}
+  m_Layer: 0
+  m_Name: ArrowSign
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1070909067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070909066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e3c7874c74054147bab1befc4d08d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneMeneger: {fileID: 1134624004}
+  stations:
+  - {fileID: 1696422465}
+  - {fileID: 729241276}
+  - {fileID: 258750490}
+  - {fileID: 648748778}
+  - {fileID: 917779234}
+  - {fileID: 1696422465}
+  - {fileID: 1542959917}
+  - {fileID: 235644249}
+  - {fileID: 2054551250}
+  - {fileID: 1757615729}
+  - {fileID: 983430811}
+  - {fileID: 705534681}
+  - {fileID: 705534681}
+  - {fileID: 117333635}
+  - {fileID: 1696422465}
+  - {fileID: 1178162469}
+  - {fileID: 1178162469}
+  inStationPosesProgress: 0
+  posLvl: 0
+  posStation: []
+--- !u!95 &1070909068
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070909066}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 486394e3a95064444a26a286483a501a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &1070909069
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070909066}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -74.32001, y: 5, z: -5.4}
+  m_LocalScale: {x: 0.5000003, y: 0.5, z: 0.5000003}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1413521692}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1073267481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71978,6 +71829,8 @@ MonoBehaviour:
   KioskDrop2: {fileID: 1345595465}
   room: {fileID: 1988466269}
   Cashmachine: {fileID: 0}
+  isMoving: 0
+  isTransfer: 0
 --- !u!1 &1075326416
 GameObject:
   m_ObjectHideFlags: 0
@@ -72110,7 +71963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1575891413}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1059034545}
   ProgressBar: {fileID: 1079118022}
   price: 550
@@ -72521,7 +72374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1752287451}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1396558832}
   ProgressBar: {fileID: 1083800951}
   price: 1710
@@ -73652,7 +73505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198108, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 463968, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
       propertyPath: m_LocalScale.x
@@ -74238,7 +74091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 115400573}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 10363697}
   ProgressBar: {fileID: 1117928549}
   price: 700
@@ -75206,7 +75059,7 @@ MonoBehaviour:
   - {fileID: 115400573}
   - {fileID: 1438245979}
   - {fileID: 851259179}
-  - {fileID: 818980504}
+  - {fileID: 819176266}
   - {fileID: 1795516802}
   - {fileID: 1752287451}
   - {fileID: 1109976442}
@@ -75230,7 +75083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce97cf07ead0f64eaf4a531bd5fd111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrow: {fileID: 0}
+  arrow: {fileID: 1070909067}
   NewSpaces:
   - {fileID: 81159427}
   - {fileID: 244267825}
@@ -75404,6 +75257,9 @@ MonoBehaviour:
   - {x: -5.63, y: 0.088695526, z: -18.34}
   - {x: -1.97, y: 0.088695526, z: -18.34}
   - {x: 13.94, y: 0.09, z: -8.2}
+  - {x: 13.94, y: 0.09, z: -8.2}
+  - {x: 13.94, y: 0.09, z: -8.2}
+  newLPos: []
   stations:
   - {fileID: 1835359593}
   - {fileID: 648748778}
@@ -75465,7 +75321,7 @@ MonoBehaviour:
   - {fileID: 1603428645}
   - {fileID: 143449612}
   - {fileID: 2001642091}
-  - {fileID: 818980504}
+  - {fileID: 819176266}
   - {fileID: 258750490}
   - {fileID: 1795516802}
   - {fileID: 1752287451}
@@ -75477,7 +75333,7 @@ MonoBehaviour:
   - {fileID: 539176732}
   - {fileID: 379702737}
   - {fileID: 2001642091}
-  - {fileID: 818980504}
+  - {fileID: 819176266}
   - {fileID: 851259179}
   - {fileID: 1854873102}
   - {fileID: 1603428645}
@@ -76146,7 +76002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 379702737}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 467103552}
   ProgressBar: {fileID: 1139349910}
   price: 25
@@ -77059,7 +76915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5454335647086775516, guid: 8277909797274ed49881266e20ac6ed9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6918209345093140282, guid: 8277909797274ed49881266e20ac6ed9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -77265,7 +77121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3454155032323644473, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4291867478598933043, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -78329,6 +78185,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.6838837, y: 1.1961259, z: 2.711863}
   m_Center: {x: 0.08240509, y: 0.09806293, z: -0.47989535}
+--- !u!1 &1178162469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8985734142481147483, guid: 8277909797274ed49881266e20ac6ed9, type: 3}
+  m_PrefabInstance: {fileID: 1159363074}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1180816470 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 65abb0f1b521f834bae80ea4c9d93734, type: 3}
@@ -78635,7 +78496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 258750490}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 421363423}
   ProgressBar: {fileID: 1189122941}
   price: 100
@@ -79081,6 +78942,8 @@ MonoBehaviour:
   KioskDrop2: {fileID: 1345595465}
   room: {fileID: 1988466269}
   Cashmachine: {fileID: 0}
+  isMoving: 0
+  isTransfer: 0
 --- !u!4 &1195274435 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6154433999307816364, guid: 2056a573e8009ee4186dc7b9506f29b9, type: 3}
@@ -80174,7 +80037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1961679901}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 307686563}
   ProgressBar: {fileID: 1206906670}
   price: 2700
@@ -81036,7 +80899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 2081351606}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 773328472}
   ProgressBar: {fileID: 1223672146}
   price: 100
@@ -81852,6 +81715,92 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 8.027995, y: 5.6801486, z: 7.000001}
   m_Center: {x: 3.5140073, y: 2.8401623, z: 0.00000037255208}
+--- !u!1001 &1240072709
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1413521692}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 293154a7f705a804f8b0a1b4143be4dd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.66412
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 293154a7f705a804f8b0a1b4143be4dd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.66412
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 293154a7f705a804f8b0a1b4143be4dd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.66412
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 293154a7f705a804f8b0a1b4143be4dd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 293154a7f705a804f8b0a1b4143be4dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.86
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 293154a7f705a804f8b0a1b4143be4dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 293154a7f705a804f8b0a1b4143be4dd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 293154a7f705a804f8b0a1b4143be4dd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 293154a7f705a804f8b0a1b4143be4dd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 293154a7f705a804f8b0a1b4143be4dd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 293154a7f705a804f8b0a1b4143be4dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 293154a7f705a804f8b0a1b4143be4dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 293154a7f705a804f8b0a1b4143be4dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 293154a7f705a804f8b0a1b4143be4dd, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 293154a7f705a804f8b0a1b4143be4dd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4396d74ee2b904f429878b288c683864, type: 2}
+    - target: {fileID: -7635826562936255635, guid: 293154a7f705a804f8b0a1b4143be4dd, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 49574ef3c58b4bb48abb73793b12a69a, type: 2}
+    - target: {fileID: 919132149155446097, guid: 293154a7f705a804f8b0a1b4143be4dd, type: 3}
+      propertyPath: m_Name
+      value: Strelka2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 293154a7f705a804f8b0a1b4143be4dd, type: 3}
+--- !u!4 &1240072710 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 293154a7f705a804f8b0a1b4143be4dd, type: 3}
+  m_PrefabInstance: {fileID: 1240072709}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1240990578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83576,7 +83525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 705534681}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 602547955}
   ProgressBar: {fileID: 1271301241}
   price: 50
@@ -84223,7 +84172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3454155032323644473, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4291867478598933043, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -84799,7 +84748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 774961451}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1159541695}
   ProgressBar: {fileID: 1294673350}
   price: 150
@@ -86764,7 +86713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1854873102}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 475603826}
   ProgressBar: {fileID: 1329763277}
   price: 750
@@ -88079,7 +88028,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5174922986048809905, guid: 8277909797274ed49881266e20ac6ed9, type: 3}
   m_PrefabInstance: {fileID: 1159363074}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1178162469}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df4f1b1d3681b3a49905885b7abce7d6, type: 3}
@@ -88186,7 +88135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 624090909}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1649702225}
   ProgressBar: {fileID: 1347769434}
   price: 290
@@ -90794,7 +90743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 637628347}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 774238774}
   ProgressBar: {fileID: 1390235326}
   price: 250
@@ -92142,6 +92091,38 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412368305}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1413521691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1413521692}
+  m_Layer: 0
+  m_Name: Arrow Obj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1413521692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413521691}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1240072710}
+  m_Father: {fileID: 1070909069}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1414454858
 GameObject:
   m_ObjectHideFlags: 0
@@ -93180,6 +93161,8 @@ MonoBehaviour:
   KioskDrop2: {fileID: 1345595465}
   room: {fileID: 1988466269}
   Cashmachine: {fileID: 0}
+  isMoving: 0
+  isTransfer: 0
 --- !u!114 &1431776362 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3980281311312766499, guid: 793dc47101f5d0c4b95d65795123b1a5, type: 3}
@@ -94547,7 +94530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1575891413}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 805003201}
   ProgressBar: {fileID: 1467502689}
   price: 550
@@ -95008,7 +94991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 982667240}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1287810610}
   ProgressBar: {fileID: 1472444059}
   price: 230
@@ -95251,7 +95234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1438245979}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1856983803}
   ProgressBar: {fileID: 1475667005}
   price: 760
@@ -96369,7 +96352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1109976442}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 435218303}
   ProgressBar: {fileID: 1491453687}
   price: 1750
@@ -96856,7 +96839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3454155032323644473, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4291867478598933043, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -98031,7 +98014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 787723996}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1681072048}
   ProgressBar: {fileID: 1537482278}
   price: 700
@@ -98431,6 +98414,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 925871995}
   m_SourcePrefab: {fileID: 100100000, guid: b14aef9a05449784da6735de9ec90b24, type: 3}
+--- !u!1 &1542959917 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3162687931768467316, guid: afbd6e0a8a2034347bc1b1bed8b24d38, type: 3}
+  m_PrefabInstance: {fileID: 5067907692356819452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1543194483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -99546,7 +99534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 258750490}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 2050888634}
   ProgressBar: {fileID: 1563530844}
   price: 100
@@ -100612,7 +100600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 982667240}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 752557051}
   ProgressBar: {fileID: 1574736803}
   price: 230
@@ -100733,7 +100721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7416776602714956195, guid: 47fae48553191fa4fb8c9f0e9159eafe, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7712026607109679625, guid: 47fae48553191fa4fb8c9f0e9159eafe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -102065,7 +102053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 774961451}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 459326321}
   ProgressBar: {fileID: 1612073423}
   price: 150
@@ -103221,7 +103209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1291028592}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 2622417}
   ProgressBar: {fileID: 1629361515}
   price: 50
@@ -104245,7 +104233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1199359828}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 460435279}
   ProgressBar: {fileID: 1639880502}
   price: 100
@@ -104559,7 +104547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1291028592}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 2000643471}
   ProgressBar: {fileID: 1644500786}
   price: 50
@@ -106198,7 +106186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 637628347}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1969149646}
   ProgressBar: {fileID: 1667993447}
   price: 250
@@ -106649,7 +106637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1373636060}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1631630091}
   ProgressBar: {fileID: 1670728143}
   price: 50
@@ -107531,7 +107519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 637628347}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 699412450}
   ProgressBar: {fileID: 1685089377}
   price: 250
@@ -110439,7 +110427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198108, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 463968, guid: 4b8871f4face94e47aabc03555c9a533, type: 3}
       propertyPath: m_LocalScale.x
@@ -111003,6 +110991,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 379702740}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1757615729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8886670382136638916, guid: febc99149f460034db903481a84f7d05, type: 3}
+  m_PrefabInstance: {fileID: 2015288509907784834}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1758954803 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5384934700713579738, guid: febc99149f460034db903481a84f7d05, type: 3}
@@ -114102,7 +114095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 379702737}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 252523223}
   ProgressBar: {fileID: 1829301009}
   price: 25
@@ -114302,7 +114295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1752287451}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 909933714}
   ProgressBar: {fileID: 1829644262}
   price: 1710
@@ -115286,7 +115279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1620971144}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 2088037021}
   ProgressBar: {fileID: 1845418561}
   price: 1000
@@ -115945,7 +115938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 705534681}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 370908582}
   ProgressBar: {fileID: 1852261357}
   price: 50
@@ -116377,7 +116370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 851259179}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 753697080}
   ProgressBar: {fileID: 1854769285}
   price: 1350
@@ -116857,87 +116850,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7694165337972844548, guid: 1373b5bfd44108c4d9708570bc1f707c, type: 3}
   m_PrefabInstance: {fileID: 1573264426}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1868184414
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 818980503}
-    m_Modifications:
-    - target: {fileID: 2404375696405183446, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
-      propertyPath: _PriceCoeff
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2404375696405183446, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
-      propertyPath: _PriceOfCash
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2404375696405183446, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
-      propertyPath: _testMaxCash
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2981904185369435389, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.2761972
-      objectReference: {fileID: 0}
-    - target: {fileID: 2981904185369435389, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.2761972
-      objectReference: {fileID: 0}
-    - target: {fileID: 2981904185369435389, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.2761972
-      objectReference: {fileID: 0}
-    - target: {fileID: 2981904185369435389, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.31
-      objectReference: {fileID: 0}
-    - target: {fileID: 2981904185369435389, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.94991726
-      objectReference: {fileID: 0}
-    - target: {fileID: 2981904185369435389, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.91
-      objectReference: {fileID: 0}
-    - target: {fileID: 2981904185369435389, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2981904185369435389, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2981904185369435389, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2981904185369435389, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2981904185369435389, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2981904185369435389, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2981904185369435389, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5122721636405830023, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
-      propertyPath: m_Name
-      value: MoneyZone (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
 --- !u!1 &1868685757
 GameObject:
   m_ObjectHideFlags: 0
@@ -118624,7 +118536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 982667240}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 167054962}
   ProgressBar: {fileID: 1891197862}
   price: 230
@@ -118861,7 +118773,7 @@ Transform:
   - {fileID: 1854607282}
   - {fileID: 1603428653}
   - {fileID: 2001642099}
-  - {fileID: 818980503}
+  - {fileID: 819442422}
   - {fileID: 1795516810}
   - {fileID: 1752287450}
   - {fileID: 1109976441}
@@ -118999,7 +118911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1724062313}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1117005470}
   ProgressBar: {fileID: 1900475325}
   price: 900
@@ -119855,7 +119767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 143449612}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 386989262}
   ProgressBar: {fileID: 1923362698}
   price: 100
@@ -121410,7 +121322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 379702737}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1571107213}
   ProgressBar: {fileID: 1947437233}
   price: 25
@@ -121685,7 +121597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1696422465}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1788951608}
   ProgressBar: {fileID: 1948855597}
   price: 50
@@ -122644,7 +122556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 624090909}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 289797943}
   ProgressBar: {fileID: 1963639268}
   price: 290
@@ -125867,7 +125779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 539176732}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 35201399}
   ProgressBar: {fileID: 2026049341}
   price: 230
@@ -127204,6 +127116,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2053663501}
   m_CullTransparentMesh: 1
+--- !u!1 &2054551250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8034643878217223943, guid: afbd6e0a8a2034347bc1b1bed8b24d38, type: 3}
+  m_PrefabInstance: {fileID: 5067907692356819452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2055470141
 GameObject:
   m_ObjectHideFlags: 0
@@ -127506,8 +127423,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f1b2610d4644124195e37b78311d519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  station: {fileID: 818980504}
-  money: {fileID: 0}
+  station: {fileID: 819176266}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 1354412844}
   ProgressBar: {fileID: 2063195682}
   price: 1410
@@ -127888,7 +127805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3454155032323644473, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4291867478598933043, guid: 6584004f2a081214ab170627c1c30e70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -130973,7 +130890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1854873102}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 456295086}
   ProgressBar: {fileID: 2121437266}
   price: 750
@@ -131456,7 +131373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 516844003}
-  money: {fileID: 0}
+  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
   PriceText: {fileID: 372920858}
   ProgressBar: {fileID: 2130300217}
   price: 60
@@ -132136,7 +132053,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7416776602714956195, guid: 47fae48553191fa4fb8c9f0e9159eafe, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7712026607109679625, guid: 47fae48553191fa4fb8c9f0e9159eafe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -132378,7 +132295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8051510965519312180, guid: 8395fa44cde926e45832bb86f8369df1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -132674,6 +132591,63 @@ PrefabInstance:
       addedObject: {fileID: 331035748}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6561a4621fc6da84280a32406023f4c4, type: 3}
+--- !u!1001 &7145226064961174588
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1898536823}
+    m_Modifications:
+    - target: {fileID: 2843853471200413290, guid: 0dabe0eab4120624bbdfef49b1f4bca9, type: 3}
+      propertyPath: m_Name
+      value: A17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812126060119151227, guid: 0dabe0eab4120624bbdfef49b1f4bca9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.720007
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812126060119151227, guid: 0dabe0eab4120624bbdfef49b1f4bca9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812126060119151227, guid: 0dabe0eab4120624bbdfef49b1f4bca9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -23.822
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812126060119151227, guid: 0dabe0eab4120624bbdfef49b1f4bca9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812126060119151227, guid: 0dabe0eab4120624bbdfef49b1f4bca9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812126060119151227, guid: 0dabe0eab4120624bbdfef49b1f4bca9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812126060119151227, guid: 0dabe0eab4120624bbdfef49b1f4bca9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812126060119151227, guid: 0dabe0eab4120624bbdfef49b1f4bca9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812126060119151227, guid: 0dabe0eab4120624bbdfef49b1f4bca9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812126060119151227, guid: 0dabe0eab4120624bbdfef49b1f4bca9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0dabe0eab4120624bbdfef49b1f4bca9, type: 3}
 --- !u!1001 &8235076191684297238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -132812,6 +132786,8 @@ MonoBehaviour:
   KioskDrop2: {fileID: 1345595465}
   room: {fileID: 1988466269}
   Cashmachine: {fileID: 0}
+  isMoving: 0
+  isTransfer: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -132825,8 +132801,8 @@ SceneRoots:
   - {fileID: 757167100}
   - {fileID: 910875114}
   - {fileID: 6415796502754742330}
+  - {fileID: 1070909069}
   - {fileID: 811349736}
   - {fileID: 608151174}
-  - {fileID: 960261762}
   - {fileID: 866121279}
   - {fileID: 1994708688}

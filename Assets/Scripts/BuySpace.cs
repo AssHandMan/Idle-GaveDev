@@ -78,11 +78,11 @@ public class BuySpace : MonoBehaviour
 
     public void Buy(bool forAll)
     {
-        if (station.name == "Door")
+        if (station.GetComponent<ObjectShowHider>() != null)
         {
-            station.SetActive(false);
+            station.GetComponent<ObjectShowHider>().ShowHide();
         }
-        else if (station.name == "Office" || station.name == "Toilet")
+        else if (station.name == "Office" || station.name == "Toilet" || station.name == "Kiosk")
         {
             station.SetActive(true);
         }

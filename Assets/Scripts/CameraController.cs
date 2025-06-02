@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
         plr = GameObject.FindGameObjectWithTag("Player");
     }
 
-    void Update()
+    void LateUpdate()
     {
         if(isPlay)
         {

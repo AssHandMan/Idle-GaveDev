@@ -4587,7 +4587,6 @@ GameObject:
   - component: {fileID: 2534857137519928416}
   - component: {fileID: 7986245699612277712}
   - component: {fileID: 5871061901117162458}
-  - component: {fileID: 1636765827013059364}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -4663,27 +4662,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1636765827013059364
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4929613104919860167}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5101647720562515970
 GameObject:
   m_ObjectHideFlags: 0
@@ -9506,6 +9484,10 @@ MonoBehaviour:
   SpeedCount: {fileID: 0}
   CapacityCount: {fileID: 0}
   ProfitCount: {fileID: 0}
+  CountAds: 0
+  adsPlayer: {fileID: 0}
+  AdsScreen: {fileID: 0}
+  settings: {fileID: 0}
 --- !u!4 &3061859873784645474 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4646879947215738, guid: 086eb706c3edcf447aa2a9e0e0155538, type: 3}

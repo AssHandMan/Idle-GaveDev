@@ -7,7 +7,7 @@ public class CustomersMeneger : MonoBehaviour
 {
     public Canvas canvas;
 
-    public GameObject[] Customers;
+    public GameObject CustomerPrefab;
     public GameObject Car, Delivery;
     private string[] CustomerType = { "Poor", "Rich", "Bloger" };
     public int CountCustomer, MaxCustomer, MaxCars, MaxKioskCustomers;
@@ -44,9 +44,7 @@ public class CustomersMeneger : MonoBehaviour
         int Type = Random.Range(0, 3);
         GameObject customer;
         Customer _customer;
-        if(station == CashMachine1) { customer = Instantiate(Customers[0], CustomerPos.position, CustomerPos.rotation); }
-        else if (station == CashMachine2) { customer = Instantiate(Customers[1], CustomerPos.position, CustomerPos.rotation); }
-        else { customer = Instantiate(Customers[2], CustomerPos.position, CustomerPos.rotation); }
+        customer = Instantiate(CustomerPrefab, CustomerPos.position, CustomerPos.rotation);
         _customer = customer.GetComponent<Customer>();
         _customer.ChangeType(Type);
 
