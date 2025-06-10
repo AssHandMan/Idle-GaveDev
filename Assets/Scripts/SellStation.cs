@@ -66,7 +66,7 @@ public class SellStation : MonoBehaviour
             if (obj.GetComponent<Customer>().ppos > flag)
             {
                 Debug.Log(obj.GetComponent<Customer>().ppos);
-                obj.GetComponent<Customer>()._animator.SetBool("IsAngry", true);
+                obj.GetComponent<Customer>()._animator.SetBool("isAngry", true);
             }
         }
     }
@@ -74,7 +74,7 @@ public class SellStation : MonoBehaviour
     {
         foreach (GameObject obj in QueueList)
         {
-            obj.GetComponent<Customer>()._animator.SetBool("IsAngry", false);
+            obj.GetComponent<Customer>()._animator.SetBool("isAngry", false);
         }
     }
     public void MakeArray()
