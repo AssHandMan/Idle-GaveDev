@@ -93,6 +93,10 @@ public class Customer : MonoBehaviour
                         StartCoroutine(animator1("IsMoving", false, 0));
                 }
             }
+            else
+            {
+                _animator.SetBool("IsMoving",true);
+            }
 
             if (BuyObjCount == 0)
             {
