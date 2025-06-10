@@ -1,93 +1,102 @@
-/*using UnityEngine;
-
-public class SwipeCameraController : MonoBehaviour
-{
-    [SerializeField] private float dragSpeed = 0.1f; // Скорость перемещения
-    [SerializeField] private float minX, maxX, minY, maxY; // Границы перемещения (опционально)
-
-    private Vector3 dragOrigin; // Точка начала свайпа
-    private bool isDragging = false;
-
-    void Update()
-    {
-        // Для ПК (мышь) и мобильных устройств (тач)
-        if (Input.GetMouseButtonDown(0))
-        {
-            dragOrigin = Input.mousePosition;
-            isDragging = true;
-            return;
-        }
-
-        if (!Input.GetMouseButton(0))
-        {
-            isDragging = false;
-            return;
-        }
-
-        if (isDragging)
-        {
-            Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
-            Vector3 move = new Vector3(-pos.x * dragSpeed, -pos.y * dragSpeed, 0);
-
-            transform.Translate(move, Space.World);
-
-            // Ограничение перемещения (если нужно)
-            float clampedX = Mathf.Clamp(transform.position.x, minX, maxX);
-            float clampedY = Mathf.Clamp(transform.position.y, minY, maxY);
-            transform.position = new Vector3(clampedX, clampedY, transform.position.z);
-        }
-    }
-}*/
-
 using UnityEngine;
 
-public class SwipeCameraInertia : MonoBehaviour
+public class SwipePan3DWithInertia : MonoBehaviour
 {
-    [SerializeField] private float dragSpeed = 0.1f;
-    [SerializeField] private float inertiaDecay = 0.95f; // Замедление инерции
-    [SerializeField] private float minX, maxX, minY, maxY;
+    private Vector3 touchStartPos;
+    private bool isDragging = false;
+    public float dragSpeed = 0.01f;
 
-    private Vector3 dragOrigin;
-    private Vector3 velocity;
-    private bool isDragging;
+    [Header("Inertia Settings")]
+    public float deceleration = 0.95f; // Коэффициент замедления (0.9-0.99)
+    private Vector3 currentVelocity; // Текущая скорость движения
+
+    [Header("Boundaries X and Z")]
+    public Vector2 minBounds; // Минимальные X и Z координаты
+    public Vector2 maxBounds; // Максимальные X и Z координаты
 
     void Update()
     {
+        HandleInput();
+        //ApplyInertia();
+    }
+
+    void HandleInput()
+    {
+        // Для мыши
         if (Input.GetMouseButtonDown(0))
         {
-            dragOrigin = Input.mousePosition;
+            touchStartPos = GetWorldPoint(Input.mousePosition);
             isDragging = true;
-            velocity = Vector3.zero;
+            currentVelocity = Vector3.zero; // Сброс скорости при новом касании
         }
-
-        if (Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButton(0) && isDragging)
+        {
+            Vector3 currentPos = GetWorldPoint(Input.mousePosition);
+            Vector3 delta = currentPos - touchStartPos;
+            currentVelocity = -delta * dragSpeed; // Обновляем скорость
+            MoveCamera(currentVelocity);
+            touchStartPos = currentPos;
+        }
+        else if (Input.GetMouseButtonUp(0))
         {
             isDragging = false;
         }
 
-        if (isDragging)
+        // Для тач-экранов
+        if (Input.touchCount == 1)
         {
-            Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
-            velocity = new Vector3(-pos.x * dragSpeed, -pos.y * dragSpeed, 0);
-            transform.Translate(velocity, Space.World);
-        }
-        else
-        {
-            // Инерция
-            if (velocity.magnitude > 0.01f)
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
             {
-                transform.Translate(velocity, Space.World);
-                velocity *= inertiaDecay;
+                touchStartPos = GetWorldPoint(touch.position);
+                isDragging = true;
+                currentVelocity = Vector3.zero;
             }
-            else
+            else if (touch.phase == TouchPhase.Moved && isDragging)
             {
-                velocity = Vector3.zero;
+                Vector3 currentPos = GetWorldPoint(touch.position);
+                Vector3 delta = currentPos - touchStartPos;
+                currentVelocity = -delta * dragSpeed;
+                MoveCamera(currentVelocity);
+                touchStartPos = currentPos;
+            }
+            else if (touch.phase == TouchPhase.Ended)
+            {
+                isDragging = false;
             }
         }
+    }
 
-        // Ограничение позиции
-        float clampedX = Mathf.Clamp(transform.position.x, minX, maxX);
-        float clampedY = Mathf.Clamp(transform.position.y, minY, maxY);
-        transform.position = new Vector3(clampedX, clampedY, transform.position.z);
+    void ApplyInertia()
+    {
+        if (!isDragging && currentVelocity.magnitude > 0.01f)
+        {
+            MoveCamera(currentVelocity);
+            currentVelocity *= deceleration; // Постепенно замедляем
+        }
+        else if (!isDragging)
+        {
+            currentVelocity = Vector3.zero; // Полная остановка
+        }
+    }
+
+    Vector3 GetWorldPoint(Vector2 screenPos)
+    {
+        Ray ray = Camera.main.ScreenPointToRay(screenPos);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        float distance;
+        groundPlane.Raycast(ray, out distance);
+        return ray.GetPoint(distance);
+    }
+
+    void MoveCamera(Vector3 delta)
+    {
+        Vector3 newPosition = transform.position + new Vector3(delta.x, 0, delta.z);
+
+        // Ограничиваем по X и Z 
+        newPosition.x = Mathf.Clamp(newPosition.x, minBounds.x, maxBounds.x);
+        newPosition.z = Mathf.Clamp(newPosition.z, minBounds.y, maxBounds.y);
+
+        transform.position = newPosition;
     }
 }

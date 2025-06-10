@@ -47,7 +47,36 @@ public class SellStation : MonoBehaviour
             inProgress = true;
         }
     }
+    public void CheckCalling()
+    {
+        int flag = 13;
+        Debug.Log("CheckCalling");
+        foreach (GameObject obj in QueueList)
+        {
+            if (obj.GetComponent<Customer>().isCalling)
+            {
+                flag = obj.GetComponent<Customer>().ppos;
+                Debug.Log("flag " + flag.ToString());
+            }
+        }
+        foreach (GameObject obj in QueueList)
+        {
+            Debug.Log(obj.GetComponent<Customer>().ppos.ToString()+" vs " + flag.ToString());
 
+            if (obj.GetComponent<Customer>().ppos > flag)
+            {
+                Debug.Log(obj.GetComponent<Customer>().ppos);
+                obj.GetComponent<Customer>()._animator.SetBool("IsAngry", true);
+            }
+        }
+    }
+    public void UnCalling()
+    {
+        foreach (GameObject obj in QueueList)
+        {
+            obj.GetComponent<Customer>()._animator.SetBool("IsAngry", false);
+        }
+    }
     public void MakeArray()
     {
         Queue = QueueList.ToArray();

@@ -323,6 +323,8 @@ public class Customer : MonoBehaviour
         agent.speed = 0;
         OrderBar.SetActive(false);
         isCalling = true;
+        Debug.Log("MakeCall");
+        st.CheckCalling();
         _animator.SetBool("IsTalking", true);
     }
     public void Sleep()
@@ -355,6 +357,7 @@ public class Customer : MonoBehaviour
             }
             CallIcon.SetActive(false);
             isCalling = false;
+            st.UnCalling();
             _animator.SetBool("IsTalking", false);
             _animator.SetBool("IsMoving", true);
             st.isCalling = false;

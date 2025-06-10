@@ -38,7 +38,6 @@ public class CustomersMeneger : MonoBehaviour
     {
 
     }
-
     public void CreateCustomer(SellStation station)
     {
         int Type = Random.Range(0, 3);

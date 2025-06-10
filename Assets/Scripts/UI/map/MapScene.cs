@@ -8,24 +8,40 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private GameObject _mainCamera;
     [SerializeField] private GameObject _mainUI;
     [SerializeField] private Scene _scene;
+    [SerializeField] private PlayerWallet _PlayerWallet;
+    [SerializeField] private NetworkTimeChecker _timeChecker;
+
 
     private bool _isMapLoaded = false;
-
     public void ToggleMap()
     {
         if (_isMapLoaded)
         {
             UnloadMap();
+            UpdateWallet();
         }
         else
         {
             LoadMap();
         }
     }
-
+    private void UpdateWallet()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (PlayerPrefs.GetInt("Wallet" + i.ToString(), 0) > 0 && PlayerPrefs.GetInt("Agree" + i.ToString(), 0) == 1)
+            {
+                _PlayerWallet.ChangeCount(PlayerPrefs.GetInt("Wallet" + i.ToString(), 0), "Money");
+                Debug.Log("wallat" + i.ToString() + ": " + PlayerPrefs.GetInt("Wallet" + i.ToString(), 0).ToString());
+                PlayerPrefs.SetInt("Wallet" + i.ToString(), 0);
+                PlayerPrefs.SetInt("Agree" + i.ToString(), 0);
+                PlayerPrefs.Save();
+            }
+        }
+    }
     private void LoadMap()
     {
-        SceneManager.LoadScene(_mapSceneName, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(_mapSceneName, LoadSceneMode.Additive);
         _isMapLoaded = true;
 
         // Можно приостановить игровые процессы, если нужно
@@ -33,7 +49,6 @@ public class SceneLoader : MonoBehaviour
         _mainCamera.SetActive(false);
         _mainUI.SetActive(false);
     }
-
     private void UnloadMap()
     {
         SceneManager.UnloadSceneAsync(_mapSceneName);
@@ -43,6 +58,14 @@ public class SceneLoader : MonoBehaviour
         Time.timeScale = 1f;
         _mainCamera.SetActive(true);
         _mainUI.SetActive(true);
+
+    }
+    public void ResetAllPrefs()
+    {
+        PlayerPrefs.DeleteAll();
+        _timeChecker.WriteTimeLastGiveTime("0");
+        _timeChecker.WriteTimeLastGiveTime("1");
+        _timeChecker.WriteTimeLastGiveTime("2");
 
     }
 }

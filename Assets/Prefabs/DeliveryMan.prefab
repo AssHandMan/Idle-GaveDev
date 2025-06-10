@@ -304,6 +304,7 @@ MonoBehaviour:
   OrderBar: {fileID: 139072424008858665}
   OrderCount: {fileID: 1479378668177440033}
   Type: Toy
+  _animator: {fileID: 1397725256971620288}
 --- !u!1001 &1312749275278341568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -356,6 +357,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95249822642043392, guid: f0035ce155c0a5b40bab2f30a7bdd30f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 26ed74997c5156c44b7c250b715751bc, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -364,6 +369,11 @@ PrefabInstance:
 --- !u!4 &1308097827244419694 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4677913765011374, guid: f0035ce155c0a5b40bab2f30a7bdd30f, type: 3}
+  m_PrefabInstance: {fileID: 1312749275278341568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1397725256971620288 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95249822642043392, guid: f0035ce155c0a5b40bab2f30a7bdd30f, type: 3}
   m_PrefabInstance: {fileID: 1312749275278341568}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1317490338849944998

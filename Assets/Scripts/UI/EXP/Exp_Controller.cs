@@ -52,7 +52,7 @@ public class Exp_Controller : MonoBehaviour
         temp._Level.text = lines[0];
         _sliderLVLs.Add(lines[1]);
        
-            Debug.Log(lines[2]);
+            //Debug.Log(lines[2]);
         
         temp._Gift.text = lines[2];
         temp._imgGift.GetComponent<Image>().sprite = SelectImgIcon(lines[2]);
@@ -108,6 +108,9 @@ public class Exp_Controller : MonoBehaviour
         _slider.maxValue = float.Parse(_sliderLVLs[_playerLVL+1]);
         _Lvls[_playerLVL].GetComponent<LvlObject>().Check(_Lvls[_playerLVL].GetComponent<LvlObject>()._Gift.text);
         _playerLVL++;
+
+        PlayerPrefs.SetInt("PlayerLVL",_playerLVL);
+        PlayerPrefs.Save();
 
     }
     public void GetEXP(int exp)
