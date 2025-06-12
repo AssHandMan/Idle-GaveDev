@@ -8,7 +8,7 @@ public class MenegerHands : MonoBehaviour
     public List<GameObject> IngredientsCollection;
     public int Count;
     public float TakeSpeed;
-    private CreateStation createStation;
+    public CreateStation createStation;
     public DropStation dropStation;
     public TakeStation takeStation;
 
@@ -147,7 +147,7 @@ public class MenegerHands : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         if (meneger.TargetType == "CreateStation" || meneger.TargetType == "CreateStation2" || meneger.TargetType == "CreateKiosk1" || meneger.TargetType == "CreateKiosk2")
         {
-            if (createStation.station.CountObj == 0) { StartCoroutine(WaitNewCreateObj()); }
+            if (createStation.station.CountObj == 0 && Count <= 0) { StartCoroutine(WaitNewCreateObj()); }
             else if (Count < meneger.capacity)
             {
                 GameObject newObj = createStation.station.ObjectsList[createStation.station.ObjectsList.Count - 1];
@@ -166,12 +166,12 @@ public class MenegerHands : MonoBehaviour
                 {
                     yield return null;
                 }
-                if (Count < meneger.capacity) { StartCoroutine(GetFromCreateStation()); }
+                if (Count < meneger.capacity && createStation.station.CountObj > 0) { StartCoroutine(GetFromCreateStation()); }
             }
         }
         else if(meneger.TargetType == "CreateStationCar")
         {
-            if (createStation.station.CountObj == 0) { StartCoroutine(WaitNewCreateObj()); }
+            if (createStation.station.CountObj == 0 && Count <= 0) { StartCoroutine(WaitNewCreateObj()); }
             else if (Count < meneger.capacity)
             {
                 GameObject newObj = createStation.station.ObjectsList[createStation.station.ObjectsList.Count - 1];
@@ -191,7 +191,7 @@ public class MenegerHands : MonoBehaviour
                     yield return null;
                 }
 
-                if (Count < meneger.capacity) { StartCoroutine(GetFromCreateStation()); }
+                if (Count < meneger.capacity && createStation.station.CountObj > 0) { StartCoroutine(GetFromCreateStation()); }
             }
         }
     }
@@ -292,4 +292,5 @@ public class MenegerHands : MonoBehaviour
             else { isTakingFromTakeStation = false; }
         }
     }
+
 }

@@ -25,7 +25,8 @@ public class UpgreadeSceneMeneger : MonoBehaviour
 
     public Text CountLvl;
     public int lvl, LustPlace;
-
+    [SerializeField] private CameraController cam;
+    private BuySpace LustBuySpace;
     void Start()
     {
         CountLvl.text = lvl.ToString();
@@ -36,6 +37,7 @@ public class UpgreadeSceneMeneger : MonoBehaviour
             NewSpaces[i].station = stations[i];
             NewSpaces[i].transform.localPosition = lPos[i];
         }
+        LustBuySpace = NewSpaces[0];
     }
 
     void Update()
@@ -48,6 +50,11 @@ public class UpgreadeSceneMeneger : MonoBehaviour
         {
             BuyNext();
         }
+    }
+
+    public void Destenition()
+    {
+        cam.SetBuySpacePos(LustBuySpace.gameObject);
     }
 
     public void BuyNext()
@@ -67,6 +74,7 @@ public class UpgreadeSceneMeneger : MonoBehaviour
             NewSpaces[i].Buy(true);
         }
         surface.BuildNavMesh();
+        LustPlace = NewSpaces.Length;
     }
 
     public void LevelUp(BuySpace space)
@@ -75,7 +83,11 @@ public class UpgreadeSceneMeneger : MonoBehaviour
         {
             if (NewSpaces[i] == space)
             {
-                if (i + 1 < NewSpaces.Length ) { NewSpaces[i + 1].gameObject.SetActive(true); }
+                if (i + 1 < NewSpaces.Length ) 
+                { 
+                    NewSpaces[i + 1].gameObject.SetActive(true);
+                    LustBuySpace = NewSpaces[i + 1];
+                }
                 LustPlace = i;
                 arrow.MoveNextToBuySpace();
                 break;

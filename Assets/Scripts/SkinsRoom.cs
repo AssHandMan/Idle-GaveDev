@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class SkinsRoom : MonoBehaviour
 {
     public CameraController cam;
-    public GameObject Character, menu;
+    public GameObject Character, menu, ButtonsToHide, ButtonMain;
     public GameObject[] characters;
     public GameObject[] Player;
     public bool[] isBuy;
@@ -18,9 +18,14 @@ public class SkinsRoom : MonoBehaviour
     public int SkinPos, SkinNow;
     public Animator animCurtain;
     public Text ButtonText;
-
+    public Sprite[] ButtonsSpr;
+    public Sprite[] MonyeType;
+    public Image TypeMoneySkin;
+    public int[] SoftHard;
+    public GameObject[] Locks, SkinNowSpr;
     private PlayerWallet wallet;
     private bool CanChange;
+    [SerializeField] private UpgreadeSceneMeneger upgreadeRoom;
 
     //Firebase TEST EVENT
     private FireBaseIniti fireBase_obj;
@@ -28,31 +33,22 @@ public class SkinsRoom : MonoBehaviour
     void Start()
     {
         CanChange = true;
-        ButtonText.text = "Equipped";
+        ButtonText.text = "Take It";
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
 
         //Firebase TEST EVENT
         fireBase_obj = Object.FindFirstObjectByType<FireBaseIniti>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Character.transform.Rotate(0, 20f*Time.deltaTime, 0);
     }
-
-    public void Forward()
+    public void ChangeSkinEffect(int pos)
     {
-        if(SkinPos < characters.Length-1 && CanChange) 
+        if (CanChange)
         {
-            StartCoroutine(CurtainTimeChange(true));
-        }
-    }
-    public void Back()
-    {
-        if (SkinPos > 0 && CanChange)
-        {
-           StartCoroutine(CurtainTimeChange(false));
+           StartCoroutine(CurtainTimeChange(pos));
         }
     }
 
@@ -60,11 +56,25 @@ public class SkinsRoom : MonoBehaviour
     {
         if (!isBuy[SkinPos])
         {
-            if (wallet.Money >= Convert.ToInt32(priceList[SkinPos]))
+            if (wallet.Skins >= Convert.ToInt32(priceList[SkinPos]) && SoftHard[SkinPos] == 0)
             {
                 wallet.ChangeCount(-float.Parse(priceList[SkinPos]), "Skin");
                 isBuy[SkinPos] = true;
-                ButtonText.text = "Equipe";
+                ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
+                ButtonText.text = "Take It";
+                TypeMoneySkin.sprite = MonyeType[2];
+                Locks[SkinPos].SetActive(false);
+                //Firebase TEST EVENT
+                fireBase_obj.LogTestEvent2();
+            }
+            else if (wallet.Diamonds >= Convert.ToInt32(priceList[SkinPos]) && SoftHard[SkinPos] == 1)
+            {
+                wallet.ChangeCount(-float.Parse(priceList[SkinPos]), "Diamonds");
+                isBuy[SkinPos] = true;
+                ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
+                ButtonText.text = "Take It";
+                TypeMoneySkin.sprite = MonyeType[2];
+                Locks[SkinPos].SetActive(false);
 
                 //Firebase TEST EVENT
                 fireBase_obj.LogTestEvent2();
@@ -74,58 +84,79 @@ public class SkinsRoom : MonoBehaviour
         {
             if(SkinPos != SkinNow)
             {
-                ButtonText.text = "Equipped";
+                ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
+                ButtonText.text = "Take It";
                 SkinNow = SkinPos;
                 for(int i = 0; i < Player.Length; i++)
                 {
                     if (i != SkinNow) { Player[i].SetActive(false); }
                     else { Player[i].SetActive(true); }
                 }
+                for (int i = 0; i < SkinNowSpr.Length; i++)
+                {
+                    if (i != SkinNow) { SkinNowSpr[i].SetActive(false); }
+                    else { SkinNowSpr[i].SetActive(true); }
+                }
             }
         }
     }
 
-    public IEnumerator CurtainTimeChange(bool isForward)
+    public IEnumerator CurtainTimeChange(int newPos)
     {
         CanChange = false;
         animCurtain.SetTrigger("Move");
         yield return new WaitForSeconds(0.2f);
-        if(isForward)
-        {
-            characters[SkinPos].SetActive(false);
-            SkinPos++;
-            characters[SkinPos].SetActive(true);
-            Character.transform.eulerAngles = new Vector3(0, 70, 0);
-        }
-        else
-        {
-            characters[SkinPos].SetActive(false);
-            SkinPos--;
-            characters[SkinPos].SetActive(true);
-            Character.transform.eulerAngles = new Vector3(0, 70, 0);
-        }
+        characters[SkinPos].SetActive(false);
+        SkinPos = newPos;
+        characters[SkinPos].SetActive(true);
+        Character.transform.eulerAngles = new Vector3(0, 70, 0);
         CanChange = true;
 
-        if (!isBuy[SkinPos]) { ButtonText.text = priceList[SkinPos]; }
+        if (!isBuy[SkinPos]) 
+        { 
+            ButtonText.text = priceList[SkinPos];
+            if (SoftHard[SkinPos] == 0)
+            {
+                ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[1];
+                TypeMoneySkin.sprite = MonyeType[0];
+            }
+            else
+            {
+                ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[2];
+                TypeMoneySkin.sprite = MonyeType[1];
+            }
+            
+        }
         else
         {
-            if(SkinPos == SkinNow) { ButtonText.text = "Equipped"; }
-            else { ButtonText.text = "Equipe"; }
+            ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
+            TypeMoneySkin.sprite = MonyeType[2];
+            ButtonText.text = "Take It";
         }
     }
 
     public void CloseMenu()
     {
         menu.SetActive(false);
+        ButtonsToHide.SetActive(true);
         cam.SetPlayMood();
+    }
+
+    public void OpenMenu()
+    {
+        if (upgreadeRoom.LustPlace >= 34)
+        {
+            menu.SetActive(true);
+            ButtonsToHide.SetActive(false);
+            cam.SetSkinMood();
+        }
     }
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerMovement>() != null)
         {
-            menu.SetActive(true);
-            cam.SetSkinMood();
+            OpenMenu();
         }
     }
 

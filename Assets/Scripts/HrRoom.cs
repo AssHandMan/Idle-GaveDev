@@ -2,18 +2,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HrRoom : MonoBehaviour
 {
     public GameObject menu;
-    public GameObject[] ProgressBar;
+    public GameObject[] LockCover;
     public GameObject[] Buttons;
     public GameObject[] Menegers;
     public Image[] Jack, Andy, Mag, Bob, Tom, Sam, Dan;
     public Text[] PriceButton, PriceDiamondsButton;
-
+    public TextMeshProUGUI[] LvlTxt;
     public bool[] BoughtMenegres;
     public int[] lvl;
     private float[,] price = { { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 } };
@@ -83,7 +84,7 @@ public class HrRoom : MonoBehaviour
             {
                 wallet.ChangeCount(-price[name, lvl[name]], "Money");
                 BoughtMenegres[name] = true;
-                ProgressBar[name].SetActive(true);
+                LockCover[name].SetActive(false);
                 Menegers[name].SetActive(true);
                 PriceButton[name].text = Convert.ToString(price[name, lvl[name] + 1]);
                 PriceDiamondsButton[name].text = Convert.ToString(priceDiamonds[name, lvl[name] + 1]);
@@ -240,6 +241,7 @@ public class HrRoom : MonoBehaviour
             }
         }
 
+        LvlTxt[name].text = "LV." + Convert.ToString(lvl[name]);
     }
 
     public void BuyDiamondsButton(int name)
@@ -250,7 +252,7 @@ public class HrRoom : MonoBehaviour
             {
                 wallet.ChangeCount(-priceDiamonds[name, lvl[name]], "Diamonds");
                 BoughtMenegres[name] = true;
-                ProgressBar[name].SetActive(true);
+                LockCover[name].SetActive(true);
                 Menegers[name].SetActive(true);
                 PriceButton[name].text = Convert.ToString(price[name, lvl[name] + 1]);
                 PriceDiamondsButton[name].text = Convert.ToString(priceDiamonds[name, lvl[name] + 1]);
@@ -406,6 +408,7 @@ public class HrRoom : MonoBehaviour
                 }
             }
         }
+        LvlTxt[name].text = "LV." + Convert.ToString(lvl[name]);
     }
 
     public void OpenClose()

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8537699155088631498}
   - component: {fileID: 654871490272265780}
   - component: {fileID: 98729408397337736}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftDoor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 4992832904019147543}
   - component: {fileID: 2991758595459493282}
   - component: {fileID: 7319117099958426719}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Water (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 7141288663281815094}
   - component: {fileID: 8723437193732926025}
   - component: {fileID: 319310314417101775}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Water (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 9096148869464977719}
   - component: {fileID: 3684937653280884501}
   - component: {fileID: 4467383819133130027}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

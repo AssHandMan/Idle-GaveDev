@@ -7,14 +7,14 @@ using UnityEngine.AI;
 public class Meneger : MonoBehaviour
 {
     public int CashType;
-
+    public float Angel;
     public float speed, capacity, capacityUpgreadeBufer, profit;
     private NavMeshAgent agent;
 
     public string TargetType;
     public Transform Target;
     public MenegerHands hands;
-    
+
     public ArcadeMachine[] arcade;
     public Trashbin[] bin;
     public SellStation[] Cashmachines;
@@ -28,14 +28,17 @@ public class Meneger : MonoBehaviour
     public SellStation Cashmachine;
     private Animator anim;
     public bool isMoving, isTransfer;
+    private bool hasRotated = false;
+   private bool isAtTarget => Vector3.Distance(transform.position, Target.position) <= agent.stoppingDistance + 0.1f;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-        if(capacity != capacityUpgreadeBufer) { capacity = capacityUpgreadeBufer; }
+        if (capacity != capacityUpgreadeBufer) { capacity = capacityUpgreadeBufer; }
     }
 
-    
+
     void Update()
     {
         isMoving = agent.velocity.magnitude > 0.1f && agent.remainingDistance > agent.stoppingDistance;
@@ -52,7 +55,7 @@ public class Meneger : MonoBehaviour
         if (TargetType == "Arcade")
         {
             agent.SetDestination(Target.position);
-            if(hands.Count > 0)
+            if (hands.Count > 0)
             {
                 TargetType = "Delete";
                 if (Cashmachines[1].CanWork)
@@ -75,23 +78,25 @@ public class Meneger : MonoBehaviour
                 Target = null;
             }
         }
-        if(TargetType == "CreateStation" || TargetType == "CreateStation2" || TargetType == "CreateStationCar" || TargetType == "CreateKiosk1" || TargetType == "CreateKiosk2")
+        if (TargetType == "CreateStation" || TargetType == "CreateStation2" || TargetType == "CreateStationCar" || TargetType == "CreateKiosk1" || TargetType == "CreateKiosk2")
         {
-            if(Target == null && Cashmachine == Cashmachines[1]) {Target = GetCreateStation(Cashmachines[1]).MenegerPlace; }
+            if (Target == null && Cashmachine == Cashmachines[1]) { Target = GetCreateStation(Cashmachines[1]).MenegerPlace; }
 
             agent.SetDestination(Target.position);
 
             if (TargetType == "CreateStation" || TargetType == "CreateStation2")
             {
-                if ((hands.Count == capacity && capacity <= Cashmachine.station.MuxCountObj) || (hands.Count == Cashmachine.station.MuxCountObj && capacity >= Cashmachine.station.MuxCountObj))
+                if ((hands.Count == capacity && capacity <= Cashmachine.station.MuxCountObj) || (hands.Count == Cashmachine.station.MuxCountObj && capacity >= Cashmachine.station.MuxCountObj) || (hands.Count > 0 && hands.createStation.station.CountObj <= 0))
                 {
+                    hands.createStation = null;
                     TargetType = "AddToCashmachine";
                 }
             }
-            else if(TargetType == "CreateStationCar")
+            else if (TargetType == "CreateStationCar")
             {
-                if ((hands.Count == capacity && capacity <= workStation.newStation.MuxCountObj) || (hands.Count == workStation.newStation.MuxCountObj && capacity >= workStation.newStation.MuxCountObj))
+                if ((hands.Count == capacity && capacity <= workStation.newStation.MuxCountObj) || (hands.Count == workStation.newStation.MuxCountObj && capacity >= workStation.newStation.MuxCountObj) || (hands.Count > 0 && hands.createStation.station.CountObj <= 0))
                 {
+                    hands.createStation = null;
                     TargetType = "AddToWorkStation";
                     Target = workStation.SaveStationPlace;
                     room.AddTarget("AddToWorkStation");
@@ -99,26 +104,27 @@ public class Meneger : MonoBehaviour
             }
             else if (TargetType == "CreateKiosk1" || TargetType == "CreateKiosk2")
             {
-                if (hands.Count == capacity)
+                if (hands.Count == capacity || ((hands.Count > 0 && hands.createStation.station.CountObj <= 0)))
                 {
-                    if(TargetType == "CreateKiosk1") { TargetType = "AddToKiosk1"; }
+                    hands.createStation = null;
+                    if (TargetType == "CreateKiosk1") { TargetType = "AddToKiosk1"; }
                     else if (TargetType == "CreateKiosk2") { TargetType = "AddToKiosk2"; }
                     Target = kiosk.menegerPlace;
                 }
             }
         }
-        if(TargetType == "AddToKiosk1" || TargetType == "AddToKiosk2")
+        if (TargetType == "AddToKiosk1" || TargetType == "AddToKiosk2")
         {
             agent.SetDestination(Target.position);
-            if(hands.Count == 0)
+            if (hands.Count == 0)
             {
                 if (TargetType == "AddToKiosk1") { room.RemoveTarget("CreateKiosk1"); }
                 else if (TargetType == "AddToKiosk2") { room.RemoveTarget("CreateKiosk2"); }
                 DefineTarget();
             }
-              
+
         }
-        if(TargetType == "AddToCashmachine")
+        if (TargetType == "AddToCashmachine")
         {
             agent.SetDestination(Cashmachine.MenegerPlace.position);
             if (hands.Count == 0)
@@ -132,17 +138,26 @@ public class Meneger : MonoBehaviour
         {
             agent.SetDestination(Target.position);
 
-            if(transform.position.x > 14) { Cashmachine = Cashmachines[1]; }
-           
-            //CheackArcade();
+            if (isAtTarget && !hasRotated)
+            {
+                agent.updateRotation = false;
+
+                Vector3 lookDir = Vector3.back;
+                StartCoroutine(RotateToLookDirection(lookDir));
+                hasRotated = true;
+            }
+
             if (Cashmachine.station.CountObj == 0)
             {
+                agent.updateRotation = true;
+                hasRotated = false;
                 room.RemoveTarget(TargetType);
                 DefineTarget();
             }
         }
 
-        if(TargetType == "AddToWorkStation")
+
+        if (TargetType == "AddToWorkStation")
         {
             agent.SetDestination(Target.position);
             if (hands.Count == 0 && workStation.lvl < 2)
@@ -154,7 +169,7 @@ public class Meneger : MonoBehaviour
             }
             else
             {
-                if(hands.Count == 0)
+                if (hands.Count == 0)
                 {
                     Target = workStation.NewStationPlace;
                     TargetType = "TakeStationCar";
@@ -163,7 +178,7 @@ public class Meneger : MonoBehaviour
                 }
             }
         }
-        if(TargetType == "WorkWork")
+        if (TargetType == "WorkWork")
         {
             agent.SetDestination(Target.position);
             if (workStation.station.CountObj == 0)
@@ -210,7 +225,7 @@ public class Meneger : MonoBehaviour
         if (TargetType == "CashCarWork")
         {
             agent.SetDestination(Target.position);
-            if(CarsStations.station.CountObj == 0)
+            if (CarsStations.station.CountObj == 0)
             {
                 room.RemoveTarget("CreateStationCar");
                 room.RemoveTarget("CashCarWork");
@@ -218,7 +233,7 @@ public class Meneger : MonoBehaviour
             }
         }
     }
-    
+
     public CreateStation GetCreateStation(SellStation CashMachine)
     {
         if (CashMachine == Cashmachines[0])
@@ -263,14 +278,14 @@ public class Meneger : MonoBehaviour
         if (capacity != capacityUpgreadeBufer) { capacity = capacityUpgreadeBufer; }
 
         int CountArcade = 0;
-        for(int i = 0; i < arcade.Length; i++)
+        for (int i = 0; i < arcade.Length; i++)
         {
             if (!arcade[i].CanWork & arcade[i].station.CountObj > 0 & !arcade[i].hasMenegerTarget)
             {
                 CountArcade++;
             }
         }
-        if(CountArcade > 0)
+        if (CountArcade > 0)
         {
             for (int i = 0; i < arcade.Length; i++)
             {
@@ -286,7 +301,7 @@ public class Meneger : MonoBehaviour
         else
         {
             List<int> TargetTypes = new List<int>();
-            if(Cashmachines[0].CanWork || Cashmachines[1].CanWork) { TargetTypes.Add(0); }
+            if (Cashmachines[0].CanWork || Cashmachines[1].CanWork) { TargetTypes.Add(0); }
             if (workStation.CanWork && CarsStations.CanWork) { TargetTypes.Add(1); }
             if (kiosk.GetComponent<SellStation>().CanWork && CreateStations[2].CanWork) { TargetTypes.Add(2); }
             int type = TargetTypes[UnityEngine.Random.Range(0, TargetTypes.Count)];
@@ -303,7 +318,7 @@ public class Meneger : MonoBehaviour
                     if (Cashmachines[0].station.CountObj == 0 && !room.CheckWork("CreateStation"))
                     {
                         Target = GetCreateStation(Cashmachines[0]).MenegerPlace;
-                        TargetType = "CreateStation";           
+                        TargetType = "CreateStation";
                         Cashmachine = Cashmachines[0];
                         room.AddTarget("CreateStation");
                         CashType = 1;
@@ -320,7 +335,7 @@ public class Meneger : MonoBehaviour
                         }
                     }
                 }
-                else if(Cash == 1 && Cashmachines[1].CanWork)
+                else if (Cash == 1 && Cashmachines[1].CanWork)
                 {
                     if (Cashmachines[1].station.CountObj == 0 && !room.CheckWork("CreateStation2"))
                     {
@@ -341,7 +356,7 @@ public class Meneger : MonoBehaviour
                             CashType = 2;
                         }
                     }
-                }    
+                }
             }
             if (type == 1)
             {
@@ -359,7 +374,7 @@ public class Meneger : MonoBehaviour
                     Target = workStation.WorkPlace;
                     TargetType = "WorkWork";
                 }
-                else*/ 
+                else*/
                 if (!room.CheckWork("CreateStationCar") && !room.CheckWork("WorkWork") && !room.CheckWork("TakeStationCar") && !room.CheckWork("CashCarWork") && !room.CheckWork("AddToCashMachineCar"))
                 {
                     if (workStation.station.CountObj == 0 && TargetType != "Corotune")
@@ -370,9 +385,9 @@ public class Meneger : MonoBehaviour
                 }
 
             }
-            if(type == 2)
+            if (type == 2)
             {
-                if(!room.CheckWork("CreateKiosk1") && kiosk.station1.CountObj == 0)
+                if (!room.CheckWork("CreateKiosk1") && kiosk.station1.CountObj == 0)
                 {
                     TargetType = "CreateKiosk1";
                     room.AddTarget("CreateKiosk1");
@@ -400,9 +415,26 @@ public class Meneger : MonoBehaviour
                 TargetType = "CreateStationCar";
             }
         }
-        if(TargetType == "Corotune")
+        if (TargetType == "Corotune")
         {
             TargetType = "";
         }
     }
+
+    private IEnumerator RotateToLookDirection(Vector3 direction, float speed = 5f)
+    {
+        direction.y = 0;
+        if (direction == Vector3.zero) yield break;
+
+        Quaternion targetRot = Quaternion.LookRotation(direction);
+
+        while (Quaternion.Angle(transform.rotation, targetRot) > 0.5f)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * speed);
+            yield return null;
+        }
+
+        transform.rotation = targetRot;
+    }
+
 }
