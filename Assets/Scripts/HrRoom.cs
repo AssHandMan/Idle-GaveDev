@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class HrRoom : MonoBehaviour
 {
-    public GameObject menu;
+    public GameObject menu, buttonsHide;
     public GameObject[] LockCover;
     public GameObject[] Buttons;
     public GameObject[] Menegers;
@@ -414,6 +414,7 @@ public class HrRoom : MonoBehaviour
     public void OpenClose()
     {
         menu.SetActive(false);
+        buttonsHide.SetActive(true);
     }
 
     public void OnTriggerEnter(Collider other)
@@ -421,6 +422,7 @@ public class HrRoom : MonoBehaviour
         if (other.GetComponent<PlayerMovement>() != null)
         {
             menu.SetActive(true);
+            buttonsHide.SetActive(false);
         }
     }
 
@@ -429,6 +431,7 @@ public class HrRoom : MonoBehaviour
         if (other.GetComponent<PlayerMovement>() != null)
         {
             menu.SetActive(false);
+            buttonsHide.SetActive(true);
         }
     }
 }
