@@ -978,7 +978,7 @@ TextureImporter:
         x: 303
         y: 2339
         width: 379
-        height: 161
+        height: 159
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1130,9 +1130,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 304
-        y: 2493
+        y: 2500
         width: 378
-        height: 162
+        height: 150
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1301,6 +1301,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_53"
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 2202
+        width: 57
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9b7b490d4b6b82499c885a01e0024b2
+      internalID: -769467978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -1364,6 +1386,7 @@ TextureImporter:
       "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_50": -289029955
       "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_51": -556769459
       "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_52": -279698351
+      "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_53": -769467978
       "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_6": 570503443
       "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_7": 1071355860
       "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_8": -1915055568
