@@ -36,7 +36,7 @@ public class LvlObject : MonoBehaviour
     public void Check(string text) 
     {
         _imgCheckLvl.SetActive(true);
-        _imgCheckGift.SetActive(true);
+        //_imgCheckGift.SetActive(true);
         GetCash(text);
         CheckPlayer();
     }

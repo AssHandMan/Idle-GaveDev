@@ -146,11 +146,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1356655456112360241}
-  m_Father: {fileID: 9014898452302318578}
+  m_Father: {fileID: 199684986975144577}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -174.7, y: 590.54175}
+  m_AnchoredPosition: {x: -174.7, y: -21.458252}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &284515434678310954
@@ -1325,7 +1325,6 @@ RectTransform:
   - {fileID: 4484941458419846051}
   - {fileID: 3122971776269213027}
   - {fileID: 3614591774012443486}
-  - {fileID: 5989778156143214470}
   - {fileID: 3410439631192408868}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1921,6 +1920,7 @@ RectTransform:
   m_Children:
   - {fileID: 438597071653314213}
   - {fileID: 6119664931724371515}
+  - {fileID: 5989778156143214470}
   m_Father: {fileID: 9014898452302318578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2053,6 +2053,10 @@ MonoBehaviour:
   _NEWbtn: {fileID: 891598007455979785}
   _btn: {fileID: 6122672393380839918}
   _LabelLVL: {fileID: 7051675521735249727}
+  _money: {fileID: 0}
+  _skins: {fileID: 0}
+  _diamonds: {fileID: 0}
+  _voidImg: {fileID: 0}
 --- !u!114 &1788861970790353133
 MonoBehaviour:
   m_ObjectHideFlags: 0
