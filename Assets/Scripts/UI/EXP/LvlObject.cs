@@ -32,11 +32,13 @@ public class LvlObject : MonoBehaviour
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
         exp_menu = GameObject.FindGameObjectWithTag("ExpController").GetComponent<Exp_Controller>();  
         CheckPlayer();
+        if( _Level.text == "1") _imgCheckLvl.SetActive(true);
     }
     public void Check(string text) 
     {
         _imgCheckLvl.SetActive(true);
         //_imgCheckGift.SetActive(true);
+        Debug.Log("checl");
         GetCash(text);
         CheckPlayer();
     }

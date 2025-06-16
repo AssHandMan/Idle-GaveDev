@@ -71,6 +71,7 @@ public class Exp_Controller : MonoBehaviour
        
 
         _gifts.Add(panel.GetComponent<LvlObject>());
+
     }
     private Sprite SelectImgIcon(string str)
     {

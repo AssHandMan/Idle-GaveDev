@@ -30530,7 +30530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7051675521735249727, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
       propertyPath: m_Text
-      value: 33
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7051675521735249727, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
       propertyPath: m_FontData.m_Font
