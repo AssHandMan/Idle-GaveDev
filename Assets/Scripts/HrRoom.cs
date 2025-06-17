@@ -33,6 +33,11 @@ public class HrRoom : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         plr = player.GetComponent<PlayerMovement>();
         wallet = player.GetComponent<PlayerWallet>();
+
+        for(int i = 0; i < PriceDiamondsButton.Length; i++)
+        {
+            PriceDiamondsButton[i].text = "1";
+        }
     }
 
 
@@ -252,7 +257,7 @@ public class HrRoom : MonoBehaviour
             {
                 wallet.ChangeCount(-priceDiamonds[name, lvl[name]], "Diamonds");
                 BoughtMenegres[name] = true;
-                LockCover[name].SetActive(true);
+                LockCover[name].SetActive(false);
                 Menegers[name].SetActive(true);
                 PriceButton[name].text = Convert.ToString(price[name, lvl[name] + 1]);
                 PriceDiamondsButton[name].text = Convert.ToString(priceDiamonds[name, lvl[name] + 1]);
