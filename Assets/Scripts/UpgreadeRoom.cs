@@ -26,7 +26,7 @@ public class UpgreadeRoom : MonoBehaviour
     private int speed, capacity, profit;
     public int CountAds;
     public VideoPlayer adsPlayer;
-    public GameObject AdsScreen;
+    public GameObject AdsScreen, ButtonsBuySpeed, ButtonsBuyCapacity, ButtonsBuyProfit;
     public GameSettingsController settings;
     void Start()
     {
@@ -72,7 +72,7 @@ public class UpgreadeRoom : MonoBehaviour
                     plr.speed = SpeedValue[speed];
                     SpeedBar.fillAmount += 0.2f;
                     speed++;
-                    if (speed == 5) { SpeedCount.text = "Complete"; }
+                    if (speed == 5) { ButtonsBuySpeed.SetActive(false); }
                     else { SpeedCount.text = SpeedPrice[speed].ToString(); }
                     BuyAdvertisement();
                 }
@@ -85,7 +85,7 @@ public class UpgreadeRoom : MonoBehaviour
                     plr.speed = SpeedValue[speed];
                     SpeedBar.fillAmount += 0.2f;
                     speed++;
-                    if (speed == 5) { SpeedCount.text = "Complete"; }
+                    if (speed == 5) { ButtonsBuySpeed.SetActive(false); }
                     else { SpeedCount.text = SpeedPrice[speed].ToString(); }
                 }
             }
@@ -103,7 +103,7 @@ public class UpgreadeRoom : MonoBehaviour
                     hands.MaxCount = CapacityValue[capacity];
                     CapacityBar.fillAmount += 0.2f;
                     capacity++;
-                    if (capacity == 5) { CapacityCount.text = "Complete"; }
+                    if (capacity == 5) { ButtonsBuyCapacity.SetActive(false); }
                     else { CapacityCount.text = CapacityPrice[capacity].ToString(); }
                     BuyAdvertisement();
                 }
@@ -116,7 +116,7 @@ public class UpgreadeRoom : MonoBehaviour
                     hands.MaxCount = CapacityValue[capacity];
                     CapacityBar.fillAmount += 0.2f;
                     capacity++;
-                    if (capacity == 5) { CapacityCount.text = "Complete"; }
+                    if (capacity == 5) { ButtonsBuyCapacity.SetActive(false); }
                     else { CapacityCount.text = CapacityPrice[capacity].ToString(); }
                 }
             }
@@ -125,16 +125,6 @@ public class UpgreadeRoom : MonoBehaviour
 
     public void BuyProfit(bool isAdButton)
     {
-        if (profit < 5 && wallet.Money >= ProfitPrice[profit])
-        {
-            wallet.ChangeCount(-ProfitPrice[profit], "Money");
-            wallet.MoneyMultiplier = ProfitValue[profit];
-            ProfitBar.fillAmount += 0.2f;
-            profit++;
-            if (profit == 5) { ProfitCount.text = "Complete"; }
-            else { ProfitCount.text = ProfitPrice[profit].ToString(); }
-        }
-
         if (profit < 5)
         {
             if (isAdButton)
@@ -144,7 +134,7 @@ public class UpgreadeRoom : MonoBehaviour
                     wallet.MoneyMultiplier = ProfitValue[profit];
                     ProfitBar.fillAmount += 0.2f;
                     profit++;
-                    if (profit == 5) { ProfitCount.text = "Complete"; }
+                    if (profit == 5) { ButtonsBuyProfit.SetActive(false); }
                     else { ProfitCount.text = ProfitPrice[profit].ToString(); }
                     BuyAdvertisement();
                 }
@@ -157,7 +147,7 @@ public class UpgreadeRoom : MonoBehaviour
                     wallet.MoneyMultiplier = ProfitValue[profit];
                     ProfitBar.fillAmount += 0.2f;
                     profit++;
-                    if (profit == 5) { ProfitCount.text = "Complete"; }
+                    if (profit == 5) { ButtonsBuyProfit.SetActive(false); }
                     else { ProfitCount.text = ProfitPrice[profit].ToString(); }
                 }
             }
