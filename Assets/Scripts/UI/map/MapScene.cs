@@ -11,6 +11,15 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private PlayerWallet _PlayerWallet;
     [SerializeField] private NetworkTimeChecker _timeChecker;
 
+    [SerializeField] private GameObject _diamonds;
+    [SerializeField] private GameObject _diamonds_pos;
+    [SerializeField] private GameObject _diamonds_pos2;
+
+    [SerializeField] private GameObject _mapUI;
+    [SerializeField] private GameObject _coins;
+    [SerializeField] private GameObject _joystick;
+
+
 
     private bool _isMapLoaded = false;
     public void ToggleMap()
@@ -19,6 +28,7 @@ public class SceneLoader : MonoBehaviour
         {
             UnloadMap();
             UpdateWallet();
+
         }
         else
         {
@@ -48,6 +58,11 @@ public class SceneLoader : MonoBehaviour
         Time.timeScale = 0f;
         _mainCamera.SetActive(false);
         _mainUI.SetActive(false);
+        _mapUI.SetActive(true);
+        _coins.SetActive(false);
+        _joystick.SetActive(false);
+        _diamonds.transform.position = _diamonds_pos.transform.position;
+
     }
     private void UnloadMap()
     {
@@ -58,6 +73,10 @@ public class SceneLoader : MonoBehaviour
         Time.timeScale = 1f;
         _mainCamera.SetActive(true);
         _mainUI.SetActive(true);
+        _mapUI.SetActive(false);
+        _coins.SetActive(true);
+        _joystick.SetActive(true);
+        _diamonds.transform.position = _diamonds_pos2.transform.position;
 
     }
     public void ResetAllPrefs()

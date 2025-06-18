@@ -8,6 +8,9 @@ public class Shop : MonoBehaviour
     [SerializeField] private Material _material_Walls;
     [SerializeField] private MeshRenderer _meshRenderer_Floor;
     [SerializeField] private MeshRenderer _meshRenderer_Walls;
+    [SerializeField] private GameObject _clossed;
+    [SerializeField] private GameObject _btnInfo;
+
 
     public void Activated()
     {
@@ -15,6 +18,8 @@ public class Shop : MonoBehaviour
         _meshRenderer_Floor.material = _material_Floor;
         _meshRenderer_Walls.material = _material_Walls;
         _btn.SetActive(true);
+        _clossed.SetActive(false);
+        _btnInfo.SetActive(false);
 
     }
 }

@@ -110,8 +110,10 @@ public class Exp_Controller : MonoBehaviour
         _Lvls[_playerLVL].GetComponent<LvlObject>().Check(_Lvls[_playerLVL].GetComponent<LvlObject>()._Gift.text);
         _playerLVL++;
 
+        PlayerPrefs.SetFloat("SliderMaxValue", _slider.maxValue);
         PlayerPrefs.SetInt("PlayerLVL",_playerLVL);
         PlayerPrefs.Save();
+
 
     }
     public void GetEXP(int exp)
@@ -120,11 +122,23 @@ public class Exp_Controller : MonoBehaviour
         if(_playerEXP >= _slider.maxValue)
             NewLvl();
         _slider.value = _playerEXP;
-        _LabelLVL.text = _playerLVL.ToString();
+        _LabelLVL.text = PlayerPrefs.GetInt("PlayerLVL", 1).ToString();
+        PlayerPrefs.SetInt("PlayerEXP", _playerEXP);
+        PlayerPrefs.Save();
+
+        Debug.Log("Exp" + PlayerPrefs.GetInt("PlayerEXP", 0).ToString());
+        Debug.Log("LVL" + PlayerPrefs.GetInt("PlayerLVL", 1).ToString());
     }
     public void CloseLVL()
     {
         _btn.SetActive(true);
         _newLVL.SetActive(false);
+    }
+    public void CheckLvL()
+    {
+        _playerLVL = PlayerPrefs.GetInt("PlayerLVL", 1);
+        _playerEXP = PlayerPrefs.GetInt("PlayerEXP", 0);
+        _slider.maxValue = PlayerPrefs.GetFloat("SliderMaxValue",15);
+        _slider.value = _playerEXP;
     }
 }
