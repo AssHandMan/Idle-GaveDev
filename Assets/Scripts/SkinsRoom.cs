@@ -1,9 +1,7 @@
 using Firebase.Analytics;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEditor;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +21,8 @@ public class SkinsRoom : MonoBehaviour
     public Image TypeMoneySkin;
     public int[] SoftHard;
     public GameObject[] Locks, SkinNowSpr;
+    public string[] SkinNames;
+    public TextMeshProUGUI SkinNameTxt;
     private PlayerWallet wallet;
     private bool CanChange;
     [SerializeField] private UpgreadeSceneMeneger upgreadeRoom;
@@ -33,7 +33,7 @@ public class SkinsRoom : MonoBehaviour
     void Start()
     {
         CanChange = true;
-        ButtonText.text = "Take It";
+        ButtonText.text = "TAKE IT";
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
 
         //Firebase TEST EVENT
@@ -61,7 +61,7 @@ public class SkinsRoom : MonoBehaviour
                 wallet.ChangeCount(-float.Parse(priceList[SkinPos]), "Skin");
                 isBuy[SkinPos] = true;
                 ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
-                ButtonText.text = "Take It";
+                ButtonText.text = "TAKE IT";
                 TypeMoneySkin.sprite = MonyeType[2];
                 Locks[SkinPos].SetActive(false);
                 //Firebase TEST EVENT
@@ -72,7 +72,7 @@ public class SkinsRoom : MonoBehaviour
                 wallet.ChangeCount(-float.Parse(priceList[SkinPos]), "Diamonds");
                 isBuy[SkinPos] = true;
                 ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
-                ButtonText.text = "Take It";
+                ButtonText.text = "TAKE IT";
                 TypeMoneySkin.sprite = MonyeType[2];
                 Locks[SkinPos].SetActive(false);
 
@@ -85,7 +85,7 @@ public class SkinsRoom : MonoBehaviour
             if(SkinPos != SkinNow)
             {
                 ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
-                ButtonText.text = "Take It";
+                ButtonText.text = "TAKE IT";
                 SkinNow = SkinPos;
                 for(int i = 0; i < Player.Length; i++)
                 {
@@ -109,6 +109,7 @@ public class SkinsRoom : MonoBehaviour
         characters[SkinPos].SetActive(false);
         SkinPos = newPos;
         characters[SkinPos].SetActive(true);
+        SkinNameTxt.text = SkinNames[SkinPos];
         Character.transform.eulerAngles = new Vector3(0, 70, 0);
         CanChange = true;
 
@@ -131,7 +132,7 @@ public class SkinsRoom : MonoBehaviour
         {
             ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
             TypeMoneySkin.sprite = MonyeType[2];
-            ButtonText.text = "Take It";
+            ButtonText.text = "TAKE IT";
         }
     }
 
