@@ -8,6 +8,7 @@ public class PlayerTakeDropSystem : MonoBehaviour
     public int MaxCount;
     public int Count;
     public float TakeSpeed;
+    public GameObject MaxTxt;
     public ArrowPosController arrow;
 
     public string ObjType;
@@ -95,6 +96,10 @@ public class PlayerTakeDropSystem : MonoBehaviour
                 inProgress = true;
                 IngredientsCollection.Add(newObj);
                 Count++;
+                if(Count == MaxCount)
+                {
+                    MaxTxt.SetActive(true);
+                }
             }
         }
     }
@@ -153,6 +158,10 @@ public class PlayerTakeDropSystem : MonoBehaviour
                     if (Count == 0) { ObjType = ""; }
                 }
             }
+        }
+        if (Count < MaxCount)
+        {
+            MaxTxt.SetActive(false);
         }
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Kiosk : MonoBehaviour
 {
     public StationObjectCollection station1, station2, station3;
-    public GameObject PresentCase;
+    public GameObject PresentCase, MaxTxt;
     public Transform menegerPlace;
 
     public List<GameObject> QueueList = new List<GameObject>();
@@ -29,6 +29,10 @@ public class Kiosk : MonoBehaviour
                 }
             }
         }
+        if (station3.CountObj < station3.MuxCountObj && MaxTxt.activeSelf)
+        {
+            MaxTxt.SetActive(false);
+        }
     }
 
     private IEnumerator MakePresentBox()
@@ -43,7 +47,10 @@ public class Kiosk : MonoBehaviour
         newObj.transform.parent = station3.transform;
         station3.ObjectsList.Add(newObj);
         station3.CountObj++;
-        
+        if(station3.CountObj == station3.MuxCountObj)
+        {
+            MaxTxt.SetActive(true);
+        }
         if (station1.CountObj > 0 && station2.CountObj > 0)
         {
             if (station3.CountObj < station3.MuxCountObj)

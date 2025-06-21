@@ -6,7 +6,7 @@ public class CreateStation : MonoBehaviour
 {
     public StationObjectCollection station;
     public GameObject[] RefObj;
-    public GameObject Car, CarPlace;
+    public GameObject MaxTxt;
     public float TimeToCreate, TimeCreateCar;
 
     private GameObject CarNow;
@@ -26,6 +26,10 @@ public class CreateStation : MonoBehaviour
     private void Update()
     {
         CanWork = gameObject.activeSelf;
+        if (station.CountObj < station.MuxCountObj && MaxTxt.activeSelf)
+        {
+            MaxTxt.SetActive(false);
+        }
     }
 
     private IEnumerator CarCreat()
@@ -61,6 +65,10 @@ public class CreateStation : MonoBehaviour
             station.ObjectsList.Add(obj);
             station.CountObj++;
             CountUploads--;
+            if(station.CountObj == station.MuxCountObj)
+            {
+                MaxTxt.SetActive(true);
+            }
             StartCoroutine(Creating());
         }
         else

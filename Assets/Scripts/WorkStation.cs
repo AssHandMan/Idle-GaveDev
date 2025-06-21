@@ -6,7 +6,7 @@ public class WorkStation : MonoBehaviour
 {
     public StationObjectCollection station, newStation;
     public TakeStation TakeStationNew;
-    public GameObject obj, WorkSpace, MainObj, Worker;
+    public GameObject obj, WorkSpace, MainObj, Worker, MaxTxt;
     public bool CanWork, isSelling;
     private bool isIncreasing;
     public float TimeWork;
@@ -26,6 +26,10 @@ public class WorkStation : MonoBehaviour
     void Update()
     {
         CanWork = MainObj.activeSelf;
+        if (newStation.CountObj < newStation.MuxCountObj && MaxTxt.activeSelf)
+        {
+            MaxTxt.SetActive(false);
+        }
     }
 
     public void OnTriggerEnter(Collider other)
@@ -100,6 +104,10 @@ public class WorkStation : MonoBehaviour
             GameObject newObj = Instantiate(obj, pos, obj.transform.rotation);
             newStation.ObjectsList.Add(newObj);
             newStation.CountObj++;
+            if(newStation.CountObj == newStation.MuxCountObj)
+            {
+                MaxTxt.SetActive(true);
+            }
         }
         StartCoroutine(Working());
     }
