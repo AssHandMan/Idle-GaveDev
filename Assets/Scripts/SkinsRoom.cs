@@ -8,14 +8,14 @@ using UnityEngine.UI;
 public class SkinsRoom : MonoBehaviour
 {
     public CameraController cam;
-    public GameObject Character, menu, ButtonsToHide, ButtonMain;
+    public GameObject Character, menu, ButtonsToHide, ButtonMain, AddBaner, SkinButton;
     public GameObject[] characters;
     public GameObject[] Player;
     public bool[] isBuy;
     public string[] priceList;
     public int SkinPos, SkinNow;
     public Animator animCurtain;
-    public Text ButtonText;
+    public Text ButtonText, ButtonTextBuy;
     public Sprite[] ButtonsSpr;
     public Sprite[] MonyeType;
     public Image TypeMoneySkin;
@@ -33,7 +33,9 @@ public class SkinsRoom : MonoBehaviour
     void Start()
     {
         CanChange = true;
+        ButtonTextBuy.gameObject.SetActive(false);
         ButtonText.text = "TAKE IT";
+        ButtonText.gameObject.SetActive(true);
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
 
         //Firebase TEST EVENT
@@ -61,7 +63,9 @@ public class SkinsRoom : MonoBehaviour
                 wallet.ChangeCount(-float.Parse(priceList[SkinPos]), "Skin");
                 isBuy[SkinPos] = true;
                 ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
+                ButtonTextBuy.gameObject.SetActive(false);
                 ButtonText.text = "TAKE IT";
+                ButtonText.gameObject.SetActive(true);
                 TypeMoneySkin.sprite = MonyeType[2];
                 Locks[SkinPos].SetActive(false);
                 //Firebase TEST EVENT
@@ -72,7 +76,9 @@ public class SkinsRoom : MonoBehaviour
                 wallet.ChangeCount(-float.Parse(priceList[SkinPos]), "Diamonds");
                 isBuy[SkinPos] = true;
                 ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
+                ButtonTextBuy.gameObject.SetActive(false);
                 ButtonText.text = "TAKE IT";
+                ButtonText.gameObject.SetActive(true);
                 TypeMoneySkin.sprite = MonyeType[2];
                 Locks[SkinPos].SetActive(false);
 
@@ -85,7 +91,9 @@ public class SkinsRoom : MonoBehaviour
             if(SkinPos != SkinNow)
             {
                 ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
+                ButtonTextBuy.gameObject.SetActive(false);
                 ButtonText.text = "TAKE IT";
+                ButtonText.gameObject.SetActive(true);
                 SkinNow = SkinPos;
                 for(int i = 0; i < Player.Length; i++)
                 {
@@ -114,8 +122,10 @@ public class SkinsRoom : MonoBehaviour
         CanChange = true;
 
         if (!isBuy[SkinPos]) 
-        { 
-            ButtonText.text = priceList[SkinPos];
+        {
+            ButtonText.gameObject.SetActive(false);
+            ButtonTextBuy.text = priceList[SkinPos];
+            ButtonTextBuy.gameObject.SetActive(true);
             if (SoftHard[SkinPos] == 0)
             {
                 ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[1];
@@ -132,7 +142,9 @@ public class SkinsRoom : MonoBehaviour
         {
             ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
             TypeMoneySkin.sprite = MonyeType[2];
+            ButtonTextBuy.gameObject.SetActive(false);
             ButtonText.text = "TAKE IT";
+            ButtonText.gameObject.SetActive(true);
         }
     }
 
@@ -140,6 +152,8 @@ public class SkinsRoom : MonoBehaviour
     {
         menu.SetActive(false);
         ButtonsToHide.SetActive(true);
+        AddBaner.SetActive(true);
+        SkinButton.SetActive(true);
         cam.SetPlayMood();
     }
 
@@ -149,6 +163,8 @@ public class SkinsRoom : MonoBehaviour
         {
             menu.SetActive(true);
             ButtonsToHide.SetActive(false);
+            AddBaner.SetActive(true);
+            SkinButton.SetActive(false);
             cam.SetSkinMood();
         }
     }

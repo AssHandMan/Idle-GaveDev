@@ -65,13 +65,13 @@ public class CameraController : MonoBehaviour
     {
         while(Vector3.Distance(transform.position, pos) > 0.01f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, pos, 17 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, pos, 27 * Time.deltaTime);
             yield return null;
         }
         yield return new WaitForSeconds(0.4f);
         while (Vector3.Distance(transform.position, target) > 0.01f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target, 17 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target, 34 * Time.deltaTime);
             yield return null;
         }
         isPlay = true;
