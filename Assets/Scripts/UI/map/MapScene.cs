@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -19,9 +20,16 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private GameObject _coins;
     [SerializeField] private GameObject _joystick;
 
-
-
+    [SerializeField] private Sprite _map;
+    [SerializeField] private Sprite _Exite;
+    [SerializeField] private GameObject _text;
+    [SerializeField] private Transform _pos2;
+    private Transform _pos1;
     private bool _isMapLoaded = false;
+    private void Start()
+    {
+        _pos1 = this.transform;
+    }
     public void ToggleMap()
     {
         if (_isMapLoaded)
@@ -62,7 +70,9 @@ public class SceneLoader : MonoBehaviour
         _coins.SetActive(false);
         _joystick.SetActive(false);
         _diamonds.transform.position = _diamonds_pos.transform.position;
-
+        this.GetComponent<Image>().sprite = _Exite;
+        _text.SetActive(false);
+        this.transform.position=_pos2.position;
     }
     private void UnloadMap()
     {
@@ -78,6 +88,9 @@ public class SceneLoader : MonoBehaviour
         _joystick.SetActive(true);
         _diamonds.transform.position = _diamonds_pos2.transform.position;
 
+        this.GetComponent<Image>().sprite = _map;
+        _text.SetActive(true);
+        this.transform.position = _pos1.position;
     }
     public void ResetAllPrefs()
     {

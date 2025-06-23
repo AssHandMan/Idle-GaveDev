@@ -26,6 +26,7 @@ public class Exp_Controller : MonoBehaviour
     [SerializeField] private Sprite _skins;
     [SerializeField] private Sprite _diamonds;
     [SerializeField] private Image _voidImg;
+    [SerializeField] private Text _sliderText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Parse()
     {
@@ -128,6 +129,8 @@ public class Exp_Controller : MonoBehaviour
 
         Debug.Log("Exp" + PlayerPrefs.GetInt("PlayerEXP", 0).ToString());
         Debug.Log("LVL" + PlayerPrefs.GetInt("PlayerLVL", 1).ToString());
+
+        _sliderText.text = _slider.value.ToString()+"/"+_slider.maxValue.ToString();
     }
     public void CloseLVL()
     {
@@ -140,5 +143,7 @@ public class Exp_Controller : MonoBehaviour
         _playerEXP = PlayerPrefs.GetInt("PlayerEXP", 0);
         _slider.maxValue = PlayerPrefs.GetFloat("SliderMaxValue",15);
         _slider.value = _playerEXP;
+        _sliderText.text = _slider.value.ToString() + "/" + _slider.maxValue.ToString();
+
     }
 }

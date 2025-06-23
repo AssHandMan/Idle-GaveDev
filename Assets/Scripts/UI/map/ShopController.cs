@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ShopController : MonoBehaviour
@@ -6,6 +8,8 @@ public class ShopController : MonoBehaviour
     [SerializeField] private Shop _shop1;
     [SerializeField] private Shop _shop2;
     [SerializeField] private NetworkTimeChecker _timeChecker;
+    [SerializeField] private List<GameObject> _UI = new List<GameObject>();
+    [SerializeField] private GameObject _cam;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,7 +25,10 @@ public class ShopController : MonoBehaviour
             _shop2.Activated();
             _timeChecker.WriteTimeLastGiveTime("2");
         }
-
+        foreach (var i in _UI)
+        {
+            i.transform.LookAt(_cam.transform);
+        }
     }
 
     // Update is called once per frame
