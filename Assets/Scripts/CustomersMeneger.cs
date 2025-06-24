@@ -56,6 +56,9 @@ public class CustomersMeneger : MonoBehaviour
         station.Queue.Append(customer);
         station.QueueList.Add(customer);
         station.MakeArray();
+        if(station == CashMachine1) { _customer.Cash1ProductIcon.SetActive(true); }
+        else if (station == CashMachine2) { _customer.Cash2ProductIcon.SetActive(true); }
+        else { _customer.KioskProductIcon.SetActive(true); }
         if (station == kiosk) { _customer.kiosk = true; }
     }
 

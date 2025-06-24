@@ -5,7 +5,7 @@ using UnityEngine;
 public class Kiosk : MonoBehaviour
 {
     public StationObjectCollection station1, station2, station3;
-    public GameObject PresentCase, MaxTxt;
+    public GameObject PresentCase, MaxTxt, Img1, Img2, ImgObj1, ImgObj2;
     public Transform menegerPlace;
 
     public List<GameObject> QueueList = new List<GameObject>();
@@ -18,6 +18,12 @@ public class Kiosk : MonoBehaviour
 
     void Update()
     {
+        Img1.transform.LookAt(Camera.main.transform.position);
+        Img2.transform.LookAt(Camera.main.transform.position);
+        if (station1.CountObj > 0 && ImgObj1.activeSelf) { ImgObj1.SetActive(false); }
+        if (station2.CountObj > 0 && ImgObj2.activeSelf) { ImgObj2.SetActive(false); }
+
+
         if (station1.CountObj > 0 && station2.CountObj > 0)
         {
             if (station3.CountObj < station3.MuxCountObj)
@@ -47,7 +53,9 @@ public class Kiosk : MonoBehaviour
         newObj.transform.parent = station3.transform;
         station3.ObjectsList.Add(newObj);
         station3.CountObj++;
-        if(station3.CountObj == station3.MuxCountObj)
+        if(station1.CountObj == 0) { ImgObj1.SetActive(true); }
+        if (station2.CountObj == 0) { ImgObj2.SetActive(true); }
+        if (station3.CountObj == station3.MuxCountObj)
         {
             MaxTxt.SetActive(true);
         }

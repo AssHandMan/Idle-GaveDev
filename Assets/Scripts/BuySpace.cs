@@ -20,6 +20,13 @@ public class BuySpace : MonoBehaviour
     private Animator anim;
     private Transform plrPos;
 
+    public GameObject NewZone, MoneyZoneSpr, MoneyOtherSpr, UpgreadeArrow, LineUpgreade, LineOther;
+    public RectTransform PricePos;
+    private Vector3 ZonePricePos = new Vector3(0.0140000004f, -0.0242999997f, -0.00300000003f);
+    private Vector3 OtherPricePos = new Vector3(0f, 0.00809999276f, 0f);
+    private Vector3 ZonePriceScale = new Vector3(6.72985334e-05f, 6.72985188e-05f, 6.72985407e-05f);
+    private Vector3 OtherPriceScale = new Vector3(8.69295181e-05f, 8.69294963e-05f, 8.69295254e-05f);
+
     void Start()
     {
         PriceText.text = price.ToString();
@@ -28,6 +35,7 @@ public class BuySpace : MonoBehaviour
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
         meneger = GameObject.FindGameObjectWithTag("Meneger").GetComponent<UpgreadeSceneMeneger>();
         anim = GetComponent<Animator>();
+        SetSprite();
     }
 
     void Update()
@@ -209,5 +217,32 @@ public class BuySpace : MonoBehaviour
         price = count;
         PriceText.text = price.ToString();
         step = price;
+    }
+
+    public void SetSprite()
+    {
+        if(station.GetComponent<ObjectShowHider>() != null)
+        {
+            PricePos.localPosition = ZonePricePos;
+            PricePos.localScale = ZonePriceScale;
+            MoneyZoneSpr.SetActive(true);
+            NewZone.SetActive(true);
+            LineOther.SetActive(true);
+        }
+        else if(meneger.CheckIsUpgreade(this))
+        {
+            PricePos.localPosition = OtherPricePos;
+            PricePos.localScale = OtherPriceScale;
+            MoneyOtherSpr.SetActive(true);
+            LineUpgreade.SetActive(true);
+            UpgreadeArrow.SetActive(true);
+        }
+        else
+        {
+            PricePos.localPosition = OtherPricePos;
+            PricePos.localScale = OtherPriceScale;
+            MoneyOtherSpr.SetActive(true);
+            LineOther.SetActive(true);
+        }
     }
 }

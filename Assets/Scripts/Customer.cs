@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class Customer : MonoBehaviour
 {
     public Transform targetPos, DeletePlace;
-    public GameObject OrderBar, CallIcon, SleepIcon, ToiletIcon;
+    public GameObject OrderBar, CallIcon, SleepIcon, ToiletIcon, Cash1ProductIcon, Cash2ProductIcon, KioskProductIcon;
     public Image CallBar, SleepBar;
     public Text OrderCount;
     public Canvas canvas;
@@ -81,7 +81,7 @@ public class Customer : MonoBehaviour
 
                 if (targetPos == st.CustomerPlace[0])
                 {
-                    if (!OrderBar.activeSelf & BuyObjCount > 0) { OrderBar.SetActive(true); }
+                    if (!OrderBar.activeSelf & BuyObjCount > 0 && !isCalling) { OrderBar.SetActive(true); }
                     st.client = this;
                     st.CountObj = BuyObjCount;
 
@@ -316,12 +316,12 @@ public class Customer : MonoBehaviour
 
     public void MakeCall()
     {
+        OrderBar.SetActive(false);
         CallTime = 200;
         step = CallTime;
         CallBar.fillAmount = 1;
         CallIcon.SetActive(true);
         agent.speed = 0;
-        OrderBar.SetActive(false);
         isCalling = true;
         _animator.SetBool("IsTalking", true);
     }

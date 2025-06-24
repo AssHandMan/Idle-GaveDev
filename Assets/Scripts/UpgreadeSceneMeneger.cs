@@ -27,6 +27,7 @@ public class UpgreadeSceneMeneger : MonoBehaviour
     public int lvl, LustPlace;
     [SerializeField] private CameraController cam;
     private BuySpace LustBuySpace;
+    private int[] UpgreadeIndex = new int[] { 8, 17, 19, 20, 21, 22, 24, 26, 27, 37, 38, 39, 40, 41, 45, 46, 47, 48, 49, 50, 51, 55, 56, 58, 61, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85 };
     void Start()
     {
         CountLvl.text = lvl.ToString();
@@ -97,5 +98,27 @@ public class UpgreadeSceneMeneger : MonoBehaviour
         lvl++;
         CountLvl.text = lvl.ToString();
         surface.BuildNavMesh();
+    }
+
+    public bool CheckIsUpgreade(BuySpace space)
+    {
+        int number = -999;
+        bool res = false;
+        for(int i = 0; i < NewSpaces.Length; i++)
+        {
+            if (NewSpaces[i] == space)
+            {
+                number = i;
+                break;
+            }
+        }
+        for (int i = 0; i<UpgreadeIndex.Length; i++)
+        {
+            if(number == UpgreadeIndex[i])
+            {
+                res = true;
+            }
+        }
+        return res;
     }
 }

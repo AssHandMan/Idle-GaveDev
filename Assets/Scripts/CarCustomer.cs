@@ -61,7 +61,7 @@ public class CarCustomer : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<CarCustomer>() != null)
+        if(other.GetComponent<CarCustomer>() != null || other.GetComponent<Customer>() != null)
         {
             if (other.gameObject.transform.position.z < transform.position.z)
             { speed = 0; }
@@ -69,7 +69,7 @@ public class CarCustomer : MonoBehaviour
     }
     public void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<CarCustomer>() != null)
+        if (other.GetComponent<CarCustomer>() != null || other.GetComponent<Customer>() != null)
         {
             speed = MaxSpeed;
         }
