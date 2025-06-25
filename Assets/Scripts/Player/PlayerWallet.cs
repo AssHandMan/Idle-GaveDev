@@ -13,6 +13,8 @@ public class PlayerWallet : MonoBehaviour
     public float MoneyMultiplier;
     public TextMeshProUGUI EventText;
     private float MoneyForEvent;
+    public GameObject MoneyEffectSpr;
+    public Canvas canvas;
     private bool inProgress, vibrations;
     public TypeAccount typeAccount;
 
@@ -48,8 +50,16 @@ public class PlayerWallet : MonoBehaviour
             yield return new WaitForSeconds(0.03f);
             EventText.text = "$" + i;
         }
+        yield return new WaitForSeconds(1.5f);
+        
+        int CountMoneyImage = ((int)MoneyForEvent) / 5;
+        for (int i = 0; i <= CountMoneyImage; i++)
+        {
+            yield return new WaitForSeconds(0.1f);
+            Instantiate(MoneyEffectSpr, canvas.transform, false);
+        }
         ChangeCount(MoneyForEvent, "Money");
-        yield return new WaitForSeconds(1.5f);  
+        
         EventText.gameObject.SetActive(false);
         inProgress = false;
     }

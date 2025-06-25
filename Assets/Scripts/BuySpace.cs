@@ -20,6 +20,7 @@ public class BuySpace : MonoBehaviour
     private Animator anim;
     private Transform plrPos;
 
+    public ParticleSystem Confity;
     public GameObject NewZone, MoneyZoneSpr, MoneyOtherSpr, UpgreadeArrow, LineUpgreade, LineOther;
     public RectTransform PricePos;
     private Vector3 ZonePricePos = new Vector3(0.0140000004f, -0.0242999997f, -0.00300000003f);
@@ -86,6 +87,7 @@ public class BuySpace : MonoBehaviour
 
     public void Buy(bool forAll)
     {
+        if(Confity != null) { Confity.Play(); }
         if (station.GetComponent<ObjectShowHider>() != null)
         {
             station.GetComponent<ObjectShowHider>().ShowHide();

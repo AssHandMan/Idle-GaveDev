@@ -13,13 +13,15 @@ public class DeliveryMan : MonoBehaviour
     public string Type;
     private NavMeshAgent agent;
     private PlayerWallet wallet;
+    private int MaxBuyObjCount;
 
     void Start()
     {
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
         agent = GetComponent<NavMeshAgent>();
         OrderBar.SetActive(false);
-        OrderCount.text = BuyObjCount.ToString();
+        MaxBuyObjCount = BuyObjCount;
+        OrderCount.text = (MaxBuyObjCount - BuyObjCount).ToString() + "/" + MaxBuyObjCount.ToString();
         target = place;
     }
 
@@ -43,7 +45,7 @@ public class DeliveryMan : MonoBehaviour
         {
             BuyObjCount--;
             wallet.ChangeCount(5, "Money");
-            OrderCount.text = BuyObjCount.ToString();
+            OrderCount.text = (MaxBuyObjCount - BuyObjCount).ToString() + "/" + MaxBuyObjCount.ToString();
         }
         if (BuyObjCount == 0)
         {
