@@ -93,6 +93,10 @@ public class Customer : MonoBehaviour
                         StartCoroutine(animator1("IsMoving", false, 0));
                 }
             }
+            else
+            {
+                _animator.SetBool("IsMoving",true);
+            }
 
             if (BuyObjCount == 0)
             {
@@ -323,6 +327,8 @@ public class Customer : MonoBehaviour
         CallIcon.SetActive(true);
         agent.speed = 0;
         isCalling = true;
+        Debug.Log("MakeCall");
+        st.CheckCalling();
         _animator.SetBool("IsTalking", true);
     }
     public void Sleep()
@@ -355,6 +361,7 @@ public class Customer : MonoBehaviour
             }
             CallIcon.SetActive(false);
             isCalling = false;
+            st.UnCalling();
             _animator.SetBool("IsTalking", false);
             _animator.SetBool("IsMoving", true);
             st.isCalling = false;

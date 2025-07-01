@@ -25,6 +25,9 @@ public class LvlObject : MonoBehaviour
     public GameObject _imgSEO;
     private PlayerWallet wallet;
     private Exp_Controller exp_menu;
+    public  Button _btn_free;
+    public Button _btn_man;
+    public Button _btn_seo;
 
 
     public void Start()
@@ -32,11 +35,23 @@ public class LvlObject : MonoBehaviour
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
         exp_menu = GameObject.FindGameObjectWithTag("ExpController").GetComponent<Exp_Controller>();  
         CheckPlayer();
+        CheckForBTN();
+        if ( _Level.text == "1") _imgCheckLvl.SetActive(true);
+    }
+    public void CheckForBTN()
+    {
+        if (PlayerPrefs.GetInt(_Level.text + " Free", 1) == 99)
+            _btn_free.gameObject.SetActive(false);
+        if (PlayerPrefs.GetInt(_Level.text + " Man", 1) == 99)
+            _btn_man.gameObject.SetActive(false);
+        if (PlayerPrefs.GetInt(_Level.text + " SEO", 1) == 99)
+            _btn_seo.gameObject.SetActive(false);
     }
     public void Check(string text) 
     {
         _imgCheckLvl.SetActive(true);
-        _imgCheckGift.SetActive(true);
+        //_imgCheckGift.SetActive(true);
+        Debug.Log("checl");
         GetCash(text);
         CheckPlayer();
     }
@@ -68,7 +83,9 @@ public class LvlObject : MonoBehaviour
             case TypeAccount.SEO:
                 {
                     _imgCheckSEO.SetActive(false);
+                    _btn_seo.gameObject.SetActive(true);
                     _imgCheckMan.SetActive(false);
+                    _btn_man.gameObject.SetActive(true);
                     _imgCheckFree.SetActive(false);
                     break;
                 }
@@ -76,18 +93,23 @@ public class LvlObject : MonoBehaviour
                 {
                     _imgCheckMan.SetActive(false);
                     _imgCheckFree.SetActive(false);
+                    _btn_man.gameObject.SetActive(true);
                     break;
                 }
         }
+
+        if (PlayerPrefs.GetInt("PlayerLVL", -1) >= int.Parse(_Level.text))
+            _imgCheckLvl.SetActive(true);
     }
     public void ClickFree()
     {
         if (_imgCheckFree.GetComponent<Image>().color != Color.green && exp_menu._playerLVL >= int.Parse(_Level.text) )
         {
             GetCash(_Free.text);
-            _imgCheckFree.SetActive(true);
-            _imgCheckFree.GetComponent<Image>().color = Color.green;
+            _btn_free.gameObject.SetActive(false);
         }
+        PlayerPrefs.SetInt(_Level.text+" Free",99);
+        PlayerPrefs.Save();
     }
     public void ClickManager()
     {
@@ -95,9 +117,10 @@ public class LvlObject : MonoBehaviour
             _imgCheckMan.GetComponent<Image>().color != Color.green && exp_menu._playerLVL >= int.Parse(_Level.text)) 
         {
             GetCash(_Man.text);
-            _imgCheckMan.SetActive(true);
-            _imgCheckMan.GetComponent<Image>().color = Color.green;
+            _btn_man.gameObject.SetActive(false);
         }
+        PlayerPrefs.SetInt(_Level.text + " Man", 99);
+        PlayerPrefs.Save();
     }
     public void ClickSEO()
     {
@@ -105,9 +128,10 @@ public class LvlObject : MonoBehaviour
             exp_menu._playerLVL >= int.Parse(_Level.text))
         {
             GetCash(_SEO.text);
-            _imgCheckSEO.SetActive(true);
-            _imgCheckSEO.GetComponent<Image>().color = Color.green;
+            _btn_seo.gameObject.SetActive(false);
         }
+        PlayerPrefs.SetInt(_Level.text + " SEO", 99);
+        PlayerPrefs.Save();
     }
 
 }

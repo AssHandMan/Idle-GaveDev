@@ -15,6 +15,8 @@ public class DeliveryMan : MonoBehaviour
     private PlayerWallet wallet;
     private int MaxBuyObjCount;
 
+    [SerializeField] private Animator _animator;
+
     void Start()
     {
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
@@ -23,6 +25,8 @@ public class DeliveryMan : MonoBehaviour
         MaxBuyObjCount = BuyObjCount;
         OrderCount.text = (MaxBuyObjCount - BuyObjCount).ToString() + "/" + MaxBuyObjCount.ToString();
         target = place;
+        _animator.SetBool("IsMoving", true);
+
     }
 
     // Update is called once per frame
@@ -34,6 +38,8 @@ public class DeliveryMan : MonoBehaviour
         {
             if (!OrderBar.activeSelf) { OrderBar.SetActive(true); } 
             if (BuyObjCount > 0) { OrderBar.transform.LookAt(Camera.main.transform); }
+            _animator.SetBool("IsMoving", false);
+
         }
 
         if (transform.position.x == delete.position.x && transform.position.z == delete.position.z) { Destroy(gameObject); }
