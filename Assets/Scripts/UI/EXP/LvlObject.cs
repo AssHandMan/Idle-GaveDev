@@ -76,7 +76,7 @@ public class LvlObject : MonoBehaviour
             wallet.ChangeCount(float.Parse(temp[0]), temp[1]);
         }
     }
-    private void CheckPlayer()
+    public void CheckPlayer()
     {
         switch (wallet.typeAccount)
         {
@@ -92,7 +92,7 @@ public class LvlObject : MonoBehaviour
             case TypeAccount.Manager:
                 {
                     _imgCheckMan.SetActive(false);
-                    _imgCheckFree.SetActive(false);
+                    //_imgCheckFree.SetActive(false);
                     _btn_man.gameObject.SetActive(true);
                     break;
                 }
@@ -103,7 +103,7 @@ public class LvlObject : MonoBehaviour
     }
     public void ClickFree()
     {
-        if (_imgCheckFree.GetComponent<Image>().color != Color.green && exp_menu._playerLVL >= int.Parse(_Level.text) )
+        if (exp_menu._playerLVL >= int.Parse(_Level.text) )
         {
             GetCash(_Free.text);
             _btn_free.gameObject.SetActive(false);

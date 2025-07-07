@@ -27,6 +27,17 @@ public class Exp_Controller : MonoBehaviour
     [SerializeField] private Sprite _diamonds;
     [SerializeField] private Image _voidImg;
     [SerializeField] private Text _sliderText;
+
+    [SerializeField] private List<Sprite> _icons = new List<Sprite>();
+    [SerializeField] private Dictionary<string, Sprite> _Slovar = new Dictionary<string, Sprite>();
+    [SerializeField] private PlayerWallet _playerWallet;
+    [SerializeField] private GameObject _btnMan;
+    [SerializeField] private GameObject _btnSEO;
+    [SerializeField] private List<string> _unLock= new List<string>();
+    [SerializeField] private List<GameObject> _unLockCelltext = new List<GameObject>();
+    [SerializeField] private List<GameObject> _unLockCellImg = new List<GameObject>();
+    [SerializeField] private List<Sprite> _unlockSprite = new List<Sprite>();
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Parse()
     {
@@ -69,8 +80,8 @@ public class Exp_Controller : MonoBehaviour
 
         temp._SEO.text = lines[5];
         temp._imgSEO.GetComponent<Image>().sprite = SelectImgIcon(lines[5]);
-       
 
+        _unLock.Add(lines[6]);
         _gifts.Add(panel.GetComponent<LvlObject>());
 
     }
@@ -101,7 +112,26 @@ public class Exp_Controller : MonoBehaviour
        
         return null;
     }
-    
+    private Sprite SelectImgUnlock(string str)
+    {
+        switch (str)
+        {
+            case "Unlock Zone":
+                return _unlockSprite[1];
+            case "New Product":
+                return _unlockSprite[2];
+            case "spehial order":
+                return _unlockSprite[3];
+            case "Disturbing Customers":
+                return _unlockSprite[4];
+            case "map":
+                return _unlockSprite[5];
+            case "New Shop":
+                return _unlockSprite[6];
+        }
+        return null;
+    }
+
     private void NewLvl()
     {
         _btn.SetActive(false);
@@ -111,6 +141,31 @@ public class Exp_Controller : MonoBehaviour
         _Lvls[_playerLVL].GetComponent<LvlObject>().Check(_Lvls[_playerLVL].GetComponent<LvlObject>()._Gift.text);
         _playerLVL++;
 
+        if (_unLock[_playerLVL]!="")
+        {
+            string[] temp = _unLock[_playerLVL].Split(",");
+            switch (temp.Length)
+            {
+                case 1:
+                    _unLockCellImg[1].gameObject.SetActive(true);
+                    _unLockCellImg[1].gameObject.GetComponent<Image>().sprite = SelectImgUnlock(temp[0]);
+                    break;
+                case 2:
+                    _unLockCellImg[0].gameObject.SetActive(true);
+                    _unLockCellImg[0].gameObject.GetComponent<Image>().sprite = SelectImgUnlock(temp[0]);
+                    _unLockCellImg[2].gameObject.SetActive(true);
+                    _unLockCellImg[2].gameObject.GetComponent<Image>().sprite = SelectImgUnlock(temp[1]);
+                    break;
+                case 3:
+                    _unLockCellImg[0].gameObject.SetActive(true);
+                    _unLockCellImg[0].gameObject.GetComponent<Image>().sprite = SelectImgUnlock(temp[0]);
+                    _unLockCellImg[1].gameObject.SetActive(true);
+                    _unLockCellImg[1].gameObject.GetComponent<Image>().sprite = SelectImgUnlock(temp[1]);
+                    _unLockCellImg[2].gameObject.SetActive(true);
+                    _unLockCellImg[2].gameObject.GetComponent<Image>().sprite = SelectImgUnlock(temp[2]);
+                    break;
+            }
+        }
         PlayerPrefs.SetFloat("SliderMaxValue", _slider.maxValue);
         PlayerPrefs.SetInt("PlayerLVL",_playerLVL);
         PlayerPrefs.Save();
@@ -141,9 +196,49 @@ public class Exp_Controller : MonoBehaviour
     {
         _playerLVL = PlayerPrefs.GetInt("PlayerLVL", 1);
         _playerEXP = PlayerPrefs.GetInt("PlayerEXP", 0);
-        _slider.maxValue = PlayerPrefs.GetFloat("SliderMaxValue",15);
+        _slider.maxValue = PlayerPrefs.GetFloat("SliderMaxValue", 15);
         _slider.value = _playerEXP;
         _sliderText.text = _slider.value.ToString() + "/" + _slider.maxValue.ToString();
+        switch (PlayerPrefs.GetString("TypeAccount","Free"))
+        {
+            case "SEO":
+                _playerWallet.typeAccount = TypeAccount.SEO;
+                _btnMan.SetActive(false);
+                _btnSEO.SetActive(false);
+                break;
+            case "Manager":
+                _playerWallet.typeAccount = TypeAccount.Manager;
+                _btnMan.SetActive(false);
+                break;
+            default:
+                _playerWallet.typeAccount= TypeAccount.Free;
+                break;
+        }
 
+
+    }
+    public void BuyAccountManager()
+    {
+        _playerWallet.typeAccount = TypeAccount.Manager;
+        _btnMan.SetActive(false);
+        PlayerPrefs.SetString("TypeAccount","Manager");
+        PlayerPrefs.Save();
+        UpdatePanelLVL();
+    }
+    public void BuyAccountSEO()
+    {
+        _playerWallet.typeAccount = TypeAccount.SEO;
+        _btnSEO.SetActive(false);
+        PlayerPrefs.SetString("TypeAccount", "SEO");
+        PlayerPrefs.Save();
+        UpdatePanelLVL();
+
+    }
+    private void UpdatePanelLVL()
+    {
+        foreach(GameObject i in _Lvls)
+        {
+            i.GetComponent<LvlObject>().CheckPlayer();
+        }
     }
 }
