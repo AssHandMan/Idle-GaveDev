@@ -76,6 +76,7 @@ public class Customer : MonoBehaviour
                         agent.speed = 0;
                         StartCoroutine(animator1("IsMoving", false, 0));
                         StartCoroutine(animator1("IsTalking", false, 0));
+                        _animator.SetBool("isAngry", true);
                     }
                 }
 
@@ -121,8 +122,6 @@ public class Customer : MonoBehaviour
         }
         else if (target == "Play")
         {
-            if(_animator.GetBool("IsPlay") != true) 
-                StartCoroutine(animator1("IsMoving", true, 0));
             if (transform.position.x == targetPos.position.x && transform.position.z == targetPos.position.z)
             {
                 machine.client = this;
@@ -136,9 +135,14 @@ public class Customer : MonoBehaviour
                     StartCoroutine(animator1("IsMoving", false, 0));
                     machine.StartPlay();
                     StartCoroutine(animator1("IsPlay", false, 5));
-
+                    _animator.SetBool("IsPlay", true);
 
                 }
+            }
+            else
+            {
+                if (_animator.GetBool("IsPlay") != true)
+                    StartCoroutine(animator1("IsMoving", true, 0));
             }
         }
         if (transform.position.x == DeletePlace.position.x && transform.position.z == DeletePlace.position.z) { Destroy(gameObject); }
@@ -368,6 +372,7 @@ public class Customer : MonoBehaviour
             for (int i = 0; i < st.Queue.Length; i++)
             {
                 st.Queue[i].GetComponent<Customer>().agent.speed = 5;
+                st.Queue[i].GetComponent<Customer>()._animator.SetBool("isAngry", false);
             }
             if (st.LustCustomer != null)
             {

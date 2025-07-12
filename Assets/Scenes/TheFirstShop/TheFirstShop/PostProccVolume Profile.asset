@@ -65,13 +65,13 @@ MonoBehaviour:
     m_Value: 0.5
   contrast:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 100
   colorFilter:
     m_OverrideState: 0
-    m_Value: {r: 0.30962977, g: 0.5692471, b: 0.9245283, a: 1}
+    m_Value: {r: 0.07807041, g: 0.63635087, b: 0.9622642, a: 1}
   hueShift:
     m_OverrideState: 0
-    m_Value: 180
+    m_Value: 53
   saturation:
     m_OverrideState: 1
     m_Value: 100

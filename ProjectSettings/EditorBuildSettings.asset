@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TheFirstShop/TheFirstShop.unity
     guid: 478904cc4074c3b4d8aff2ecc2fe2c89
   - enabled: 1
+    path: Assets/Scenes/TheFirstShop/TheSecondShop.unity
+    guid: e64f73e1a100e43469335a759fd2cb54
+  - enabled: 1
     path: Assets/DimonWorkshop/Remake/Scenes/GlobalMap.unity
     guid: acf5a7d0c12b2c84dab53f6241b8887c
   m_configObjects:

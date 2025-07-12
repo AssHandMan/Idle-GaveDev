@@ -8,7 +8,7 @@ public enum TypeAccount { Free, Manager, SEO}
 
 public class PlayerWallet : MonoBehaviour
 {
-    public Text Mtext, Dtext, Stext;
+    public Text Mtext, Dtext, Stext, Mtext2, Dtext2;
     public int Money, Diamonds, Skins;
     public float MoneyMultiplier;
     public TextMeshProUGUI EventText;
@@ -23,6 +23,8 @@ public class PlayerWallet : MonoBehaviour
         TextForm(Money, Mtext);
         TextForm(Diamonds, Dtext);
         TextForm(Skins, Stext);
+        TextForm(Money, Mtext2);
+        TextForm(Diamonds, Dtext2);
     }
 
     // Update is called once per frame
@@ -72,12 +74,14 @@ public class PlayerWallet : MonoBehaviour
             if (count > 0) { Money += Convert.ToInt32(count * MoneyMultiplier); }
             else { Money += Convert.ToInt32(count); }
             TextForm(Money, Mtext);
+            TextForm(Money, Mtext2);
             Vibrate();
         }
         else if (type == "Diamonds")
         {
             Diamonds += Convert.ToInt32(count);
             TextForm(Diamonds, Dtext);
+            TextForm(Diamonds, Dtext2);
         }
         else
         {

@@ -64,7 +64,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FrogPrefab
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8380967088062221077, guid: 3bd7685c609eb9a4d936ee53a6c71850, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

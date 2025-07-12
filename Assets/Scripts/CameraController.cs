@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,10 +6,17 @@ public class CameraController : MonoBehaviour
 {
 
     public float OffsetX, OffsetY, OffsetZ, FixX, FixZ;
-    public Vector3 PlatRotate, SkinRotate, SkinPos;
-    public bool isPlay;
+    public Vector3 PlatRotate, SkinRotate, SkinPos, GlobalMapPos, GlobalMapRotate;
+    public bool isPlay, isGloblaMap;
     private GameObject plr;
     private Vector3 target;
+    public GameObject UiShowHide, Money, Diamonds, Skins, GlobalMapUI;
+    public float dragSpeed = 10f;
+
+    public float minX, maxX;
+    public float minZ, maxZ;
+    private Vector3 dragOrigin;
+    private bool isDragging = false;
 
     void Start()
     {
@@ -38,11 +45,50 @@ public class CameraController : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            if(isGloblaMap)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    dragOrigin = Input.mousePosition;
+                    isDragging = true;
+                }
+
+                // Отпускание ЛКМ
+                if (Input.GetMouseButtonUp(0))
+                {
+                    isDragging = false;
+                }
+
+                if (isDragging)
+                {
+                    Vector3 mouseDelta = Input.mousePosition - dragOrigin;
+                    Vector3 deltaView = Camera.main.ScreenToViewportPoint(mouseDelta);
+
+                    // Меняем местами оси: движение по X мышью влияет на Z, по Y — на X
+                    float moveX = -deltaView.y * dragSpeed; // вертикальный свайп → X
+                    float moveZ = deltaView.x * dragSpeed; // горизонтальный свайп → Z
+
+                    Vector3 newPosition = transform.localPosition + new Vector3(moveX, 0, moveZ);
+
+                    // Ограничения
+                    newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
+                    newPosition.z = Mathf.Clamp(newPosition.z, minZ, maxZ);
+                    newPosition.y = transform.localPosition.y; // Y остаётся прежним
+
+                    transform.localPosition = newPosition;
+
+                    dragOrigin = Input.mousePosition;
+                }
+            }
+        }
     }
 
     public void SetPlayMood()
     {
         isPlay=true;
+        isGloblaMap = false;
         transform.rotation = Quaternion.Euler(PlatRotate);
     }
     public void SetSkinMood()
@@ -50,6 +96,18 @@ public class CameraController : MonoBehaviour
         isPlay = false;
         transform.position = SkinPos;
         transform.rotation = Quaternion.Euler(SkinRotate);
+    }
+    public void SetGlobalMapMod()
+    {
+        UiShowHide.SetActive(false);
+        Money.SetActive(false);
+        Diamonds.SetActive(false);
+        Skins.SetActive(false);
+        isPlay = false;
+        transform.localPosition = GlobalMapPos;
+        transform.rotation = Quaternion.Euler(GlobalMapRotate);
+        GlobalMapUI.SetActive(true);
+        isGloblaMap = true;
     }
     public void SetBuySpacePos(GameObject space)
     {
