@@ -345,6 +345,8 @@ public class Customer : MonoBehaviour
         OrderBar.SetActive(false);
         isSleeping = true;
         machine.isPause = true;
+        Debug.Log("Sleep");
+
     }
 
     private IEnumerator Calling()
@@ -389,6 +391,8 @@ public class Customer : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             SleepTime--;
             SleepBar.GetComponent<Image>().fillAmount -= (1 / step);
+            _animator.SetBool("isSleep", true);
+            _animator.SetBool("IsWalking", false);
             StartCoroutine(Sleeping());
         }
         else
@@ -398,6 +402,8 @@ public class Customer : MonoBehaviour
             isSleeping = false;
             machine.isPause = false;
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>().AddMoneyEvent();
+            _animator.SetBool("isSleep", false);
+
         }
     }
 
