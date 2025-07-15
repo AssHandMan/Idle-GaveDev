@@ -25,9 +25,11 @@ public class UpgreadeSceneMeneger : MonoBehaviour
 
     public Text CountLvl;
     public int lvl, LustPlace;
+    [SerializeField] private ExpLvlController ExpController;
     [SerializeField] private CameraController cam;
     private BuySpace LustBuySpace;
     private int[] UpgreadeIndex = new int[] { 8, 17, 19, 20, 21, 22, 24, 26, 27, 37, 38, 39, 40, 41, 45, 46, 47, 48, 49, 50, 51, 55, 56, 58, 61, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85 };
+    int[] IndexForCountNextLvl = { 0, 4, 8, 14, 22, 29, 41, 51, 60, 70, 84 };
     void Start()
     {
         CountLvl.text = lvl.ToString();
@@ -94,7 +96,7 @@ public class UpgreadeSceneMeneger : MonoBehaviour
                 break;
             }
         }
-        
+        ExpController.InscreaseExP(space.station);
         lvl++;
         CountLvl.text = lvl.ToString();
         surface.BuildNavMesh();
@@ -120,5 +122,20 @@ public class UpgreadeSceneMeneger : MonoBehaviour
             }
         }
         return res;
+    }
+
+    public int GetMaxLvl()
+    {
+        int a = IndexForCountNextLvl[ExpController.lvl];
+        int n = 0;
+        for (int i = 0; i <= a; i++)
+        {
+            if ((stations[i].GetComponent<ObjectShowHider>() != null && stations[i].name == "AddSpace0")
+                || (stations[i].GetComponent<ObjectShowHider>() == null))
+            {
+                n++;
+            }
+        }
+        return n;
     }
 }

@@ -1618,7 +1618,7 @@ TextureImporter:
         width: 193
         height: 205
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1627,6 +1627,72 @@ TextureImporter:
       bones: []
       spriteID: 6de3a1a81cb1c2a45b6044940504ebd6
       internalID: -729561794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_68"
+      rect:
+        serializedVersion: 2
+        x: 2717
+        y: 4086
+        width: 242
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a3d4cf7b20f7f0438ed2ab9b8482cf9
+      internalID: -779747635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_69"
+      rect:
+        serializedVersion: 2
+        x: 1217
+        y: 3749
+        width: 293
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51a94c73d39e7c94f8e71641e5493aab
+      internalID: 1819274825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_70"
+      rect:
+        serializedVersion: 2
+        x: 1222
+        y: 3875
+        width: 283
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65d06120c3a7cc548a053a8606bdbb21
+      internalID: 1133925706
       vertices: []
       indices: 
       edges: []
@@ -1710,7 +1776,10 @@ TextureImporter:
       "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_65": -716215380
       "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_66": -100187158
       "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_67": -729561794
+      "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_68": -779747635
+      "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_69": 1819274825
       "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_7": 1071355860
+      "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_70": 1133925706
       "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_8": -1915055568
       "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_9": 335541147
   mipmapLimitGroupName: 

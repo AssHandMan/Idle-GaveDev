@@ -37,9 +37,12 @@ public class DeliveryMan : MonoBehaviour
         if (transform.position.x == target.position.x && transform.position.z == target.position.z) 
         {
             if (!OrderBar.activeSelf) { OrderBar.SetActive(true); } 
-            if (BuyObjCount > 0) { OrderBar.transform.LookAt(Camera.main.transform); }
-            _animator.SetBool("IsMoving", false);
+            if (BuyObjCount > 0) { OrderBar.transform.LookAt(Camera.main.transform); _animator.SetBool("IsMoving", false); }
 
+        }
+        else
+        {
+            _animator.SetBool("IsMoving", true);
         }
 
         if (transform.position.x == delete.position.x && transform.position.z == delete.position.z) { Destroy(gameObject); }
