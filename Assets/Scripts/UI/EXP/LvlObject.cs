@@ -103,7 +103,7 @@ public class LvlObject : MonoBehaviour
     }
     public void ClickFree()
     {
-        if (_imgCheckFree.GetComponent<Image>().color != Color.green && exp_menu._playerLVL >= int.Parse(_Level.text) )
+        if (exp_menu._playerLVL >= int.Parse(_Level.text) )
         {
             GetCash(_Free.text);
             _btn_free.gameObject.SetActive(false);
