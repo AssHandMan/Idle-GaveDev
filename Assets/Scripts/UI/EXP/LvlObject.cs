@@ -76,7 +76,7 @@ public class LvlObject : MonoBehaviour
             wallet.ChangeCount(float.Parse(temp[0]), temp[1]);
         }
     }
-    private void CheckPlayer()
+    public void CheckPlayer()
     {
         switch (wallet.typeAccount)
         {
