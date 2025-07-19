@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
     private GameObject plr;
     private Vector3 target;
     public GameObject UiShowHide, Money, Diamonds, Skins, GlobalMapUI;
-    public float dragSpeed = 10f;
+    public float dragSpeed = 20f;
 
     public float minX, maxX;
     public float minZ, maxZ;

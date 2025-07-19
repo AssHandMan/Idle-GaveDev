@@ -82,6 +82,10 @@ public class GlobalMapMainController : MonoBehaviour
         {
             SceneManager.LoadScene(sceneToGo);
         }
+        else
+        {
+            CloseGlobalMapMenu();
+        }
     }
 
     public void AddMoney(float count)

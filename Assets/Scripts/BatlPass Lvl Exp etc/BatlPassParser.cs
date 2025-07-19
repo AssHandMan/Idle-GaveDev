@@ -33,7 +33,7 @@ public class BatlPassParser : MonoBehaviour
     [SerializeField] private GameObject[] MoneyReward, DiamondsReward;
     [SerializeField] private PlayerWallet wallet;
     [SerializeField] private Text RewardNewLvlCount;
-    public GameObject AdsScreen, BtnReward1, BtnReward2, AttentionSymbol;
+    public GameObject AdsScreen, BtnReward1, BtnReward2, AttentionSymbol, RewardPanel, AvailablePanel;
     public GameSettingsController settings;
     public VideoPlayer adsPlayer;
 
@@ -292,6 +292,10 @@ public class BatlPassParser : MonoBehaviour
     {
         LvlvMenuNewTxt.text = lvl.ToString();
 
+        circles[0].gameObject.SetActive(false);
+        circles[1].gameObject.SetActive(false);
+        circles[2].gameObject.SetActive(false);
+        AvailablePanel.SetActive(false);
         string input = NewLvlOpens[lvl-1];
         if (input != "")
         {
@@ -302,17 +306,26 @@ public class BatlPassParser : MonoBehaviour
                 .Select(s => s.Trim())
                 .ToArray();
 
+            AvailablePanel.SetActive(true);
             if (result.Length == 1)
             {
+                circles[1].gameObject.SetActive(true);
                 circles[1].Open(result[0]);
             }
             else if (result.Length == 2)
             {
+                circles[0].gameObject.SetActive(true);
+                circles[1].gameObject.SetActive(true);
                 circles[0].Open(result[0]);
                 circles[1].Open(result[1]);
+                Debug.Log(result[0]);
+                Debug.Log(result[1]);
             }
             else
             {
+                circles[0].gameObject.SetActive(true);
+                circles[1].gameObject.SetActive(true);
+                circles[2].gameObject.SetActive(true);
                 circles[0].Open(result[0]);
                 circles[1].Open(result[1]);
                 circles[2].Open(result[2]);
@@ -321,13 +334,15 @@ public class BatlPassParser : MonoBehaviour
         input = Rewards[lvl-1];
         Debug.Log(Rewards[lvl-1]);
         BtnReward1.SetActive(false); BtnReward2.SetActive(false);
-        if (input != "")
+        RewardPanel.SetActive(false);
+        if (input != "" && input != " ")
         {
             BtnReward1.SetActive(true); BtnReward2.SetActive(true);
             string[] parts = input.Split(' ');
             int number = int.Parse(parts[0]);
             char letter = parts[1][0];
             CountReward = number;
+            if(CountReward > 0) { RewardPanel.SetActive(true); }
             TypeReward = letter;
             RewardNewLvlCount.text = "+" + CountReward.ToString();
             if (letter == 'b')

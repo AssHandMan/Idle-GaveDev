@@ -29,7 +29,7 @@ public class OpenNewLvlCircle : MonoBehaviour
 
     public void Open(string s)
     {
-        if (s == "New Product")
+        if (s == "New Product" || s == "new Product")
         {
             Icons[0].SetActive(true);
             txt.text = types[0];
