@@ -4197,8 +4197,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 98, y: 5.3561}
-  m_SizeDelta: {x: 149.89, y: 106.3}
+  m_AnchoredPosition: {x: 103.4764, y: 1.4722}
+  m_SizeDelta: {x: 138.9371, y: 98.5323}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &75652155
 MonoBehaviour:
@@ -11911,8 +11911,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 96.8, y: 0}
-  m_SizeDelta: {x: 99.7603, y: 106.65}
+  m_AnchoredPosition: {x: 98.737015, y: -2.0708008}
+  m_SizeDelta: {x: 95.8863, y: 102.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &222040909
 MonoBehaviour:
@@ -47892,7 +47892,6 @@ RectTransform:
   - {fileID: 409739973}
   - {fileID: 2137312933}
   - {fileID: 27474638}
-  - {fileID: 2048589212}
   - {fileID: 1914519730}
   - {fileID: 252329811}
   - {fileID: 100402622}
@@ -47901,6 +47900,7 @@ RectTransform:
   - {fileID: 549116114}
   - {fileID: 2077742579}
   - {fileID: 2128468271}
+  - {fileID: 2048589212}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -55880,7 +55880,7 @@ GameObject:
   - component: {fileID: 881131641}
   - component: {fileID: 881131640}
   m_Layer: 5
-  m_Name: Ads Btn
+  m_Name: Diamonds Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55950,7 +55950,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 881131641}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2130885977}
+        m_TargetAssemblyTypeName: BatlPassParser, Assembly-CSharp
+        m_MethodName: GetRewardNewLvl
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &881131641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67013,7 +67025,7 @@ GameObject:
   - component: {fileID: 1046184060}
   - component: {fileID: 1046184059}
   m_Layer: 5
-  m_Name: Ads Btn (1)
+  m_Name: Ads Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67083,7 +67095,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1046184060}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2130885977}
+        m_TargetAssemblyTypeName: BatlPassParser, Assembly-CSharp
+        m_MethodName: GetRewardNewLvl
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1046184060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133684,12 +133708,18 @@ MonoBehaviour:
   - {fileID: 790234947}
   - {fileID: 853207038}
   MoneyReward:
-  - {fileID: 667205619}
+  - {fileID: 940575160}
   - {fileID: 222040907}
   DiamondsReward:
   - {fileID: 667205619}
   - {fileID: 75652153}
   wallet: {fileID: 1257659604}
+  RewardNewLvlCount: {fileID: 1250903565}
+  AdsScreen: {fileID: 2048589211}
+  BtnReward1: {fileID: 881131638}
+  BtnReward2: {fileID: 1046184057}
+  settings: {fileID: 1134624006}
+  adsPlayer: {fileID: 27474639}
 --- !u!1 &2135520932
 GameObject:
   m_ObjectHideFlags: 0

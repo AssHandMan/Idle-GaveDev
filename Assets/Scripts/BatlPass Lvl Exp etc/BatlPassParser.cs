@@ -1,11 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
-using Unity.VisualScripting;
+using UnityEngine.Video;
 
 public class BatlPassParser : MonoBehaviour
 {
@@ -33,6 +33,9 @@ public class BatlPassParser : MonoBehaviour
     [SerializeField] private GameObject[] MoneyReward, DiamondsReward;
     [SerializeField] private PlayerWallet wallet;
     [SerializeField] private Text RewardNewLvlCount;
+    public GameObject AdsScreen, BtnReward1, BtnReward2;
+    public GameSettingsController settings;
+    public VideoPlayer adsPlayer;
 
     [ContextMenu("Parse CSV")]
     private void Parse()
@@ -274,33 +277,38 @@ public class BatlPassParser : MonoBehaviour
     {
         LvlvMenuNewTxt.text = lvl.ToString();
 
-        string input = NewLvlOpens[lvl];
-
-        string[] result = input
-            .Split(',')
-            .Select(s => s.Trim())
-            .ToArray();
-
-        if(result.Length == 1)
+        string input = NewLvlOpens[lvl-1];
+        if (input != "")
         {
-            circles[1].Open(result[1]);
-        }
-        else if (result.Length == 2)
-        {
-            circles[0].Open(result[0]);
-            circles[1].Open(result[1]);
-        }
-        else
-        {
-            circles[0].Open(result[0]);
-            circles[1].Open(result[1]);
-            circles[2].Open(result[2]);
-        }
 
+
+            string[] result = input
+                .Split(',')
+                .Select(s => s.Trim())
+                .ToArray();
+
+            if (result.Length == 1)
+            {
+                circles[1].Open(result[0]);
+            }
+            else if (result.Length == 2)
+            {
+                circles[0].Open(result[0]);
+                circles[1].Open(result[1]);
+            }
+            else
+            {
+                circles[0].Open(result[0]);
+                circles[1].Open(result[1]);
+                circles[2].Open(result[2]);
+            }
+        }
         input = Rewards[lvl-1];
-        Debug.Log(Rewards[lvl-1]); 
-        if(input != "")
+        Debug.Log(Rewards[lvl-1]);
+        BtnReward1.SetActive(false); BtnReward2.SetActive(false);
+        if (input != "")
         {
+            BtnReward1.SetActive(true); BtnReward2.SetActive(true);
             string[] parts = input.Split(' ');
             int number = int.Parse(parts[0]);
             char letter = parts[1][0];
@@ -321,19 +329,55 @@ public class BatlPassParser : MonoBehaviour
         menuNewLvl.SetActive(true);
     }
 
-    public void GetRewardNewLvl()
+    public void GetRewardNewLvl(int t)
     {
-        if(TypeReward == 'b') { wallet.ChangeCount(CountReward, "Money"); }
-        else { wallet.ChangeCount(CountReward, "Money"); }
+        if (t == 0)
+        {
+            if (TypeReward == 'b') { wallet.ChangeCount(CountReward, "Money"); }
+            else { wallet.ChangeCount(CountReward, "Diamonds"); }
+            TypeReward = ' ';
+            CountReward = 0;
+        }
+        else if(t == 1 && wallet.Diamonds >= 3)
+        {
+            wallet.ChangeCount(-3, "Diamonds");
+            if (TypeReward == 'b') { wallet.ChangeCount(CountReward*2, "Money"); }
+            else { wallet.ChangeCount(CountReward*2, "Diamonds"); }
+            TypeReward = ' ';
+            CountReward = 0;
+            HideNewLvlMenu();
+        }
+        else
+        {
+            settings.SetMusic();
+            AdsScreen.SetActive(true);
+            adsPlayer.Play();
+            StartCoroutine(TimeToEndAds());
+        }
+    }
+    private IEnumerator TimeToEndAds()
+    {
+        yield return new WaitForSeconds(21);
+        AdsScreen.SetActive(false);
+        settings.SetMusic();
+        if (TypeReward == 'b') { wallet.ChangeCount(CountReward * 2, "Money"); }
+        else { wallet.ChangeCount(CountReward*2, "Diamonds"); }
         TypeReward = ' ';
         CountReward = 0;
+        HideNewLvlMenu();
     }
+
     public void HideNewLvlMenu() 
     {
-        if(CountReward > 0) { GetRewardNewLvl(); } 
+        if(CountReward > 0) { GetRewardNewLvl(0); } 
         circles[0].Cleare();
         circles[1].Cleare();
         circles[2].Cleare();
+        for(int i = 0; i < MoneyReward.Length; i++)
+        {
+            MoneyReward[i].SetActive(false);
+            DiamondsReward[i].SetActive(false);
+        }
         menuNewLvl.SetActive(false);
     }
 }
