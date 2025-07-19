@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CustomersMeneger : MonoBehaviour
 {
@@ -29,7 +30,6 @@ public class CustomersMeneger : MonoBehaviour
     void Start()
     {
         StartCoroutine(DefinQueue());
-        StartCoroutine(DeliverManCreateProcces());
         StartCoroutine(MakeCall());
         StartCoroutine(DoSleep());
     }
@@ -204,6 +204,11 @@ public class CustomersMeneger : MonoBehaviour
             yield return new WaitForSeconds(CustomerCreateTime);
             StartCoroutine(DefinQueue());
         }
+    }
+
+    public void DeliveryStart()
+    {
+        StartCoroutine(DeliverManCreateProcces());
     }
     private IEnumerator DeliverManCreateProcces()
     {

@@ -8,6 +8,8 @@ public class OpenNewLvlCircle : MonoBehaviour
 {
     [SerializeField] private GameObject[] Icons;
     [SerializeField] private Text txt;
+    [SerializeField] private GameObject MapBtn, ShopBtn;
+    [SerializeField] private CustomersMeneger meneger;
     private string[] types = {
     "NEW\nPRODUCT",
     "NEW\nZONE",
@@ -18,7 +20,6 @@ public class OpenNewLvlCircle : MonoBehaviour
     "SHOP",
     "NEW\nSHOP"
     };
-
     void Start()
     {
 
@@ -47,6 +48,7 @@ public class OpenNewLvlCircle : MonoBehaviour
         {
             Icons[3].SetActive(true);
             txt.text = types[3];
+            meneger.DeliveryStart();
         }
         else if (s == "Disturbing Customers")
         {
@@ -57,11 +59,13 @@ public class OpenNewLvlCircle : MonoBehaviour
         {
             Icons[5].SetActive(true);
             txt.text = types[5];
+            MapBtn.SetActive(true);
         }
         else if (s == "Shop")
         {
             Icons[6].SetActive(true);
             txt.text = types[6];
+            ShopBtn.SetActive(true);
         }
         else if (s == "New shop")
         {

@@ -7,6 +7,7 @@ public class BlockBattlePass : MonoBehaviour
     [SerializeField] private GameObject[] Money, Diamonds, Skins;
     [SerializeField] private GameObject LockSpr, GetBtn;
     [SerializeField] private TextMeshProUGUI textCount;
+    [SerializeField] private BatlPassParser parser;
     private int count;
     private char type;
 
@@ -42,6 +43,11 @@ public class BlockBattlePass : MonoBehaviour
         else if (type == 'k') { wallet.ChangeCount(count, "Diamonds"); }
         else { wallet.ChangeCount(count, "Skins"); }
         GetBtn.SetActive(false);
+        parser.CheckForAttention();
+    }
+    public bool GetBtnStatus()
+    {
+        return GetBtn.activeSelf;
     }
     public void HideLock() { LockSpr.SetActive(false); }
     public void ShowButton() { GetBtn.SetActive(true); }

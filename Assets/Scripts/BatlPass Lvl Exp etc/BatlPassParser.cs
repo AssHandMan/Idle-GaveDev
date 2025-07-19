@@ -33,7 +33,7 @@ public class BatlPassParser : MonoBehaviour
     [SerializeField] private GameObject[] MoneyReward, DiamondsReward;
     [SerializeField] private PlayerWallet wallet;
     [SerializeField] private Text RewardNewLvlCount;
-    public GameObject AdsScreen, BtnReward1, BtnReward2;
+    public GameObject AdsScreen, BtnReward1, BtnReward2, AttentionSymbol;
     public GameSettingsController settings;
     public VideoPlayer adsPlayer;
 
@@ -183,6 +183,20 @@ public class BatlPassParser : MonoBehaviour
         FreeBlocks[lvl - 1].ShowButton();
         if (isMeneger) { MenegerBlocks[lvl-1].ShowButton(); }
         if (isCEO) { CeoBlocks[lvl - 1].ShowButton(); }
+        AttentionSymbol.SetActive(true);
+    }
+    public void CheckForAttention()
+    {
+        int a = 0;
+        for(int i = 0; i < FreeBlocks.Count; i++)
+        {
+            if (FreeBlocks[i].GetBtnStatus() || MenegerBlocks[i].GetBtnStatus() || CeoBlocks[i].GetBtnStatus())
+            {
+                a++;
+                break;
+            }
+        }
+        if(a == 0) { AttentionSymbol.SetActive(false); }
     }
 
     public void ShowHide()
@@ -225,6 +239,7 @@ public class BatlPassParser : MonoBehaviour
                 }
             }
         }
+        AttentionSymbol.SetActive(true);
     }
 
     private void Start()
