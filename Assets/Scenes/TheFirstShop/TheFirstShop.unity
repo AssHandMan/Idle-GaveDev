@@ -33530,7 +33530,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &532166253
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37835,7 +37835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ba20e9d9e5bab4f825f6c40a50d61a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLvl: {fileID: 1937581692}
+  playerLvl: {fileID: 1134624007}
   MessegeClose: {fileID: 1455712159}
   MessegeCloseShopName: {fileID: 846586484}
   MessegeOpen: {fileID: 1050206214}
@@ -123251,17 +123251,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8449948706190050460, guid: 552facb153f535b4f88bc4d28f82c8d4, type: 3}
   m_PrefabInstance: {fileID: 1332169385}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1937581692 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4030843841017491155, guid: a4aa4e94daf89464aa3a083f93d5d8a3, type: 3}
-  m_PrefabInstance: {fileID: 985714366}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57bb17c374bb80248a0e31780e200718, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1939177681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127057,7 +127046,7 @@ MonoBehaviour:
   MaxStorage: 1200
   ShopNumber: 2
   ShopName: GAME READY
-  SceneName: 
+  SceneName: TheThirdShop
   isBuy: 0
   NumberShopUI: {fileID: 129390396}
   ClosedObj: {fileID: 853967495}

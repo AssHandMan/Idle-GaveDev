@@ -41,7 +41,14 @@ public class ExpLvlController : MonoBehaviour
                 StartCoroutine(PlayLevelUpStars(() =>
                 {
                     lvl++;
-                    MaxExPLvl = BuyMeneger.GetMaxLvl() * 3;
+                    if (BuyMeneger.GetMaxLvl() == 270)
+                    {
+                        MaxExPLvl = 270;
+                    }
+                    else
+                    {
+                        MaxExPLvl = BuyMeneger.GetMaxLvl() * 3;
+                    }
                     textLvl.text = lvl.ToString();
                     textprogressBar.text = CountExP.ToString() + "/" + MaxExPLvl.ToString();
                     ExpBar.fillAmount = (float)CountExP / MaxExPLvl;

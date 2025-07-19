@@ -63,7 +63,7 @@ public class ShopOnGlobalMap : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (controller.playerLvl._playerLVL >= lvl)
+        if (controller.playerLvl.lvl >= lvl)
         {
             if (isBuy)
             {

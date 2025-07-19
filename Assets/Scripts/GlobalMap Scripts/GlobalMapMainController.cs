@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GlobalMapMainController : MonoBehaviour
 {
-    public Exp_Controller playerLvl;
+    public ExpLvlController playerLvl;
 
     public GameObject MessegeClose;
     public Text MessegeCloseShopName;

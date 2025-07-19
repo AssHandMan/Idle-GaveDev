@@ -126,16 +126,23 @@ public class UpgreadeSceneMeneger : MonoBehaviour
 
     public int GetMaxLvl()
     {
-        int a = IndexForCountNextLvl[ExpController.lvl];
-        int n = 0;
-        for (int i = 0; i <= a; i++)
+        if (ExpController.lvl < IndexForCountNextLvl.Length)
         {
-            if ((stations[i].GetComponent<ObjectShowHider>() != null && stations[i].name == "AddSpace0")
-                || (stations[i].GetComponent<ObjectShowHider>() == null))
+            int a = IndexForCountNextLvl[ExpController.lvl];
+            int n = 0;
+            for (int i = 0; i <= a; i++)
             {
-                n++;
+                if ((stations[i].GetComponent<ObjectShowHider>() != null && stations[i].name == "AddSpace0")
+                    || (stations[i].GetComponent<ObjectShowHider>() == null))
+                {
+                    n++;
+                }
             }
+            return n;
         }
-        return n;
+        else
+        {
+            return 270;
+        }
     }
 }
