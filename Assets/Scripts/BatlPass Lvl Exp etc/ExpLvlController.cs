@@ -5,6 +5,7 @@ using System;
 
 public class ExpLvlController : MonoBehaviour
 {
+    [SerializeField] private BatlPassParser parser;
     [SerializeField] private GameObject ExpMenu;
     [SerializeField] private UpgreadeSceneMeneger BuyMeneger;
     [SerializeField] private Image ExpBar;
@@ -42,15 +43,19 @@ public class ExpLvlController : MonoBehaviour
                     lvl++;
                     MaxExPLvl = BuyMeneger.GetMaxLvl() * 3;
                     textLvl.text = lvl.ToString();
+                    textprogressBar.text = CountExP.ToString() + "/" + MaxExPLvl.ToString();
+                    ExpBar.fillAmount = (float)CountExP / MaxExPLvl;
+                    parser.GetNewLvl(lvl);
+                    parser.ShowNewLvlMenu(lvl);
                 }));
             }
-            textprogressBar.text = CountExP.ToString() + "/" + MaxExPLvl.ToString();
             if (!ExpMenu.activeSelf)
             {
                 ExpMenu.SetActive(true);
             }
         }
         ExpBar.fillAmount = (float)CountExP / MaxExPLvl;
+        textprogressBar.text = CountExP.ToString() + "/" + MaxExPLvl.ToString();
     }
 
     private IEnumerator PlayLevelUpStars(Action onComplete)

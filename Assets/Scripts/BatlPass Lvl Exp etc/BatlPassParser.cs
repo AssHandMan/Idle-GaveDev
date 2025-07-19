@@ -4,6 +4,8 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
+using Unity.VisualScripting;
 
 public class BatlPassParser : MonoBehaviour
 {
@@ -13,13 +15,24 @@ public class BatlPassParser : MonoBehaviour
     [SerializeField] private string[] CEORewards;
     [SerializeField] private string[] NewLvlOpens;
 
-    [SerializeField] private GameObject lvlBlock, FreeBlock, MenegerBlock, CeoBlock;
+    [SerializeField] private GameObject lvlBlock, FreeBlock, MenegerBlock, CeoBlock, menu, MenegerBtn, CEOBtn;
     [SerializeField] private RectTransform container, content;
 
     [SerializeField] private List<LvlRombe> Romb;
     [SerializeField] private List<BlockBattlePass> FreeBlocks, MenegerBlocks, CeoBlocks;
+    [SerializeField] private ExpLvlController expController;
     private RectTransform bottomElement;
     private float bottomPadding = 220f;
+    private bool isMeneger, isCEO;
+
+    [SerializeField] private Text LvlvMenuNewTxt;
+    [SerializeField] private GameObject menuNewLvl;
+    [SerializeField] private OpenNewLvlCircle[] circles;
+    private int CountReward;
+    private char TypeReward;
+    [SerializeField] private GameObject[] MoneyReward, DiamondsReward;
+    [SerializeField] private PlayerWallet wallet;
+    [SerializeField] private Text RewardNewLvlCount;
 
     [ContextMenu("Parse CSV")]
     private void Parse()
@@ -127,7 +140,7 @@ public class BatlPassParser : MonoBehaviour
         CeoBlocks[0].SetValue(CEORewards[0]);
     }
 
-    void SetContentVieweSize()
+    private void SetContentVieweSize()
     {
         bottomElement = CeoBlocks[CeoBlocks.Count - 1].GetComponent<RectTransform>();
         float bottomY = Mathf.Abs(bottomElement.anchoredPosition.y);
@@ -146,6 +159,68 @@ public class BatlPassParser : MonoBehaviour
             FreeBlocks[i].transform.parent = content;
             MenegerBlocks[i].transform.parent = content;
             CeoBlocks[i].transform.parent = content;
+        }
+    }
+
+    public void GetNewLvl(int lvl)
+    {
+        if(lvl == 1)
+        {
+            Romb[0].SetRomb();
+        }
+        else if(lvl >= Romb.Count)
+        {
+            Romb[Romb.Count - 1].SetRomb();
+        }
+        else
+        {
+            Romb[lvl - 1].SetRomb();
+            Romb[lvl - 2].SetLine();
+        }
+        FreeBlocks[lvl - 1].ShowButton();
+        if (isMeneger) { MenegerBlocks[lvl-1].ShowButton(); }
+        if (isCEO) { CeoBlocks[lvl - 1].ShowButton(); }
+    }
+
+    public void ShowHide()
+    {
+        if (menu.activeSelf)
+        {
+            menu.SetActive(false);
+        }
+        else
+        {
+            menu.SetActive(true);
+        }
+    }
+
+    public void ButNewTypeAccount(string type)
+    {
+        if(type == "m")
+        {
+            isMeneger = true;
+            MenegerBtn.SetActive(false);
+            for (int i = 0; i < Romb.Count;  i++)
+            {
+                MenegerBlocks[i].HideLock();
+                if (i < expController.lvl)
+                {
+                    MenegerBlocks[i].ShowButton();
+                }
+            }
+        }
+        else if (type == "c")
+        {
+            isCEO = true;
+            CEOBtn.SetActive(false);
+            for (int i = 0; i < Romb.Count; i++)
+            {
+                CeoBlocks[i].HideLock();
+                if(i < expController.lvl)
+                {
+                    CeoBlocks[i].ShowButton();
+                }
+            }
         }
     }
 
@@ -193,5 +268,72 @@ public class BatlPassParser : MonoBehaviour
 
         values.Add(current); // последняя колонка
         return values.Select(s => s.Trim().Trim('"')).ToArray();
+    }
+
+    public void ShowNewLvlMenu(int lvl)
+    {
+        LvlvMenuNewTxt.text = lvl.ToString();
+
+        string input = NewLvlOpens[lvl];
+
+        string[] result = input
+            .Split(',')
+            .Select(s => s.Trim())
+            .ToArray();
+
+        if(result.Length == 1)
+        {
+            circles[1].Open(result[1]);
+        }
+        else if (result.Length == 2)
+        {
+            circles[0].Open(result[0]);
+            circles[1].Open(result[1]);
+        }
+        else
+        {
+            circles[0].Open(result[0]);
+            circles[1].Open(result[1]);
+            circles[2].Open(result[2]);
+        }
+
+        input = Rewards[lvl-1];
+        Debug.Log(Rewards[lvl-1]); 
+        if(input != "")
+        {
+            string[] parts = input.Split(' ');
+            int number = int.Parse(parts[0]);
+            char letter = parts[1][0];
+            CountReward = number;
+            TypeReward = letter;
+            RewardNewLvlCount.text = "+" + CountReward.ToString();
+            if (letter == 'b')
+            {
+                if (number < 100) { MoneyReward[0].SetActive(true); }
+                else { MoneyReward[1].SetActive(true); }
+            }
+            else if (letter == 'k')
+            {
+                if (number <= 2) { DiamondsReward[0].SetActive(true); }
+                else if (number > 2 && number <= 5) { DiamondsReward[1].SetActive(true); }
+            }
+        }
+        menuNewLvl.SetActive(true);
+    }
+
+    public void GetRewardNewLvl()
+    {
+        if(TypeReward == 'b') { wallet.ChangeCount(CountReward, "Money"); }
+        else { wallet.ChangeCount(CountReward, "Money"); }
+        TypeReward = ' ';
+        CountReward = 0;
+    }
+    public void HideNewLvlMenu() 
+    {
+        if(CountReward > 0) { GetRewardNewLvl(); } 
+        circles[0].Cleare();
+        circles[1].Cleare();
+        circles[2].Cleare();
+        menuNewLvl.SetActive(false);
     }
 }

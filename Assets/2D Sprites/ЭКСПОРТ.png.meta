@@ -2146,7 +2146,7 @@ TextureImporter:
         width: 67
         height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2155,6 +2155,138 @@ TextureImporter:
       bones: []
       spriteID: 9d98fd7df1f79844da676e4281366cf0
       internalID: -1435729429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_92"
+      rect:
+        serializedVersion: 2
+        x: 2504
+        y: 3439
+        width: 667
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbc516272f6ffee4fbd5201f6ca1cf10
+      internalID: -1459038836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_93"
+      rect:
+        serializedVersion: 2
+        x: 2599
+        y: 2110
+        width: 476
+        height: 446
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e657a0f17a6b0bd468d56fee212b6331
+      internalID: 1281671597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_94"
+      rect:
+        serializedVersion: 2
+        x: 2499
+        y: 2751
+        width: 678
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 280fa17830a852b42a33caf904aa87d9
+      internalID: 1940872059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_95"
+      rect:
+        serializedVersion: 2
+        x: 3275
+        y: 3883
+        width: 202
+        height: 203
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 336ad0568ef2f774fa6be2138dd327ba
+      internalID: 877199860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_96"
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 3250
+        width: 113
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4af869432d3f5874dbbb4d82dbd18ad4
+      internalID: 1307718122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_97"
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 2643
+        width: 373
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20b782de8ba12d241a0dfa095efb75e7
+      internalID: 978618554
       vertices: []
       indices: 
       edges: []
@@ -2265,6 +2397,12 @@ TextureImporter:
       "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_9": 335541147
       "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_90": 1981524937
       "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_91": -1435729429
+      "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_92": -1459038836
+      "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_93": 1281671597
+      "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_94": 1940872059
+      "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_95": 877199860
+      "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_96": 1307718122
+      "\u042D\u041A\u0421\u041F\u041E\u0420\u0422_97": 978618554
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
