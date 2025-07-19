@@ -35,9 +35,15 @@ public class Exp_Controller : MonoBehaviour
     [SerializeField] private GameObject _btnMan;
     [SerializeField] private GameObject _btnSEO;
     [SerializeField] private List<string> _unLock = new List<string>();
+    [SerializeField] private List<GameObject> _unLockCell = new List<GameObject>();
     [SerializeField] private List<GameObject> _unLockCelltext = new List<GameObject>();
     [SerializeField] private List<GameObject> _unLockCellImg = new List<GameObject>();
     [SerializeField] private List<Sprite> _unlockSprite = new List<Sprite>();
+    [SerializeField] private GameObject _progressBar;
+    [SerializeField] private Text _starText;
+    [SerializeField] private GameObject _joystick;
+    [SerializeField] private GameObject _destination;
+    [SerializeField] private GameObject _rewardsIcon;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Parse()
@@ -81,8 +87,14 @@ public class Exp_Controller : MonoBehaviour
 
         temp._SEO.text = lines[5];
         temp._imgSEO.GetComponent<Image>().sprite = SelectImgIcon(lines[5]);
-
-        _unLock.Add(lines[6]);
+        Debug.Log(lines.Length);
+        Debug.Log(lines.ToString());
+        if (lines[7] == "" && lines[8]=="") 
+            _unLock.Add(lines[6]);
+        else if (lines[7] != "" && lines[8] == "")
+            _unLock.Add((lines[6].ToString() +"|" + lines[7].ToString()));
+        else 
+            _unLock.Add((lines[6].ToString() + "|" + lines[7].ToString() + "|" + lines[8].ToString()));
         _gifts.Add(panel.GetComponent<LvlObject>());
 
     }
@@ -115,61 +127,77 @@ public class Exp_Controller : MonoBehaviour
     }
     private Sprite SelectImgUnlock(string str)
     {
-            if (str.Contains("Unlock Zone"))
+            if (str.Contains("new product"))
+                return _unlockSprite[0];
+            else if (str.Contains("unlock zone"))
                 return _unlockSprite[1];
-            else if (str.Contains("New Product"))
+            else if (str.Contains("rewards for levels"))
                 return _unlockSprite[2];
             else if (str.Contains("spehial order"))
                 return _unlockSprite[3];
-            else if (str.Contains("Disturbing Customers"))
+            else if (str.Contains("disturbing customers"))
                 return _unlockSprite[4];
-            else if (str.Contains("map"))
+            else if (str.Contains("shop"))
                 return _unlockSprite[5];
-            else if (str.Contains("New Shop"))
+            else if (str.Contains("map"))
                 return _unlockSprite[6];
-            else return null;
+            else if (str.Contains("new shop"))
+                return _unlockSprite[7];
+        else return null;
     }
 
     private void NewLvl()
     {
-        foreach (var i in _unLockCellImg)
+        foreach (var i in _unLockCell)
         {
             i.SetActive(false);
         }
+        _destination.SetActive(false );
+        _joystick.SetActive(false);
+        _starText.text = (_playerLVL+1).ToString();
         _btn.SetActive(false);
         _newLVL.SetActive(true);
         _text_NewLVL.text = _Lvls[_playerLVL].GetComponent<LvlObject>()._Gift.text;
+        _rewardsIcon.GetComponent<Image>().sprite = _Lvls[_playerLVL].GetComponent<LvlObject>()._imgGift.GetComponent<Image>().sprite;
+        if(_rewardsIcon.GetComponent<Image>().sprite == _diamonds)
+        {
+            _text_NewLVL.color = Color.magenta;
+        }
+        else
+        {
+            _text_NewLVL.color = Color.green;
+        }
         _slider.maxValue = float.Parse(_sliderLVLs[_playerLVL + 1]);
         _Lvls[_playerLVL].GetComponent<LvlObject>().Check(_Lvls[_playerLVL].GetComponent<LvlObject>()._Gift.text);
         _playerLVL++;
 
         if (_unLock[_playerLVL] != "")
         {
-            string[] temp = _unLock[_playerLVL].Split(",");
+            string[] temp = _unLock[_playerLVL].Split("|");
             Debug.Log(_unLock[_playerLVL]);
             switch (temp.Length)
             {
                 case 1:
-                    _unLockCellImg[1].gameObject.SetActive(true);
+                    _unLockCell[1].gameObject.SetActive(true);
                     _unLockCellImg[1].gameObject.GetComponent<Image>().sprite = SelectImgUnlock(temp[0]);
                     _unLockCelltext[1].gameObject.GetComponent<Text>().text = temp[0];
                     break;
                 case 2:
-                    _unLockCellImg[0].gameObject.SetActive(true);
+                    _unLockCell[0].gameObject.SetActive(true);
                     _unLockCellImg[0].gameObject.GetComponent<Image>().sprite = SelectImgUnlock(temp[0]);
                     _unLockCelltext[0].gameObject.GetComponent<Text>().text = temp[0];
-                    _unLockCellImg[2].gameObject.SetActive(true);
+                    _unLockCell[2].gameObject.SetActive(true);
                     _unLockCellImg[2].gameObject.GetComponent<Image>().sprite = SelectImgUnlock(temp[1]);
                     _unLockCelltext[2].gameObject.GetComponent<Text>().text = temp[1];
                     break;
                 case 3:
-                    _unLockCellImg[0].gameObject.SetActive(true);
+                    _unLockCell[0].gameObject.SetActive(true);
                     _unLockCellImg[0].gameObject.GetComponent<Image>().sprite = SelectImgUnlock(temp[0]);
                     _unLockCelltext[0].gameObject.GetComponent<Text>().text = temp[0];
-                    _unLockCellImg[1].gameObject.SetActive(true);
+                    _unLockCell[1].gameObject.SetActive(true);
                     _unLockCellImg[1].gameObject.GetComponent<Image>().sprite = SelectImgUnlock(temp[1]);
                     _unLockCelltext[1].gameObject.GetComponent<Text>().text = temp[1];
-                    _unLockCellImg[2].gameObject.SetActive(true);
+                    _unLockCell[2].gameObject.SetActive(true);
                     _unLockCellImg[2].gameObject.GetComponent<Image>().sprite = SelectImgUnlock(temp[2]);
                     _unLockCelltext[2].gameObject.GetComponent<Text>().text = temp[2];
                     break;
@@ -178,7 +206,7 @@ public class Exp_Controller : MonoBehaviour
         PlayerPrefs.SetFloat("SliderMaxValue", _slider.maxValue);
         PlayerPrefs.SetInt("PlayerLVL", _playerLVL);
         PlayerPrefs.Save();
-
+        _progressBar.SetActive(false);
 
     }
     public void GetEXP(int exp)
@@ -200,6 +228,9 @@ public class Exp_Controller : MonoBehaviour
     {
         _btn.SetActive(true);
         _newLVL.SetActive(false);
+        _progressBar.SetActive(true);
+        _joystick.SetActive(true);
+        _destination.SetActive(true);
     }
     public void CheckLvL()
     {
