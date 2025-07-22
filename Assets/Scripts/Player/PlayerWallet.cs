@@ -71,11 +71,14 @@ public class PlayerWallet : MonoBehaviour
     {
         if(type == "Money")
         {
-            if (count > 0) { Money += Convert.ToInt32(count * MoneyMultiplier); }
+            if (count > 0) 
+            { 
+                Money += Convert.ToInt32(count * MoneyMultiplier); 
+                Vibrate(); 
+            }
             else { Money += Convert.ToInt32(count); }
             TextForm(Money, Mtext);
             TextForm(Money, Mtext2);
-            Vibrate();
         }
         else if (type == "Diamonds")
         {
@@ -96,10 +99,37 @@ public class PlayerWallet : MonoBehaviour
 
     private void Vibrate()
     {
-        if (vibrations)
+#if UNITY_ANDROID && !UNITY_EDITOR
+        using (AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
         {
-            Handheld.Vibrate();
+            using (AndroidJavaObject activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity"))
+            using (AndroidJavaObject context = activity.Call<AndroidJavaObject>("getApplicationContext"))
+            using (AndroidJavaObject vibrator = activity.Call<AndroidJavaObject>("getSystemService", "vibrator"))
+            {
+                if (AndroidVersion() >= 26)
+                {
+                    using (AndroidJavaClass vibrationEffectClass = new AndroidJavaClass("android.os.VibrationEffect"))
+                    {
+                        AndroidJavaObject effect = vibrationEffectClass.CallStatic<AndroidJavaObject>("createOneShot", 20, 255);
+                        vibrator.Call("vibrate", effect);
+                    }
+                }
+                else
+                {
+                    vibrator.Call("vibrate", 20L); // Deprecated, но работает на старых Android
+                }
+            }
         }
+#endif
+    }
+    private int AndroidVersion()
+    {
+#if UNITY_ANDROID && !UNITY_EDITOR
+        AndroidJavaClass versionClass = new AndroidJavaClass("android.os.Build$VERSION");
+        return versionClass.GetStatic<int>("SDK_INT");
+#else
+        return 0;
+#endif
     }
 
     public void TextForm(int Number, Text CountText)
