@@ -1,9 +1,12 @@
+using Solo.MOST_IN_ONE;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static Solo.MOST_IN_ONE.Most_HapticFeedback;
+
 public enum TypeAccount { Free, Manager, SEO}
 
 public class PlayerWallet : MonoBehaviour
@@ -92,44 +95,15 @@ public class PlayerWallet : MonoBehaviour
             TextForm(Skins, Stext);
         }
     }
-    public void SetVibrations(bool vibr)
-    {
-        vibrations = vibr;
-    }
 
     private void Vibrate()
     {
-#if UNITY_ANDROID && !UNITY_EDITOR
-        using (AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
-        {
-            using (AndroidJavaObject activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity"))
-            using (AndroidJavaObject context = activity.Call<AndroidJavaObject>("getApplicationContext"))
-            using (AndroidJavaObject vibrator = activity.Call<AndroidJavaObject>("getSystemService", "vibrator"))
-            {
-                if (AndroidVersion() >= 26)
-                {
-                    using (AndroidJavaClass vibrationEffectClass = new AndroidJavaClass("android.os.VibrationEffect"))
-                    {
-                        AndroidJavaObject effect = vibrationEffectClass.CallStatic<AndroidJavaObject>("createOneShot", 20, 255);
-                        vibrator.Call("vibrate", effect);
-                    }
-                }
-                else
-                {
-                    vibrator.Call("vibrate", 20L); // Deprecated, но работает на старых Android
-                }
-            }
-        }
-#endif
+        if (vibrations) { Most_HapticFeedback.Generate(HapticTypes.Selection); }
     }
-    private int AndroidVersion()
+
+    public void SetVibrations(bool isVibr)
     {
-#if UNITY_ANDROID && !UNITY_EDITOR
-        AndroidJavaClass versionClass = new AndroidJavaClass("android.os.Build$VERSION");
-        return versionClass.GetStatic<int>("SDK_INT");
-#else
-        return 0;
-#endif
+        vibrations = isVibr;
     }
 
     public void TextForm(int Number, Text CountText)
