@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
 public class SkinsRoom : MonoBehaviour
@@ -21,7 +22,7 @@ public class SkinsRoom : MonoBehaviour
     public Image TypeMoneySkin;
     public int[] SoftHard;
     public GameObject[] Locks, SkinNowSpr;
-    public string[] SkinNames;
+    public string[] SkinNames, RussianSkinName;
     public TextMeshProUGUI SkinNameTxt;
     private PlayerWallet wallet;
     private bool CanChange;
@@ -64,7 +65,14 @@ public class SkinsRoom : MonoBehaviour
                 isBuy[SkinPos] = true;
                 ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
                 ButtonTextBuy.gameObject.SetActive(false);
-                ButtonText.text = "TAKE IT";
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    ButtonText.text = "TAKE IT";
+                }
+                else
+                {
+                    ButtonText.text = "ÂÇßÒÜ";
+                }
                 ButtonText.gameObject.SetActive(true);
                 TypeMoneySkin.sprite = MonyeType[2];
                 Locks[SkinPos].SetActive(false);
@@ -77,7 +85,14 @@ public class SkinsRoom : MonoBehaviour
                 isBuy[SkinPos] = true;
                 ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
                 ButtonTextBuy.gameObject.SetActive(false);
-                ButtonText.text = "TAKE IT";
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    ButtonText.text = "TAKE IT";
+                }
+                else
+                {
+                    ButtonText.text = "ÂÇßÒÜ";
+                }
                 ButtonText.gameObject.SetActive(true);
                 TypeMoneySkin.sprite = MonyeType[2];
                 Locks[SkinPos].SetActive(false);
@@ -92,7 +107,14 @@ public class SkinsRoom : MonoBehaviour
             {
                 ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
                 ButtonTextBuy.gameObject.SetActive(false);
-                ButtonText.text = "TAKE IT";
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    ButtonText.text = "TAKE IT";
+                }
+                else
+                {
+                    ButtonText.text = "ÂÇßÒÜ";
+                }
                 ButtonText.gameObject.SetActive(true);
                 SkinNow = SkinPos;
                 for(int i = 0; i < Player.Length; i++)
@@ -117,7 +139,14 @@ public class SkinsRoom : MonoBehaviour
         characters[SkinPos].SetActive(false);
         SkinPos = newPos;
         characters[SkinPos].SetActive(true);
-        SkinNameTxt.text = SkinNames[SkinPos];
+        if(LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0]) 
+        { 
+            SkinNameTxt.text = SkinNames[SkinPos];
+        }
+        else 
+        { 
+            SkinNameTxt.text = RussianSkinName[SkinPos];
+        }
         Character.transform.eulerAngles = new Vector3(0, 70, 0);
         CanChange = true;
 
@@ -143,7 +172,14 @@ public class SkinsRoom : MonoBehaviour
             ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
             TypeMoneySkin.sprite = MonyeType[2];
             ButtonTextBuy.gameObject.SetActive(false);
-            ButtonText.text = "TAKE IT";
+            if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+            {
+                ButtonText.text = "TAKE IT";
+            }
+            else
+            {
+                ButtonText.text = "ÂÇßÒÜ";
+            }
             ButtonText.gameObject.SetActive(true);
         }
     }
@@ -166,6 +202,20 @@ public class SkinsRoom : MonoBehaviour
             AddBaner.SetActive(true);
             SkinButton.SetActive(false);
             cam.SetSkinMood();
+        }
+    }
+
+    public void ChangeLanguage()
+    {
+        if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+        {
+            ButtonText.text = "TAKE IT";
+            SkinNameTxt.text = SkinNames[SkinPos];
+        }
+        else
+        {
+            ButtonText.text = "ÂÇßÒÜ";
+            SkinNameTxt.text = RussianSkinName[SkinPos];
         }
     }
 

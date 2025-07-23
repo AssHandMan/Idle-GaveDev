@@ -17,7 +17,160 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 41031e9dc6fa2f24d874011d8f3cd7b5, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 26253019440275456
+    m_Localized: SETTINGS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26257672106205184
+    m_Localized: SOUNDS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26260994456346624
+    m_Localized: HAPTIC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26263525987246080
+    m_Localized: FOLLOW US!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281041895677952
+    m_Localized: JACK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281102583062528
+    m_Localized: ANDY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281191934320640
+    m_Localized: MAG
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281230706466816
+    m_Localized: BOB
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281250574884864
+    m_Localized: TOM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281278664138752
+    m_Localized: SAM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281306975690752
+    m_Localized: DAN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281494746292224
+    m_Localized: SPEED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281528799846400
+    m_Localized: CAPACITY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281553802092544
+    m_Localized: PROFIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26286673612824576
+    m_Localized: HR ROOM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26290640799457280
+    m_Localized: PLAYER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26290701545562112
+    m_Localized: FREE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26290757984116736
+    m_Localized: MOVE SPEED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26290839278116864
+    m_Localized: PROFITS UP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26294053637513216
+    m_Localized: SKIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26294493812940800
+    m_Localized: TAKE IT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26298338324570112
+    m_Localized: GAME FUNDS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26298403659243520
+    m_Localized: 'LEVEL UP YOUR GAME SHOP AND
+
+      GET REVARDS!
+
+      BUY AND
+      GET MORE REVARDS'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26298713521840128
+    m_Localized: GET
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26299544790949888
+    m_Localized: BUY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26310990367088640
+    m_Localized: OPEN THE NEW SHOP!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26311357448380416
+    m_Localized: A NEW STORE WILL OPEN WHEN YOU REACH STAR LEVEL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26311503917670400
+    m_Localized: ENTER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26481324173090816
+    m_Localized: Max Storage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26497554095333376
+    m_Localized: '       10 '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26497478199402496
+    m_Localized: Per 10 seconds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26500359946297344
+    m_Localized: You're here
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26500362374799360
+    m_Localized: Closed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26504747754512384
+    m_Localized: LEVEL UP!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26505525651103744
+    m_Localized: AVAILABLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26506005211045888
+    m_Localized: REWARD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26506129861566464
+    m_Localized: "CLICK TO RECEIVE \nREWARD"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

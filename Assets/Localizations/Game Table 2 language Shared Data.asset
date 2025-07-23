@@ -14,7 +14,155 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TableCollectionName: Game Table 2 language
   m_TableCollectionNameGuidString: 41031e9dc6fa2f24d874011d8f3cd7b5
-  m_Entries: []
+  m_Entries:
+  - m_Id: 26253019440275456
+    m_Key: settingsHader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26257672106205184
+    m_Key: Sounds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26260994456346624
+    m_Key: Haptic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26263525987246080
+    m_Key: follow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281041895677952
+    m_Key: jack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281102583062528
+    m_Key: ANDY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281191934320640
+    m_Key: MAG
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281230706466816
+    m_Key: BOB
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281250574884864
+    m_Key: TOM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281278664138752
+    m_Key: SAM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281306975690752
+    m_Key: DAN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281494746292224
+    m_Key: SPEED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281528799846400
+    m_Key: CAPACITY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26281553802092544
+    m_Key: PROFIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26286673612824576
+    m_Key: HR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26290640799457280
+    m_Key: PLAYER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26290701545562112
+    m_Key: FREE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26290757984116736
+    m_Key: MOVE SPEED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26290839278116864
+    m_Key: PROFITS UP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26294053637513216
+    m_Key: SKIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26294493812940800
+    m_Key: Take
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26298338324570112
+    m_Key: GAME FUNDS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26298403659243520
+    m_Key: Battle pass txt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26298713521840128
+    m_Key: Get
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26299544790949888
+    m_Key: BUY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26310990367088640
+    m_Key: OPEN THE NEW SHOP!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26311357448380416
+    m_Key: 'A NEW STORE '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26311503917670400
+    m_Key: ENTER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26481324173090816
+    m_Key: Max Storage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26497478199402496
+    m_Key: Per
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26497554095333376
+    m_Key: Per10
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26500359946297344
+    m_Key: here
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26500362374799360
+    m_Key: close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26504747754512384
+    m_Key: 'level '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26505525651103744
+    m_Key: 'AVAILABLE '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26506005211045888
+    m_Key: REWARD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26506129861566464
+    m_Key: CLICK TO RECEIVE REWARD
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

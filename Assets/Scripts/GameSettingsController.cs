@@ -1,9 +1,14 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
+using UnityEngine.UI;
 
 public class GameSettingsController : MonoBehaviour
 {
-    [SerializeField] private GameObject window;
+    [SerializeField] private GameObject window, ButtonLanguage;
     [SerializeField] private Animator SoundsButton, HarpticButton;
+    [SerializeField] private Text NowLanguageTxt, LanguageTxt;
+    [SerializeField] private SkinsRoom skinn;
     private CanvasGroup group;
     private PlayerWallet wallet;
     private AudioSource Music;
@@ -12,6 +17,8 @@ public class GameSettingsController : MonoBehaviour
     private string youtubeChannelURL = "https://www.youtube.com/channel/UCe3gjJcCcC1Gc60ucWX_43g";
     private string RedditChannelURL = "https://www.reddit.com/r/technology/";
     private string TikTokChannelURL = "https://www.tiktok.com/@winxpower?_t=ZS-8xHXIZrfMfa";
+    private bool ActiveChange;
+
 
     void Start()
     {
@@ -21,6 +28,7 @@ public class GameSettingsController : MonoBehaviour
         PlayerStartPos = GameObject.FindGameObjectWithTag("Player").transform.position;
         SetVibrate();
         SetMusic();
+        skinn.ChangeLanguage();
     }
 
     void Update()
@@ -83,5 +91,30 @@ public class GameSettingsController : MonoBehaviour
         {
             Application.OpenURL(TikTokChannelURL);
         }
+    }
+    public void ShowLanguages()
+    {
+        if(ButtonLanguage.activeSelf) { ButtonLanguage.SetActive(false); }
+        else { ButtonLanguage.SetActive(true); }
+    }
+    public void ChangeLanguage()
+    {
+        if (ActiveChange)
+            return;
+        string s = NowLanguageTxt.text;
+        NowLanguageTxt.text = LanguageTxt.text;
+        LanguageTxt.text = s;
+        ShowLanguages();
+        if(LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0]) { StartCoroutine(SetLocal(1)); }
+        else { StartCoroutine(SetLocal(0)); }
+        skinn.ChangeLanguage();
+    }
+
+    private IEnumerator SetLocal(int id)
+    {
+        ActiveChange = true;
+        yield return LocalizationSettings.InitializationOperation;
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[id];
+        ActiveChange = false;
     }
 }

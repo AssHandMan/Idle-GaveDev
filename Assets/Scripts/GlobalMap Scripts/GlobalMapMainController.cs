@@ -16,7 +16,7 @@ public class GlobalMapMainController : MonoBehaviour
     public bool[] OpenShops;
     private ShopOnGlobalMap shopNow;
 
-    public GameObject StatsShopMenu;
+    public GameObject StatsShopMenu, StorageEng, StorageRus;
     public Text MaxStorage, PerSec;
     public string sceneToGo;
 
@@ -28,7 +28,6 @@ public class GlobalMapMainController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
