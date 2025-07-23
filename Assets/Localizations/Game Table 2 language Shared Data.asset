@@ -163,6 +163,30 @@ MonoBehaviour:
     m_Key: CLICK TO RECEIVE REWARD
     m_Metadata:
       m_Items: []
+  - m_Id: 26516160917069824
+    m_Key: DESTINATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26516255939026944
+    m_Key: SHOP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26516345428697088
+    m_Key: SKIN Btn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26516454577070080
+    m_Key: MAP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26539290054156288
+    m_Key: MENEGER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26539338175406080
+    m_Key: CEO
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

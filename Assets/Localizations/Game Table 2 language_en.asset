@@ -171,6 +171,30 @@ MonoBehaviour:
     m_Localized: "CLICK TO RECEIVE \nREWARD"
     m_Metadata:
       m_Items: []
+  - m_Id: 26516160917069824
+    m_Localized: DESTINATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26516255939026944
+    m_Localized: SHOP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26516345428697088
+    m_Localized: SKIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26516454577070080
+    m_Localized: MAP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26539290054156288
+    m_Localized: MENEGER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26539338175406080
+    m_Localized: CEO
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

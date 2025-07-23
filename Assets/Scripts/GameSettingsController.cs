@@ -8,7 +8,6 @@ public class GameSettingsController : MonoBehaviour
     [SerializeField] private GameObject window, ButtonLanguage;
     [SerializeField] private Animator SoundsButton, HarpticButton;
     [SerializeField] private Text NowLanguageTxt, LanguageTxt;
-    [SerializeField] private SkinsRoom skinn;
     private CanvasGroup group;
     private PlayerWallet wallet;
     private AudioSource Music;
@@ -28,7 +27,6 @@ public class GameSettingsController : MonoBehaviour
         PlayerStartPos = GameObject.FindGameObjectWithTag("Player").transform.position;
         SetVibrate();
         SetMusic();
-        skinn.ChangeLanguage();
     }
 
     void Update()
@@ -107,7 +105,6 @@ public class GameSettingsController : MonoBehaviour
         ShowLanguages();
         if(LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0]) { StartCoroutine(SetLocal(1)); }
         else { StartCoroutine(SetLocal(0)); }
-        skinn.ChangeLanguage();
     }
 
     private IEnumerator SetLocal(int id)

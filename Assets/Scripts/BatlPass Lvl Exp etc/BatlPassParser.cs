@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 public class BatlPassParser : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class BatlPassParser : MonoBehaviour
     public GameObject AdsScreen, BtnReward1, BtnReward2, AttentionSymbol, RewardPanel, AvailablePanel;
     public GameSettingsController settings;
     public VideoPlayer adsPlayer;
+    public RectTransform CirclesMain;
 
     [ContextMenu("Parse CSV")]
     private void Parse()
@@ -320,6 +322,7 @@ public class BatlPassParser : MonoBehaviour
                 circles[1].Open(result[1]);
                 Debug.Log(result[0]);
                 Debug.Log(result[1]);
+                CirclesMain.localPosition = new Vector3(120, CirclesMain.localPosition.y, 0);
             }
             else
             {
@@ -409,5 +412,6 @@ public class BatlPassParser : MonoBehaviour
             DiamondsReward[i].SetActive(false);
         }
         menuNewLvl.SetActive(false);
+        CirclesMain.localPosition = new Vector3(0, CirclesMain.localPosition.y, 0);
     }
 }

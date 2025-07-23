@@ -35,7 +35,6 @@ public class SkinsRoom : MonoBehaviour
     {
         CanChange = true;
         ButtonTextBuy.gameObject.SetActive(false);
-        ButtonText.text = "TAKE IT";
         ButtonText.gameObject.SetActive(true);
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
 
@@ -65,14 +64,6 @@ public class SkinsRoom : MonoBehaviour
                 isBuy[SkinPos] = true;
                 ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
                 ButtonTextBuy.gameObject.SetActive(false);
-                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
-                {
-                    ButtonText.text = "TAKE IT";
-                }
-                else
-                {
-                    ButtonText.text = "ÂÇßÒÜ";
-                }
                 ButtonText.gameObject.SetActive(true);
                 TypeMoneySkin.sprite = MonyeType[2];
                 Locks[SkinPos].SetActive(false);
@@ -85,14 +76,6 @@ public class SkinsRoom : MonoBehaviour
                 isBuy[SkinPos] = true;
                 ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
                 ButtonTextBuy.gameObject.SetActive(false);
-                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
-                {
-                    ButtonText.text = "TAKE IT";
-                }
-                else
-                {
-                    ButtonText.text = "ÂÇßÒÜ";
-                }
                 ButtonText.gameObject.SetActive(true);
                 TypeMoneySkin.sprite = MonyeType[2];
                 Locks[SkinPos].SetActive(false);
@@ -107,14 +90,6 @@ public class SkinsRoom : MonoBehaviour
             {
                 ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
                 ButtonTextBuy.gameObject.SetActive(false);
-                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
-                {
-                    ButtonText.text = "TAKE IT";
-                }
-                else
-                {
-                    ButtonText.text = "ÂÇßÒÜ";
-                }
                 ButtonText.gameObject.SetActive(true);
                 SkinNow = SkinPos;
                 for(int i = 0; i < Player.Length; i++)
@@ -172,14 +147,6 @@ public class SkinsRoom : MonoBehaviour
             ButtonMain.GetComponent<Image>().sprite = ButtonsSpr[0];
             TypeMoneySkin.sprite = MonyeType[2];
             ButtonTextBuy.gameObject.SetActive(false);
-            if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
-            {
-                ButtonText.text = "TAKE IT";
-            }
-            else
-            {
-                ButtonText.text = "ÂÇßÒÜ";
-            }
             ButtonText.gameObject.SetActive(true);
         }
     }
