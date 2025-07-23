@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 public class BatlPassParser : MonoBehaviour
 {
