@@ -1709,6 +1709,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1102545760348734, guid: c75b833e269eebc47a5fda5832a5c25e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1110460939611056, guid: c75b833e269eebc47a5fda5832a5c25e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1724,6 +1728,10 @@ PrefabInstance:
     - target: {fileID: 1194440336069740, guid: c75b833e269eebc47a5fda5832a5c25e, type: 3}
       propertyPath: m_Name
       value: MiniCharacter_Father_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1194440336069740, guid: c75b833e269eebc47a5fda5832a5c25e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1230518323463580, guid: c75b833e269eebc47a5fda5832a5c25e, type: 3}
       propertyPath: m_IsActive
