@@ -75427,7 +75427,8 @@ MonoBehaviour:
   MaxCustomer: 10
   MaxCars: 5
   MaxKioskCustomers: 5
-  CustomerCreateTime: 1
+  CustomerCreateTimeMin: 2
+  CustomerCreateTimeMax: 4
   DeliveryManCreateTime: 0
   timeEventIntervalCall: 100
   timeEventIntervalSleep: 100

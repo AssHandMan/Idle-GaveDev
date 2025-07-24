@@ -12,7 +12,7 @@ public class CustomersMeneger : MonoBehaviour
     public GameObject Car, Delivery;
     private string[] CustomerType = { "Poor", "Rich", "Bloger" };
     public int CountCustomer, MaxCustomer, MaxCars, MaxKioskCustomers;
-    public float CustomerCreateTime, DeliveryManCreateTime, timeEventIntervalCall, timeEventIntervalSleep;
+    public float CustomerCreateTimeMin, CustomerCreateTimeMax, DeliveryManCreateTime, timeEventIntervalCall, timeEventIntervalSleep;
     public Transform CustomerPos, DeletePos, CarPlace, DeliveryPlace;
 
     public int CountOfCars;
@@ -195,13 +195,13 @@ public class CustomersMeneger : MonoBehaviour
                 else if (type == "Kiosk") { CreateCustomer(kiosk); }
                 else { CreateCar(); }
                 QueueTypes.Remove(type);
-                yield return new WaitForSeconds(CustomerCreateTime);
+                yield return new WaitForSeconds(Random.Range(CustomerCreateTimeMin, CustomerCreateTimeMax));
             }
             StartCoroutine(DefinQueue());
         }
         else
         {
-            yield return new WaitForSeconds(CustomerCreateTime);
+            yield return new WaitForSeconds(Random.Range(CustomerCreateTimeMin, CustomerCreateTimeMax));
             StartCoroutine(DefinQueue());
         }
     }
