@@ -20,6 +20,7 @@ public class CarSellStation : MonoBehaviour
     public bool isSelling;
 
     [SerializeField] private GameObject _stackOfMoney;
+    [SerializeField] private ParticleSystem circleArea;
 
     private List<GameObject> PeopleInWorkZone;
     void Start()
@@ -124,5 +125,6 @@ public class CarSellStation : MonoBehaviour
         if (lvl < 3) { lvl++; }
         if(lvl == 2) { Worker.SetActive(true); }
         transform.parent.gameObject.GetComponent<Animator>().SetTrigger("Buy");
+        circleArea.Play();
     }
 }

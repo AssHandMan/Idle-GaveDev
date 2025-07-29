@@ -12,6 +12,7 @@ public class ArcadeMachine : MonoBehaviour
     public ParticleSystem playEffect;
     public bool isPlaying, hasTarget, CanWork, isToilet, hasMenegerTarget, isPause;
     [SerializeField] private GameObject _stackOfMoney;
+    [SerializeField] private ParticleSystem circleArea;
 
     public int lvl;
     public Mesh[] BoxLvl;
@@ -85,7 +86,6 @@ public class ArcadeMachine : MonoBehaviour
         {
             EndGame();
         }
-        
     }
     private void EndGame()
     {
@@ -121,5 +121,10 @@ public class ArcadeMachine : MonoBehaviour
             space.ChangePrice(PriceList[lvl]);
         }
         if (lvl < 3) { lvl++; }
+        if (!isToilet) { circleArea.Play(); }
+    }
+    public void OnEnable()
+    {
+        if (!isToilet) { circleArea.Play(); }
     }
 }

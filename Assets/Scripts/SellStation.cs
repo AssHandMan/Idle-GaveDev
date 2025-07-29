@@ -25,6 +25,7 @@ public class SellStation : MonoBehaviour
     private List<GameObject> PeopleInWorkZone;
 
     [SerializeField] private GameObject _stackOfMoney;
+    [SerializeField] private ParticleSystem circleArea;
 
     void Start()
     {
@@ -171,7 +172,7 @@ public class SellStation : MonoBehaviour
         {
             MainObj.SetActive(true);
             if (!isKiosk) space.ChangePrice(PriceList[lvl]);
-
+            else { circleArea.Play(); }
         }
         else
         {
@@ -194,5 +195,6 @@ public class SellStation : MonoBehaviour
             for(int i = 0; i <2; i++) { topParent = topParent.parent; }
             topParent.gameObject.GetComponent<Animator>().SetTrigger("Buy");
         }
+        circleArea.Play();
     }
 }

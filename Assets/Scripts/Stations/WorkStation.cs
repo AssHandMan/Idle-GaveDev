@@ -17,6 +17,7 @@ public class WorkStation : MonoBehaviour
     public Transform SaveStationPlace, WorkPlace, NewStationPlace;
 
     private GameObject meneger, player;
+    [SerializeField] private ParticleSystem circleArea;
 
     void Start()
     {
@@ -160,5 +161,6 @@ public class WorkStation : MonoBehaviour
         if (lvl < 3) { lvl++; }
         if(lvl == 2) { Worker.SetActive(true); }
         transform.parent.gameObject.GetComponent<Animator>().SetTrigger("Buy");
+        circleArea.Play();
     }
 }

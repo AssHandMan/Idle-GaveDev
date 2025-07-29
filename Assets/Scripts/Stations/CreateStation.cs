@@ -17,6 +17,7 @@ public class CreateStation : MonoBehaviour
     public BuySpace space;
     public int[] PriceList;
     public bool CanWork;
+    [SerializeField] private ParticleSystem circleArea;
 
     void Start()
     {
@@ -91,6 +92,11 @@ public class CreateStation : MonoBehaviour
             space.ChangePrice(PriceList[lvl]);
         }
         if (lvl < 3) { lvl++; }
+        circleArea.Play();
+    }
+    public void OnEnable()
+    {
+        circleArea.Play();
     }
 
 }
