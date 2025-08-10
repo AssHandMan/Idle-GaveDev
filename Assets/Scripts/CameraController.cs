@@ -11,12 +11,28 @@ public class CameraController : MonoBehaviour
     private GameObject plr;
     private Vector3 target;
     public GameObject UiShowHide, Money, Diamonds, Skins, GlobalMapUI;
-    public float dragSpeed = 20f;
 
     public float minX, maxX;
     public float minZ, maxZ;
-    private Vector3 dragOrigin;
     private bool isDragging = false;
+    [Header("Movement Settings")]
+    public float dragSpeed = 5f;
+    public float smoothTime = 0.15f;
+    private Vector3 velocity = Vector3.zero;
+
+    [Header("Zoom Settings")]
+    public float minHeight = 5f;
+    public float maxHeight = 30f;
+    public float zoomSpeed = 10f;
+    public float zoomSmoothTime = 0.1f;
+    private float zoomVelocity;
+
+    [Header("Camera Bounds")]
+    public Vector2 mapMinBounds = new Vector2(-50f, -50f); // Минимальные X и Z карты
+    public Vector2 mapMaxBounds = new Vector2(50f, 50f);    // Максимальные X и Z карты
+    public float edgePadding = 5f; // Отступ от краёв карты
+
+    private Vector3 dragOrigin;
 
     void Start()
     {
@@ -49,42 +65,60 @@ public class CameraController : MonoBehaviour
         {
             if(isGloblaMap)
             {
+                // === 1. Начало перетаскивания ===
                 if (Input.GetMouseButtonDown(0))
                 {
                     dragOrigin = Input.mousePosition;
                     isDragging = true;
+                    return;
                 }
 
-                // Отпускание ЛКМ
                 if (Input.GetMouseButtonUp(0))
                 {
                     isDragging = false;
                 }
 
-                if (isDragging)
+                if (isDragging && Input.GetMouseButton(0))
                 {
-                    Vector3 mouseDelta = Input.mousePosition - dragOrigin;
-                    Vector3 deltaView = Camera.main.ScreenToViewportPoint(mouseDelta);
+                    Vector3 mouseDelta = (Input.mousePosition - dragOrigin) * dragSpeed * Time.deltaTime;
 
-                    // Меняем местами оси: движение по X мышью влияет на Z, по Y — на X
-                    float moveX = -deltaView.y * dragSpeed; // вертикальный свайп → X
-                    float moveZ = deltaView.x * dragSpeed; // горизонтальный свайп → Z
+                    // Плавное уменьшение скорости при маленьких движениях
+                    float sensitivity = Mathf.Clamp01(mouseDelta.magnitude / 10f);
+                    mouseDelta *= sensitivity;
 
-                    Vector3 newPosition = transform.localPosition + new Vector3(moveX, 0, moveZ);
+                    Vector3 move = transform.right * mouseDelta.x + transform.forward * mouseDelta.y;
+                    move.y = 0;
 
-                    // Ограничения
-                    newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
-                    newPosition.z = Mathf.Clamp(newPosition.z, minZ, maxZ);
-                    newPosition.y = transform.localPosition.y; // Y остаётся прежним
+                    Vector3 targetPosition = transform.position - move;
+                    targetPosition = ClampCameraPosition(targetPosition);
 
-                    transform.localPosition = newPosition;
-
+                    transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
                     dragOrigin = Input.mousePosition;
                 }
+
+
             }
         }
     }
+    private Vector3 ClampCameraPosition(Vector3 targetPosition)
+    {
+        float heightFactor = Mathf.InverseLerp(minHeight, maxHeight, targetPosition.y);
+        float padding = Mathf.Lerp(edgePadding * 0.5f, edgePadding, heightFactor);
 
+        targetPosition.x = Mathf.Clamp(
+            targetPosition.x,
+            mapMinBounds.x + padding,
+            mapMaxBounds.x - padding
+        );
+
+        targetPosition.z = Mathf.Clamp(
+            targetPosition.z,
+            mapMinBounds.y + padding,
+            mapMaxBounds.y - padding
+        );
+
+        return targetPosition;
+    }
     public void SetPlayMood()
     {
         isPlay=true;
@@ -134,4 +168,26 @@ public class CameraController : MonoBehaviour
         }
         isPlay = true;
     }
+     #if UNITY_EDITOR
+    void OnDrawGizmosSelected()
+    {
+        // Визуализация границ в редакторе
+        Vector3 center = new Vector3(
+            (mapMinBounds.x + mapMaxBounds.x) * 0.5f,
+            0,
+            (mapMinBounds.y + mapMaxBounds.y) * 0.5f
+        );
+        
+        Vector3 size = new Vector3(
+            mapMaxBounds.x - mapMinBounds.x,
+            0.1f,
+            mapMaxBounds.y - mapMinBounds.y
+        );
+        
+        Gizmos.color = new Color(1, 0, 0, 0.3f);
+        Gizmos.DrawCube(center, size);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(center, size);
+    }
+    #endif
 }

@@ -24,9 +24,11 @@ public class HrRoom : MonoBehaviour
     private PlayerWallet wallet;
 
     public Meneger[] menegersScript;
-
-
     public List<string> TargetTypes = new List<string>();
+    public PlayerMovement _plMove;
+    public GameObject _joystick;
+    private float _tempPlayerSpeed;
+
 
     void Start()
     {
@@ -428,8 +430,8 @@ public class HrRoom : MonoBehaviour
         if (other.GetComponent<PlayerMovement>() != null)
         {
             menu.SetActive(true);
-            buttonsHide.SetActive(false);
-            AddBaner.SetActive(false);
+            //buttonsHide.SetActive(false);
+            //AddBaner.SetActive(false);
         }
     }
 
@@ -438,8 +440,8 @@ public class HrRoom : MonoBehaviour
         if (other.GetComponent<PlayerMovement>() != null)
         {
             menu.SetActive(false);
-            buttonsHide.SetActive(true);
-            AddBaner.SetActive(true);
+            //buttonsHide.SetActive(true);
+            //AddBaner.SetActive(true);
         }
     }
 }
