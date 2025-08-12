@@ -10673,7 +10673,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -254.89539, y: 148.02063}
+  m_AnchoredPosition: {x: -248, y: 148.02063}
   m_SizeDelta: {x: 220.653, y: 220.653}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &191108364
@@ -29785,7 +29785,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 71.104614, y: 148.02063}
+  m_AnchoredPosition: {x: 59, y: 148.02063}
   m_SizeDelta: {x: 220.653, y: 220.653}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &452053197
@@ -49826,6 +49826,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5461974351132095008, guid: 552facb153f535b4f88bc4d28f82c8d4, type: 3}
+      propertyPath: money
+      value: 
+      objectReference: {fileID: 1776931913447406091, guid: 3c26bc3a639ea494e816901e8c5f7d85, type: 3}
+    - target: {fileID: 5461974351132095008, guid: 552facb153f535b4f88bc4d28f82c8d4, type: 3}
       propertyPath: Confity
       value: 
       objectReference: {fileID: 1678450305}
@@ -55526,7 +55530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030517578, y: -0.000030517578}
+  m_AnchoredPosition: {x: -8, y: -0.000030517578}
   m_SizeDelta: {x: 261.09, y: 111.9954}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &856747844
@@ -60989,7 +60993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &927545377
 Transform:
   m_ObjectHideFlags: 0
@@ -76660,7 +76664,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 386, y: 411.02063}
+  m_AnchoredPosition: {x: 360, y: 411.02063}
   m_SizeDelta: {x: 90.75708, y: 90.75708}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1145708548
@@ -92015,6 +92019,10 @@ PrefabInstance:
       propertyPath: _PriceOfCash
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8595701866329958876, guid: 793dc47101f5d0c4b95d65795123b1a5, type: 3}
+      propertyPath: _MoneyEffectObj
+      value: 
+      objectReference: {fileID: 1776931913447406091, guid: 3c26bc3a639ea494e816901e8c5f7d85, type: 3}
     - target: {fileID: 8646066177969106619, guid: 793dc47101f5d0c4b95d65795123b1a5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.959991
@@ -99670,7 +99678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4417621272415741588, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4946586976960212894, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -99690,7 +99698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5760209077378004690, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 45.73
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 5823209556432705570, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -105805,7 +105813,7 @@ MonoBehaviour:
   maxX: -442
   minZ: -254
   maxZ: -219
-  dragSpeed: 120
+  dragSpeed: 60
   smoothTime: 0.15
   minHeight: 5
   maxHeight: 30
@@ -136123,7 +136131,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 387.1046, y: 148.02063}
+  m_AnchoredPosition: {x: 363, y: 148.02063}
   m_SizeDelta: {x: 220.653, y: 220.653}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2110943403
@@ -138868,7 +138876,7 @@ PrefabInstance:
     - target: {fileID: 3433455002323945335, guid: 6561a4621fc6da84280a32406023f4c4, type: 3}
       propertyPath: MoneyEffectSpr
       value: 
-      objectReference: {fileID: 3222462727461387241, guid: 8d17daf5ce6d8b54e9475147bbd9452e, type: 3}
+      objectReference: {fileID: 1776931913447406091, guid: 3c26bc3a639ea494e816901e8c5f7d85, type: 3}
     - target: {fileID: 3803321610663547920, guid: 6561a4621fc6da84280a32406023f4c4, type: 3}
       propertyPath: m_IsActive
       value: 0
