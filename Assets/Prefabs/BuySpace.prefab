@@ -692,12 +692,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 0}
-  money: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
+  money: {fileID: 1776931913447406091, guid: 3c26bc3a639ea494e816901e8c5f7d85, type: 3}
   PriceText: {fileID: 6686684883817378740}
   ProgressBar: {fileID: 9104953318445779501}
   price: 25
   startPrice: 0
   type: 
+  Confity: {fileID: 0}
   NewZone: {fileID: 2586665562275153098}
   MoneyZoneSpr: {fileID: 421890948412713781}
   MoneyOtherSpr: {fileID: 499720356910626633}

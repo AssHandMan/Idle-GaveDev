@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1644534246888053992}
   - component: {fileID: -2677344603916217692}
   m_Layer: 0
-  m_Name: SI_Prop_MoneyStack_01 (1)
+  m_Name: MoneyEff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
