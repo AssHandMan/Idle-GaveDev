@@ -215,7 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   station: {fileID: 1469687513428422464}
   filter: {fileID: 5913325761970161156}
-  trash: {fileID: 4496556255211700070, guid: 660ea1e4642ced1439538756e32cf5e4, type: 3}
+  trash: {fileID: 4496556255211700070, guid: 3a460c26a4d71864fa58cb182212c8db, type: 3}
   TrashViewe: {fileID: 0}
   Main: {fileID: 0}
   CustomerPos: {fileID: 1227314069284418578}

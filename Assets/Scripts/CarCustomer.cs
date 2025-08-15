@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,9 +16,11 @@ public class CarCustomer : MonoBehaviour
 
     private float MaxSpeed;
     private Rigidbody rb;
-
+    [SerializeField] private List<GameObject> _models = new List<GameObject>();
+    public GameObject model;
     void Start()
     {
+        SelectModel();
         rb = GetComponent<Rigidbody>();
         MaxSpeed = speed;
         CountObjImg.text = BuyObjCount.ToString();
@@ -57,6 +60,10 @@ public class CarCustomer : MonoBehaviour
             Destroy(CountObjImg);
             meneger.CountOfCars--;
         }
+    }
+    private void SelectModel()
+    {
+        Instantiate(_models[Random.Range(0, _models.Count)],model.transform);
     }
 
     public void OnTriggerEnter(Collider other)
