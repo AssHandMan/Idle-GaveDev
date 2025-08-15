@@ -53,6 +53,28 @@ public class UpgreadeSceneMeneger : MonoBehaviour
         {
             BuyNext();
         }
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            Load();
+        }
+    }
+
+    public void Load()
+    {
+        UpgreadeMapData data = SaveMeneger.LoadMapProgress();
+        if (data != null)
+        {
+            for (int i = 0; i < data.LustPlace; i++)
+            {
+                NewSpaces[i].Buy(true);
+            }
+            surface.BuildNavMesh();
+            LustPlace = NewSpaces.Length;
+        }
+    }
+    public void Save()
+    {
+        SaveMeneger.SaveMapProgress(this);
     }
 
     public void Destenition()

@@ -623,10 +623,18 @@ MonoBehaviour:
   CallTime: 0
   SleepTime: 0
   step: 0
+  MaxCallTime: 200
+  MaxSleepTime: 200
   agent: {fileID: 8373679091880906631}
   target: 
   meneger: {fileID: 0}
   BuyObjCount: 0
+  PoorCount: 1
+  PoorMaxCount: 4
+  RichCount: 4
+  RichMaxCount: 10
+  BlogerCount: 10
+  BlogerMuxCount: 16
   st: {fileID: 0}
   machine: {fileID: 0}
   PoorSkins:

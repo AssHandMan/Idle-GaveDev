@@ -14,13 +14,13 @@ public class Customer : MonoBehaviour
     public Text OrderCount;
     public Canvas canvas;
     public bool isCalling, isSleeping;
-    public float CallTime, SleepTime, step;
+    public float CallTime, SleepTime, step, MaxCallTime, MaxSleepTime;
     private Rigidbody rb;
     public NavMeshAgent agent;
     private string[] BuyType = { "Buy", "Play" };
     public string target;
     public CustomersMeneger meneger;
-    public int BuyObjCount;
+    public int BuyObjCount, PoorCount, PoorMaxCount, RichCount, RichMaxCount, BlogerCount, BlogerMuxCount;
     public SellStation st;
     public ArcadeMachine machine;
     public GameObject[] PoorSkins, RichSkins, BloggerSkins;
@@ -157,17 +157,17 @@ public class Customer : MonoBehaviour
         if(type == 0) 
         { 
             PoorSkins[UnityEngine.Random.Range(0, PoorSkins.Length)].SetActive(true);
-            BuyObjCount = UnityEngine.Random.Range(1, 4);
+            BuyObjCount = UnityEngine.Random.Range(PoorCount, PoorMaxCount);
         }
         else if (type == 1) 
         { 
             RichSkins[UnityEngine.Random.Range(0, RichSkins.Length)].SetActive(true);
-            BuyObjCount = UnityEngine.Random.Range(4, 10);
+            BuyObjCount = UnityEngine.Random.Range(RichCount, RichMaxCount);
         }
         else 
         { 
             BloggerSkins[UnityEngine.Random.Range(0, BloggerSkins.Length)].SetActive(true);
-            BuyObjCount = UnityEngine.Random.Range(10, 16);
+            BuyObjCount = UnityEngine.Random.Range(BlogerCount, BlogerMuxCount);
         }
     }
 
@@ -325,7 +325,7 @@ public class Customer : MonoBehaviour
     public void MakeCall()
     {
         OrderBar.SetActive(false);
-        CallTime = 200;
+        CallTime = MaxCallTime;
         step = CallTime;
         CallBar.fillAmount = 1;
         CallIcon.SetActive(true);
@@ -337,7 +337,7 @@ public class Customer : MonoBehaviour
     }
     public void Sleep()
     {
-        SleepTime = 200;
+        SleepTime = MaxSleepTime;
         step = SleepTime;
         SleepBar.fillAmount = 1;
         SleepIcon.SetActive(true);

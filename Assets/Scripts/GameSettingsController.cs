@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
@@ -25,13 +26,50 @@ public class GameSettingsController : MonoBehaviour
         Music = GetComponent<AudioSource>();
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
         PlayerStartPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-        SetVibrate();
-        SetMusic();
+        
+        if (!PlayerPrefs.HasKey("Vibration")) { SetVibrate(); }
+        else
+        {
+            if(PlayerPrefs.GetInt("Vibration") == 0) { vibrations = false; }
+            else { vibrations = true; }
+            wallet.SetVibrations(vibrations);
+            HarpticButton.SetBool("isOn", vibrations);
+        }
+
+        if (!PlayerPrefs.HasKey("Music")) { SetMusic(); }
+        else
+        {
+            if (PlayerPrefs.GetInt("Music") == 0) { music = true; }
+            else { music = false; }
+            SetMusic();
+            
+        }
+
+        StartCoroutine(InitLanguage());
     }
 
-    void Update()
+    private IEnumerator InitLanguage()
     {
-        
+        yield return LocalizationSettings.InitializationOperation;
+
+        string savedCode = PlayerPrefs.GetString("LanguageCode", "");
+        if (!string.IsNullOrEmpty(savedCode) &&
+            savedCode != LocalizationSettings.SelectedLocale.Identifier.Code)
+        {
+            foreach (var loc in LocalizationSettings.AvailableLocales.Locales)
+            {
+                if (loc.Identifier.Code == savedCode)
+                {
+                    LocalizationSettings.SelectedLocale = loc;
+
+                    string s = NowLanguageTxt.text;
+                    NowLanguageTxt.text = LanguageTxt.text;
+                    LanguageTxt.text = s;
+
+                    break;
+                }
+            }
+        }
     }
 
     public void OpenClose()
@@ -62,6 +100,7 @@ public class GameSettingsController : MonoBehaviour
             Music.Play();
         }
         SoundsButton.SetBool("isOn", music);
+        SaveSettings();
     }
     public void SetVibrate()
     {
@@ -69,6 +108,7 @@ public class GameSettingsController : MonoBehaviour
         else { vibrations = true; }
         wallet.SetVibrations(vibrations);
         HarpticButton.SetBool("isOn", vibrations);
+        SaveSettings();
     }
 
     public void EmergencyEscape()
@@ -99,19 +139,36 @@ public class GameSettingsController : MonoBehaviour
     {
         if (ActiveChange)
             return;
+
         string s = NowLanguageTxt.text;
         NowLanguageTxt.text = LanguageTxt.text;
         LanguageTxt.text = s;
         ShowLanguages();
-        if(LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0]) { StartCoroutine(SetLocal(1)); }
-        else { StartCoroutine(SetLocal(0)); }
+
+        if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+            StartCoroutine(SetLocal(1));
+        else
+            StartCoroutine(SetLocal(0));
     }
 
     private IEnumerator SetLocal(int id)
     {
         ActiveChange = true;
         yield return LocalizationSettings.InitializationOperation;
-        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[id];
+
+        var locale = LocalizationSettings.AvailableLocales.Locales[id];
+        LocalizationSettings.SelectedLocale = locale;
+
+        PlayerPrefs.SetString("LanguageCode", locale.Identifier.Code);
+        PlayerPrefs.Save();
+
         ActiveChange = false;
+    }
+
+    private void SaveSettings()
+    {
+        PlayerPrefs.SetInt("Vibration", vibrations ? 1 : 0);
+        PlayerPrefs.SetInt("Music", music ? 1 : 0);
+        PlayerPrefs.Save();
     }
 }
