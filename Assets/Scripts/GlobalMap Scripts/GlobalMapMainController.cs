@@ -14,6 +14,7 @@ public class GlobalMapMainController : MonoBehaviour
     public Text MessegeOpeShopName, countShopsTxt;
     private int ShopToOpen, CountShops = 1;
     public bool[] OpenShops;
+    public ShopOnGlobalMap[] shops;
     private ShopOnGlobalMap shopNow;
 
     public GameObject StatsShopMenu, StorageEng, StorageRus;
@@ -25,13 +26,41 @@ public class GlobalMapMainController : MonoBehaviour
     [SerializeField] private GameObject UiShowHide, Money, Diamonds, Skins, UiGlobalMap;
     void Start()
     {
-        
+        Load();
     }
 
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.U))
+        {
+            Save();
+        }
     }
+
+    public void Load()
+    {
+        GlobalMapData data = SaveMeneger.LoadGlobalMap();
+        if (data != null)
+        {
+            Debug.Log(data.OpenShops[0].ToString() + data.OpenShops[1].ToString() + data.OpenShops[2].ToString());
+            for (int i = 1; i < data.OpenShops.Length; i++)
+            {
+                if (data.OpenShops[i]) 
+                {
+                    OpenShops[i] = true;
+                    CountShops++;
+                    countShopsTxt.text = CountShops.ToString();
+                    shops[i].LoadShop();
+                }
+            }
+        }
+    }
+    public void Save()
+    {
+        SaveMeneger.SaveGlobalMap(this);
+        Debug.Log(OpenShops[0].ToString() + OpenShops[1].ToString() + OpenShops[2].ToString());
+    }
+
     public void CloseMessege()
     {
         MessegeClose.SetActive(false);
@@ -60,6 +89,7 @@ public class GlobalMapMainController : MonoBehaviour
         ShopToOpen = -1;
         CountShops++;
         countShopsTxt.text = CountShops.ToString();
+        Save();
         CloseMessege();
     }
 

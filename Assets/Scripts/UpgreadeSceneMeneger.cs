@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Unity.AI.Navigation;
+using System;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 public class UpgreadeSceneMeneger : MonoBehaviour
 {
@@ -30,6 +32,8 @@ public class UpgreadeSceneMeneger : MonoBehaviour
     private BuySpace LustBuySpace;
     private int[] UpgreadeIndex = new int[] { 8, 17, 19, 20, 21, 22, 24, 26, 27, 37, 38, 39, 40, 41, 45, 46, 47, 48, 49, 50, 51, 55, 56, 58, 61, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85 };
     int[] IndexForCountNextLvl = { 0, 4, 8, 14, 22, 29, 41, 51, 60, 70, 84 };
+    private bool Loading;
+
     void Start()
     {
         CountLvl.text = lvl.ToString();
@@ -41,6 +45,7 @@ public class UpgreadeSceneMeneger : MonoBehaviour
             NewSpaces[i].transform.localPosition = lPos[i];
         }
         LustBuySpace = NewSpaces[0];
+        Load();
     }
 
     void Update()
@@ -53,10 +58,6 @@ public class UpgreadeSceneMeneger : MonoBehaviour
         {
             BuyNext();
         }
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            Load();
-        }
     }
 
     public void Load()
@@ -64,18 +65,22 @@ public class UpgreadeSceneMeneger : MonoBehaviour
         UpgreadeMapData data = SaveMeneger.LoadMapProgress();
         if (data != null)
         {
-            for (int i = 0; i < data.LustPlace; i++)
+            Loading = true;
+            int count = data.LustPlace;
+            for (int i = 0; i < count; i++)
+            {
+                LevelUp(NewSpaces[i]);
+            }
+            for (int i = 0; i < count; i++)
             {
                 NewSpaces[i].Buy(true);
             }
+            LustPlace = count;
+            Loading = false;
             surface.BuildNavMesh();
-            LustPlace = NewSpaces.Length;
         }
     }
-    public void Save()
-    {
-        SaveMeneger.SaveMapProgress(this);
-    }
+    public void Save() { SaveMeneger.SaveMapProgress(this); }
 
     public void Destenition()
     {
@@ -118,9 +123,10 @@ public class UpgreadeSceneMeneger : MonoBehaviour
                 break;
             }
         }
-        ExpController.InscreaseExP(space.station);
+        if(!Loading) { ExpController.InscreaseExP(space.station); }
         lvl++;
         CountLvl.text = lvl.ToString();
+        Save();
         surface.BuildNavMesh();
     }
 

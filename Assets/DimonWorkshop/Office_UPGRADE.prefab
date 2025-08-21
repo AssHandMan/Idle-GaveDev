@@ -4249,7 +4249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3215010862298225126
 Transform:
   m_ObjectHideFlags: 0
@@ -8561,6 +8561,8 @@ MonoBehaviour:
   OrderBoard: {fileID: 4999192828809762069}
   speed: -5
   BuyObjCount: 0
+  _models: []
+  model: {fileID: 0}
 --- !u!54 &7216483867188695456
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9487,6 +9489,9 @@ MonoBehaviour:
   CountAds: 0
   adsPlayer: {fileID: 0}
   AdsScreen: {fileID: 0}
+  ButtonsBuySpeed: {fileID: 0}
+  ButtonsBuyCapacity: {fileID: 0}
+  ButtonsBuyProfit: {fileID: 0}
   settings: {fileID: 0}
 --- !u!4 &3061859873784645474 stripped
 Transform:

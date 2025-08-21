@@ -217,6 +217,7 @@ public class BatlPassParser : MonoBehaviour
         if(type == "m")
         {
             isMeneger = true;
+            expController.isMeneger = true;
             MenegerBtn.SetActive(false);
             for (int i = 0; i < Romb.Count;  i++)
             {
@@ -230,6 +231,7 @@ public class BatlPassParser : MonoBehaviour
         else if (type == "c")
         {
             isCEO = true;
+            expController.isCEO = true;
             CEOBtn.SetActive(false);
             for (int i = 0; i < Romb.Count; i++)
             {
@@ -241,6 +243,7 @@ public class BatlPassParser : MonoBehaviour
             }
         }
         AttentionSymbol.SetActive(true);
+        expController.Save();
     }
 
     private void Start()

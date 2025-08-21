@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 using UnityEngine.UI;
 using static Solo.MOST_IN_ONE.Most_HapticFeedback;
@@ -18,6 +19,7 @@ public class PlayerWallet : MonoBehaviour
     private float MoneyForEvent;
     public GameObject MoneyEffectSpr;
     public Canvas canvas;
+    public UpgreadeRoom room;
     private bool inProgress, vibrations;
     public TypeAccount typeAccount;
 
@@ -28,6 +30,7 @@ public class PlayerWallet : MonoBehaviour
         TextForm(Skins, Stext);
         TextForm(Money, Mtext2);
         TextForm(Diamonds, Dtext2);
+        Load();
     }
 
     // Update is called once per frame
@@ -35,14 +38,14 @@ public class PlayerWallet : MonoBehaviour
     {
     }
     public void AddMoneyEvent()
-    {   
-        if(inProgress)
+    {
+        if (inProgress)
         {
             ChangeCount(MoneyForEvent, "Money");
             StopAllCoroutines();
         }
         MoneyForEvent = UnityEngine.Random.Range(30, 50);
-        EventText.text = "$0";  
+        EventText.text = "$0";
         EventText.gameObject.SetActive(true);
         StartCoroutine(AddingMoneyEvent());
         inProgress = true;
@@ -56,7 +59,7 @@ public class PlayerWallet : MonoBehaviour
             EventText.text = "$" + i;
         }
         yield return new WaitForSeconds(1.5f);
-        
+
         int CountMoneyImage = ((int)MoneyForEvent) / 5;
         for (int i = 0; i <= CountMoneyImage; i++)
         {
@@ -64,7 +67,7 @@ public class PlayerWallet : MonoBehaviour
             Instantiate(MoneyEffectSpr, canvas.transform, false);
         }
         ChangeCount(MoneyForEvent, "Money");
-        
+
         EventText.gameObject.SetActive(false);
         inProgress = false;
     }
@@ -72,12 +75,12 @@ public class PlayerWallet : MonoBehaviour
 
     public void ChangeCount(float count, string type)
     {
-        if(type == "Money")
+        if (type == "Money")
         {
-            if (count > 0) 
-            { 
-                Money += Convert.ToInt32(count * MoneyMultiplier); 
-                Vibrate(); 
+            if (count > 0)
+            {
+                Money += Convert.ToInt32(count * MoneyMultiplier);
+                Vibrate();
             }
             else { Money += Convert.ToInt32(count); }
             TextForm(Money, Mtext);
@@ -94,7 +97,30 @@ public class PlayerWallet : MonoBehaviour
             Skins += Convert.ToInt32(count);
             TextForm(Skins, Stext);
         }
+        Save();
     }
+
+    public void GetMoney(int count)
+    {
+        Money += count;
+    }
+
+    public void Load()
+    {
+       WalletData data = SaveMeneger.LoadWallet();
+        if (data != null)
+        {
+            Money = data.money;
+            Diamonds = data.diamonds;
+            Skins = data.skins;
+            TextForm(Money, Mtext);
+            TextForm(Money, Mtext2);
+            TextForm(Diamonds, Dtext);
+            TextForm(Diamonds, Dtext2);
+            TextForm(Skins, Stext);
+        }
+    }
+    public void Save() { SaveMeneger.SaveWallet(this); }
 
     private void Vibrate()
     {

@@ -11,6 +11,7 @@ public class ExpLvlController : MonoBehaviour
     [SerializeField] private Image ExpBar;
     public int lvl, CountExP, MaxExPLvl;
     [SerializeField] private Text textLvl, textprogressBar;
+    public bool isMeneger, isCEO;
 
     [SerializeField] private GameObject starPrefab; // Префаб звезды
     [SerializeField] private RectTransform starSpawnPoint; // Центр экрана (например, пустой объект в Canvas)
@@ -21,13 +22,50 @@ public class ExpLvlController : MonoBehaviour
     void Start()
     {
         MaxExPLvl = 3;
-
+        Load();
     }
 
     void Update()
     {
-
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            Save();
+        }
     }
+
+    public void Load()
+    {
+        ExpLvlData data = SaveMeneger.LoadExpLvl();
+        if (data != null)
+        {
+            MaxExPLvl = data.expMax;
+            CountExP = data.exp;
+            lvl = data.lvl;
+            if(CountExP == MaxExPLvl) { MaxExPLvl = BuyMeneger.GetMaxLvl() * 3; }
+            ExpBar.fillAmount = (float)CountExP / MaxExPLvl;
+            textprogressBar.text = CountExP.ToString() + "/" + MaxExPLvl.ToString();
+            textLvl.text = lvl.ToString();
+            textprogressBar.text = CountExP.ToString() + "/" + MaxExPLvl.ToString();
+            ExpMenu.SetActive(true);
+            if (data.Meneger) { parser.ButNewTypeAccount("m"); }
+            if (data.CEO) { parser.ButNewTypeAccount("c"); }
+            StartCoroutine(GetNewLvlForParser());
+        }
+    }
+
+    private IEnumerator GetNewLvlForParser()
+    {
+        yield return new WaitForSeconds(0.15f);
+        for(int i = 1; i <= lvl; i++)
+        {
+            parser.GetNewLvl(i);
+        }
+    }
+    public void Save()
+    {
+        SaveMeneger.SaveExpLvl(this);
+    }
+
 
 
     public void InscreaseExP(GameObject station)
@@ -54,15 +92,14 @@ public class ExpLvlController : MonoBehaviour
                     ExpBar.fillAmount = (float)CountExP / MaxExPLvl;
                     parser.GetNewLvl(lvl);
                     parser.ShowNewLvlMenu(lvl);
+                    Save();
                 }));
             }
-            if (!ExpMenu.activeSelf)
-            {
-                ExpMenu.SetActive(true);
-            }
         }
+        if(!ExpMenu.activeSelf) { ExpMenu.SetActive(true); }
         ExpBar.fillAmount = (float)CountExP / MaxExPLvl;
         textprogressBar.text = CountExP.ToString() + "/" + MaxExPLvl.ToString();
+        Save();
     }
 
     private IEnumerator PlayLevelUpStars(Action onComplete)

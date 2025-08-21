@@ -7,7 +7,7 @@ public class UpgreadeMapData
     public int LustPlace;
     public UpgreadeMapData(UpgreadeSceneMeneger meneger)
     {
-        LustPlace = meneger.LustPlace;
+        LustPlace = meneger.lvl;
     }
 
 }

@@ -28,17 +28,51 @@ public class UpgreadeRoom : MonoBehaviour
     public VideoPlayer adsPlayer;
     public GameObject AdsScreen, ButtonsBuySpeed, ButtonsBuyCapacity, ButtonsBuyProfit;
     public GameSettingsController settings;
+    private bool canSave;
     void Start()
     {
         SpeedCount.text = SpeedPrice[speed].ToString();
         CapacityCount.text = CapacityPrice[capacity].ToString();
         ProfitCount.text = ProfitPrice[profit].ToString();
+        canSave = true; 
+        Load();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void Load()
+    {
+        PlayerData data = SaveMeneger.LoadPlayer();
+        if (data != null)
+        {
+            
+            canSave = false;
+
+           for(int i = 0; i < data.speed; i++)
+           {
+                wallet.GetMoney(SpeedPrice[speed]);
+                BuySpeed(false);
+           }
+           for(int i = 0; i < data.capacity; i++)
+           {
+                wallet.GetMoney(CapacityPrice[capacity]);
+                BuyCapacity(false);
+           }
+           for(int i = 0; i < data.profit; i++)
+           {
+                wallet.GetMoney(ProfitPrice[profit]);
+                BuyProfit(false);
+           }
+            canSave = true;
+        }
+    }
+
+    public void Save() 
+    { 
+        SaveMeneger.SavePlayer(this);
     }
 
     private void BuyAdvertisement()
@@ -75,6 +109,7 @@ public class UpgreadeRoom : MonoBehaviour
                     if (speed == 5) { ButtonsBuySpeed.SetActive(false); }
                     else { SpeedCount.text = SpeedPrice[speed].ToString(); }
                     BuyAdvertisement();
+                    if (canSave) { Save(); }
                 }
             }
             else
@@ -87,6 +122,7 @@ public class UpgreadeRoom : MonoBehaviour
                     speed++;
                     if (speed == 5) { ButtonsBuySpeed.SetActive(false); }
                     else { SpeedCount.text = SpeedPrice[speed].ToString(); }
+                    if (canSave) { Save(); }
                 }
             }
         }
@@ -106,6 +142,7 @@ public class UpgreadeRoom : MonoBehaviour
                     if (capacity == 5) { ButtonsBuyCapacity.SetActive(false); }
                     else { CapacityCount.text = CapacityPrice[capacity].ToString(); }
                     BuyAdvertisement();
+                    if (canSave) { Save(); }
                 }
             }
             else
@@ -118,6 +155,7 @@ public class UpgreadeRoom : MonoBehaviour
                     capacity++;
                     if (capacity == 5) { ButtonsBuyCapacity.SetActive(false); }
                     else { CapacityCount.text = CapacityPrice[capacity].ToString(); }
+                    if (canSave) { Save(); }
                 }
             }
         }
@@ -137,6 +175,7 @@ public class UpgreadeRoom : MonoBehaviour
                     if (profit == 5) { ButtonsBuyProfit.SetActive(false); }
                     else { ProfitCount.text = ProfitPrice[profit].ToString(); }
                     BuyAdvertisement();
+                    if (canSave) { Save(); }
                 }
             }
             else
@@ -149,6 +188,7 @@ public class UpgreadeRoom : MonoBehaviour
                     profit++;
                     if (profit == 5) { ButtonsBuyProfit.SetActive(false); }
                     else { ProfitCount.text = ProfitPrice[profit].ToString(); }
+                    if (canSave) { Save(); }
                 }
             }
         }
@@ -173,5 +213,12 @@ public class UpgreadeRoom : MonoBehaviour
         {
             menu.SetActive(false);
         }
+    }
+
+    public int Get(string s)
+    {
+        if(s == "s") { return speed; }
+        else if(s == "p") { return profit; }
+        else { return capacity; }
     }
 }

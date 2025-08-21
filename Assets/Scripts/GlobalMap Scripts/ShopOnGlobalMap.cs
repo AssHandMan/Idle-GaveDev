@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections;
 using UnityEngine;
@@ -33,25 +32,6 @@ public class ShopOnGlobalMap : MonoBehaviour
             ClosedObj.SetActive(false);
         }
 
-        StartCoroutine(GetServerTime((serverTime) => {
-            if (isBuy)
-            {
-                double secondsAway = CheckLastLogin(serverTime);
-                cachedTimeAway = secondsAway;
-                if (secondsAway >= 10)
-                {
-                    MoneyBreake = Convert.ToInt32(secondsAway / 10) * perSecReward;
-                    if (MoneyBreake > MaxStorage) { MoneyBreake = MaxStorage; }
-                    MoneyCount.text = MoneyBreake.ToString();
-                    CollectBtn.SetActive(true);
-                }
-            }
-        }));
-        
-        if(isBuy && SceneManager.GetActiveScene().name != SceneName)
-        {
-            StartEarningOfflineMoney();
-        }
     }
 
     void Update()
@@ -93,6 +73,26 @@ public class ShopOnGlobalMap : MonoBehaviour
         {
             StartEarningOfflineMoney();
         }
+    }
+        
+    public void LoadShop()
+    {
+        OpenShop();
+        //Debug.Log(gameObject.name + "!!!!!!!!!!");
+        StartCoroutine(GetServerTime((serverTime) => {
+            if (isBuy)
+            {
+                double secondsAway = CheckLastLogin(serverTime);
+                cachedTimeAway = secondsAway;
+                if (secondsAway >= 10)
+                {
+                    MoneyBreake = (float)(secondsAway / 10.0 * perSecReward);
+                    if (MoneyBreake > MaxStorage) { MoneyBreake = MaxStorage; }
+                    MoneyCount.text = MoneyBreake.ToString();
+                    CollectBtn.SetActive(true);
+                }
+            }
+        }));
     }
 
     private double CheckLastLogin(DateTime now)

@@ -17,9 +17,9 @@ public class HrRoom : MonoBehaviour
     public TextMeshProUGUI[] LvlTxt;
     public bool[] BoughtMenegres;
     public int[] lvl;
-    private float[,] price = { { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 } };
+    private int[,] price = { { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 } };
     private float[,] priceDiamonds = { { 1, 2, 3, 4, 5, 6, 7 }, { 1, 2, 3, 4, 5, 6, 7 }, { 1, 2, 3, 4, 5, 6, 7 }, { 1, 2, 3, 4, 5, 6, 7 }, { 1, 2, 3, 4, 5, 6, 7 }, { 1, 2, 3, 4, 5, 6, 7 }, { 1, 2, 3, 4, 5, 6, 7 } };
-    private float[] UpgreadStats = { 8, 4, 8, 11, 7, 15, 14, 10, 22, 18, 13, 30 };
+    private float[] UpgreadStats = { 0, 8, 4, 8, 11, 7, 15, 14, 10, 22, 18, 13, 30 };
     private PlayerMovement plr;
     private PlayerWallet wallet;
 
@@ -28,7 +28,7 @@ public class HrRoom : MonoBehaviour
     public PlayerMovement _plMove;
     public GameObject _joystick;
     private float _tempPlayerSpeed;
-
+    private bool canSave;
 
     void Start()
     {
@@ -40,6 +40,8 @@ public class HrRoom : MonoBehaviour
         {
             PriceDiamondsButton[i].text = "1";
         }
+        canSave = true;
+        Load();
     }
 
 
@@ -47,10 +49,36 @@ public class HrRoom : MonoBehaviour
     {
 
     }
+    public void Load()
+    {
+        MenegersData data = SaveMeneger.LoadMenegers();
+        if(data != null)
+        {
+            canSave = false;
+            int[] loadsLvls = data.lvl;
+            for (int i = 0; i < loadsLvls.Length; i++)
+            {
+                if (loadsLvls[i] >= 0)
+                {
+                    for(int j = 0; j <= loadsLvls[i]; j++)
+                    {
+                        wallet.GetMoney(price[i, lvl[i] + 1]);
+                        BuyButton(i);
+                    }
+                }
+            }
+            canSave = true;
+        }
+        
+    }
+
+    public void Save()
+    {
+        SaveMeneger.SaveMenegers(this);
+    }
 
     public bool CheckWork(string type)
     {
-
 
         int count = 0;
 
@@ -85,10 +113,11 @@ public class HrRoom : MonoBehaviour
 
     public void BuyButton(int name)
     {
-        if (!BoughtMenegres[name] && wallet.Money >= price[name, lvl[name]])
+        if (!BoughtMenegres[name] && wallet.Money >= price[name, lvl[name]+1])
         {
             if (name == 0 || (name > 0 & BoughtMenegres[name - 1] == true))
             {
+                lvl[name] = 0;
                 wallet.ChangeCount(-price[name, lvl[name]], "Money");
                 BoughtMenegres[name] = true;
                 LockCover[name].SetActive(false);
@@ -249,6 +278,7 @@ public class HrRoom : MonoBehaviour
         }
 
         LvlTxt[name].text = "LV." + Convert.ToString(lvl[name]);
+        if (canSave) { Save(); }
     }
 
     public void BuyDiamondsButton(int name)
@@ -416,6 +446,7 @@ public class HrRoom : MonoBehaviour
             }
         }
         LvlTxt[name].text = "LV." + Convert.ToString(lvl[name]);
+        if (canSave) { Save(); }
     }
 
     public void OpenClose()

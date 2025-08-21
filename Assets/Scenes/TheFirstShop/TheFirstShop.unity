@@ -38900,6 +38900,10 @@ MonoBehaviour:
   MessegeOpeShopName: {fileID: 362641903}
   countShopsTxt: {fileID: 1074999890}
   OpenShops: 010000
+  shops:
+  - {fileID: 1070892796}
+  - {fileID: 1143908514}
+  - {fileID: 1987613084}
   StatsShopMenu: {fileID: 1281943106}
   StorageEng: {fileID: 1411004529}
   StorageRus: {fileID: 0}
@@ -75871,6 +75875,8 @@ MonoBehaviour:
   MaxExPLvl: 0
   textLvl: {fileID: 723369425}
   textprogressBar: {fileID: 1638071716}
+  isMeneger: 0
+  isCEO: 0
   starPrefab: {fileID: 7578334467291514834, guid: e3f05b6b4a3961d428ca56744560ee94, type: 3}
   starSpawnPoint: {fileID: 870214328}
   targetUIElement: {fileID: 2125262912}
@@ -99644,7 +99650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4417621272415741588, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4946586976960212894, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -130836,7 +130842,7 @@ MonoBehaviour:
   - {fileID: 1340098089}
   - {fileID: 575786209}
   BoughtMenegres: 00000000000000
-  lvl: 00000000000000000000000000000000000000000000000000000000
+  lvl: ffffffffffffffffffffffffffffffffffffffffffffffffffffffff
   menegersScript:
   - {fileID: 9114092997349357857}
   - {fileID: 1195274431}
@@ -138804,6 +138810,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3433455002323945335, guid: 6561a4621fc6da84280a32406023f4c4, type: 3}
+      propertyPath: room
+      value: 
+      objectReference: {fileID: 1236343516}
     - target: {fileID: 3433455002323945335, guid: 6561a4621fc6da84280a32406023f4c4, type: 3}
       propertyPath: Dtext
       value: 

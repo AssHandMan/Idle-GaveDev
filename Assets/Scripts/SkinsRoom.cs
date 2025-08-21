@@ -40,6 +40,7 @@ public class SkinsRoom : MonoBehaviour
 
         //Firebase TEST EVENT
         fireBase_obj = Object.FindFirstObjectByType<FireBaseIniti>();
+        Load();
     }
 
     void Update()
@@ -53,6 +54,33 @@ public class SkinsRoom : MonoBehaviour
            StartCoroutine(CurtainTimeChange(pos));
         }
     }
+
+    public void Load()
+    {
+        SkinData data = SaveMeneger.LoadSkin();
+        if(data != null)
+        {
+            isBuy = data.isBuy;
+            SkinNow = data.SkinNow;
+
+            for (int i = 0; i < Player.Length; i++)
+            {
+                if (i != SkinNow) { Player[i].SetActive(false); }
+                else { Player[i].SetActive(true); }
+            }
+            for (int i = 0; i < data.SkinTicks.Length; i++)
+            {
+                if (i != SkinNow) { SkinNowSpr[i].SetActive(false); }
+                else { SkinNowSpr[i].SetActive(true); }
+
+                Locks[i].SetActive(!isBuy[i]);
+            }
+        }
+    }
+    public void Save()
+    {
+        SaveMeneger.SaveSkin(this);
+    }    
 
     public void EquipeBuy()
     {
@@ -104,6 +132,7 @@ public class SkinsRoom : MonoBehaviour
                 }
             }
         }
+        Save();
     }
 
     public IEnumerator CurtainTimeChange(int newPos)

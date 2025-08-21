@@ -24,7 +24,6 @@ public class Kiosk : MonoBehaviour
         if (station1.CountObj > 0 && ImgObj1.activeSelf) { ImgObj1.SetActive(false); }
         if (station2.CountObj > 0 && ImgObj2.activeSelf) { ImgObj2.SetActive(false); }
 
-        Debug.Log(_diskStation.activeSelf.ToString());
         if (_diskStation.activeSelf) {
             ImgObj1.SetActive(true);
             if (station1.CountObj > 0 && station2.CountObj > 0)
