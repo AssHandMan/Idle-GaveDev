@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using Unity.AI.Navigation;
 using System;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 public class UpgreadeSceneMeneger : MonoBehaviour
 {

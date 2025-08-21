@@ -5,7 +5,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveMeneger
 {
-    // ===== Player (per scene) =====
     public static void SavePlayer(UpgreadeRoom room)
     {
         var formatter = new BinaryFormatter();
@@ -33,7 +32,6 @@ public static class SaveMeneger
         }
     }
 
-    // ===== Map (per scene) =====
     public static void SaveMapProgress(UpgreadeSceneMeneger scene)
     {
         var formatter = new BinaryFormatter();
@@ -61,7 +59,6 @@ public static class SaveMeneger
         }
     }
 
-    // ===== Menegers (per scene) =====
     public static void SaveMenegers(HrRoom room)
     {
         var formatter = new BinaryFormatter();
@@ -89,7 +86,6 @@ public static class SaveMeneger
         }
     }
 
-    // ===== Wallet (global) =====
     public static void SaveWallet(PlayerWallet wallet)
     {
         var formatter = new BinaryFormatter();
@@ -114,7 +110,6 @@ public static class SaveMeneger
         }
     }
 
-    // ===== Exp Lvl (global) =====
     public static void SaveExpLvl(ExpLvlController controller)
     {
         var formatter = new BinaryFormatter();
@@ -139,7 +134,6 @@ public static class SaveMeneger
         }
     }
 
-    // ===== Skin (global) =====
     public static void SaveSkin(SkinsRoom room)
     {
         var formatter = new BinaryFormatter();
@@ -164,7 +158,6 @@ public static class SaveMeneger
         }
     }
 
-    // ===== Global Map (global) =====
     public static void SaveGlobalMap(GlobalMapMainController controller)
     {
         var formatter = new BinaryFormatter();
