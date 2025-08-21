@@ -1,195 +1,191 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveMeneger
 {
-    private static string path = Application.persistentDataPath + "/player.fun";
-    private static string pathUpgreade = Application.persistentDataPath + "/player.fun2";
-    private static string pathWallet = Application.persistentDataPath + "/player.fun3";
-    private static string pathMenegers = Application.persistentDataPath + "/player.fun4";
-    private static string pathExpLvl = Application.persistentDataPath + "/player.fun5";
-    private static string pathSkin = Application.persistentDataPath + "/player.fun6";
-    private static string pathMap = Application.persistentDataPath + "/player.fun6";
-    public static void SaveMapProgress(UpgreadeSceneMeneger scene)
-    {
-        BinaryFormatter formatter = new BinaryFormatter();
-        using (FileStream stream = new FileStream(path, FileMode.Create))
-        {
-            UpgreadeMapData data = new UpgreadeMapData(scene);
-            formatter.Serialize(stream, data);
-        }
-    }
-    public static UpgreadeMapData LoadMapProgress()
-    {
-        if (File.Exists(path))
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream stream = new FileStream(path, FileMode.Open))
-            {
-                UpgreadeMapData data = formatter.Deserialize(stream) as UpgreadeMapData;
-                return data;
-            }
-        }
-        else
-        {
-            return null;
-        }
-    }
-
+    // ===== Player (per scene) =====
     public static void SavePlayer(UpgreadeRoom room)
     {
-        BinaryFormatter formatter = new BinaryFormatter();
-        using (FileStream stream = new FileStream(pathUpgreade, FileMode.Create))
+        var formatter = new BinaryFormatter();
+        string sceneName = SceneManager.GetActiveScene().name;
+        string path = Application.persistentDataPath + $"/player_{sceneName}.fun2";
+
+        using (var stream = new FileStream(path, FileMode.Create))
         {
-            PlayerData data = new PlayerData(room);
+            var data = new PlayerData(room);
             formatter.Serialize(stream, data);
         }
     }
+
     public static PlayerData LoadPlayer()
     {
-        if (File.Exists(pathUpgreade))
+        string sceneName = SceneManager.GetActiveScene().name;
+        string path = Application.persistentDataPath + $"/player_{sceneName}.fun2";
+
+        if (!File.Exists(path)) return null;
+
+        var formatter = new BinaryFormatter();
+        using (var stream = new FileStream(path, FileMode.Open))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream stream = new FileStream(pathUpgreade, FileMode.Open))
-            {
-                PlayerData data = formatter.Deserialize(stream) as PlayerData;
-                return data;
-            }
-        }
-        else
-        {
-            return null;
+            return formatter.Deserialize(stream) as PlayerData;
         }
     }
 
-    public static void SaveWallet(PlayerWallet wallet)
+    // ===== Map (per scene) =====
+    public static void SaveMapProgress(UpgreadeSceneMeneger scene)
     {
-        BinaryFormatter formatter = new BinaryFormatter();
-        using (FileStream stream = new FileStream(pathWallet, FileMode.Create))
+        var formatter = new BinaryFormatter();
+        string sceneName = SceneManager.GetActiveScene().name;
+        string path = Application.persistentDataPath + $"/map_{sceneName}.fun";
+
+        using (var stream = new FileStream(path, FileMode.Create))
         {
-            WalletData data = new WalletData(wallet);
+            var data = new UpgreadeMapData(scene);
             formatter.Serialize(stream, data);
         }
     }
-    public static WalletData LoadWallet()
+
+    public static UpgreadeMapData LoadMapProgress()
     {
-        if (File.Exists(pathWallet))
+        string sceneName = SceneManager.GetActiveScene().name;
+        string path = Application.persistentDataPath + $"/map_{sceneName}.fun";
+
+        if (!File.Exists(path)) return null;
+
+        var formatter = new BinaryFormatter();
+        using (var stream = new FileStream(path, FileMode.Open))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream stream = new FileStream(pathWallet, FileMode.Open))
-            {
-                WalletData data = formatter.Deserialize(stream) as WalletData;
-                return data;
-            }
-        }
-        else
-        {
-            return null;
+            return formatter.Deserialize(stream) as UpgreadeMapData;
         }
     }
 
+    // ===== Menegers (per scene) =====
     public static void SaveMenegers(HrRoom room)
     {
-        BinaryFormatter formatter = new BinaryFormatter();
-        using (FileStream stream = new FileStream(pathMenegers, FileMode.Create))
+        var formatter = new BinaryFormatter();
+        string sceneName = SceneManager.GetActiveScene().name;
+        string path = Application.persistentDataPath + $"/menegers_{sceneName}.fun4";
+
+        using (var stream = new FileStream(path, FileMode.Create))
         {
-            MenegersData data = new MenegersData(room);
+            var data = new MenegersData(room);
             formatter.Serialize(stream, data);
         }
     }
+
     public static MenegersData LoadMenegers()
     {
-        if (File.Exists(pathMenegers))
+        string sceneName = SceneManager.GetActiveScene().name;
+        string path = Application.persistentDataPath + $"/menegers_{sceneName}.fun4";
+
+        if (!File.Exists(path)) return null;
+
+        var formatter = new BinaryFormatter();
+        using (var stream = new FileStream(path, FileMode.Open))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream stream = new FileStream(pathMenegers, FileMode.Open))
-            {
-                MenegersData data = formatter.Deserialize(stream) as MenegersData;
-                return data;
-            }
-        }
-        else
-        {
-            return null;
+            return formatter.Deserialize(stream) as MenegersData;
         }
     }
 
+    // ===== Wallet (global) =====
+    public static void SaveWallet(PlayerWallet wallet)
+    {
+        var formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/player.fun3";
+
+        using (var stream = new FileStream(path, FileMode.Create))
+        {
+            var data = new WalletData(wallet);
+            formatter.Serialize(stream, data);
+        }
+    }
+
+    public static WalletData LoadWallet()
+    {
+        string path = Application.persistentDataPath + "/player.fun3";
+        if (!File.Exists(path)) return null;
+
+        var formatter = new BinaryFormatter();
+        using (var stream = new FileStream(path, FileMode.Open))
+        {
+            return formatter.Deserialize(stream) as WalletData;
+        }
+    }
+
+    // ===== Exp Lvl (global) =====
     public static void SaveExpLvl(ExpLvlController controller)
     {
-        BinaryFormatter formatter = new BinaryFormatter();
-        using (FileStream stream = new FileStream(pathExpLvl, FileMode.Create))
+        var formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/player.fun5";
+
+        using (var stream = new FileStream(path, FileMode.Create))
         {
-            ExpLvlData data = new ExpLvlData(controller);
+            var data = new ExpLvlData(controller);
             formatter.Serialize(stream, data);
         }
     }
+
     public static ExpLvlData LoadExpLvl()
     {
-        if (File.Exists(pathExpLvl))
+        string path = Application.persistentDataPath + "/player.fun5";
+        if (!File.Exists(path)) return null;
+
+        var formatter = new BinaryFormatter();
+        using (var stream = new FileStream(path, FileMode.Open))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream stream = new FileStream(pathExpLvl, FileMode.Open))
-            {
-                ExpLvlData data = formatter.Deserialize(stream) as ExpLvlData;
-                return data;
-            }
-        }
-        else
-        {
-            return null;
+            return formatter.Deserialize(stream) as ExpLvlData;
         }
     }
 
+    // ===== Skin (global) =====
     public static void SaveSkin(SkinsRoom room)
     {
-        BinaryFormatter formatter = new BinaryFormatter();
-        using (FileStream stream = new FileStream(pathSkin, FileMode.Create))
+        var formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/player.fun6";
+
+        using (var stream = new FileStream(path, FileMode.Create))
         {
-            SkinData data = new SkinData(room);
+            var data = new SkinData(room);
             formatter.Serialize(stream, data);
-        }
-    }
-    public static SkinData LoadSkin()
-    {
-        if (File.Exists(pathSkin))
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream stream = new FileStream(pathSkin, FileMode.Open))
-            {
-                SkinData data = formatter.Deserialize(stream) as SkinData;
-                return data;
-            }
-        }
-        else
-        {
-            return null;
         }
     }
 
+    public static SkinData LoadSkin()
+    {
+        string path = Application.persistentDataPath + "/player.fun6";
+        if (!File.Exists(path)) return null;
+
+        var formatter = new BinaryFormatter();
+        using (var stream = new FileStream(path, FileMode.Open))
+        {
+            return formatter.Deserialize(stream) as SkinData;
+        }
+    }
+
+    // ===== Global Map (global) =====
     public static void SaveGlobalMap(GlobalMapMainController controller)
     {
-        BinaryFormatter formatter = new BinaryFormatter();
-        using (FileStream stream = new FileStream(pathMap, FileMode.Create))
+        var formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/globalmap.fun7";
+
+        using (var stream = new FileStream(path, FileMode.Create))
         {
-            GlobalMapData data = new GlobalMapData(controller);
+            var data = new GlobalMapData(controller);
             formatter.Serialize(stream, data);
         }
     }
+
     public static GlobalMapData LoadGlobalMap()
     {
-        if (File.Exists(pathMap))
+        string path = Application.persistentDataPath + "/globalmap.fun7";
+        if (!File.Exists(path)) return null;
+
+        var formatter = new BinaryFormatter();
+        using (var stream = new FileStream(path, FileMode.Open))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream stream = new FileStream(pathMap, FileMode.Open))
-            {
-                GlobalMapData data = formatter.Deserialize(stream) as GlobalMapData;
-                return data;
-            }
-        }
-        else
-        {
-            return null;
+            return formatter.Deserialize(stream) as GlobalMapData;
         }
     }
 }
