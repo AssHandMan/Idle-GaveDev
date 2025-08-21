@@ -27,11 +27,17 @@ public class SellStation : MonoBehaviour
     [SerializeField] private GameObject _stackOfMoney;
     [SerializeField] private ParticleSystem circleArea;
 
+    [Header("Audio")]
+    public AudioClip _clip;
+    private AudioSource _audio;
+    public float _volume = 0.4f;
+
     void Start()
     {
         isIncreasing = true;
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
         PeopleInWorkZone = new List<GameObject>();
+        _audio = GameObject.FindGameObjectWithTag("AudioController").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -130,6 +136,7 @@ public class SellStation : MonoBehaviour
             if (station.CountObj > 0 && client.BuyObjCount > 0 && !client.isCalling)
             {
                 Destroy(station.ObjectsList[station.CountObj - 1]);
+                _audio.PlayOneShot(_clip,_volume);
                 station.ObjectsList.RemoveAt(station.CountObj - 1);
                 station.CountObj--;
                 //wallet.ChangeCount(5, "Money");//изменить

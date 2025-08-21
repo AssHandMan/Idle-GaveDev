@@ -26,6 +26,12 @@ public class PlayerTakeDropSystem : MonoBehaviour
     private Vector3 controlPoint;
     private float arcT = 0f;
 
+    [Header("Audio")]
+    public AudioSource _audio;
+    public AudioClip _clip;
+    public List<AudioClip> _TrashClip = new List<AudioClip>();
+    public float _volume = 0.4f;
+
     void Start()
     {
         plr = GameObject.FindGameObjectWithTag("Player");
@@ -86,6 +92,8 @@ public class PlayerTakeDropSystem : MonoBehaviour
                 if (Count == 0) { ObjType = newObj.GetComponent<Object>().Type; }
                 box.RemoveObj();
 
+                _audio.PlayOneShot(_clip, _volume);
+
                 CountForLustObj = Count;
                 GameObject prevObj = (Count > 0) ? IngredientsCollection[IngredientsCollection.Count - 1] : null;
                 PrevTakenObj = prevObj;
@@ -130,6 +138,8 @@ public class PlayerTakeDropSystem : MonoBehaviour
                 IngredientsCollection.RemoveAt(Count - 1);
                 Count--;
                 if (Count == 0) { ObjType = ""; }
+                _audio.PlayOneShot(_clip, _volume);
+
             }
         }
         else
@@ -145,6 +155,7 @@ public class PlayerTakeDropSystem : MonoBehaviour
                 Bin.GetComponent<Trashbin>().AddObj(IngredientsCollection[Count - 1], TakeSpeed);
                 IngredientsCollection.RemoveAt(Count - 1);
                 Count--;
+                _audio.PlayOneShot(_TrashClip[Random.Range(0, _TrashClip.Count)], _volume);
                 if (Count == 0) { ObjType = ""; }
             }
             if (Delivery != null && Delivery.GetComponent<DeliveryMan>().OrderBar.activeSelf && Count > 0 && IngredientsCollection[0].GetComponent<Object>().Type == Delivery.GetComponent<DeliveryMan>().Type)

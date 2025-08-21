@@ -7,7 +7,8 @@ public class StationObjectCollection : MonoBehaviour
 
     public GameObject PlaceObj;
     public List<GameObject> ObjectsList;
-
+    public AudioSource _audio;
+    public bool _isToilet;
     public int MuxCountObj, CountObj;
 
     void Start()
@@ -33,5 +34,7 @@ public class StationObjectCollection : MonoBehaviour
     public void OnDestroy()
     {
         RemoveAll();
+        if(_isToilet)
+            _audio.Play();
     }
 }

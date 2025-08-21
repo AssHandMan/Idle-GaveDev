@@ -29,7 +29,10 @@ public class HrRoom : MonoBehaviour
     public GameObject _joystick;
     private float _tempPlayerSpeed;
 
-
+    [Header("Audio")]
+    public AudioSource _audio;
+    public AudioClip _clip;
+    public float _volume;
     void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -90,6 +93,7 @@ public class HrRoom : MonoBehaviour
             if (name == 0 || (name > 0 & BoughtMenegres[name - 1] == true))
             {
                 wallet.ChangeCount(-price[name, lvl[name]], "Money");
+                _audio.PlayOneShot(_clip,_volume);
                 BoughtMenegres[name] = true;
                 LockCover[name].SetActive(false);
                 Menegers[name].SetActive(true);
@@ -104,6 +108,7 @@ public class HrRoom : MonoBehaviour
                 if (wallet.Money >= price[name, lvl[name] + 1])
                 {
                     wallet.ChangeCount(-price[name, lvl[name]+1], "Money");
+                    _audio.PlayOneShot(_clip, _volume);
                     lvl[name]++;
                     if (lvl[name] + 1 <= 6) 
                     { 
@@ -263,6 +268,7 @@ public class HrRoom : MonoBehaviour
                 Menegers[name].SetActive(true);
                 PriceButton[name].text = Convert.ToString(price[name, lvl[name] + 1]);
                 PriceDiamondsButton[name].text = Convert.ToString(priceDiamonds[name, lvl[name] + 1]);
+                _audio.PlayOneShot(_clip,_volume);
             }
         }
         else
@@ -272,6 +278,7 @@ public class HrRoom : MonoBehaviour
                 if (wallet.Diamonds >= priceDiamonds[name, lvl[name] + 1])
                 {
                     wallet.ChangeCount(-priceDiamonds[name, lvl[name]], "Diamonds");
+                    _audio.PlayOneShot(_clip, _volume);
                     lvl[name]++;
                     if (lvl[name] + 1 <= 6)
                     {

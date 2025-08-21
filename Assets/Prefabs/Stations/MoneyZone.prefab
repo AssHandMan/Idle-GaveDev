@@ -183,5 +183,8 @@ MonoBehaviour:
   _Y_Spacing: 0.2
   _Z_Spacing: 1
   _FirstPoint: {fileID: 2998281643227656181}
-  _MoneyEffectObj: {fileID: 313086754363255717, guid: 811f79cb0b5224b4db9ff68f19184ded, type: 3}
-  removalSpeed: 75
+  _MoneyEffectObj: {fileID: 1776931913447406091, guid: 3c26bc3a639ea494e816901e8c5f7d85, type: 3}
+  removalSpeed: 30
+  _clip1: {fileID: 8300000, guid: f79c2b4dae19983499ae5a9d1dc77dab, type: 3}
+  _clip2: {fileID: 8300000, guid: 9e186861491ceab4f8cf4b12457892b3, type: 3}
+  _volume: 0.4

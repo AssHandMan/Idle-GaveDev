@@ -706,6 +706,9 @@ MonoBehaviour:
   LineUpgreade: {fileID: 2026162478310655320}
   LineOther: {fileID: 919839146664472467}
   PricePos: {fileID: 7484213151403054875}
+  _audioClip: {fileID: 8300000, guid: 61c3460552527af4986bb73d78cd5332, type: 3}
+  _audioClip2: {fileID: 8300000, guid: 99c69ef99921c2b4ca44c016f0414426, type: 3}
+  _volume: 0.4
 --- !u!65 &8047022961805890437
 BoxCollider:
   m_ObjectHideFlags: 0
