@@ -10741,6 +10741,8 @@ MonoBehaviour:
   GetBtn: {fileID: 59883896}
   textCount: {fileID: 1269029316}
   parser: {fileID: 2130885977}
+  _audio: {fileID: 1686322291}
+  _clipBtn: {fileID: 8300000, guid: edd62bed80e362c45a5631ca64573aab, type: 3}
 --- !u!1001 &192139362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29884,6 +29886,8 @@ MonoBehaviour:
   GetBtn: {fileID: 752224139}
   textCount: {fileID: 207239161}
   parser: {fileID: 2130885977}
+  _audio: {fileID: 1686322291}
+  _clipBtn: {fileID: 8300000, guid: edd62bed80e362c45a5631ca64573aab, type: 3}
 --- !u!114 &452053199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39022,6 +39026,7 @@ MonoBehaviour:
   UiGlobalMap: {fileID: 1914519729}
   _audio: {fileID: 1579893187}
   _audio2: {fileID: 1134624005}
+  _clipBtn: {fileID: 8300000, guid: edd62bed80e362c45a5631ca64573aab, type: 3}
 --- !u!1 &591723661
 GameObject:
   m_ObjectHideFlags: 0
@@ -50009,6 +50014,10 @@ PrefabInstance:
       propertyPath: station
       value: 
       objectReference: {fileID: 1835359593}
+    - target: {fileID: 5461974351132095008, guid: 552facb153f535b4f88bc4d28f82c8d4, type: 3}
+      propertyPath: _audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 61c3460552527af4986bb73d78cd5332, type: 3}
     - target: {fileID: 6686684883817378740, guid: 552facb153f535b4f88bc4d28f82c8d4, type: 3}
       propertyPath: m_Text
       value: 9999
@@ -76181,8 +76190,8 @@ MonoBehaviour:
   NowLanguageTxt: {fileID: 892339823}
   LanguageTxt: {fileID: 1386599005}
   _audio: {fileID: 1686322291}
-  _clip: {fileID: 8300000, guid: 275cff5c28b037b4598cd28f01f2ddd0, type: 3}
-  _volume: 0.4
+  _clip: {fileID: 8300000, guid: edd62bed80e362c45a5631ca64573aab, type: 3}
+  _volume: 1
 --- !u!114 &1134624007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100112,6 +100121,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 279462200}
     - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: _audio
+      value: 
+      objectReference: {fileID: 1686322291}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
       propertyPath: wallet
       value: 
       objectReference: {fileID: 1257659604}
@@ -100123,6 +100136,10 @@ PrefabInstance:
       propertyPath: SpeedBar
       value: 
       objectReference: {fileID: 448302407}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: _clipBtn
+      value: 
+      objectReference: {fileID: 8300000, guid: edd62bed80e362c45a5631ca64573aab, type: 3}
     - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
       propertyPath: settings
       value: 
@@ -106144,6 +106161,7 @@ MonoBehaviour:
   edgePadding: 5
   _audio: {fileID: 1579893187}
   _audio2: {fileID: 1134624005}
+  _clipBtn: {fileID: 8300000, guid: edd62bed80e362c45a5631ca64573aab, type: 3}
 --- !u!114 &1579893184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112452,6 +112470,15 @@ AudioSource:
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -112459,7 +112486,16 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.06820385
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
       value: 0
       inSlope: 0
       outSlope: 0
@@ -112475,7 +112511,16 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 1.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -121483,7 +121528,6 @@ Transform:
   - {fileID: 2067265958}
   - {fileID: 820432312}
   - {fileID: 1537661044}
-  - {fileID: 1976552184}
   - {fileID: 870254775}
   - {fileID: 2000919814}
   - {fileID: 1547911865}
@@ -130487,114 +130531,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1975644317}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1976552183
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1976552184}
-  - component: {fileID: 1976552187}
-  - component: {fileID: 1976552186}
-  - component: {fileID: 1976552185}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1976552184
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1976552183}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -124.77698, y: 4.5813103, z: -24.597557}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1820144059}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1976552185
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1976552183}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1976552186
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1976552183}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1976552187
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1976552183}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1976585274 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5211789177289503846, guid: 552facb153f535b4f88bc4d28f82c8d4, type: 3}
@@ -131608,6 +131544,7 @@ MonoBehaviour:
   _joystick: {fileID: 1163233827}
   _audio: {fileID: 1686322291}
   _clip: {fileID: 8300000, guid: 8d9a055c41bd3534eaaca53ba3632256, type: 3}
+  _clipBtn: {fileID: 8300000, guid: edd62bed80e362c45a5631ca64573aab, type: 3}
   _volume: 0.4
 --- !u!65 &1988466270
 BoxCollider:
@@ -136893,6 +136830,8 @@ MonoBehaviour:
   GetBtn: {fileID: 1520057066}
   textCount: {fileID: 118795180}
   parser: {fileID: 2130885977}
+  _audio: {fileID: 1686322291}
+  _clipBtn: {fileID: 8300000, guid: edd62bed80e362c45a5631ca64573aab, type: 3}
 --- !u!114 &2110943405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138113,6 +138052,8 @@ MonoBehaviour:
   settings: {fileID: 1134624006}
   adsPlayer: {fileID: 27474639}
   CirclesMain: {fileID: 95766088}
+  _audio: {fileID: 0}
+  _clipBtn: {fileID: 0}
 --- !u!1 &2135520932
 GameObject:
   m_ObjectHideFlags: 0

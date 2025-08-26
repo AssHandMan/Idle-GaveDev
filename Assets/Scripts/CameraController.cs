@@ -37,6 +37,7 @@ public class CameraController : MonoBehaviour
     [Header("Audio")]
     public AudioSource _audio;
     public AudioSource _audio2;
+    public AudioClip _clipBtn;
 
     void Start()
     {
@@ -138,7 +139,8 @@ public class CameraController : MonoBehaviour
     public void SetGlobalMapMod()
     {
         _audio2.Stop();
-        _audio.Play();
+        _audio.PlayOneShot(_clipBtn,0.4f);
+        _audio.PlayDelayed(0.4f);
         UiShowHide.SetActive(false);
         Money.SetActive(false);
         Diamonds.SetActive(false);

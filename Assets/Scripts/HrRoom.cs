@@ -32,6 +32,7 @@ public class HrRoom : MonoBehaviour
     [Header("Audio")]
     public AudioSource _audio;
     public AudioClip _clip;
+    public AudioClip _clipBtn;
     public float _volume;
     void Start()
     {
@@ -430,6 +431,8 @@ public class HrRoom : MonoBehaviour
         menu.SetActive(false);
         buttonsHide.SetActive(true);
         AddBaner.SetActive(true);
+        if (!menu.activeSelf)
+            _audio.PlayOneShot(_clipBtn,0.4f);
     }
 
     public void OnTriggerEnter(Collider other)

@@ -38,6 +38,10 @@ public class BatlPassParser : MonoBehaviour
     public VideoPlayer adsPlayer;
     public RectTransform CirclesMain;
 
+    [Header("Audio")]
+    public AudioSource _audio;
+    public AudioClip _clipBtn;
+
     [ContextMenu("Parse CSV")]
     private void Parse()
     {
@@ -202,6 +206,7 @@ public class BatlPassParser : MonoBehaviour
 
     public void ShowHide()
     {
+        _audio.PlayOneShot(_clipBtn, 0.4f);
         if (menu.activeSelf)
         {
             menu.SetActive(false);
@@ -214,7 +219,8 @@ public class BatlPassParser : MonoBehaviour
 
     public void ButNewTypeAccount(string type)
     {
-        if(type == "m")
+        _audio.PlayOneShot(_clipBtn, 0.4f);
+        if (type == "m")
         {
             isMeneger = true;
             MenegerBtn.SetActive(false);

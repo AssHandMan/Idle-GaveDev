@@ -200,6 +200,10 @@ public class BuySpace : MonoBehaviour
                 ProgressBar.fillAmount = 1f - ((float)price / startPrice);
                 PriceText.text = price.ToString();
                 _audio.PlayOneShot(_audioClip, _volume);
+                //_audio.resource = _audioClip;
+                //_audio.PlayDelayed(0.00001f);
+                //if (amountToDeduct % 2==0)
+                //    _audio.PlayOneShot(_audioClip, _volume);
             }
 
             yield return null;

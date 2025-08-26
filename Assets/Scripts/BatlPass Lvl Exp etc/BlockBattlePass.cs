@@ -10,7 +10,9 @@ public class BlockBattlePass : MonoBehaviour
     [SerializeField] private BatlPassParser parser;
     private int count;
     private char type;
-
+    [Header("Audio")]
+    public AudioSource _audio;
+    public AudioClip _clipBtn;
     public void SetValue(string input)
     {
         string[] parts = input.Split(' ');
@@ -44,6 +46,8 @@ public class BlockBattlePass : MonoBehaviour
         else { wallet.ChangeCount(count, "Skins"); }
         GetBtn.SetActive(false);
         parser.CheckForAttention();
+        _audio.PlayOneShot(_clipBtn, 0.4f);
+
     }
     public bool GetBtnStatus()
     {

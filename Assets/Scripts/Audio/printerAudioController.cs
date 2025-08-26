@@ -13,11 +13,7 @@ public class printerAudioController : MonoBehaviour
     {
         if (_name == "Arcade" && (other.CompareTag("Player") && _machine.isPlaying)){
             _audio.Play(); }
-        else
-        {
-            if (other.CompareTag("Player"))
-                _audio.Play();
-        }
+       
     }
     private void OnTriggerExit(Collider other)
     {
@@ -25,11 +21,7 @@ public class printerAudioController : MonoBehaviour
         {
             _audio.Stop();
         }
-        else
-        {
-            if (other.CompareTag("Player"))
-                _audio.Stop();
-        }
+       
     }
 
 
