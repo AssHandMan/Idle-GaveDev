@@ -39,7 +39,7 @@ public class BuySpace : MonoBehaviour
         startPrice = price;
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
         meneger = GameObject.FindGameObjectWithTag("Meneger").GetComponent<UpgreadeSceneMeneger>();
-        _audio = GameObject.FindGameObjectWithTag("AudioController").GetComponent<AudioSource>();
+        
         anim = GetComponent<Animator>();
         SetSprite();
     }
@@ -199,7 +199,7 @@ public class BuySpace : MonoBehaviour
                 price -= amountToDeduct;
                 ProgressBar.fillAmount = 1f - ((float)price / startPrice);
                 PriceText.text = price.ToString();
-                _audio.PlayOneShot(_audioClip, _volume);
+                
                 //_audio.resource = _audioClip;
                 //_audio.PlayDelayed(0.00001f);
                 //if (amountToDeduct % 2==0)
@@ -220,6 +220,8 @@ public class BuySpace : MonoBehaviour
         Vector3 pos = new Vector3(plrPos.position.x, plrPos.position.y + 2f, plrPos.position.z);
         GameObject m = Instantiate(money, pos, money.transform.rotation);
         m.GetComponent<MoneyBuySpace>().GiveMoney(transform.position);
+        _audio.pitch += 0.05f;
+        _audio.PlayOneShot(_audioClip, _volume);
         yield return new WaitForSeconds(0.1f);
         if (wallet.Money > 0) { StartCoroutine(MoneyEffectGenerator()); }
     }

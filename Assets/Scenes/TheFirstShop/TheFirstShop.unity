@@ -50005,7 +50005,7 @@ PrefabInstance:
     - target: {fileID: 5461974351132095008, guid: 552facb153f535b4f88bc4d28f82c8d4, type: 3}
       propertyPath: _audio
       value: 
-      objectReference: {fileID: 1686322291}
+      objectReference: {fileID: 1317492774}
     - target: {fileID: 5461974351132095008, guid: 552facb153f535b4f88bc4d28f82c8d4, type: 3}
       propertyPath: Confity
       value: 
@@ -50017,7 +50017,7 @@ PrefabInstance:
     - target: {fileID: 5461974351132095008, guid: 552facb153f535b4f88bc4d28f82c8d4, type: 3}
       propertyPath: _audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 61c3460552527af4986bb73d78cd5332, type: 3}
+      objectReference: {fileID: 8300000, guid: e14f7715c6880db42874dd420d04c249, type: 3}
     - target: {fileID: 6686684883817378740, guid: 552facb153f535b4f88bc4d28f82c8d4, type: 3}
       propertyPath: m_Text
       value: 9999
@@ -50049,6 +50049,10 @@ PrefabInstance:
     - target: {fileID: 7484213151403054875, guid: 552facb153f535b4f88bc4d28f82c8d4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.008099993
+      objectReference: {fileID: 0}
+    - target: {fileID: 7715685899195670083, guid: 552facb153f535b4f88bc4d28f82c8d4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8349804757884413565, guid: 552facb153f535b4f88bc4d28f82c8d4, type: 3}
       propertyPath: m_Sprite
@@ -88920,6 +88924,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8449948706190050460, guid: 552facb153f535b4f88bc4d28f82c8d4, type: 3}
   m_PrefabInstance: {fileID: 770512150}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1317492774 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7715685899195670083, guid: 552facb153f535b4f88bc4d28f82c8d4, type: 3}
+  m_PrefabInstance: {fileID: 770512150}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1317711951
 GameObject:
   m_ObjectHideFlags: 0
@@ -112420,7 +112429,7 @@ AudioSource:
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -112430,7 +112439,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -112440,20 +112449,20 @@ AudioSource:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.95881265
-      outSlope: 0.95881265
-      tangentMode: 0
+      inSlope: 1.0918579
+      outSlope: 1.0918579
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.28083777
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0.9900055
-      inSlope: 1.1614045
-      outSlope: 1.1614045
-      tangentMode: 0
+      value: 1.0918579
+      inSlope: 1.0918579
+      outSlope: 1.0918579
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0.80605125
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
