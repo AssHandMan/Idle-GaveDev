@@ -275,8 +275,8 @@ MonoBehaviour:
   lvl: 0
   BoxLvl:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4300000, guid: b4d3104a71ec6cb41953fa34d4e2144f, type: 3}
+  - {fileID: 4300000, guid: b4d3104a71ec6cb41953fa34d4e2144f, type: 3}
   space: {fileID: 0}
   PriceList: 1a0400004c090000
 --- !u!65 &806654443975566921

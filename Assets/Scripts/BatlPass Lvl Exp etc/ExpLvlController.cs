@@ -17,7 +17,7 @@ public class ExpLvlController : MonoBehaviour
     [SerializeField] private RectTransform starSpawnPoint; // Центр экрана (например, пустой объект в Canvas)
     [SerializeField] private RectTransform targetUIElement; // Куда летят звезды (например, иконка уровня)
     [SerializeField] private Canvas parentCanvas; // Ссылка на Canvas, чтобы UI позиционировался правильно
-
+    public bool isLoading;
 
     void Start()
     {
@@ -38,6 +38,8 @@ public class ExpLvlController : MonoBehaviour
         ExpLvlData data = SaveMeneger.LoadExpLvl();
         if (data != null)
         {
+            isLoading = true;
+
             MaxExPLvl = data.expMax;
             CountExP = data.exp;
             lvl = data.lvl;
@@ -60,6 +62,8 @@ public class ExpLvlController : MonoBehaviour
         {
             parser.GetNewLvl(i);
         }
+        isLoading = false;
+        parser.Load();
     }
     public void Save()
     {

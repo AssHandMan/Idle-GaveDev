@@ -85,9 +85,9 @@ public class BuySpace : MonoBehaviour
         }
     }
 
-    public void Buy(bool forAll)
+    public void Buy(bool forAll, bool isLoaded)
     {
-        if(Confity != null) { Confity.Play(); }
+        if(Confity != null && !isLoaded) { Confity.Play(); }
         if (station.GetComponent<ObjectShowHider>() != null)
         {
             station.GetComponent<ObjectShowHider>().ShowHide();
@@ -199,7 +199,7 @@ public class BuySpace : MonoBehaviour
 
         if (price <= 0)
         {
-            Buy(false);
+            Buy(false, false);
             savedElapsedTime = 0f;
         }
     }

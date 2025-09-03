@@ -181,4 +181,28 @@ public static class SaveMeneger
             return formatter.Deserialize(stream) as GlobalMapData;
         }
     }
+
+    public static void SaveBattlePass(BatlPassParser parser)
+    {
+        var formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/battlePass.fun";
+
+        using (var stream = new FileStream(path, FileMode.Create))
+        {
+            var data = new BattlePassData(parser);
+            formatter.Serialize(stream, data);
+        }
+    }
+
+    public static BattlePassData LoadBattlePass()
+    {
+        string path = Application.persistentDataPath + "/battlePass.fun";
+        if (!File.Exists(path)) return null;
+
+        var formatter = new BinaryFormatter();
+        using (var stream = new FileStream(path, FileMode.Open))
+        {
+            return formatter.Deserialize(stream) as BattlePassData;
+        }
+    }
 }

@@ -72,7 +72,7 @@ public class UpgreadeSceneMeneger : MonoBehaviour
             }
             for (int i = 0; i < count; i++)
             {
-                NewSpaces[i].Buy(true);
+                NewSpaces[i].Buy(true, true);
             }
             LustPlace = count;
             Loading = false;
@@ -88,7 +88,7 @@ public class UpgreadeSceneMeneger : MonoBehaviour
 
     public void BuyNext()
     {
-        NewSpaces[LustPlace].Buy(true);
+        NewSpaces[LustPlace].Buy(true, false);
         LustPlace++;
         NewSpaces[LustPlace].gameObject.SetActive(true);
         lvl++;
@@ -100,7 +100,7 @@ public class UpgreadeSceneMeneger : MonoBehaviour
     {
         for (int i = 0; i < NewSpaces.Length; i++)
         {
-            NewSpaces[i].Buy(true);
+            NewSpaces[i].Buy(true, false);
         }
         surface.BuildNavMesh();
         LustPlace = NewSpaces.Length;

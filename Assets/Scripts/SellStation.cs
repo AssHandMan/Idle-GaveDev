@@ -109,7 +109,7 @@ public class SellStation : MonoBehaviour
             {
                 if (other.GetComponent<Meneger>() != null) { withMeneger = false; meneger = null; }
                 PeopleInWorkZone.Remove(other.gameObject);
-                if (PeopleInWorkZone.Count == 0)
+                if (PeopleInWorkZone.Count == 0 && lvl < 2)
                 {
                     StopAllCoroutines();
                     WorkSpace.GetComponent<SpriteRenderer>().color = Color.white;
@@ -187,7 +187,14 @@ public class SellStation : MonoBehaviour
 
         }
         if (lvl < 3) { lvl++; }
-        if (lvl == 2) { Worker.SetActive(true); }
+        if (lvl == 2) 
+        { 
+            Worker.SetActive(true);
+            StartCoroutine(WorkSpaceEffect());
+            StartCoroutine(Working());
+            WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
+            isSelling = true;
+        }
         if (!isKiosk) { transform.parent.gameObject.GetComponent<Animator>().SetTrigger("Buy"); }
         else 
         {

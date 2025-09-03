@@ -31,6 +31,28 @@ public class ShopOnGlobalMap : MonoBehaviour
             hereTxt.SetActive(true);
             ClosedObj.SetActive(false);
         }
+        else
+        {
+            hereTxt.SetActive(false);
+            StartEarningOfflineMoney();
+        }
+        if (SceneName == "TheFirstShop")
+        {
+            StartCoroutine(GetServerTime((serverTime) => {
+                if (isBuy)
+                {
+                    double secondsAway = CheckLastLogin(serverTime);
+                    cachedTimeAway = secondsAway;
+                    if (secondsAway >= 10)
+                    {
+                        MoneyBreake = (float)(secondsAway / 10.0 * perSecReward);
+                        if (MoneyBreake > MaxStorage) { MoneyBreake = MaxStorage; }
+                        MoneyCount.text = MoneyBreake.ToString();
+                        CollectBtn.SetActive(true);
+                    }
+                }
+            }));
+        }
 
     }
 

@@ -42,7 +42,7 @@ public class BlockBattlePass : MonoBehaviour
         if(type == 'b') { wallet.ChangeCount(count, "Money"); }
         else if (type == 'k') { wallet.ChangeCount(count, "Diamonds"); }
         else { wallet.ChangeCount(count, "Skins"); }
-        GetBtn.SetActive(false);
+        HideButton();
         parser.CheckForAttention();
     }
     public bool GetBtnStatus()
@@ -51,4 +51,5 @@ public class BlockBattlePass : MonoBehaviour
     }
     public void HideLock() { LockSpr.SetActive(false); }
     public void ShowButton() { GetBtn.SetActive(true); }
+    public void HideButton() { GetBtn.SetActive(false); }
 }

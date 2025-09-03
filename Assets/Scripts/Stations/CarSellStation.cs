@@ -51,10 +51,11 @@ public class CarSellStation : MonoBehaviour
     }
     public void OnTriggerExit(Collider other)
     {
+        
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Worker" || other.GetComponent<Meneger>() != null)
         {
             PeopleInWorkZone.Remove(other.gameObject);
-            if(PeopleInWorkZone.Count == 0)
+            if(PeopleInWorkZone.Count == 0 && lvl < 2)
             {
                 StopAllCoroutines();
                 WorkSpace.GetComponent<SpriteRenderer>().color = Color.white;
@@ -123,7 +124,14 @@ public class CarSellStation : MonoBehaviour
             }
         }
         if (lvl < 3) { lvl++; }
-        if(lvl == 2) { Worker.SetActive(true); }
+        if(lvl == 2) 
+        { 
+            Worker.SetActive(true);
+            StartCoroutine(WorkSpaceEffect());
+            StartCoroutine(Working());
+            WorkSpace.GetComponent<SpriteRenderer>().color = Color.green;
+            isSelling = true;
+        }
         transform.parent.gameObject.GetComponent<Animator>().SetTrigger("Buy");
         circleArea.Play();
     }

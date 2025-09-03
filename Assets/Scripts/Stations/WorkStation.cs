@@ -69,23 +69,26 @@ public class WorkStation : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player" && lvl < 2 && meneger == null)
+        if (lvl < 2)
         {
-            TakeStationNew.CanGive = true;
-            StopAllCoroutines();
-            WorkSpace.GetComponent<SpriteRenderer>().color = Color.white;
-            WorkSpace.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-            isSelling = false;
-        }
+            if (other.gameObject.tag == "Player" && meneger == null)
+            {
+                TakeStationNew.CanGive = true;
+                StopAllCoroutines();
+                WorkSpace.GetComponent<SpriteRenderer>().color = Color.white;
+                WorkSpace.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                isSelling = false;
+            }
 
-        if (other.GetComponent<Meneger>() != null && lvl < 2)
-        {
-            TakeStationNew.CanGive = true;
-            StopAllCoroutines();
-            WorkSpace.GetComponent<SpriteRenderer>().color = Color.white;
-            WorkSpace.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-            isSelling = false;
-            meneger = null;
+            if (other.GetComponent<Meneger>() != null)
+            {
+                TakeStationNew.CanGive = true;
+                StopAllCoroutines();
+                WorkSpace.GetComponent<SpriteRenderer>().color = Color.white;
+                WorkSpace.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                isSelling = false;
+                meneger = null;
+            }
         }
     }
 

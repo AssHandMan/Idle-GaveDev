@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 movementDirection;
     private Animator _animator;
 
+    private float _movementSpeed;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -29,8 +31,8 @@ public class PlayerMovement : MonoBehaviour
 
             movementDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
             movementDirection.Normalize();
-            if (movementDirection != Vector3.zero) 
-            { 
+            if (movementDirection != Vector3.zero)
+            {
                 transform.forward = movementDirection;
                 _animator.SetBool("IsMoving", true);
             }
@@ -40,8 +42,27 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         else
+        {
             _animator.SetBool("IsMoving", false);
+            rb.linearVelocity = new Vector3(joystick.Horizontal * 0, rb.linearVelocity.y, joystick.Vertical * 0);
+            movementDirection = new Vector3(0, 0, 0);
+            movementDirection.Normalize();
+        }
+
     }
+
+
+    public void BlockMoving()
+    {
+        if (CanMove)
+        {
+            CanMove = false;
+        }
+        else
+        {
+            CanMove = true;
+        }
+    }    
 
 
     void OnApplicationPause(bool pauseStatus)

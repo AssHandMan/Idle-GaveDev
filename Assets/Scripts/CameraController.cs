@@ -147,6 +147,7 @@ public class CameraController : MonoBehaviour
     {
         if (isPlay)
         {
+            plr.GetComponent<PlayerMovement>().BlockMoving();
             isPlay = false;
             Vector3 targetBuy = new Vector3(space.transform.position.x - OffsetX, transform.position.y, space.transform.position.z - OffsetZ);
             StartCoroutine(MoveToLustBuytSpace(targetBuy));
@@ -166,6 +167,7 @@ public class CameraController : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target, 34 * Time.deltaTime);
             yield return null;
         }
+        plr.GetComponent<PlayerMovement>().BlockMoving();
         isPlay = true;
     }
      #if UNITY_EDITOR

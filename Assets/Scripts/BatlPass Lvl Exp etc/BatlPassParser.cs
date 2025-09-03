@@ -20,6 +20,7 @@ public class BatlPassParser : MonoBehaviour
 
     [SerializeField] private List<LvlRombe> Romb;
     [SerializeField] private List<BlockBattlePass> FreeBlocks, MenegerBlocks, CeoBlocks;
+    public List<bool> FreeTake, MenegerTake, CeoTake;
     [SerializeField] private ExpLvlController expController;
     private RectTransform bottomElement;
     private float bottomPadding = 220f;
@@ -182,9 +183,19 @@ public class BatlPassParser : MonoBehaviour
             Romb[lvl - 2].SetLine();
         }
         FreeBlocks[lvl - 1].ShowButton();
-        if (isMeneger) { MenegerBlocks[lvl-1].ShowButton(); }
-        if (isCEO) { CeoBlocks[lvl - 1].ShowButton(); }
+        FreeBlocks[lvl - 1].HideLock();
+        if (isMeneger) 
+        { 
+            MenegerBlocks[lvl-1].ShowButton();
+            MenegerBlocks[lvl - 1].HideLock();
+        }
+        if (isCEO)
+        { 
+            CeoBlocks[lvl - 1].ShowButton();
+            CeoBlocks[lvl - 1].HideLock();
+        }
         AttentionSymbol.SetActive(true);
+        if (!expController.isLoading) { SetTakenButtons(); }
     }
     public void CheckForAttention()
     {
@@ -198,6 +209,7 @@ public class BatlPassParser : MonoBehaviour
             }
         }
         if(a == 0) { AttentionSymbol.SetActive(false); }
+        if (!expController.isLoading) { SetTakenButtons(); }
     }
 
     public void ShowHide()
@@ -415,5 +427,42 @@ public class BatlPassParser : MonoBehaviour
         }
         menuNewLvl.SetActive(false);
         CirclesMain.localPosition = new Vector3(0, CirclesMain.localPosition.y, 0);
+    }
+
+    public  void SetTakenButtons()
+    {
+        FreeTake = new List<bool>();
+        MenegerTake = new List<bool>();
+        CeoTake = new List<bool>();
+
+        for (int i = 0; i < FreeBlocks.Count; i++)
+        {
+            FreeTake.Add(FreeBlocks[i].GetBtnStatus());
+            MenegerTake.Add(MenegerBlocks[i].GetBtnStatus());
+            CeoTake.Add(CeoBlocks[i].GetBtnStatus());
+        }
+        Save();
+    }
+
+    public void Load()
+    {
+        BattlePassData data = SaveMeneger.LoadBattlePass();
+        if(data != null)
+        {
+            FreeTake = data.Free;
+            MenegerTake = data.Meneger;
+            CeoTake = data.CEO;
+
+            for (int i = 0; i < CeoBlocks.Count; i++)
+            {
+                if (!data.Free[i]) { FreeBlocks[i].HideButton(); }
+                if (!data.Meneger[i]) { MenegerBlocks[i].HideButton(); }
+                if (!data.CEO[i]) { CeoBlocks[i].HideButton(); }
+            }
+        }
+    }
+    public void Save() 
+    { 
+        SaveMeneger.SaveBattlePass(this);
     }
 }
