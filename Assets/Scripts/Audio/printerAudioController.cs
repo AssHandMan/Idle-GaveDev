@@ -12,6 +12,7 @@ public class printerAudioController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (_name == "Arcade" && (other.CompareTag("Player") && _machine.isPlaying)){
+            Debug.Log("****");
             _audio.Play(); }
        
     }

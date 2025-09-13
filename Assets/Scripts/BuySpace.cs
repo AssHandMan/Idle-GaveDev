@@ -31,6 +31,7 @@ public class BuySpace : MonoBehaviour
     public AudioClip _audioClip;
     public AudioClip _audioClip2;
     public AudioSource _audio;
+    public AudioSource _audioEnd;
     public float _volume = 0.4f;
     void Start()
     {
@@ -39,7 +40,8 @@ public class BuySpace : MonoBehaviour
         startPrice = price;
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
         meneger = GameObject.FindGameObjectWithTag("Meneger").GetComponent<UpgreadeSceneMeneger>();
-        
+        _audioEnd = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
+
         anim = GetComponent<Animator>();
         SetSprite();
     }
@@ -160,9 +162,10 @@ public class BuySpace : MonoBehaviour
             }
         }
 
-        if (!forAll) { meneger.LevelUp(this); _audio.PlayOneShot(_audioClip2, _volume); }
+        if (!forAll) { meneger.LevelUp(this);  }
 
-       
+        if(gameObject.activeSelf)
+            _audioEnd.PlayOneShot(_audioClip2, _volume);
         gameObject.SetActive(false);
     }
 

@@ -138,7 +138,7 @@ public class PlayerTakeDropSystem : MonoBehaviour
                 IngredientsCollection.RemoveAt(Count - 1);
                 Count--;
                 if (Count == 0) { ObjType = ""; }
-                _audio.PlayOneShot(_clip, _volume);
+                    _audio.PlayOneShot(_clip, _volume);
 
             }
         }

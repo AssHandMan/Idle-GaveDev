@@ -35,15 +35,14 @@ public class MoneyZoneController : MonoBehaviour
     private bool isRemoving = false; // ����, ����� �� ��������� ��������� ������� �����
     private Coroutine removalCoroutine; // ������ �� ���������� ��������
     [Header("Audio")]
-    private AudioSource _audio;
-    public AudioClip _clip1,_clip2 ;
+    public AudioSource _audio;
+    public AudioClip _clip1, _clip2;
     public float _volume = 0.4f;
 
 
     public void Start()
     {
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
-        _audio = GameObject.FindGameObjectWithTag("AudioController").GetComponent<AudioSource>();
         StackSize();
         /*foreach (GameObject p in _Listlayer)
         {

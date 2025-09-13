@@ -11,8 +11,13 @@ public class BlockBattlePass : MonoBehaviour
     private int count;
     private char type;
     [Header("Audio")]
-    public AudioSource _audio;
+    private AudioSource _audio;
     public AudioClip _clipBtn;
+
+    private void Start()
+    {
+        _audio = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
+    }
     public void SetValue(string input)
     {
         string[] parts = input.Split(' ');

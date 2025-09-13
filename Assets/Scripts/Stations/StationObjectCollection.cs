@@ -34,7 +34,7 @@ public class StationObjectCollection : MonoBehaviour
     public void OnDestroy()
     {
         RemoveAll();
-        if(_isToilet)
-            _audio.Play();
+        //if(_isToilet)
+            //_audio.Play();
     }
 }
