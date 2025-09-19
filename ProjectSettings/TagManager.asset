@@ -18,6 +18,7 @@ TagManager:
   - Meneger
   - Worker
   - ExpController
+  - Audio
   layers:
   - Default
   - TransparentFX

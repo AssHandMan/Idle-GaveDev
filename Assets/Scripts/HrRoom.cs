@@ -29,6 +29,11 @@ public class HrRoom : MonoBehaviour
     public GameObject _joystick;
     private float _tempPlayerSpeed;
     private bool canSave;
+    [Header("Audio")]
+    public AudioSource _audio;
+    public AudioClip _clip;
+    public AudioClip _clipBtn;
+    public float _volume;
 
     void Start()
     {
@@ -119,6 +124,7 @@ public class HrRoom : MonoBehaviour
             {
                 lvl[name] = 0;
                 wallet.ChangeCount(-price[name, lvl[name]], "Money");
+                _audio.PlayOneShot(_clip,_volume);
                 BoughtMenegres[name] = true;
                 LockCover[name].SetActive(false);
                 Menegers[name].SetActive(true);
@@ -133,6 +139,7 @@ public class HrRoom : MonoBehaviour
                 if (wallet.Money >= price[name, lvl[name] + 1])
                 {
                     wallet.ChangeCount(-price[name, lvl[name]+1], "Money");
+                    _audio.PlayOneShot(_clip, _volume);
                     lvl[name]++;
                     if (lvl[name] + 1 <= 6) 
                     { 
@@ -293,6 +300,7 @@ public class HrRoom : MonoBehaviour
                 Menegers[name].SetActive(true);
                 PriceButton[name].text = Convert.ToString(price[name, lvl[name] + 1]);
                 PriceDiamondsButton[name].text = Convert.ToString(priceDiamonds[name, lvl[name] + 1]);
+                _audio.PlayOneShot(_clip,_volume);
             }
         }
         else
@@ -302,6 +310,7 @@ public class HrRoom : MonoBehaviour
                 if (wallet.Diamonds >= priceDiamonds[name, lvl[name] + 1])
                 {
                     wallet.ChangeCount(-priceDiamonds[name, lvl[name]], "Diamonds");
+                    _audio.PlayOneShot(_clip, _volume);
                     lvl[name]++;
                     if (lvl[name] + 1 <= 6)
                     {
@@ -454,6 +463,8 @@ public class HrRoom : MonoBehaviour
         menu.SetActive(false);
         buttonsHide.SetActive(true);
         AddBaner.SetActive(true);
+        if (!menu.activeSelf)
+            _audio.PlayOneShot(_clipBtn,0.4f);
     }
 
     public void OnTriggerEnter(Collider other)

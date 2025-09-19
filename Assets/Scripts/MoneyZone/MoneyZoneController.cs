@@ -34,8 +34,12 @@ public class MoneyZoneController : MonoBehaviour
     public float removalSpeed = 1.0f; // 1.0 - ���������� ��������, >1 - ���������, <1 - ����������
     private bool isRemoving = false; // ����, ����� �� ��������� ��������� ������� �����
     private Coroutine removalCoroutine; // ������ �� ���������� ��������
+    [Header("Audio")]
+    public AudioSource _audio;
+    public AudioClip _clip1, _clip2;
+    public float _volume = 0.4f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     public void Start()
     {
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
@@ -76,7 +80,7 @@ public class MoneyZoneController : MonoBehaviour
         if (other.CompareTag("Player") && _realCountCash > 0 && !isRemoving)
         {
             removalCoroutine = StartCoroutine(RemoveCashLayers());
-            
+            _audio.PlayOneShot(_clip2, _volume);
         }
         if (other.CompareTag("Player") && _cash3D.Count > 0)
         {
@@ -123,9 +127,9 @@ public class MoneyZoneController : MonoBehaviour
                 }
                 _realCountCash--;
                 wallet.ChangeCount(_PriceOfCash, "Money");
-
             }
 
+            _audio.PlayOneShot(_clip1, _volume);
             _cash3D.RemoveRange(startIndex, countToRemove);
 
             // ��� ����� ��������� ���������� ���� (���������� ��������)

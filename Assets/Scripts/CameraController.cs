@@ -34,6 +34,11 @@ public class CameraController : MonoBehaviour
 
     private Vector3 dragOrigin;
 
+    [Header("Audio")]
+    public AudioSource _audio;
+    public AudioSource _audio2;
+    public AudioClip _clipBtn;
+
     void Start()
     {
         isPlay = true;
@@ -133,6 +138,9 @@ public class CameraController : MonoBehaviour
     }
     public void SetGlobalMapMod()
     {
+        _audio2.Stop();
+        _audio.PlayOneShot(_clipBtn,0.4f);
+        _audio.PlayDelayed(0.4f);
         UiShowHide.SetActive(false);
         Money.SetActive(false);
         Diamonds.SetActive(false);

@@ -18,6 +18,8 @@ public class CarCustomer : MonoBehaviour
     private Rigidbody rb;
     [SerializeField] private List<GameObject> _models = new List<GameObject>();
     public GameObject model;
+    [Header("Audio")]
+    public AudioSource _audio;
     void Start()
     {
         SelectModel();
@@ -79,6 +81,7 @@ public class CarCustomer : MonoBehaviour
         if (other.GetComponent<CarCustomer>() != null || other.GetComponent<Customer>() != null)
         {
             speed = MaxSpeed;
+            _audio.Play();
         }
     }
 }

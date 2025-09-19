@@ -24,6 +24,10 @@ public class GlobalMapMainController : MonoBehaviour
     public PlayerWallet wallet;
 
     [SerializeField] private GameObject UiShowHide, Money, Diamonds, Skins, UiGlobalMap;
+    [Header("Audio")]
+    public AudioSource _audio;
+    public AudioSource _audio2;
+    public AudioClip _clipBtn;
     void Start()
     {
         Load();
@@ -123,6 +127,9 @@ public class GlobalMapMainController : MonoBehaviour
     }
     public void CloseGlobalMapMenu()
     {
+        _audio.Stop();
+        _audio2.PlayOneShot(_clipBtn,0.4f);
+        _audio2.PlayDelayed(0.4f);
         CloseShopStats();
         CloseMessege();
         UiGlobalMap.SetActive(false);

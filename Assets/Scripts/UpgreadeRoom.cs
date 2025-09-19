@@ -29,6 +29,11 @@ public class UpgreadeRoom : MonoBehaviour
     public GameObject AdsScreen, ButtonsBuySpeed, ButtonsBuyCapacity, ButtonsBuyProfit;
     public GameSettingsController settings;
     private bool canSave;
+
+    [Header("Audio")]
+    public AudioClip _clipBtn;
+    public AudioSource _audio;
+    
     void Start()
     {
         SpeedCount.text = SpeedPrice[speed].ToString();
@@ -125,6 +130,7 @@ public class UpgreadeRoom : MonoBehaviour
                     if (canSave) { Save(); }
                 }
             }
+            _audio.PlayOneShot(_clipBtn, 0.4f);
         }
     }
 
@@ -158,6 +164,7 @@ public class UpgreadeRoom : MonoBehaviour
                     if (canSave) { Save(); }
                 }
             }
+            _audio.PlayOneShot(_clipBtn, 0.4f);
         }
     }
 
@@ -191,6 +198,7 @@ public class UpgreadeRoom : MonoBehaviour
                     if (canSave) { Save(); }
                 }
             }
+            _audio.PlayOneShot(_clipBtn, 0.4f);
         }
     }
 

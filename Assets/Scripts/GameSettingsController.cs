@@ -19,6 +19,11 @@ public class GameSettingsController : MonoBehaviour
     private string TikTokChannelURL = "https://www.tiktok.com/@winxpower?_t=ZS-8xHXIZrfMfa";
     private bool ActiveChange;
 
+    [Header("Audio")]
+    public AudioSource _audio;
+    public AudioClip _clip;
+    public float _volume = 0.4f;
+
 
     void Start()
     {
@@ -74,6 +79,7 @@ public class GameSettingsController : MonoBehaviour
 
     public void OpenClose()
     {
+        _audio.PlayOneShot(_clip,_volume);
         if(group.interactable) 
         {
             group.alpha = 0;
