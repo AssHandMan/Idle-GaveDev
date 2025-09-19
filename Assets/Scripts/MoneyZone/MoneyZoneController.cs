@@ -109,15 +109,12 @@ public class MoneyZoneController : MonoBehaviour
     {
         isRemoving = true;
 
-        // ����������, ������� ����� � ����� ���� (���� � ��� �������� ���������)
         int billsPerLayer = Mathf.Max(1, _cash3D.Count / _realCountCash);
 
         while (_realCountCash > 0)
         {
-            // ������� ���� ���� (��� ���������, ���� �����)
             int startIndex = Mathf.Max(0, _cash3D.Count - billsPerLayer);
             int countToRemove = Mathf.Min(billsPerLayer, _cash3D.Count);
-            Debug.Log(countToRemove);
             for (int i = startIndex; i < _realCountCash; i++)
             {
                 if (i < startIndex + countToRemove)

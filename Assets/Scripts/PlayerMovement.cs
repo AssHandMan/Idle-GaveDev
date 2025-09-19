@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
         CanMove = true;
         _animator = GetComponent<Animator>();
         _animator.applyRootMotion = false;
+
     }
 
     void Update()
@@ -62,7 +63,16 @@ public class PlayerMovement : MonoBehaviour
         {
             CanMove = true;
         }
-    }    
+    }  
+    
+    public void ResetLoads()
+    {
+        SaveMeneger.SaveBattlePass(new BatlPassParser());
+        SaveMeneger.SaveExpLvl(new ExpLvlController());
+        SaveMeneger.SaveWallet(new PlayerWallet());
+        SaveMeneger.SavePlayer(new UpgreadeRoom());
+        SaveMeneger.SaveGlobalMap(new GlobalMapMainController());
+    }
 
 
     void OnApplicationPause(bool pauseStatus)

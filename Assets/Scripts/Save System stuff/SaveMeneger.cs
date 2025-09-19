@@ -5,6 +5,25 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveMeneger
 {
+    public static void Save<T>(T obj) where T : class
+    {
+        var formatter = new BinaryFormatter();
+        string sceneName = SceneManager.GetActiveScene().name;
+        string path;
+        string s = obj.GetType().Name;
+        switch (s)
+        {
+            case "UpgreadeRoom":
+                path = Application.persistentDataPath + $"/player_{sceneName}.fun2";
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    var data = new PlayerData(obj as UpgreadeRoom);
+                    formatter.Serialize(stream, obj);
+                }
+                break;
+        }
+    }
+
     public static void SavePlayer(UpgreadeRoom room)
     {
         var formatter = new BinaryFormatter();
