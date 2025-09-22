@@ -18,7 +18,7 @@ public class printerAudioController : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (_name == "Arcade" && (other.CompareTag("Player") && _machine.isPlaying))
+        if (_name == "Arcade" && other.CompareTag("Player"))
         {
             _audio.Stop();
         }

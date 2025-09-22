@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -72,6 +73,10 @@ public class PlayerMovement : MonoBehaviour
         SaveMeneger.SaveWallet(new PlayerWallet());
         SaveMeneger.SavePlayer(new UpgreadeRoom());
         SaveMeneger.SaveGlobalMap(new GlobalMapMainController());
+        SaveMeneger.SaveSkin(new SkinsRoom());
+        SaveMeneger.SaveMapProgress(new UpgreadeSceneMeneger());
+        SaveMeneger.SaveMenegers(new HrRoom());
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 
