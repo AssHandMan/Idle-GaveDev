@@ -19,6 +19,7 @@ public class BuySpace : MonoBehaviour
     private UpgreadeSceneMeneger meneger;
     private Animator anim;
     private Transform plrPos;
+    private BuySpaceSound sound;
 
     public ParticleSystem Confity;
     public GameObject NewZone, MoneyZoneSpr, MoneyOtherSpr, UpgreadeArrow, LineUpgreade, LineOther;
@@ -27,19 +28,15 @@ public class BuySpace : MonoBehaviour
     private Vector3 OtherPricePos = new Vector3(0f, 0.00809999276f, 0f);
     private Vector3 ZonePriceScale = new Vector3(6.72985334e-05f, 6.72985188e-05f, 6.72985407e-05f);
     private Vector3 OtherPriceScale = new Vector3(8.69295181e-05f, 8.69294963e-05f, 8.69295254e-05f);
-    //public AudioClip _audioClip;
-    //public AudioClip _audioClip2;
-    //public AudioSource _audio;
-    //public AudioSource _audioEnd;
-    //public float _volume = 0.4f;
+
     void Start()
     {
         PriceText.text = price.ToString();
         step = price;
         startPrice = price;
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
+        sound = GameObject.FindGameObjectWithTag("Player").GetComponent<BuySpaceSound>();
         meneger = GameObject.FindGameObjectWithTag("Meneger").GetComponent<UpgreadeSceneMeneger>();
-       /* _audioEnd = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();*/
 
         anim = GetComponent<Animator>();
         SetSprite();
@@ -74,6 +71,7 @@ public class BuySpace : MonoBehaviour
         {
            if(plr.movementDirection == Vector3.zero && !inProgress && wallet.Money > 0)
             {
+                sound.ResetPitch();
                 StartCoroutine(Paying());
                 StartCoroutine(MoneyEffectGenerator());
                 inProgress = true;
@@ -87,7 +85,6 @@ public class BuySpace : MonoBehaviour
             anim.SetBool("isBigger", false);
             plr = null;
             inProgress = false;
-            //_audio.Stop();
             StopAllCoroutines();
         }
     }
@@ -163,8 +160,7 @@ public class BuySpace : MonoBehaviour
 
         if (!forAll) { meneger.LevelUp(this);  }
 
-       /* if(gameObject.activeSelf)
-            _audioEnd.PlayOneShot(_audioClip2, _volume);*/
+        if (!isLoaded) { sound.PlayBuyEnd(); }
         gameObject.SetActive(false);
     }
 
@@ -218,8 +214,7 @@ public class BuySpace : MonoBehaviour
         Vector3 pos = new Vector3(plrPos.position.x, plrPos.position.y + 2f, plrPos.position.z);
         GameObject m = Instantiate(money, pos, money.transform.rotation);
         m.GetComponent<MoneyBuySpace>().GiveMoney(transform.position);
-        /*_audio.pitch += 0.05f;
-        _audio.PlayOneShot(_audioClip, _volume);*/
+        sound.PlayBuyProcesse();
         yield return new WaitForSeconds(0.1f);
         if (wallet.Money > 0) { StartCoroutine(MoneyEffectGenerator()); }
     }

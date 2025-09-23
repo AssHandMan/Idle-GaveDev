@@ -19,6 +19,7 @@ public class ArcadeMachine : MonoBehaviour
     public BuySpace space;
     public int[] PriceList;
     private int GameTime;
+    public int TimePlay;
 
     void Start()
     {
@@ -53,7 +54,7 @@ public class ArcadeMachine : MonoBehaviour
         client.meneger.ReadyforSleep.Add(client);
         isPlaying = true;
         StartCoroutine(Playing());
-        GameTime = 5;
+        GameTime = TimePlay;
         if (!isToilet) { StartCoroutine(PlayEffect()); }
     }
     private IEnumerator PlayEffect()

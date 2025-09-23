@@ -10634,6 +10634,7 @@ MonoBehaviour:
   GetBtn: {fileID: 59883896}
   textCount: {fileID: 1269029316}
   parser: {fileID: 2130885977}
+  _clipBtn: {fileID: 0}
 --- !u!1001 &192139362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29792,6 +29793,7 @@ MonoBehaviour:
   GetBtn: {fileID: 752224139}
   textCount: {fileID: 207239161}
   parser: {fileID: 2130885977}
+  _clipBtn: {fileID: 0}
 --- !u!114 &452053199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38932,6 +38934,9 @@ MonoBehaviour:
   Diamonds: {fileID: 2077742578}
   Skins: {fileID: 2128468270}
   UiGlobalMap: {fileID: 1914519729}
+  _audio: {fileID: 0}
+  _audio2: {fileID: 0}
+  _clipBtn: {fileID: 0}
 --- !u!1 &591723661
 GameObject:
   m_ObjectHideFlags: 0
@@ -76035,6 +76040,9 @@ MonoBehaviour:
   HarpticButton: {fileID: 1805576945}
   NowLanguageTxt: {fileID: 892339823}
   LanguageTxt: {fileID: 1386599005}
+  _audio: {fileID: 0}
+  _clip: {fileID: 0}
+  _volume: 0.4
 --- !u!114 &1134624007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106127,6 +106135,9 @@ MonoBehaviour:
   mapMinBounds: {x: -150, y: -280}
   mapMaxBounds: {x: -75, y: -210}
   edgePadding: 5
+  _audio: {fileID: 0}
+  _audio2: {fileID: 0}
+  _clipBtn: {fileID: 0}
 --- !u!114 &1579893184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131187,6 +131198,10 @@ MonoBehaviour:
   TargetTypes: []
   _plMove: {fileID: 1257659603}
   _joystick: {fileID: 1163233827}
+  _audio: {fileID: 0}
+  _clip: {fileID: 0}
+  _clipBtn: {fileID: 0}
+  _volume: 0
 --- !u!65 &1988466270
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -136471,6 +136486,7 @@ MonoBehaviour:
   GetBtn: {fileID: 1520057066}
   textCount: {fileID: 118795180}
   parser: {fileID: 2130885977}
+  _clipBtn: {fileID: 0}
 --- !u!114 &2110943405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137694,6 +137710,8 @@ MonoBehaviour:
   settings: {fileID: 1134624006}
   adsPlayer: {fileID: 27474639}
   CirclesMain: {fileID: 95766088}
+  _audio: {fileID: 0}
+  _clipBtn: {fileID: 0}
 --- !u!1 &2135520932
 GameObject:
   m_ObjectHideFlags: 0
