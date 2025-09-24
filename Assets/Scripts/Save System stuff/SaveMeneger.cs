@@ -224,4 +224,37 @@ public static class SaveMeneger
             return formatter.Deserialize(stream) as BattlePassData;
         }
     }
+
+    public static void ResetAllSaves()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        string playerPath = Application.persistentDataPath + $"/player_{sceneName}.fun2";
+        string mapPath = Application.persistentDataPath + $"/map_{sceneName}.fun";
+        string menegersPath = Application.persistentDataPath + $"/menegers_{sceneName}.fun4";
+
+        string walletPath = Application.persistentDataPath + "/player.fun3";
+        string expLvlPath = Application.persistentDataPath + "/player.fun5";
+        string skinPath = Application.persistentDataPath + "/player.fun6";
+        string globalMapPath = Application.persistentDataPath + "/globalmap.fun7";
+        string battlePassPath = Application.persistentDataPath + "/battlePass.fun";
+
+        DeleteIfExists(playerPath);
+        DeleteIfExists(mapPath);
+        DeleteIfExists(menegersPath);
+        DeleteIfExists(walletPath);
+        DeleteIfExists(expLvlPath);
+        DeleteIfExists(skinPath);
+        DeleteIfExists(globalMapPath);
+        DeleteIfExists(battlePassPath);
+        SceneManager.LoadScene(sceneName);
+    }
+
+    private static void DeleteIfExists(string path)
+    {
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+        }
+    }
 }

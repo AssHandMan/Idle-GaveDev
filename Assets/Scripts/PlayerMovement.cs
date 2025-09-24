@@ -68,15 +68,7 @@ public class PlayerMovement : MonoBehaviour
     
     public void ResetLoads()
     {
-        SaveMeneger.SaveBattlePass(new BatlPassParser());
-        SaveMeneger.SaveExpLvl(new ExpLvlController());
-        SaveMeneger.SaveWallet(new PlayerWallet());
-        SaveMeneger.SavePlayer(new UpgreadeRoom());
-        SaveMeneger.SaveGlobalMap(new GlobalMapMainController());
-        SaveMeneger.SaveSkin(new SkinsRoom());
-        SaveMeneger.SaveMapProgress(new UpgreadeSceneMeneger());
-        SaveMeneger.SaveMenegers(new HrRoom());
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SaveMeneger.ResetAllSaves();
     }
 
 
