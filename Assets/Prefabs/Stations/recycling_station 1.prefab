@@ -922,7 +922,7 @@ MonoBehaviour:
   MaxTxt: {fileID: 8609111303444054144}
   CanWork: 0
   isSelling: 0
-  TimeWork: 2
+  TimeWork: 1
   space: {fileID: 0}
   lvl: 0
   PriceList: 
@@ -1143,6 +1143,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlaceObj: {fileID: 3162687931768467316}
   ObjectsList: []
+  _audio: {fileID: 0}
+  _isToilet: 0
   MuxCountObj: 300
   CountObj: 0
 --- !u!1001 &7350079914437244692
@@ -1348,6 +1350,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlaceObj: {fileID: 8034643878217223943}
   ObjectsList: []
+  _audio: {fileID: 0}
+  _isToilet: 0
   MuxCountObj: 5
   CountObj: 0
 --- !u!114 &2960266336181202908
