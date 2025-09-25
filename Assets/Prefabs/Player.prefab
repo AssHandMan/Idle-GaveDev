@@ -1927,7 +1927,10 @@ MonoBehaviour:
   ObjType: 
   _audio: {fileID: 8694854530799872490}
   _clip: {fileID: 8300000, guid: e26abb73eba3ec746b7f66d637c742c3, type: 3}
-  _TrashClip: []
+  _TrashClip:
+  - {fileID: 8300000, guid: 1804d17ba426ea84186c61efd7fdbad8, type: 3}
+  - {fileID: 8300000, guid: 33991a9f1fa42a94e94ccef31047e9f1, type: 3}
+  - {fileID: 8300000, guid: bf39dae8c206cd94fa4a3de468a49027, type: 3}
   _volume: 0.4
 --- !u!82 &8694854530799872490
 AudioSource:
