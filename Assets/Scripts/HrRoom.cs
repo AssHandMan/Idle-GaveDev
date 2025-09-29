@@ -19,7 +19,9 @@ public class HrRoom : MonoBehaviour
     public int[] lvl;
     private int[,] price = { { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 }, { 100, 200, 300, 400, 500, 600, 700 } };
     private float[,] priceDiamonds = { { 1, 2, 3, 4, 5, 6, 7 }, { 1, 2, 3, 4, 5, 6, 7 }, { 1, 2, 3, 4, 5, 6, 7 }, { 1, 2, 3, 4, 5, 6, 7 }, { 1, 2, 3, 4, 5, 6, 7 }, { 1, 2, 3, 4, 5, 6, 7 }, { 1, 2, 3, 4, 5, 6, 7 } };
-    private float[] UpgreadStats = { 0, 8, 4, 8, 11, 7, 15, 14, 10, 22, 18, 13, 30 };
+    //UpgreadStats - первый 0 - заглушка, не трогать
+    //Speed -> Capacity -> Profit
+    private float[] UpgreadStats = { 0, 3, 3, 8, 4, 5, 15, 5, 7, 22, 6, 9, 30 };
     private PlayerMovement plr;
     private PlayerWallet wallet;
 

@@ -100175,6 +100175,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1509393045}
     - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: 'SpeedPrice.Array.data[1]'
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: 'SpeedPrice.Array.data[2]'
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: 'SpeedPrice.Array.data[3]'
+      value: 850
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: 'SpeedPrice.Array.data[4]'
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
       propertyPath: 'SpeedValue.Array.data[0]'
       value: 4
       objectReference: {fileID: 0}
@@ -100193,6 +100209,62 @@ PrefabInstance:
     - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
       propertyPath: 'SpeedValue.Array.data[4]'
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: 'ProfitPrice.Array.data[0]'
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: 'ProfitPrice.Array.data[1]'
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: 'ProfitPrice.Array.data[2]'
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: 'ProfitPrice.Array.data[3]'
+      value: 850
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: 'ProfitPrice.Array.data[4]'
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: 'ProfitValue.Array.data[0]'
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: 'ProfitValue.Array.data[1]'
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: 'ProfitValue.Array.data[2]'
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: 'ProfitValue.Array.data[3]'
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: 'ProfitValue.Array.data[4]'
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: 'CapacityPrice.Array.data[1]'
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: 'CapacityPrice.Array.data[2]'
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: 'CapacityPrice.Array.data[3]'
+      value: 850
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113047125816985109, guid: 9ce3122d798ffda46bad8e5662a7572d, type: 3}
+      propertyPath: 'CapacityPrice.Array.data[4]'
+      value: 1500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
