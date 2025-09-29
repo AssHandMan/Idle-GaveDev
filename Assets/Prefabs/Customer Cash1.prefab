@@ -631,10 +631,10 @@ MonoBehaviour:
   BuyObjCount: 0
   PoorCount: 1
   PoorMaxCount: 4
-  RichCount: 4
-  RichMaxCount: 10
-  BlogerCount: 10
-  BlogerMuxCount: 16
+  RichCount: 6
+  RichMaxCount: 8
+  BlogerCount: 8
+  BlogerMuxCount: 10
   st: {fileID: 0}
   machine: {fileID: 0}
   PoorSkins:

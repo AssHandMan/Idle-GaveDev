@@ -53,7 +53,7 @@ public class DeliveryMan : MonoBehaviour
         if (BuyObjCount > 0)
         {
             BuyObjCount--;
-            wallet.ChangeCount(5, "Money");
+            wallet.ChangeCount(10, "Money");
             OrderCount.text = (MaxBuyObjCount - BuyObjCount).ToString() + "/" + MaxBuyObjCount.ToString();
         }
         if (BuyObjCount == 0)
