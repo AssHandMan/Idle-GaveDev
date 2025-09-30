@@ -34,7 +34,7 @@ public class ShopOnGlobalMap : MonoBehaviour
         else
         {
             hereTxt.SetActive(false);
-            StartEarningOfflineMoney();
+            if (isBuy) { StartEarningOfflineMoney(); }
         }
         if (SceneName == "TheFirstShop")
         {

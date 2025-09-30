@@ -101,7 +101,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 499720356910626633}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.0003, y: 0.0003, z: 0.0003}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -632,9 +632,9 @@ RectTransform:
   - {fileID: 3458359433821366983}
   - {fileID: 7484213151403054875}
   - {fileID: 6278297275701903313}
-  - {fileID: 7923025248476557857}
   - {fileID: 2791057222914426867}
   - {fileID: 6407417665207278083}
+  - {fileID: 7923025248476557857}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -707,10 +707,6 @@ MonoBehaviour:
   LineUpgreade: {fileID: 2026162478310655320}
   LineOther: {fileID: 919839146664472467}
   PricePos: {fileID: 7484213151403054875}
-  _audioClip: {fileID: 8300000, guid: e14f7715c6880db42874dd420d04c249, type: 3}
-  _audioClip2: {fileID: 8300000, guid: 99c69ef99921c2b4ca44c016f0414426, type: 3}
-  _audio: {fileID: 7715685899195670083}
-  _volume: 0.4
 --- !u!65 &8047022961805890437
 BoxCollider:
   m_ObjectHideFlags: 0

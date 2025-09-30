@@ -399,8 +399,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.8433533, y: 1.1226664, z: 4.726759}
-  m_Center: {x: -0.12193966, y: 1.1173024, z: -0.8072432}
+  m_Size: {x: 6.190284, y: 1.1226662, z: 5.653717}
+  m_Center: {x: -0.23271397, y: 1.1173024, z: 0.2072685}
 --- !u!114 &5016479039690079104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,7 +430,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 13f3bde8db37a7743a7493695759941f, type: 3}
   m_Resource: {fileID: 8300000, guid: 13f3bde8db37a7743a7493695759941f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -439,9 +439,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 4
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -474,7 +474,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -717,18 +717,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4632626241186287912}
     m_Modifications:
-    - target: {fileID: 70884475474594105, guid: 5e2c6275ed3189c4981bb28ecede4f15, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 70884475474594105, guid: 5e2c6275ed3189c4981bb28ecede4f15, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 70884475474594105, guid: 5e2c6275ed3189c4981bb28ecede4f15, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.8
-      objectReference: {fileID: 0}
     - target: {fileID: 70884475474594105, guid: 5e2c6275ed3189c4981bb28ecede4f15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

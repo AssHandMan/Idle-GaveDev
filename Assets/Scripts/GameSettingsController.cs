@@ -9,6 +9,7 @@ public class GameSettingsController : MonoBehaviour
     [SerializeField] private GameObject window, ButtonLanguage;
     [SerializeField] private Animator SoundsButton, HarpticButton;
     [SerializeField] private Text NowLanguageTxt, LanguageTxt;
+    [SerializeField] private AudioListener AllSounds;
     private CanvasGroup group;
     private PlayerWallet wallet;
     private AudioSource Music;
@@ -98,12 +99,12 @@ public class GameSettingsController : MonoBehaviour
         if (music) 
         { 
             music = false;
-            Music.Stop();
+            AllSounds.enabled = false;
         }
         else 
         { 
             music = true;
-            Music.Play();
+            AllSounds.enabled = true;
         }
         SoundsButton.SetBool("isOn", music);
         SaveSettings();

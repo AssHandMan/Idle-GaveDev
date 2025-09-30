@@ -56,6 +56,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlaceObj: {fileID: 1201074753815048219}
   ObjectsList: []
+  _audio: {fileID: 0}
+  _isToilet: 0
   MuxCountObj: 15
   CountObj: 0
 --- !u!114 &1093442696979729051
@@ -697,6 +699,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider: {fileID: 7792784022197790143}
   _audio: {fileID: 4887209507229372665}
+  _name: 
+  _machine: {fileID: 0}
 --- !u!82 &4887209507229372665
 AudioSource:
   m_ObjectHideFlags: 0
@@ -802,18 +806,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4382094722124977179}
     m_Modifications:
-    - target: {fileID: 70884475474594105, guid: 5e2c6275ed3189c4981bb28ecede4f15, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 70884475474594105, guid: 5e2c6275ed3189c4981bb28ecede4f15, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 70884475474594105, guid: 5e2c6275ed3189c4981bb28ecede4f15, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 70884475474594105, guid: 5e2c6275ed3189c4981bb28ecede4f15, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.6731052

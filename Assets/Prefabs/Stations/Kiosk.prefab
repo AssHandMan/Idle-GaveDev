@@ -1407,6 +1407,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlaceObj: {fileID: 2956162265997411127}
   ObjectsList: []
+  _audio: {fileID: 0}
+  _isToilet: 0
   MuxCountObj: 5
   CountObj: 0
 --- !u!114 &3100720801205580468
@@ -1431,6 +1433,7 @@ MonoBehaviour:
   ImgObj1: {fileID: 0}
   ImgObj2: {fileID: 0}
   menegerPlace: {fileID: 0}
+  _diskStation: {fileID: 0}
   QueueList: []
 --- !u!114 &3072939136291405257
 MonoBehaviour:
@@ -1474,6 +1477,9 @@ MonoBehaviour:
   PriceList: 
   _stackOfMoney: {fileID: 0}
   circleArea: {fileID: 2782915666049660046}
+  _clip: {fileID: 0}
+  _audio: {fileID: 0}
+  _volume: 0.4
 --- !u!1001 &2841732727754043148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1634,18 +1640,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4690683233177268934}
     m_Modifications:
-    - target: {fileID: 70884475474594105, guid: 5e2c6275ed3189c4981bb28ecede4f15, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 70884475474594105, guid: 5e2c6275ed3189c4981bb28ecede4f15, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 70884475474594105, guid: 5e2c6275ed3189c4981bb28ecede4f15, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 70884475474594105, guid: 5e2c6275ed3189c4981bb28ecede4f15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.6
@@ -1817,6 +1811,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlaceObj: {fileID: 1556817990937859145}
   ObjectsList: []
+  _audio: {fileID: 0}
+  _isToilet: 0
   MuxCountObj: 15
   CountObj: 0
 --- !u!114 &4370118189154081974
@@ -2013,6 +2009,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlaceObj: {fileID: 3913571484868304214}
   ObjectsList: []
+  _audio: {fileID: 0}
+  _isToilet: 0
   MuxCountObj: 15
   CountObj: 0
 --- !u!114 &5174922986048809905

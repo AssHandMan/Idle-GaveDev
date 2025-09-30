@@ -800,18 +800,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 8235858035450752985}
     m_Modifications:
     - target: {fileID: 70884475474594105, guid: 5e2c6275ed3189c4981bb28ecede4f15, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 70884475474594105, guid: 5e2c6275ed3189c4981bb28ecede4f15, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 70884475474594105, guid: 5e2c6275ed3189c4981bb28ecede4f15, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 70884475474594105, guid: 5e2c6275ed3189c4981bb28ecede4f15, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.13
       objectReference: {fileID: 0}
@@ -1067,6 +1055,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlaceObj: {fileID: 8886670382136638916}
   ObjectsList: []
+  _audio: {fileID: 0}
+  _isToilet: 0
   MuxCountObj: 300
   CountObj: 0
 --- !u!114 &8040883656045858805
