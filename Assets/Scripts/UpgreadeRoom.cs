@@ -25,10 +25,10 @@ public class UpgreadeRoom : MonoBehaviour
     public Text SpeedCount, CapacityCount, ProfitCount;
     private int speed, capacity, profit;
     public int CountAds;
-    public VideoPlayer adsPlayer;
     public GameObject AdsScreen, ButtonsBuySpeed, ButtonsBuyCapacity, ButtonsBuyProfit;
     public GameSettingsController settings;
     private bool canSave;
+    public Text AddTime;
 
     [Header("Audio")]
     public AudioClip _clipBtn;
@@ -84,9 +84,6 @@ public class UpgreadeRoom : MonoBehaviour
     {
         if(CountAds > 0)
         {
-            settings.SetMusic();
-            AdsScreen.SetActive(true);
-            adsPlayer.Play();
             CountAds--;
             StartCoroutine(TimeToEndAds());
         }
@@ -94,9 +91,17 @@ public class UpgreadeRoom : MonoBehaviour
 
     private IEnumerator TimeToEndAds()
     {
-        yield return new WaitForSeconds(21);
+        int t = 5;
+        AddTime.text = t.ToString();
+        AdsScreen.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        for(int i = 0; i < 5; i++)
+        {
+            yield return new WaitForSeconds(1);
+            t--;
+            AddTime.text = t.ToString();
+        }
         AdsScreen.SetActive(false);
-        settings.SetMusic();
     }
 
     public void BuySpeed(bool isAdButton)

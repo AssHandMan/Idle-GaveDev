@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class BatlPassParser : MonoBehaviour
 {
@@ -36,9 +37,9 @@ public class BatlPassParser : MonoBehaviour
     [SerializeField] private Text RewardNewLvlCount;
     public GameObject AdsScreen, BtnReward1, BtnReward2, AttentionSymbol, RewardPanel, AvailablePanel;
     public GameSettingsController settings;
-    public VideoPlayer adsPlayer;
+    
     public RectTransform CirclesMain;
-
+    public Text AddTime;
     [Header("Audio")]
     public AudioSource _audio;
     public AudioClip _clipBtn;
@@ -402,22 +403,27 @@ public class BatlPassParser : MonoBehaviour
         }
         else
         {
-            settings.SetMusic();
-            AdsScreen.SetActive(true);
-            adsPlayer.Play();
             StartCoroutine(TimeToEndAds());
         }
     }
     private IEnumerator TimeToEndAds()
     {
-        yield return new WaitForSeconds(21);
-        AdsScreen.SetActive(false);
-        settings.SetMusic();
+        int t = 5;
+        AddTime.text = t.ToString();
+        AdsScreen.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        for (int i = 0; i < 5; i++)
+        {
+            yield return new WaitForSeconds(1);
+            t--;
+            AddTime.text = t.ToString();
+        }
         if (TypeReward == 'b') { wallet.ChangeCount(CountReward * 2, "Money"); }
-        else { wallet.ChangeCount(CountReward*2, "Diamonds"); }
+        else { wallet.ChangeCount(CountReward * 2, "Diamonds"); }
         TypeReward = ' ';
         CountReward = 0;
         HideNewLvlMenu();
+        AdsScreen.SetActive(false);
     }
 
     public void HideNewLvlMenu() 
