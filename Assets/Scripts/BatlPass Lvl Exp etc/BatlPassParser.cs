@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
-using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class BatlPassParser : MonoBehaviour
 {
