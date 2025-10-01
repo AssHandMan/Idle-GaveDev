@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     public bool isPlay, isGloblaMap;
     private GameObject plr;
     private Vector3 target;
-    public GameObject UiShowHide, Money, Diamonds, Skins, GlobalMapUI;
+    public GameObject UiShowHide, Money, Diamonds, Skins, GlobalMapUI, JoystickObj;
 
     public float minX, maxX;
     public float minZ, maxZ;
@@ -128,6 +128,7 @@ public class CameraController : MonoBehaviour
     {
         isPlay=true;
         isGloblaMap = false;
+        JoystickObj.SetActive(true);
         transform.rotation = Quaternion.Euler(PlatRotate);
     }
     public void SetSkinMood()
@@ -142,6 +143,7 @@ public class CameraController : MonoBehaviour
         _audio.PlayOneShot(_clipBtn,0.4f);
         _audio.PlayDelayed(0.4f);
         UiShowHide.SetActive(false);
+        JoystickObj.SetActive(false);
         Money.SetActive(false);
         Diamonds.SetActive(false);
         Skins.SetActive(false);

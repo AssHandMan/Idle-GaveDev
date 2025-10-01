@@ -6,7 +6,7 @@ using System;
 public class ExpLvlController : MonoBehaviour
 {
     [SerializeField] private BatlPassParser parser;
-    [SerializeField] private GameObject ExpMenu;
+    [SerializeField] private GameObject ExpMenu, MapBtn;
     [SerializeField] private UpgreadeSceneMeneger BuyMeneger;
     [SerializeField] private Image ExpBar;
     public int lvl, CountExP, MaxExPLvl;
@@ -62,6 +62,7 @@ public class ExpLvlController : MonoBehaviour
         {
             parser.GetNewLvl(i);
         }
+        if(lvl >= 4) { MapBtn.SetActive(true); }
         isLoading = false;
         parser.Load();
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     public bool CanMove;
     public Vector3 movementDirection;
+    public RectTransform Handle;
     private Animator _animator;
 
     private float _movementSpeed;

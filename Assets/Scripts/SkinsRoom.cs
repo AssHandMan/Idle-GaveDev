@@ -187,6 +187,7 @@ public class SkinsRoom : MonoBehaviour
         AddBaner.SetActive(true);
         SkinButton.SetActive(true);
         cam.SetPlayMood();
+        StartCoroutine(ReturnControl());
     }
 
     public void OpenMenu()
@@ -198,7 +199,14 @@ public class SkinsRoom : MonoBehaviour
             AddBaner.SetActive(true);
             SkinButton.SetActive(false);
             cam.SetSkinMood();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().BlockMoving();
         }
+    }
+
+    private IEnumerator ReturnControl()
+    {
+        yield return new WaitForSeconds(0.1f);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().BlockMoving();
     }
 
     public void ChangeLanguage()
@@ -223,11 +231,4 @@ public class SkinsRoom : MonoBehaviour
         }
     }
 
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.GetComponent<PlayerMovement>() != null)
-        {
-            CloseMenu();
-        }
-    }
 }
