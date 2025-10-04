@@ -137,6 +137,7 @@ public class HrRoom : MonoBehaviour
                 PriceButton[name].text = Convert.ToString(price[name, lvl[name] + 1]);
                 PriceDiamondsButton[name].text = Convert.ToString(priceDiamonds[name, lvl[name] + 1]);
                 LvlTxt[name].text = "LV." + Convert.ToString(lvl[name]);
+                if (name < Buttons.Length - 1) { Buttons[name + 1].SetActive(true); }
             }
         }
         else
@@ -307,6 +308,7 @@ public class HrRoom : MonoBehaviour
                 Menegers[name].SetActive(true);
                 PriceButton[name].text = Convert.ToString(price[name, lvl[name] + 1]);
                 PriceDiamondsButton[name].text = Convert.ToString(priceDiamonds[name, lvl[name] + 1]);
+                if(name < Buttons.Length-1) { Buttons[name + 1].SetActive(true); }
                 _audio.PlayOneShot(_clip,_volume);
             }
         }

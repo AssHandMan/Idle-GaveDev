@@ -16,6 +16,7 @@ public class Meneger : MonoBehaviour
     public MenegerHands hands;
 
     public ArcadeMachine[] arcade;
+    private ArcadeMachine ArcadeNow;
     public Trashbin[] bin;
     public SellStation[] Cashmachines;
     public CreateStation[] CreateStations;
@@ -29,6 +30,7 @@ public class Meneger : MonoBehaviour
     private Animator anim;
     public bool isMoving, isTransfer;
     private bool hasRotated = false;
+    private bool waitingTrash;
    private bool isAtTarget => Vector3.Distance(transform.position, Target.position) <= agent.stoppingDistance + 0.1f;
 
     void Start()
@@ -55,17 +57,12 @@ public class Meneger : MonoBehaviour
         if (TargetType == "Arcade")
         {
             agent.SetDestination(Target.position);
-            if (hands.Count > 0)
+            if(transform.position.x == Target.position.x && transform.position.z == Target.position.z)
             {
-                TargetType = "Delete";
-                if (Cashmachines[1].CanWork)
+                if(!waitingTrash)
                 {
-                    if (transform.localPosition.x < 17) { Target = bin[0].MenegerPlace; }
-                    else { Target = bin[1].MenegerPlace; }
-                }
-                else
-                {
-                    Target = bin[0].MenegerPlace;
+                    StartCoroutine(WaitTillTrash());
+                    waitingTrash = true;
                 }
             }
         }
@@ -147,7 +144,7 @@ public class Meneger : MonoBehaviour
                 hasRotated = true;
             }
 
-            if (Cashmachine.station.CountObj == 0)
+            if (Cashmachine.station.CountObj == 0 || CheackArcadeBool())
             {
                 agent.updateRotation = true;
                 hasRotated = false;
@@ -234,6 +231,24 @@ public class Meneger : MonoBehaviour
         }
     }
 
+    private IEnumerator WaitTillTrash()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (hands.Count > 0)
+        {
+            Target = bin[0].MenegerPlace;
+            TargetType = "Delete";
+            ArcadeNow = null;
+        }
+        else
+        {
+            ArcadeNow.hasMenegerTarget = false;
+            ArcadeNow = null;
+            TargetType = "";
+        }
+        waitingTrash = false;
+    }
+
     public CreateStation GetCreateStation(SellStation CashMachine)
     {
         if (CashMachine == Cashmachines[0])
@@ -266,10 +281,31 @@ public class Meneger : MonoBehaviour
                 {
                     Target = arcade[i].CustomerPos;
                     arcade[i].hasMenegerTarget = true;
+                    ArcadeNow = arcade[i];
                     break;
                 }
             }
             TargetType = "Arcade";
+        }
+    }
+
+    public bool CheackArcadeBool()
+    {
+        int CountArcade = 0;
+        for (int i = 0; i < arcade.Length; i++)
+        {
+            if (!arcade[i].CanWork & arcade[i].station.CountObj > 0 & !arcade[i].hasMenegerTarget)
+            {
+                CountArcade++;
+            }
+        }
+        if (CountArcade > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -285,6 +321,7 @@ public class Meneger : MonoBehaviour
                 CountArcade++;
             }
         }
+
         if (CountArcade > 0)
         {
             for (int i = 0; i < arcade.Length; i++)
@@ -293,6 +330,7 @@ public class Meneger : MonoBehaviour
                 {
                     Target = arcade[i].CustomerPos;
                     arcade[i].hasMenegerTarget = true;
+                    ArcadeNow = arcade[i];
                     break;
                 }
             }
