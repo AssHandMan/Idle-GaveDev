@@ -4983,6 +4983,7 @@ MonoBehaviour:
   speed: 5
   CanMove: 1
   movementDirection: {x: 0, y: 0, z: 0}
+  Handle: {fileID: 0}
 --- !u!54 &113473973609032064
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5035,7 +5036,7 @@ AudioSource:
   m_GameObject: {fileID: 7367280968857595797}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 46fd7ee59bb7d7744839c934b92a94c7, type: 2}
   m_audioClip: {fileID: 8300000, guid: 517e0293fd4de814cb76095e5f159a4f, type: 3}
   m_Resource: {fileID: 8300000, guid: 517e0293fd4de814cb76095e5f159a4f, type: 3}
   m_PlayOnAwake: 0

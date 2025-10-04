@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
@@ -9,7 +10,7 @@ public class GameSettingsController : MonoBehaviour
     [SerializeField] private GameObject window, ButtonLanguage;
     [SerializeField] private Animator SoundsButton, HarpticButton;
     [SerializeField] private Text NowLanguageTxt, LanguageTxt;
-    [SerializeField] private AudioListener AllSounds;
+    [SerializeField] private AudioMixer AllSounds;
     private CanvasGroup group;
     private PlayerWallet wallet;
     private AudioSource Music;
@@ -99,12 +100,12 @@ public class GameSettingsController : MonoBehaviour
         if (music) 
         { 
             music = false;
-            AllSounds.enabled = false;
+            AllSounds.SetFloat("Master", -80f);
         }
         else 
         { 
             music = true;
-            AllSounds.enabled = true;
+            AllSounds.SetFloat("Master", 0f);
         }
         SoundsButton.SetBool("isOn", music);
         SaveSettings();

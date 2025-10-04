@@ -35,6 +35,7 @@ public class PlayerWallet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(FindObjectsOfType<AudioListener>().Length);
     }
     public void AddMoneyEvent()
     {
