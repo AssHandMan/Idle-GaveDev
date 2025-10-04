@@ -178,7 +178,7 @@ public class Meneger : MonoBehaviour
         if (TargetType == "WorkWork")
         {
             agent.SetDestination(Target.position);
-            if (workStation.station.CountObj == 0)
+            if (workStation.station.CountObj == 0 || workStation.newStation.CountObj == workStation.newStation.MuxCountObj)
             {
                 Target = workStation.NewStationPlace;
                 TargetType = "TakeStationCar";
