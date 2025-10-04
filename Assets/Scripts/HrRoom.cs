@@ -54,6 +54,7 @@ public class HrRoom : MonoBehaviour
         canSave = true;
         Load();
     }
+    public void PlayAudio() { _audio.PlayOneShot(_clip, _volume); }
 
 
     void Update()
