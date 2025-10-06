@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _model: {fileID: 1776931913447406091, guid: 3c26bc3a639ea494e816901e8c5f7d85, type: 3}
-  _PriceOfCash: 5
+  _PriceOfCash: 100
   _PriceCoeff: 0
   _realCountCash: 0
   _cash3D: []
