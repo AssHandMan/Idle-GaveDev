@@ -4,7 +4,7 @@ using UnityEngine;
 public class RandomEventsCustomers : MonoBehaviour
 {
     public SellStation station;
-    public float timeEventInterval = 60;
+    [SerializeField] public float timeEventInterval = 90;
 
     void Start()
     {

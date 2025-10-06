@@ -239,7 +239,7 @@ MonoBehaviour:
   - {fileID: 4300000, guid: 40625be4a6563894e899529543e41ef9, type: 3}
   space: {fileID: 0}
   PriceList: 72010000ba040000
-  TimePlay: 25
+  TimePlay: 30
 --- !u!95 &7127964995853265231
 Animator:
   serializedVersion: 7

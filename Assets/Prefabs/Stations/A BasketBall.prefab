@@ -450,7 +450,7 @@ MonoBehaviour:
   - {fileID: 4300000, guid: b4d3104a71ec6cb41953fa34d4e2144f, type: 3}
   space: {fileID: 0}
   PriceList: 1a0400004c090000
-  TimePlay: 25
+  TimePlay: 30
 --- !u!65 &806654443975566921
 BoxCollider:
   m_ObjectHideFlags: 0
