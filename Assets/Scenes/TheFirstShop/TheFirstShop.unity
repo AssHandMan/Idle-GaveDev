@@ -46190,7 +46190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.1175537, y: -1.2453003}
+  m_AnchoredPosition: {x: -3.1175537, y: -1.2453613}
   m_SizeDelta: {x: 6.199951, y: 2.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &697720646
@@ -76529,7 +76529,7 @@ MonoBehaviour:
   MaxKioskCustomers: 5
   CustomerCreateTimeMin: 2
   CustomerCreateTimeMax: 8
-  DeliveryManCreateTime: 0
+  DeliveryManCreateTime: 150
   timeEventIntervalCall: 100
   timeEventIntervalSleep: 100
   CustomerPos: {fileID: 55809694}
