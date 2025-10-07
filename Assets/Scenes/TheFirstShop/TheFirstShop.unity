@@ -14302,7 +14302,7 @@ MonoBehaviour:
   Angel: 0
   speed: 2
   capacity: 0
-  capacityUpgreadeBufer: 1
+  capacityUpgreadeBufer: 3
   profit: 1
   TargetType: 
   Target: {fileID: 0}
@@ -31985,7 +31985,7 @@ MonoBehaviour:
   Angel: 0
   speed: 2
   capacity: 0
-  capacityUpgreadeBufer: 1
+  capacityUpgreadeBufer: 3
   profit: 1
   TargetType: 
   Target: {fileID: 0}
@@ -46190,7 +46190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.1175537, y: -1.2451172}
+  m_AnchoredPosition: {x: -3.1175537, y: -1.2453613}
   m_SizeDelta: {x: 6.199951, y: 2.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &697720646
@@ -51986,7 +51986,7 @@ MonoBehaviour:
   Angel: 0
   speed: 2
   capacity: 0
-  capacityUpgreadeBufer: 1
+  capacityUpgreadeBufer: 3
   profit: 1
   TargetType: 
   Target: {fileID: 0}
@@ -72026,7 +72026,7 @@ MonoBehaviour:
   Angel: 0
   speed: 2
   capacity: 0
-  capacityUpgreadeBufer: 1
+  capacityUpgreadeBufer: 3
   profit: 1
   TargetType: 
   Target: {fileID: 0}
@@ -76529,7 +76529,7 @@ MonoBehaviour:
   MaxKioskCustomers: 5
   CustomerCreateTimeMin: 2
   CustomerCreateTimeMax: 8
-  DeliveryManCreateTime: 0
+  DeliveryManCreateTime: 150
   timeEventIntervalCall: 100
   timeEventIntervalSleep: 100
   CustomerPos: {fileID: 55809694}
@@ -82070,7 +82070,7 @@ MonoBehaviour:
   Angel: 0
   speed: 2
   capacity: 0
-  capacityUpgreadeBufer: 1
+  capacityUpgreadeBufer: 3
   profit: 1
   TargetType: 
   Target: {fileID: 0}
@@ -93803,7 +93803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2981904185369435389, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.58
+      value: 5.59
       objectReference: {fileID: 0}
     - target: {fileID: 2981904185369435389, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -93811,7 +93811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2981904185369435389, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.04
+      value: -1.9
       objectReference: {fileID: 0}
     - target: {fileID: 2981904185369435389, guid: e02f28556745bc646bcaf5deacf2fedb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -97522,7 +97522,7 @@ MonoBehaviour:
   Angel: 0
   speed: 2
   capacity: 0
-  capacityUpgreadeBufer: 1
+  capacityUpgreadeBufer: 3
   profit: 1
   TargetType: 
   Target: {fileID: 0}
@@ -141720,7 +141720,7 @@ MonoBehaviour:
   Angel: 0
   speed: 2
   capacity: 0
-  capacityUpgreadeBufer: 1
+  capacityUpgreadeBufer: 3
   profit: 1
   TargetType: 
   Target: {fileID: 0}

@@ -630,10 +630,10 @@ MonoBehaviour:
   meneger: {fileID: 0}
   BuyObjCount: 0
   PoorCount: 1
-  PoorMaxCount: 4
-  RichCount: 6
-  RichMaxCount: 8
-  BlogerCount: 8
+  PoorMaxCount: 3
+  RichCount: 4
+  RichMaxCount: 6
+  BlogerCount: 7
   BlogerMuxCount: 10
   st: {fileID: 0}
   machine: {fileID: 0}
