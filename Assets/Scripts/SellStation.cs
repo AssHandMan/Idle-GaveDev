@@ -5,7 +5,7 @@ using UnityEngine;
 public class SellStation : MonoBehaviour
 {
     public StationObjectCollection station;
-    public GameObject WorkSpace, MainObj, Worker, LustCustomer;
+    public GameObject WorkSpace, MainObj, Worker, LustCustomer, NoSeatTable;
     public Transform[] CustomerPlace;
     public bool CanWork, isKiosk, isCalling, isSelling, hasAddingObjMenegerTarget, hasworkerTarget;
     public int CountObj;
@@ -51,6 +51,10 @@ public class SellStation : MonoBehaviour
         {
             StartCoroutine(Working());
             inProgress = true;
+        }
+        if(NoSeatTable.activeSelf)
+        {
+            NoSeatTable.transform.LookAt(Camera.main.transform);
         }
     }
     public void CheckCalling()
@@ -146,6 +150,7 @@ public class SellStation : MonoBehaviour
         }
         StartCoroutine(Working());
     }
+    public void SetNoSeatTable(bool isActive) { NoSeatTable.SetActive(isActive); }
 
     public IEnumerator WorkSpaceEffect()
     {

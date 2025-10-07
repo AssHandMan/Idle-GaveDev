@@ -114,9 +114,14 @@ public class Customer : MonoBehaviour
                 }
                 if (a > 0)
                 {
+                    st.SetNoSeatTable(false);
                     st.QueueList.Remove(gameObject);
                     st.Queue = st.QueueList.ToArray();
                     GoAway();
+                }
+                else
+                {
+                    st.SetNoSeatTable(true);
                 }
             }
         }
