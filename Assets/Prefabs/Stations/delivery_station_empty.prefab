@@ -699,7 +699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider: {fileID: 7792784022197790143}
   _audio: {fileID: 4887209507229372665}
-  _name: 
+  _name: Printer
   _machine: {fileID: 0}
 --- !u!82 &4887209507229372665
 AudioSource:

@@ -71,6 +71,7 @@ MonoBehaviour:
   _audio: {fileID: 8700519090628214758}
   _name: Arcade
   _machine: {fileID: 3169190932945888817}
+  isDance: 1
 --- !u!82 &8700519090628214758
 AudioSource:
   m_ObjectHideFlags: 0
@@ -397,6 +398,7 @@ MonoBehaviour:
   space: {fileID: 0}
   PriceList: 700300009e070000
   TimePlay: 30
+  _printerAud: {fileID: 3722299470055960012}
 --- !u!65 &6318757239062961953
 BoxCollider:
   m_ObjectHideFlags: 0

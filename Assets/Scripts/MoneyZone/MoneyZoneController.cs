@@ -1,15 +1,17 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using UnityEngine;
 
-//Special for Tima ��� ������ � ������ ��������
-//1.obj � ���� �������� �������� ��� ����
-//2. � ������� ��� �� ����� ����� wallet.ChangeCount(5, "Money") ����� �� .GetComponent<MoneyZoneController>().Add();
-//3. ���� ������ ����� ��� _PriceOfCash
+//Special for Tima                             
+//1.obj                                  
+//2.                              wallet.ChangeCount(5, "Money")          .GetComponent<MoneyZoneController>().Add();
+//3.                       _PriceOfCash
 public class MoneyZoneController : MonoBehaviour
 {
+    [SerializeField] int[,,] massiv;
     public GameObject _model;
     [SerializeField] private int _PriceOfCash;
     [SerializeField] private int _PriceCoeff;
@@ -18,7 +20,7 @@ public class MoneyZoneController : MonoBehaviour
     public List<GameObject> _cash3D = new List<GameObject>();
     public List<GameObject> _Listlayer;
     List<GameObject> _Pointlist = new List<GameObject>();
-    [SerializeField] private int _testMaxCash; //��� �������� ������������� ���������� ������������ �����
+    [SerializeField] private int _testMaxCash; //                                                        
 
     [SerializeField] private int _X_SizeStack;
     [SerializeField] private int _Y_SizeStack;
@@ -31,19 +33,23 @@ public class MoneyZoneController : MonoBehaviour
     [SerializeField] private GameObject _MoneyEffectObj;
     private Coroutine moneyEffectCoroutine;
 
-    public float removalSpeed = 1.0f; // 1.0 - ���������� ��������, >1 - ���������, <1 - ����������
-    private bool isRemoving = false; // ����, ����� �� ��������� ��������� ������� �����
-    private Coroutine removalCoroutine; // ������ �� ���������� ��������
+    public float removalSpeed = 1.0f; // 1.0 -                    , >1 -          , <1 -           
+    private bool isRemoving = false; //     ,                                           
+    private Coroutine removalCoroutine; //                              
     [Header("Audio")]
     public AudioSource _audio;
     public AudioClip _clip1, _clip2;
     public float _volume = 0.4f;
+    [SerializeField] private int maxCoord;
+    [SerializeField] private int coord = 0;
 
 
     public void Start()
     {
+        massiv = new int[_Z_SizeStack, _X_SizeStack, _Y_SizeStack];
         wallet = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWallet>();
-        StackSize();
+        maxCoord = _X_SizeStack + _Y_SizeStack + _Z_SizeStack;
+        //StackSize();
         /*foreach (GameObject p in _Listlayer)
         {
             GetChildRecursive(p);
@@ -64,16 +70,21 @@ public class MoneyZoneController : MonoBehaviour
             GetChildRecursive(child.gameObject);
         }
     }
-    public void Add()//���������� ����� � ����
+    public void Add()//                       
     {
-        if (_realCountCash < (_X_SizeStack* _Y_SizeStack* _Z_SizeStack))
+        if (_realCountCash < (_X_SizeStack * _Y_SizeStack * _Z_SizeStack))
         {
-            for(int i =0; i < _PriceOfCash/_PriceCoeff;i++)
-            _cash3D.Add(Instantiate(_model, _Pointlist[_realCountCash].transform.position, _model.transform.rotation));
+            for (int i = 0; i < _PriceOfCash / _PriceCoeff; i++)
+            {
+                //Debug.Log($"{_X_Spacing},{_Y_Spacing},{_Z_Spacing}");
+
+                CheckStackSize(coord);
+                coord++;
+            }
         }
-        _realCountCash+=(_PriceOfCash / _PriceCoeff);
-       
-        
+        _realCountCash += (_PriceOfCash / _PriceCoeff);
+
+
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -88,7 +99,25 @@ public class MoneyZoneController : MonoBehaviour
                 moneyEffectCoroutine = StartCoroutine(MoneyEffectGenerator());
         }
     }
-
+    private void CheckStackSize(int coord)
+    {
+        int temp = 0;
+        for (int y = 0; y < _Y_SizeStack; y++)
+        {
+            for (int x = 0; x < _X_SizeStack; x++)
+            {
+                for (int z = 0; z < _Z_SizeStack; z++)
+                {
+                    if (temp == coord)
+                    {
+                        _cash3D.Add(Instantiate(_model, new Vector3(_FirstPoint.transform.position.x + (_X_Spacing * x), _FirstPoint.transform.position.y + (_Y_Spacing * y), _FirstPoint.transform.position.z + _Z_Spacing * z), _model.transform.rotation));
+                        return;
+                    }
+                    temp++;
+                }
+            }
+        }
+    }
     private void StackSize()
     {
 
@@ -98,27 +127,30 @@ public class MoneyZoneController : MonoBehaviour
             {
                 for (int z = 0; z < _Z_SizeStack; z++)
                 {
-                    // ��������� ������� ��� ������� �������
+                    //                                      
                     Vector3 position = new Vector3(_FirstPoint.transform.position.x + x * _X_Spacing,
                         _FirstPoint.transform.position.y + y * _Y_Spacing,
                         _FirstPoint.transform.position.z + z * _Z_Spacing);
 
                     _Pointlist.Add(Instantiate(_FirstPoint, position, _model.transform.rotation));
-                    
+
                 }
             }
         }
-        }
+    }
     private IEnumerator RemoveCashLayers()
     {
         isRemoving = true;
 
+        //           ,                            (                             )
         int billsPerLayer = Mathf.Max(1, _cash3D.Count / _realCountCash);
 
         while (_realCountCash > 0)
         {
+            //                   (             ,           )
             int startIndex = Mathf.Max(0, _cash3D.Count - billsPerLayer);
             int countToRemove = Mathf.Min(billsPerLayer, _cash3D.Count);
+            //Debug.Log(countToRemove);
             for (int i = startIndex; i < _realCountCash; i++)
             {
                 if (i < startIndex + countToRemove)
@@ -131,8 +163,9 @@ public class MoneyZoneController : MonoBehaviour
 
             _audio.PlayOneShot(_clip1, _volume);
             _cash3D.RemoveRange(startIndex, countToRemove);
+            coord = 0;
 
-            // ��� ����� ��������� ���������� ���� (���������� ��������)
+            //                                     (                   )
             yield return new WaitForSeconds(1f / removalSpeed);
         }
 

@@ -20,6 +20,8 @@ public class ArcadeMachine : MonoBehaviour
     public int[] PriceList;
     private int GameTime;
     public int TimePlay;
+    public printerAudioController _printerAud;
+
 
     void Start()
     {

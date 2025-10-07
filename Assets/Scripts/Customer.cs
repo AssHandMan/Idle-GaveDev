@@ -136,12 +136,19 @@ public class Customer : MonoBehaviour
                     //transform.LookAt(st.transform.position);
                     Vector3 dir = machine.transform.position - this.transform.position;
                     this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(dir),1f);
-                    StartCoroutine(animator1("IsPlay", true, 0));
-                    StartCoroutine(animator1("IsMoving", false, 0));
+                    //-StartCoroutine(animator1("IsPlay", true, 0));
+                    //-StartCoroutine(animator1("IsMoving", false, 0));
                     machine.StartPlay();
-                    StartCoroutine(animator1("IsPlay", false, 5));
-                    _animator.SetBool("IsPlay", true);
-
+                    if (machine._printerAud.isDance)
+                    {
+                        StartCoroutine(animator1("IsDance", false, machine.TimePlay));
+                        _animator.SetBool("IsDance", true);
+                    }
+                    else
+                    {
+                        StartCoroutine(animator1("IsPlay", false, machine.TimePlay));
+                        _animator.SetBool("IsPlay", true);
+                    }
                 }
             }
             else

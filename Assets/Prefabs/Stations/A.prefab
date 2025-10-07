@@ -240,6 +240,7 @@ MonoBehaviour:
   space: {fileID: 0}
   PriceList: 72010000ba040000
   TimePlay: 30
+  _printerAud: {fileID: 5016479039690079104}
 --- !u!95 &7127964995853265231
 Animator:
   serializedVersion: 7
@@ -355,9 +356,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1495797374102092249}
-  - component: {fileID: 7155467053682897569}
   - component: {fileID: 5016479039690079104}
-  - component: {fileID: 2753127128363626068}
+  - component: {fileID: 4175493522772650853}
+  - component: {fileID: 4094601947295366750}
   m_Layer: 0
   m_Name: Audio (1)
   m_TagString: Untagged
@@ -380,7 +381,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4632626241186287912}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7155467053682897569
+--- !u!114 &5016479039690079104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5064520530762882131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca45c2918c45e5458347a655524a9a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 4175493522772650853}
+  _audio: {fileID: 4094601947295366750}
+  _name: Arcade
+  _machine: {fileID: 2230319277411061296}
+  isDance: 0
+--- !u!65 &4175493522772650853
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -399,25 +417,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.190284, y: 1.1226662, z: 5.653717}
-  m_Center: {x: -0.23271397, y: 1.1173024, z: 0.2072685}
---- !u!114 &5016479039690079104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5064520530762882131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dca45c2918c45e5458347a655524a9a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _collider: {fileID: 7155467053682897569}
-  _audio: {fileID: 2753127128363626068}
-  _name: Arcade
-  _machine: {fileID: 2230319277411061296}
---- !u!82 &2753127128363626068
+  m_Size: {x: 4.1350675, y: 2.9815733, z: 4.456556}
+  m_Center: {x: -0.19871047, y: 0.990785, z: -0.019601347}
+--- !u!82 &4094601947295366750
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -430,7 +432,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 13f3bde8db37a7743a7493695759941f, type: 3}
   m_Resource: {fileID: 8300000, guid: 13f3bde8db37a7743a7493695759941f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.35
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -439,9 +441,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 4
+  MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -474,7 +476,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
