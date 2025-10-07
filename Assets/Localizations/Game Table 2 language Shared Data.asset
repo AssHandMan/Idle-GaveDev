@@ -187,6 +187,10 @@ MonoBehaviour:
     m_Key: CEO
     m_Metadata:
       m_Items: []
+  - m_Id: 54055357423542272
+    m_Key: No Seat
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

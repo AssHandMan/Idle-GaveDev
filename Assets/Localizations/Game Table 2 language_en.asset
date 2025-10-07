@@ -195,6 +195,10 @@ MonoBehaviour:
     m_Localized: CEO
     m_Metadata:
       m_Items: []
+  - m_Id: 54055357423542272
+    m_Localized: No Seat!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
