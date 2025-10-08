@@ -168,8 +168,10 @@ public class MoneyZoneController : MonoBehaviour
             //                                     (                   )
             yield return new WaitForSeconds(1f / removalSpeed);
         }
-
+        
         isRemoving = false;
+        moneyEffectCoroutine = null;
+        StopCoroutine(MoneyEffectGenerator());
     }
     private IEnumerator MoneyEffectGenerator()
     {
