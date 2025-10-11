@@ -90,7 +90,7 @@ MonoBehaviour:
   active: 1
   temperature:
     m_OverrideState: 1
-    m_Value: 6
+    m_Value: 10
   tint:
     m_OverrideState: 0
     m_Value: -17
@@ -115,7 +115,7 @@ MonoBehaviour:
     m_Value: {x: 1, y: 1, z: 1, w: 0.094438635}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 0.93002105, y: 1, z: 0.9475157, w: -0.38824767}
+    m_Value: {x: 0.98357064, y: 0.9794541, z: 1, w: -0.38824767}
   shadowsStart:
     m_OverrideState: 0
     m_Value: 0
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01700fd266d6914ababb731e09af2eb, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   mode:
     m_OverrideState: 1
     m_Value: 1

@@ -5,6 +5,8 @@
     "com.google.firebase.app": "file:FireBase/com.google.firebase.app-12.5.0.tgz",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ai.navigation": "2.0.5",
+    "com.unity.animation.rigging": "1.3.1",
+    "com.unity.cinemachine": "3.1.4",
     "com.unity.collab-proxy": "2.6.0",
     "com.unity.feature.development": "1.0.2",
     "com.unity.localization": "1.5.4",
