@@ -52,9 +52,12 @@ public class SellStation : MonoBehaviour
             StartCoroutine(Working());
             inProgress = true;
         }
-        if(NoSeatTable.activeSelf)
+        if (!isKiosk)
         {
-            NoSeatTable.transform.LookAt(Camera.main.transform);
+            if (NoSeatTable.activeSelf)
+            {
+                NoSeatTable.transform.LookAt(Camera.main.transform);
+            }
         }
     }
     public void CheckCalling()
