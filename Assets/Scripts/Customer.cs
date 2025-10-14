@@ -405,6 +405,7 @@ public class Customer : MonoBehaviour
         }
         else
         {
+            _animator.SetBool("IsPlay", true);
             agent.speed = 5;  
             SleepIcon.SetActive(false);
             isSleeping = false;

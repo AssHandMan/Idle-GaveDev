@@ -283,6 +283,11 @@ public class CustomersMeneger : MonoBehaviour
             {
                 int n = Random.Range(0, ReadyforSleep.Count);
                 ReadyforSleep[n].Sleep();
+                ReadyforSleep[n]._animator.SetBool("IsPlay", false);
+                ReadyforSleep[n]._animator.SetBool("IsDance", false);
+                ReadyforSleep[n]._animator.SetBool("IsMoving", false);
+
+
             }
         }
         StartCoroutine(DoSleep());
